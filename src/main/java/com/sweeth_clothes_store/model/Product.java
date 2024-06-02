@@ -30,12 +30,6 @@ public class Product {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "weight", nullable = false)
-    private Integer weight;
-
-    @Column(name = "size", nullable = false)
-    private String size;
-
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
@@ -69,6 +63,10 @@ public class Product {
 	@JsonIgnore
 	@OneToMany(mappedBy = "product")
 	private List<ProductImage> productImages;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    private List<ProductSize> productSizes;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "product")

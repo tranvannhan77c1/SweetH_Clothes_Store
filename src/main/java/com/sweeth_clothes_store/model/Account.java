@@ -37,6 +37,9 @@ public class Account {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "role", nullable = false)
+    private String role;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	private List<Favorite> favorites;
@@ -44,10 +47,6 @@ public class Account {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	private List<Feedback> feedbacks;
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
-	private List<Authority> authorities;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
