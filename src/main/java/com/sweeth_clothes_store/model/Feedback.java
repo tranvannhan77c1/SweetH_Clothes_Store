@@ -20,7 +20,7 @@ public class Feedback {
 	private long id;
 
 	@Column(nullable = false)
-	private int rate;
+	private Integer rate;
 
 	@Column(nullable = false)
 	private String content;
