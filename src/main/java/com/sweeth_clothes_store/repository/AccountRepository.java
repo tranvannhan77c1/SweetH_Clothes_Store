@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     // Các phương thức tùy chỉnh có thể được thêm vào đây nếu cần
+    Account save(Account account);
+
+    Account findByEmail(String email);
 }
