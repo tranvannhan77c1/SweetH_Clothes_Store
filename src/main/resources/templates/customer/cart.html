@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="categoryApp">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body ng-controller="ProductController">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -115,81 +115,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr ng-repeat="item in cart">
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="img/cart/cart1.png" alt="">
+                                            <img class="cart-item__thumbnail" ng-src="{{ item.thumbnailImage }}" alt="{{ item.name }}">
                                         </div>
                                         <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
+                                            <p>{{ item.name }}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$360.00</h5>
+                                    <h5 >{{ item.price }}$</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                        <input type="text" name="qty" maxlength="12" ng-model="item.quantity" title="Quantity:" class="input-text qty">
+                                        <button ng-click="increaseQuantity(item)" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                        <button ng-click="decreaseQuantity(item)" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$720.00</h5>
+                                    <h5>{{ item.price * item.quantity }}$</h5>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart/cart2.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart/cart3.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
+
+
                             <tr class="bottom_button">
                                 <td>
                                     <a class="button" href="#">Cập Nhật Giỏ Hàng</a>
@@ -202,9 +154,9 @@
                                 </td>
                                 <td>
                                     <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Nhập Mã">
+                                        <input type="text" placeholder="Nhập Mã Giảm Giá">
                                         <a class="primary-btn" href="#">Áp Dụng</a>
-                                        <a class="button" href="#">Phiếu giảm giá?</a>
+
                                     </div>
                                 </td>
                             </tr>
@@ -214,15 +166,15 @@
                                         <div class="col address-section">
                                             <h6>Địa Chỉ <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
                                             <select class="shipping_select">
-                                                <option value="1">Thành Phố</option>
-                                                <option value="2">Sài Gòn</option>
-                                                <option value="4">Hà Nội</option>
-                                            </select>
+                                            <option value="1">Thành Phố</option>
+                                            <option value="2">Sài Gòn</option>
+                                            <option value="4">Hà Nội</option>
+                                        </select>
                                             <select class="shipping_select">
-                                                <option value="1">Quận</option>
-                                                <option value="2">Quận 1</option>
-                                                <option value="4">Quận 2</option>
-                                            </select>
+                                            <option value="1">Quận</option>
+                                            <option value="2">Quận 1</option>
+                                            <option value="4">Quận 2</option>
+                                        </select>
                                             <input type="text" placeholder="Địa chỉ cụ thể">
                                         </div>
                                         <div class="col">
@@ -240,11 +192,11 @@
                                     </div>
                                 </td>
                                 <td>
+                                </td>
+                                <td class="total" ng-if="cart.length > 0">
+                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal() }}$ </h4>
+                                </td>
 
-                                </td>
-                                <td>
-                                    <h5>Tổng phụ</h5>
-                                </td>
                                 <td>
 
                                 </td>
@@ -252,8 +204,6 @@
                             <tr class="out_button_area">
 
                                 <td>
-
-
 
                                 </td>
                                 <td>
@@ -289,6 +239,7 @@
             </div>
         </div>
     </section>
+
     <!--================End Cart Area =================-->
 
 
@@ -375,7 +326,10 @@
     <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
     <script src="vendors/jquery.ajaxchimp.min.js"></script>
     <script src="vendors/mail-script.js"></script>
+    <script src="vendors/angular/angular.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/category.js"></script>
 </body>
 
 </html>
