@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/account")
-@CrossOrigin(origins = "*") // Cho phép tất cả các nguồn truy cập vào API này
+@CrossOrigin(origins = "*")
 public class AccountController {
     @Autowired
     private AccountService accountService;
@@ -22,7 +22,7 @@ public class AccountController {
             }
             Account createdAccount = accountService.addAccount(account);
             if (createdAccount == null) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // Xung đột nếu username hoặc email đã tồn tại
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
             } else {
                 return ResponseEntity.ok(createdAccount);
             }
@@ -31,4 +31,5 @@ public class AccountController {
         }
     }
 }
+
 

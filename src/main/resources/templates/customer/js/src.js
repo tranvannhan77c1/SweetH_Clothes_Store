@@ -2,7 +2,6 @@ const form = document.getElementById("register_form");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const input_address = document.getElementById("address");
     const input_phone = document.getElementById("phone");
     const input_username = document.getElementById("username");
@@ -22,7 +21,7 @@ form.addEventListener("submit", (e) => {
                     fullName: input_fullname.value || "",
                     phone: input_phone.value || "",
                     address: input_address.value || "",
-                    role: "Customer" // Đảm bảo gửi role là USER
+                    role: "Customer"
                 }
 
                 const data = JSON.stringify(user);
