@@ -11,11 +11,12 @@ public class AccountService {
     private AccountRepository accountRepository;
 
     public Account addAccount(Account data) {
-        System.out.println("Adding new account" + data);
-        Account checkDup = accountRepository.findByEmail(data.getEmail());
-        if (checkDup  == null) {
+        /*System.out.println("Adding new account" + data);*/
+        Account checkEmailDup = accountRepository.findByEmail(data.getEmail());
+        Account checkUsernameDup = accountRepository.findByUsername(data.getUsername());
+        if (checkEmailDup == null && checkUsernameDup == null) {
             return accountRepository.save(data);
-        } else{
+        } else {
             return null;
         }
     }

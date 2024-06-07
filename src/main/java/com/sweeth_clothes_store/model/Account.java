@@ -38,7 +38,7 @@ public class Account {
     private String address;
 
     @Column(name = "role", nullable = false)
-    private String role;
+    private String role = "Customer"; // Giá trị mặc định
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")

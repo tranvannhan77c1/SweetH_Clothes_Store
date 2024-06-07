@@ -3,56 +3,58 @@ const form = document.getElementById("register_form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const input_address =  document.getElementById("address");
-    const input_phone =  document.getElementById("phone");
-    const input_name =  document.getElementById("name");
-    const input_email =  document.getElementById("email");
-    const input_password =  document.getElementById("password");
-    const input_confirmPassword =  document.getElementById("confirmPassword");
+    const input_address = document.getElementById("address");
+    const input_phone = document.getElementById("phone");
+    const input_username = document.getElementById("username");
+    const input_fullname = document.getElementById("fullname");
+    const input_email = document.getElementById("email");
+    const input_password = document.getElementById("password");
+    const input_confirmPassword = document.getElementById("confirmPassword");
 
-    console.log("pass; " + input_password.value + "    ---confirm: " + input_confirmPassword.value)
-    if(validateEmail(input_email.value)){
-        if(input_name.value && input_password.value){
-            if(input_password.value === input_confirmPassword.value){
+    console.log("pass; " + input_password.value + " --- confirm: " + input_confirmPassword.value)
+    if (validateEmail(input_email.value)) {
+        if (input_username.value && input_password.value) {
+            if (input_password.value === input_confirmPassword.value) {
                 const user = {
-                    name: input_name.value,
+                    username: input_username.value,
                     email: input_email.value,
                     password: input_password.value,
-                    phone: input_phone.value || " ",
-                    address: input_address.value || " "
+                    fullName: input_fullname.value || "",
+                    phone: input_phone.value || "",
+                    address: input_address.value || "",
+                    role: "Customer" // Đảm bảo gửi role là USER
                 }
 
                 const data = JSON.stringify(user);
-                console.log("data send to server: " , data)
+                console.log("data sent to server: ", data)
                 fetch("http://localhost:8080/api/v1/account", {
                     method: "POST",
                     body: data,
                     headers: {
-                        "Content-Type": "application/json; charset=UTF-8"
+                        "Content-Type": "application/json"
                     }
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error ' + response.statusText);
-                    }
-                    console.log("RS: ", response.json());
-                })
-                .then(data => {
-                    console.log('Success:', data);
-                    //
-                    window.location.href = "login.html";
-                })
-                .catch(error => {
-                    console.error('There was a problem with your fetch operation:', error);
-                });
-            }else{
-                alert("Confirm password !!!!")
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                        window.location.href = "login.html";
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with your fetch operation:', error);
+                    });
+            } else {
+                alert("Confirm password doesn't match!")
             }
-        }else{
-            alert("Input name && password !!!")
+        } else {
+            alert("Input username and password!!!")
         }
-    }else{
-        alert("Email is not found !!!")
+    } else {
+        alert("Invalid email!!!")
     }
 
 })
