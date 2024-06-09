@@ -49,9 +49,9 @@ create table accounts(
     [password] varchar(50) not null,
     email varchar(100) not null unique,
     full_name nvarchar(100),
-    phone nvarchar(10),
+    phone nvarchar(10) not null unique,
     [address] nvarchar(500),
-	[role] varchar(20) not null
+    [role] varchar(20) not null
     primary key (id)
 )
 create table favorites(
