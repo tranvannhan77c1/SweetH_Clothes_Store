@@ -36,9 +36,11 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner register_form_inner">
                         <h3>Tạo Tài Khoản</h3>
+                        <div class="err_form" id="error"></div>
+                        <div class="success_form" id="success"></div>
                         <form class="row login_form" action="" id="register_form">
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Tên đăng nhập" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đăng nhập '">
+                                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Họ tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đăng nhập '">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email '">
@@ -50,19 +52,13 @@
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Địa chỉ '">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Tên tài khoản" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên tài khoản'">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên tài khoản'">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mật khẩu'">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input type="password" class="form-control" id="confirmPassword" name="Xác nhận mật khẩu " placeholder="Xác nhận mật khẩu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Xác nhận mật khẩu'">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <input type="checkbox" id="f-option2" name="selector">
-                                    <label for="f-option2">Giữ tôi luôn đăng nhập</label>
-                                </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <button type="submit" value="submit" class="button button-register w-100">Đăng Ký</button>
