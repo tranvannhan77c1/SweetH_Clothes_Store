@@ -4884,6 +4884,8 @@ a {
     margin-right: 5px;
     /* Thêm khoảng cách giữa biểu tượng và văn bản */
 }
+
+
 .err_form, .success_form{
     width: 100%;
 
@@ -4906,8 +4908,9 @@ a {
 
     background-color: #5dcd95;
     color: #FFF;
-  
-  .cart-item__thumbnail {
+}
+
+.cart-item__thumbnail {
     width: 50px;
     /* Thiết lập chiều rộng của ảnh */
     height: auto;
