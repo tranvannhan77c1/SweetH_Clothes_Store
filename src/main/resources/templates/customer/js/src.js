@@ -32,7 +32,7 @@ form.addEventListener("submit", (e) => {
 
                 const data = JSON.stringify(user);
                 console.log("data sent to server: ", data)
-                fetch("http://localhost:8080/api/v1/account", {
+                fetch("http://localhost:8080/api/v1/account/signup", {
                     method: "POST",
                     body: data,
                     headers: {

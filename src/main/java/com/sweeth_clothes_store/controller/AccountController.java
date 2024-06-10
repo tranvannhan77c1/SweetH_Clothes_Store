@@ -14,7 +14,7 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<Account> signUp(@RequestBody Account account) {
         try {
             if (account == null || account.getUsername() == null || account.getPassword() == null || account.getEmail() == null) {
