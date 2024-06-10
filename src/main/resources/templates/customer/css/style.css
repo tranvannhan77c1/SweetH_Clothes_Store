@@ -3710,7 +3710,6 @@ a {
 
 @media (min-width: 1000px) {
     .login_form_inner {
-        padding-top: 115px;
         padding-bottom: 0
     }
 }
@@ -3719,7 +3718,7 @@ a {
     color: #8B4513;
     text-transform: uppercase;
     font-size: 40px;
-    margin-bottom: 90px
+
 }
 
 .login_form_inner .login_form {
@@ -3799,9 +3798,7 @@ a {
     display: block
 }
 
-.register_form_inner {
-    padding-top: 70px
-}
+
 
 .instagram_area {
     position: relative
@@ -4887,8 +4884,30 @@ a {
     margin-right: 5px;
     /* Thêm khoảng cách giữa biểu tượng và văn bản */
 }
+.err_form, .success_form{
+    width: 100%;
 
-.cart-item__thumbnail {
+    max-width: 385px;
+    margin: 10px auto;
+
+
+    display: none;
+}
+
+.err_form.active{
+    display: block;
+
+    background-color: #FF3333;
+    color: #FFF;
+}
+
+.success_form.active{
+    display: block;
+
+    background-color: #5dcd95;
+    color: #FFF;
+  
+  .cart-item__thumbnail {
     width: 50px;
     /* Thiết lập chiều rộng của ảnh */
     height: auto;
@@ -4916,4 +4935,5 @@ h4.total-amount {
     font-weight: bold;
     margin: 180px 0 0 0;
     /* Thêm khoảng cách phía trên */
+
 }
