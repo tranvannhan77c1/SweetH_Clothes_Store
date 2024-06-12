@@ -68,3 +68,15 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         $scope.cart = JSON.parse(storedCart);
     }
 }]);
+
+
+app.filter('floor', function() {
+    return function(input) {
+        if (isNaN(input)) {
+            console.log("string")
+            return input;
+        } 
+        return Math.floor(input * 100) / 100;
+    };
+});
+

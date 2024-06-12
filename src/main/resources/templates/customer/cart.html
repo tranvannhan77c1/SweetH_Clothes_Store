@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="css/cart.css">
     <!-- Thư viện CSS Font Awesome -->
 
 
@@ -107,7 +108,7 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="fixed-width">
                                 <th scope="col">Sản Phẩm</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Số Lượng</th>
@@ -116,7 +117,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="item in cart">
-                                <td>
+                                <td class="fixed-width">
                                     <div class="media">
                                         <div class="d-flex">
                                             <img class="cart-item__thumbnail" ng-src="{{ item.thumbnailImage }}" alt="{{ item.name }}">
@@ -126,24 +127,24 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="fixed-width">
                                     <h5 >{{ item.price }}$</h5>
                                 </td>
-                                <td>
+                                <td class="fixed-width">
                                     <div class="product_count">
                                         <input type="text" name="qty" maxlength="12" ng-model="item.quantity" title="Quantity:" class="input-text qty">
                                         <button ng-click="increaseQuantity(item)" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                                         <button ng-click="decreaseQuantity(item)" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
                                 </td>
-                                <td>
-                                    <h5>{{ item.price * item.quantity }}$</h5>
+                                <td class="fixed-width">
+                                    <h5>{{ item.price * item.quantity | floor}}$</h5>
                                 </td>
                             </tr>
 
 
                             <tr class="bottom_button">
-                                <td>
+                                <td class="fixed-width">
                                     <a class="button" href="#">Cập Nhật Giỏ Hàng</a>
                                 </td>
                                 <td>
@@ -163,7 +164,7 @@
                             <tr class="shipping_area">
                                 <td class="d-none d-md-block">
                                     <div class="row shipping_box">
-                                        <div class="col address-section">
+                                        <div class="col address-section fixed-width">
                                             <h6>Địa Chỉ <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
                                             <select class="shipping_select">
                                             <option value="1">Thành Phố</option>
@@ -194,7 +195,7 @@
                                 <td>
                                 </td>
                                 <td class="total" ng-if="cart.length > 0">
-                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal() }}$ </h4>
+                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal() | floor}}$ </h4>
                                 </td>
 
                                 <td>
