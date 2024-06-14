@@ -92,9 +92,6 @@
     <!--================ End Header Menu Area =================-->
 
     <!-- ================ start banner area ================= -->
-    <section class="blog-banner-area" id="category" style="background-image: url('img/anhbanner17.jpg'); width: 100%; height: 500px;">
-
-    </section>
 
 
     <!-- ================ end banner area ================= -->
@@ -128,7 +125,7 @@
                                     </div>
                                 </td>
                                 <td class="fixed-width">
-                                    <h5 >{{ item.price }}$</h5>
+                                    <h5>{{ item.price }}$</h5>
                                 </td>
                                 <td class="fixed-width">
                                     <div class="product_count">
@@ -162,62 +159,91 @@
                                 </td>
                             </tr>
                             <tr class="shipping_area">
-                                <td class="d-none d-md-block">
-                                    <div class="row shipping_box">
-                                        <div class="col address-section fixed-width">
-                                            <h6>Địa Chỉ <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                            <select class="shipping_select">
-                                            <option value="1">Thành Phố</option>
-                                            <option value="2">Sài Gòn</option>
-                                            <option value="4">Hà Nội</option>
-                                        </select>
-                                            <select class="shipping_select">
-                                            <option value="1">Quận</option>
-                                            <option value="2">Quận 1</option>
-                                            <option value="4">Quận 2</option>
-                                        </select>
-                                            <input type="text" placeholder="Địa chỉ cụ thể">
-                                        </div>
-                                        <div class="col">
-                                            <h5>Vận chuyển <i class="fa fa-caret-down" aria-hidden="true"></i></h5>
-                                            <ul class="list">
-                                                <li><a href="#">Phí vận chuyển: $5.00</a></li>
-                                                <li><a href="#">Miễn phí vận chuyển</a></li>
-                                                <li><a href="#">Phí vận chuyển: $10.00</a></li>
-                                                <li class="active"><a href="#">Giao hàng tận nơi: $2.00</a></li>
-                                            </ul>
-                                            <div class="mt-3">
-                                                <a class="gray_btn" href="#">Cập nhật chi tiết</a>
-                                            </div>
+                                <td class="">
+                                    <!-- Combo box chọn thành phố -->
+                                    <label class="bold-label" for="city">Thành Phố:</label>
+                                    <select id="city" name="city">
+                                        <option value="hanoi">Hà Nội</option>
+                                        <option value="hochiminh">TP Hồ Chí Minh</option>
+                                        <option value="danang">Đà Nẵng</option>
+                                        <option value="haiphong">Hải Phòng</option>
+                                        <option value="cantho">Cần Thơ</option>
+                                    </select>
+                                    <br><br>
+                                    <!-- Combo box chọn quận -->
+                                    <label class="bold-label" for="district">Quận:</label>
+                                    <select id="district" name="district">
+                                        <option value="quana">Quận 1</option>
+                                        <option value="quanb">Quận 2</option>
+                                        <option value="quanc">Quận 3</option>
+                                        <option value="quand">Quận 4</option>
+                                        <option value="quane">Quận 5</option>
+                                    </select>
+                                    <br><br>
+                                    <!-- Input nhập địa chỉ -->
+                                    <label class="bold-label" for="address">Nhập Địa Chỉ:</label>
+                                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
+                                </td>
+                                <td>
+                                    <div class="shipping-method">
+                                        <label class="bold-label" for="city">Phương thức vận chuyển:</label>
+                                        <label>
+                                            <input type="checkbox" name="shipping_method" value="viettel">
+                                            Đơn vị Viettel
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="shipping_method" value="shopee">
+                                            Đơn vị Shopee Express
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="shipping_method" value="giao_hang">
+                                            Giao hàng tận nơi: $2.00
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="shipping_method" value="giao_hang" onchange="toggleDiscountCodeInput(this)">
+                                            Miễn phí giao hàng
+                                        </label>
+                                        <input type="text" id="discount_code_input" name="discount_code" placeholder="Mã giảm phí giao hàng" style="display: none;">
+
+                                        <br><br>
+
+                                        <div class="total-shipping-cost">
+                                            <strong>Phí vận chuyển: $0.00</strong>
+                                            <!-- Bạn có thể thay đổi giá trị này tương ứng -->
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                </td>
-                                <td class="total" ng-if="cart.length > 0">
-                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal() | floor}}$ </h4>
+
+
+
+                                <td class="total" ng-if="cart.length > 0" colspan="2">
+                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal() | floor }}$</h4>
                                 </td>
 
-                                <td>
-
-                                </td>
                             </tr>
+
+
+
+
                             <tr class="out_button_area">
 
                                 <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="category.html">Tiếp tục mua sắm</a>
-                                        <a class="primary-btn ml-2" href="#">Thanh Toán</a>
+                                    <div class="mt-3">
+                                        <a class="gray_btn" href="#">Cập nhật chi tiết</a>
                                     </div>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex justify-content-end align-items-center">
+                                        <a class="gray_btn mr-2" href="category.html">Tiếp tục mua sắm</a>
+                                        <a class="primary-btn" href="#">Thanh Toán</a>
+                                    </div>
+
                                 </td>
                             </tr>
                             <tr>
@@ -331,6 +357,13 @@
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
     <script src="js/category.js"></script>
+    <script>
+        function toggleDiscountCodeInput(checkbox) {
+            var discountInput = document.getElementById('discount_code_input');
+            discountInput.style.display = checkbox.checked ? 'inline-block' : 'none';
+        }
+    </script>
+
 </body>
 
 </html>

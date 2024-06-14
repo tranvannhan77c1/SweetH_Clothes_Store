@@ -150,7 +150,7 @@ a {
     padding: 0px;
     border: 0px;
     border-radius: 0px;
-    font-size:  17px;
+    font-size: 17px;
 }
 
 .header_area .navbar .nav .nav-item {
@@ -249,7 +249,7 @@ a {
 
 .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
     background: #8B4513;
-;
+    ;
     color: #fff
 }
 
@@ -1747,7 +1747,7 @@ a {
     font-size: 18px;
     line-height: 25px;
     background: #8B4513;
-;
+    ;
     text-align: center;
     color: #fff;
     padding: 8px 0px;
@@ -1950,7 +1950,7 @@ a {
 
 .blog_right_sidebar .newsletter_widget .bbtns {
     background: #8B4513;
-;
+    ;
     color: #fff;
     font-size: 12px;
     line-height: 38px;
@@ -1981,7 +1981,7 @@ a {
 
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
     background: #8B4513;
-;
+    ;
     color: #fff
 }
 
@@ -2012,7 +2012,7 @@ a {
 
 .blog-pagination .page-item.active .page-link {
     background-color: #8B4513;
-;
+    ;
     border-color: transparent;
     color: #fff
 }
@@ -2040,7 +2040,7 @@ a {
     color: #fff;
     text-decoration: none;
     background-color: #8B4513;
-;
+    ;
     border-color: #eee
 }
 
@@ -2274,7 +2274,7 @@ a {
 
 .comments-area .btn-reply:hover {
     background-color: #8B4513;
-;
+    ;
     color: #fff;
     font-weight: 700
 }
@@ -2425,13 +2425,13 @@ a {
 
 .contact-banner-btn {
     border: 2px solid #8B4513;
-;
+    ;
     padding: 10px 45px
 }
 
 .contact-banner-btn:hover {
     background: #8B4513;
-;
+    ;
     color: #fff
 }
 
@@ -2442,7 +2442,7 @@ a {
 .contact-info__icon i,
 .contact-info__icon span {
     color: #8B4513;
-;
+    ;
     font-size: 20px
 }
 
@@ -2560,7 +2560,7 @@ a {
     font-family: 'Oswald', sans-serif;
     line-height: 50px;
     background: #8B4513;
-;
+    ;
     padding: 0 30px;
     font-size: 18px;
     font-weight: 400;
@@ -2610,7 +2610,7 @@ a {
     font-family: 'Oswald', sans-serif;
     line-height: 50px;
     background: #8B4513;
-;
+    ;
     padding: 0 30px;
     font-size: 18px;
     font-weight: 400;
@@ -2745,7 +2745,7 @@ a {
     -moz-animation: click-wave 0.65s;
     animation: click-wave 0.65s;
     background: #8B4513;
-;
+    ;
     content: '';
     display: block;
     width: 15px;
@@ -2798,7 +2798,7 @@ a {
     border-radius: 50%;
     border: 0px;
     background: #8B4513;
-;
+    ;
     box-shadow: none;
     cursor: pointer;
     -webkit-transition: ease 0.1s;
@@ -2813,7 +2813,7 @@ a {
 
 .price-range-area .noUi-horizontal .noUi-handle:hover {
     border: 3px solid #8B4513;
-;
+    ;
     background: #fff
 }
 
@@ -2939,7 +2939,7 @@ a {
 .billing-alert {
     font-size: 18px;
     color: #8B4513;
-;
+    ;
     margin-bottom: 30px
 }
 
@@ -3096,7 +3096,7 @@ a {
 
 .check_title h2 a {
     color: #8B4513;
-;
+    ;
     text-decoration: underline
 }
 
@@ -3211,7 +3211,7 @@ a {
 
 .tp_btn:hover {
     background: #8B4513;
-;
+    ;
     color: #fff;
     border-color: #8B4513;
 }
@@ -3718,7 +3718,6 @@ a {
     color: #8B4513;
     text-transform: uppercase;
     font-size: 40px;
-
 }
 
 .login_form_inner .login_form {
@@ -3797,8 +3796,6 @@ a {
     margin-top: 20px;
     display: block
 }
-
-
 
 .instagram_area {
     position: relative
@@ -4070,35 +4067,52 @@ a {
 }
 
 .cart_inner .table tbody tr.shipping_area td:nth-child(3) {
-    vertical-align: top
+    vertical-align: top;
 }
 
-.cart_inner .table tbody tr.shipping_area .shipping_box {
-    margin-top: -5px;
-    margin-left: -250px;
-    text-align: right
+.shipping_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.shipping-select-container {
+    display: flex;
+    gap: 10px;
+    /* Khoảng cách giữa các phần tử select */
+    margin-bottom: 10px;
+    /* Khoảng cách dưới */
+    margin-right: 50px;
+}
+
+.shipping_select {
+    width: 100%;
+    /* Đặt chiều rộng 100% để phù hợp với container */
+    background: #f1f6f7;
+    border: 1px solid #eeeeee;
+    height: 40px;
+    color: #999999;
+    margin-right: 500px;
 }
 
 .cart_inner .table tbody tr.shipping_area h5 {
     text-align: right;
-    /* Căn phải nội dung của phần tử */
     margin-right: 10px;
-    /* Tạo khoảng cách bên phải */
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li {
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li:last-child {
-    margin-bottom: 0px
+    margin-bottom: 0px;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a {
     padding-right: 30px;
     font-size: 15px;
     color: #777;
-    position: relative
+    position: relative;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:before {
@@ -4111,7 +4125,7 @@ a {
     position: absolute;
     right: 0px;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:after {
@@ -4125,11 +4139,11 @@ a {
     right: 3px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0
+    opacity: 0;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li.active a:after {
-    opacity: 1
+    opacity: 1;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box h6 {
@@ -4147,35 +4161,10 @@ a {
 }
 
 .address-section {
-    margin-top: -22px;
-    /* Điều chỉnh giá trị này để di chuyển lên hoặc xuống */
-    margin-left: 250px;
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select {
-    display: block;
-    width: 100%;
-    background: #f1f6f7;
-    border: 1px solid #eeeeee;
-    height: 40px;
-    color: #999999;
-    margin-bottom: 10px;
-    /* Giảm margin-bottom để di chuyển lên trên */
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select:after {
-    right: 20px
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list {
-    width: 100%;
-    border-radius: 0px
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list li {
-    font-size: 14px;
-    font-weight: normal;
-    color: #777
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    padding: 0;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box input {
@@ -4187,11 +4176,11 @@ a {
     font-size: 14px;
     color: #999999;
     padding: 0px 15px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box input::placeholder {
-    color: #999999
+    color: #999999;
 }
 
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner {
@@ -4204,7 +4193,7 @@ a {
     line-height: 38px;
     text-transform: capitalize;
     background: #8B4513;
-;
+    ;
     border-radius: 30px;
     color: #fff;
     font-weight: 500
@@ -4280,7 +4269,7 @@ a {
     font-size: 24px;
     font-weight: 700;
     color: #8B4513;
-;
+    ;
     margin-bottom: 10px
 }
 
@@ -4494,7 +4483,7 @@ a {
 .product_description_area .nav.nav-tabs li a.active {
     color: #fff;
     background: #8B4513;
-;
+    ;
     border-color: #8B4513;
 }
 
@@ -4640,9 +4629,9 @@ a {
 
 .review_item .media .media-body .reply_btn:hover {
     background: #8B4513;
-;
+    ;
     border-color: #8B4513;
-;
+    ;
     color: #fff
 }
 
@@ -4754,7 +4743,7 @@ a {
     line-height: 28px;
     text-align: center;
     background: #8B4513;
-;
+    ;
     color: #ffffff;
     border-radius: 20px
 }
@@ -4819,7 +4808,7 @@ a {
 
 .footer-bottom .footer-text a {
     color: #8B4513;
-;
+    ;
     opacity: 1
 }
 
@@ -4885,27 +4874,22 @@ a {
     /* Thêm khoảng cách giữa biểu tượng và văn bản */
 }
 
-
-.err_form, .success_form{
+.err_form,
+.success_form {
     width: 100%;
-
     max-width: 385px;
     margin: 10px auto;
-
-
     display: none;
 }
 
-.err_form.active{
+.err_form.active {
     display: block;
-
     background-color: #FF3333;
     color: #FFF;
 }
 
-.success_form.active{
+.success_form.active {
     display: block;
-
     background-color: #5dcd95;
     color: #FFF;
 }
@@ -4938,5 +4922,60 @@ h4.total-amount {
     font-weight: bold;
     margin: 180px 0 0 0;
     /* Thêm khoảng cách phía trên */
+}
 
+.shipping_area {
+    border-collapse: collapse;
+    /* Để các đường viền của bảng liền nhau */
+    width: 100%;
+    /* Chiều rộng bảng là 100% của phần tử chứa nó */
+}
+
+.shipping_area td {
+    padding: 10px;
+    /* Để tăng khoảng cách nội dung bên trong từng ô */
+    border: 1px solid #ccc;
+    /* Để tạo đường viền xung quanh từng ô */
+}
+
+.shipping_area label {
+    display: block;
+    /* Để label chiếm toàn bộ chiều rộng của ô */
+    margin-bottom: 10px;
+    /* Để tăng khoảng cách giữa các label */
+    font-size: 15px;
+}
+
+.shipping_area select,
+.shipping_area input[type="text"] {
+    width: 100%;
+    /* Để input và select có độ rộng bằng nhau và bằng 100% của ô chứa */
+    padding: 8px;
+    /* Để tăng khoảng cách bên trong input và select */
+    margin-bottom: 10px;
+    /* Để tăng khoảng cách giữa các input và select */
+}
+
+.shipping_area .total {
+    text-align: center;
+    /* Căn giữa nội dung trong ô có class "total" */
+}
+
+.total-amount {
+    margin: 0;
+    /* Để loại bỏ khoảng cách lề của phần tử h4 */
+}
+
+.total-shipping-cost strong {
+    font-weight: bold;
+}
+
+.bold-label {
+    font-weight: bold;
+    font-size: 16px;
+    /* Tùy chỉnh kích thước font nếu cần */
+    color: #333;
+    /* Tùy chỉnh màu sắc nếu cần */
+    margin-bottom: 10px;
+    /* Tùy chỉnh khoảng cách dưới nếu cần */
 }

@@ -1,6 +1,10 @@
 .fixed-width {
-    width: 150px; /* Adjust the width as needed */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide any overflowing text */
-    text-align: center; /* Center the content */
+    width: 150px;
+    /* Adjust the width as needed */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+    overflow: hidden;
+    /* Hide any overflowing text */
+    text-align: center;
+    /* Center the content */
 }
