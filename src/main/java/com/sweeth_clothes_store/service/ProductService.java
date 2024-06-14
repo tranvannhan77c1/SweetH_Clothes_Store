@@ -1,5 +1,7 @@
 package com.sweeth_clothes_store.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +20,10 @@ public class ProductService {
 	public Page<ProductDTO> getLimitedProducts(Pageable pageable) {
 		Page<Product> products = productRepository.findAll(pageable);
 		return products.map(ProductMapper::toDTO);
+	}
+	
+	public Optional<ProductDTO> getProductByID(int id) {
+		Optional<Product> product = productRepository.findById(id);
+        return product.map(ProductMapper::toDTO);
 	}
 }

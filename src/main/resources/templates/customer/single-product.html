@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="singleProductApp">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body ng-controller="SingleProductController">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -101,7 +101,7 @@
                 <div class="col-lg-6">
                     <div class="owl-carousel owl-theme s_Product_carousel">
                         <div class="single-prd-item">
-                            <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                            <img class="img-fluid" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                         </div>
                         <!-- <div class="single-prd-item">
 							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
@@ -115,13 +115,13 @@
                 <!-- Phần code sản phẩm  -->
                 <div class="col-lg-5 offset-lg-1">
                     <div class="s_product_text">
-                        <h3>Faded SkyBlu Denim Jeans</h3>
-                        <h2>$149.99</h2>
+                        <h3>{{ product.name }}</h3>
+                        <h2>${{ product.price }}</h2>
                         <ul class="list">
-                            <li><a class="active" href="#"><span>Category</span> : Household</a></li>
-                            <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                            <li><a class="active" href="#"><span>Category</span> : {{ product.category.name }}</a></li>
+                            <li><a href="#"><span>Availibility</span> : {{ product.quantity }}</a></li>
                         </ul>
-                        <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time give you the pleasant warm feeling during the winter.</p>
+                        <p>{{ product.description }}</p>
                         <div class="product_count">
                             <label for="qty">Quantity:</label>
 
@@ -155,7 +155,7 @@
                     <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Miêu Tả</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Chất Liệu</a>
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Chi tiết</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Đánh Giá</a>
@@ -164,14 +164,7 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in Reading at
-                        the age of 15, where she went to secretarial school and then into an insurance office. After moving to London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an officer in the Merchant
-                        Navy and after he left the sea in 1956, they bought a pub for a year before John took a job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when showing him how to use it, she
-                        decided that she herself quite enjoyed painting. John subsequently bought her a child’s painting set for her birthday and it was with this that she produced her first significant work, a half-length portrait of a dark-skinned lady
-                        with a vacant expression and large drooping breasts. It was aptly named ‘Hangover’ by Beryl’s husband and</p>
-                    <p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and the death of
-                        spouses or grown children leaving for college are all reasons that someone accustomed to cooking for more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a streamlined plan of
-                        cooking that is more efficient for one person creating less</p>
+                    <p>{{ product.description }}</p>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="table-responsive">
@@ -179,34 +172,34 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5>Width</h5>
+                                        <h5>Brand</h5>
                                     </td>
                                     <td>
-                                        <h5>128mm</h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5>Height</h5>
-                                    </td>
-                                    <td>
-                                        <h5>508mm</h5>
+                                        <h5>{{ product.brand }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Depth</h5>
+                                        <h5>Made In</h5>
                                     </td>
                                     <td>
-                                        <h5>85mm</h5>
+                                        <h5>{{ product.madeIn }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Weight</h5>
+                                        <h5>Color</h5>
                                     </td>
                                     <td>
-                                        <h5>52gm</h5>
+                                        <h5>{{ product.color }}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Material</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{ product.material }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -231,14 +224,6 @@
                                     </td>
                                     <td>
                                         <h5>Without touch of hand</h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5>Each Box contains</h5>
-                                    </td>
-                                    <td>
-                                        <h5>60pcs</h5>
                                     </td>
                                 </tr>
                             </tbody>
@@ -447,7 +432,7 @@
     <!--================End Product Description Area =================-->
 
     <!--================ Start related Product area =================-->
-    <section class="related-product-area section-margin--small mt-0">
+    <!-- <section class="related-product-area section-margin--small mt-0">
         <div class="container">
             <div class="section-intro pb-60px">
                 <p>Mặt hàng phổ biến trên thị trường</p>
@@ -559,7 +544,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--================ end related Product area =================-->
 
     <!--================ Start footer Area  =================-->
@@ -644,7 +629,9 @@
     <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
     <script src="vendors/jquery.ajaxchimp.min.js"></script>
     <script src="vendors/mail-script.js"></script>
+    <script src="vendors/angular/angular.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/singleProduct.js"></script>
 </body>
 
 </html>
