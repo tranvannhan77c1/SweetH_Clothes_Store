@@ -95,20 +95,20 @@
 
 
     <!--================Single Product Area =================-->
-    <div class="product_image_area">
-        <div class="container">
+    <div class="product_image_area" >
+        <div class="container" >
             <div class="row s_product_inner">
                 <div class="col-lg-6">
                     <div class="owl-carousel owl-theme s_Product_carousel">
                         <div class="single-prd-item">
                             <img class="img-fluid" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                         </div>
-                        <!-- <div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div> -->
+                         <div class="single-prd-item">
+                            <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        </div>
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        </div>
                     </div>
                 </div>
 
@@ -122,20 +122,32 @@
                             <li><a href="#"><span>Availibility</span> : {{ product.quantity }}</a></li>
                         </ul>
                         <p>{{ product.description }}</p>
+                        <div class="row product_size">
+                            <p>Size: </p>
+                            <div class="size-buttons mt-4">
+                                <button type="button" class="size-button" ng-click="selectedSize = 'M'" ng-class="{ 'selected': selectedSize === 'M' }">M</button>
+                                <button type="button" class="size-button" ng-click="selectedSize = 'L'" ng-class="{ 'selected': selectedSize === 'L' }">L</button>
+                                <button type="button" class="size-button" ng-click="selectedSize = 'XL'" ng-class="{ 'selected': selectedSize === 'XL' }">XL</button>
+                            </div>
+                        </div>
+
+
+
                         <div class="product_count">
                             <label for="qty">Quantity:</label>
 
                             <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase1 items-count" type="button">
-	<i class="fas fa-angle-up"></i>
-  </button>
+                                <i class="fas fa-angle-up"></i>
+                            </button>
                             <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
                             <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;" class="reduced2 items-count" type="button">
-	<i class="fas fa-angle-down"></i>
-  </button>
-
-
+                                <i class="fas fa-angle-down"></i>
+                            </button>
                         </div>
-                        <a class=" button primary-btn " href="#">Thêm Giỏ Hàng</a>
+
+
+
+                        <a class="button primary-btn" href="#">Thêm Giỏ Hàng</a>
                         <div class="card_area d-flex align-items-center">
                             <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
                             <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
@@ -145,6 +157,7 @@
             </div>
         </div>
     </div>
+
     <!--================End Single Product Area =================-->
 
     <!--================Product Description Area =================-->
@@ -230,7 +243,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="comment_list">
@@ -310,7 +323,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="row total_rate">
@@ -429,125 +442,7 @@
             </div>
         </div>
     </section>
-    <!--================End Product Description Area =================-->
 
-    <!--================ Start related Product area =================-->
-    <!-- <section class="related-product-area section-margin--small mt-0">
-        <div class="container">
-            <div class="section-intro pb-60px">
-                <p>Mặt hàng phổ biến trên thị trường</p>
-                <h2>Sản phẩm <span class="section-intro__style">đứng đầu</span></h2>
-            </div>
-            <div class="row mt-30">
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-4.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-5.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-6.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-7.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-8.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-9.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!--================ end related Product area =================-->
-
-    <!--================ Start footer Area  =================-->
     <footer class="footer">
         <div class="footer-area">
             <div class="container">
@@ -627,11 +522,13 @@
     <script src="vendors/skrollr.min.js"></script>
     <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
     <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="vendors/nouislider/nouislider.min.js"></script>
     <script src="vendors/jquery.ajaxchimp.min.js"></script>
     <script src="vendors/mail-script.js"></script>
     <script src="vendors/angular/angular.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/singleProduct.js"></script>
+    <script src="js/category.js"></script>
 </body>
 
 </html>

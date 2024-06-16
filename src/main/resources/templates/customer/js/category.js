@@ -14,16 +14,21 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         });
 
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
-    $scope.addToCart = function(product) {
+    $scope.addToCart = function(product, quantity) {
+        quantity = parseInt(quantity);
+        if (isNaN(quantity) || quantity <= 0) {
+            quantity = 1;
+        }
+
         // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
         let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
 
         if (existingProductIndex !== -1) {
-            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng lên 1
-            $scope.cart[existingProductIndex].quantity++;
+            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng lên
+            $scope.cart[existingProductIndex].quantity += quantity;
         } else {
-            // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm vào giỏ hàng với số lượng là 1
-            product.quantity = 1;
+            // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm vào giỏ hàng với số lượng là quantity
+            product.quantity = quantity;
             $scope.cart.push(product);
         }
 
@@ -55,6 +60,12 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         }
     };
 
+    // Hàm xóa toàn bộ giỏ hàng
+    $scope.clearCart = function() {
+        $scope.cart = [];
+        localStorage.removeItem('cart');
+    };
+
     // Hàm tính tổng giá trị của giỏ hàng
     $scope.calculateTotal = function() {
         return $scope.cart.reduce((total, item) => {
@@ -69,14 +80,11 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
     }
 }]);
 
-
 app.filter('floor', function() {
     return function(input) {
         if (isNaN(input)) {
-            console.log("string")
             return input;
-        } 
+        }
         return Math.floor(input * 100) / 100;
     };
 });
-
