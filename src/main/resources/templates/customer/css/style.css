@@ -5106,5 +5106,29 @@ h4.total-amount {
     height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
     display: block; /* Đảm bảo ảnh hiển thị là một khối */
 }
+.modal-content {
+    border-radius: 0;
+}
+.modal-header {
+    background-color: #8B4513;
+    color: #fff;
+}
+.modal-title {
+    color: #fff;
+}
+.modal-body {
+    text-align: center;
+}
+.modal-footer {
+    justify-content: center;
+}
+.btn-close-modal {
+    background-color: #8B4513;
+    color: #fff; /* Màu chữ trắng */
+    border: none; /* Bỏ viền */
+}
+.btn-close-modal:hover {
+    background-color: #654321; /* Màu hover (nếu cần) */
+}
 
 
