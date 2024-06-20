@@ -3,6 +3,7 @@ var app = angular.module('indexApp', []);
 app.controller('ProductController', ['$scope', '$http', function($scope, $http) {
     $scope.products = [];
     $scope.cart = [];
+    $scope.showSuccessAlert = false;
 
     $http.get('http://localhost:8080/api/v1/product/landing?page=5&limit=8')
         .then(function(response) {
@@ -27,6 +28,7 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
 
         // Lưu giỏ hàng mới vào local storage
         localStorage.setItem('cart', JSON.stringify($scope.cart));
+        $('#successModal').modal('show');
     };
     $scope.removeFromCart = function(item) {
         // Tìm index của sản phẩm trong giỏ hàng
