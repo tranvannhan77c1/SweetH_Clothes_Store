@@ -32,6 +32,7 @@ create table products(
 create table product_sizes(
     id int identity(1,1),
 	size varchar(10) not null,
+    quantity int  not null,
     product_id int,
 	primary key (id),
 	foreign key (product_id) references products(id)
@@ -101,13 +102,13 @@ create table order_details(
     id int identity(1,1),
     quantity int not null,
     price decimal(10,2) not null,
+    size varchar(10) not null,
     order_id int,
     product_id int,
     primary key(id),
     foreign key (order_id) references orders(id),
     foreign key (product_id) references products(id)
 )
-
 go 
 
 -- Insert into items
@@ -262,7 +263,6 @@ INSERT INTO product_sizes (size, product_id) VALUES
 ('S', 23), ('M', 23), ('L', 23), ('XL', 23);
 INSERT INTO product_sizes (size, product_id) VALUES
 ('S', 24), ('M', 24), ('L', 24), ('XL', 24);
-
 INSERT INTO product_sizes (size, product_id) VALUES
 ('S', 25), ('M', 25), ('L', 25), ('XL', 25);
 INSERT INTO product_sizes (size, product_id) VALUES

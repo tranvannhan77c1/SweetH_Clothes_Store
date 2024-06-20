@@ -24,6 +24,9 @@ public class OrderDetail {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
+    @Column(name = "size", nullable = false)
+    private String size;
+
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
