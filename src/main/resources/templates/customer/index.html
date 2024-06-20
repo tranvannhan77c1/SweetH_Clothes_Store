@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="vendors/linericon/style.css">
     <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-pgjyf4I5V5ly/Oy7fv4RoGuhOZXz7r0n5xe5zGZAz6aE0sgSjgq2j49B3P2vD9g7fu3bVt+jBQYHunLvebfiTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body ng-controller="ProductController">  
+<body ng-controller="ProductController">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -76,7 +79,14 @@
                             <li class="nav-item">
                                 <a class="button button-header " href="category.html">Mua Ngay</a>
                             </li>
-
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-user"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="#">Thông Tin Tài Khoản</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Đổi Mật Khẩu</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Đăng Xuất</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -165,7 +175,30 @@
                                 <p class="card-product__price">{{ product.price }}$</p>
                             </div>
                         </div>
+
+                        <!-- Modal thông báo -->
+                        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="successModalLabel">Thông báo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p><i class="fas fa-check-circle fa-5x text-success"></i></p>
+                                        <p class="mt-2">Thêm sản phẩm vào giỏ hàng thành công!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-close-modal" data-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
         </section>

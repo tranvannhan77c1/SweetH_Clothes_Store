@@ -4979,3 +4979,156 @@ h4.total-amount {
     margin-bottom: 10px;
     /* Tùy chỉnh khoảng cách dưới nếu cần */
 }
+
+
+/* General styling for the container */
+
+
+/* General styling for the container */
+
+.row.product_size {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Styling for the label */
+
+.row.product_size p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+/* Styling for the size buttons container */
+
+.size-buttons {
+    display: flex;
+}
+
+
+/* Styling for each size button */
+
+.size-button {
+    padding: 5px 10px;
+    font-size: 13px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    margin-right: 10px;
+    margin-top: -30px;
+    /* Add space between buttons */
+}
+
+
+/* Change background and border color on hover */
+
+.size-button:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+
+/* Change border color to red when selected */
+
+.size-button.selected {
+    background-color: #fff;
+    color: #000;
+    border-color: red;
+}
+.dropdown-toggle::after {
+    display: none !important;
+}
+/* CSS để trang trí menu dropdown */
+.nav-item {
+    list-style-type: none; /* Bỏ đi kiểu danh sách mặc định */
+    padding: 0; /* Bỏ padding để căn chỉnh với biểu tượng */
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem; /* Điều chỉnh padding tùy theo nhu cầu */
+    color: #212529; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền mượt */
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
+    color: #8B4513; /* Màu chữ khi di chuột qua */
+}
+
+.dropdown-menu {
+    min-width: 180px; /* Điều chỉnh chiều rộng tùy theo nhu cầu */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Tạo bóng cho dropdown */
+    border: 1px solid rgba(0, 0, 0, 0.15); /* Viền dropdown */
+    background-color: #ffffff; /* Màu nền dropdown */
+    left: -50px; /* Di chuyển dropdown về bên trái 10px */
+}
+
+.dropdown-menu .nav-item {
+    margin: 0; /* Bỏ margin của các mục danh sách */
+}
+
+.dropdown-menu .nav-link {
+    display: block;
+    padding: 0.5rem 1rem; /* Điều chỉnh padding tùy theo nhu cầu */
+    color: #212529; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền mượt */
+}
+
+.dropdown-menu .nav-link:hover {
+    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
+    color: #8B4513; /* Màu chữ khi di chuột qua */
+}
+
+.dropdown-menu-end {
+    right: 0; /* Đặt dropdown menu bên phải */
+}
+
+.dropdown-menu .nav-item {
+    text-align: left; /* Căn chỉnh chữ trái */
+}
+.single-prd-item {
+    text-align: center; /* Căn giữa nội dung */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa của single-prd-item */
+    margin: 0 auto; /* Canh giữa single-prd-item */
+}
+
+.single-prd-item img {
+    max-width: 100%; /* Giới hạn chiều rộng tối đa của ảnh là 100% của phần tử cha */
+    height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
+    display: block; /* Đảm bảo ảnh hiển thị là một khối */
+}
+.modal-content {
+    border-radius: 0;
+}
+.modal-header {
+    background-color: #8B4513;
+    color: #fff;
+}
+.modal-title {
+    color: #fff;
+}
+.modal-body {
+    text-align: center;
+}
+.modal-footer {
+    justify-content: center;
+}
+.btn-close-modal {
+    background-color: #8B4513;
+    color: #fff; /* Màu chữ trắng */
+    border: none; /* Bỏ viền */
+}
+.btn-close-modal:hover {
+    background-color: #654321; /* Màu hover (nếu cần) */
+}
+
+

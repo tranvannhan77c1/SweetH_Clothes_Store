@@ -3,6 +3,7 @@ var app = angular.module('categoryApp', []);
 app.controller('ProductController', ['$scope', '$http', function($scope, $http) {
     $scope.products = [];
     $scope.cart = [];
+    $scope.showSuccessAlert = false;
 
     // Lấy dữ liệu sản phẩm từ API
     $http.get('http://localhost:8080/api/v1/product/landing?page=5&limit=8')
@@ -19,7 +20,7 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
 
         if (existingProductIndex !== -1) {
-            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng lên 1
+            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng lên
             $scope.cart[existingProductIndex].quantity++;
         } else {
             // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm vào giỏ hàng với số lượng là 1
@@ -29,6 +30,9 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
 
         // Lưu giỏ hàng mới vào local storage
         localStorage.setItem('cart', JSON.stringify($scope.cart));
+
+        // Hiển thị thông báo thành công
+        $('#successModal').modal('show');
     };
 
     // Hàm tăng số lượng sản phẩm trong giỏ hàng
@@ -55,6 +59,12 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         }
     };
 
+    // Hàm xóa toàn bộ giỏ hàng
+    $scope.clearCart = function() {
+        $scope.cart = [];
+        localStorage.removeItem('cart');
+    };
+
     // Hàm tính tổng giá trị của giỏ hàng
     $scope.calculateTotal = function() {
         return $scope.cart.reduce((total, item) => {
@@ -68,15 +78,3 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         $scope.cart = JSON.parse(storedCart);
     }
 }]);
-
-
-app.filter('floor', function() {
-    return function(input) {
-        if (isNaN(input)) {
-            console.log("string")
-            return input;
-        } 
-        return Math.floor(input * 100) / 100;
-    };
-});
-
