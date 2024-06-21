@@ -47,7 +47,7 @@ create table product_images(
 create table accounts(
     id int identity(1,1),
     username varchar(50) not null unique,
-    [password] varchar(50) not null,
+    [password] varchar(255) not null,
     email varchar(100) not null unique,
     full_name nvarchar(100),
     phone nvarchar(10) not null unique,
@@ -139,26 +139,22 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2022/09/01/1661996761c131255723b52480e42d4da500a98ad2_thumbnail_900x.webp', 'Block Tank',3.59 , 50, 'Yody', 'Made In China', 'Multicolor', 'Cotton', 'EZwear Color Block Tank Top', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/13/db/1715564713e28027143c04cc79e46a7b011c078cb1_thumbnail_900x.webp', 'Vacation Casual Solid',12.94 , 50, 'OWen', 'Made In Indonesia', 'Redwood', 'Cotton', 'Frenchy Plus Size Vacation Casual Solid Color Bandeau Top And Shorts Two-Piece Set', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/20/a6/17161706439a09b0a1f0b5b7337a1a9de281035540_thumbnail_900x.webp', 'Ladies Ribbed',7.13 , 50, 'Gumac', 'Made In VietNam', 'Purple', 'Cotton', 'Qutie Ladies Ribbed Patchwork One-Piece Dress', 1),
-    ('https://img.ltwebstatic.com/images3_pi/2022/04/12/164975212574c93c659411b8d7a0404617f71feec3.png', 'Layered Cake Skirt',14.13 , 50, 'Tingoan', 'Made In VietNam', 'White', 'Cotton', 'MOD White Layered Cake Skirt Cute Square Neck Summer Dress Dresses Graduation Formal Dresses Wedding Brides Maid Dresses Bridgerton Style Dress', 1),
-    ('https://img.ltwebstatic.com/images3_pi/2022/11/16/166859174215d9bc0064f7cd2454529c83bdfd9b15.png', 'Padded Square Neck',12.24 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'EZwear 3pcs/Pack Padded Square Neck Bra-Free Slim-Fit Women Tank Top', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/10/cc/1715325794e32ded29ab5dd3acec827f56aa0790c2_thumbnail_900x.webp', 'Fit Backless',10.77 , 50, 'Gucci', 'Made In USA', 'Beige-colored', 'Cotton', 'EZwear Casual Fit Backless Drawstring Waist Batwing Sleeve One Piece Jumpsuit For Summer', 1);
 
 INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp', 'Long Cami Dress',13.93 , 50, 'Gumac', 'Made In VietNam', 'Beige-colored', 'Cotton', 'Aloruh Women Summer Elegant Khaki Long Cami Dress', 2),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/07/61/1712457606a5013f80c6cb9dacb92f266e1db76429_thumbnail_900x.webp', 'Square Neckline',10.07 , 50, 'Canifa', 'Made In VietNam', 'Black', 'Cotton', 'EZwear Women Solid Color Square Neckline Athletic Casual Summer Bodycon Dress', 2),
-    ('https://img.ltwebstatic.com/images3_pi/2024/04/28/c9/1714271344f567fa4a8c8f3143b643a43754d0538e_thumbnail_900x.webp', 'White Dress Cross',11.61 , 50, 'Yody', 'Made In China', 'White', 'Cotton', 'Privé Women French Graduation White Dress Cross Halter Sleeveless Beach Wedding Dress In White Mini Short Dress Summer Clothes Elegant Wedding Dress Sexy Dress Long Women Dresses', 2),
+    ('https://img.ltwebstatic.com/images3_pi/2024/04/28/c9/1714271344f567fa4a8c8f3143b643a43754d0538e_thumbnail_900x.webp', 'White Dress Cross',11.61 , 50, 'Yody', 'Made In China', 'White', 'Cotton', 'Privï¿½ Women French Graduation White Dress Cross Halter Sleeveless Beach Wedding Dress In White Mini Short Dress Summer Clothes Elegant Wedding Dress Sexy Dress Long Women Dresses', 2),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/24/86/1706083142d5f67dcce7623c5d8fce5607c1cf7651_thumbnail_900x.webp', 'Strap Cami',10.58 , 50, 'OWen', 'Made In Indonesia', 'Baby Blue', 'Cotton', 'MOD Women Solid Color Criss-Cross Strap Cami Dress', 2),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/11/13/17049405644345f21c23f854200a761a2b9478eda2_thumbnail_900x.webp', 'Sleeveless Dress',9.34 , 50, 'Gumac', 'Made In VietNam', 'Dark Grey', 'Cotton', 'ROMWE PUNK Women Sleeveless Dress With Rivet Decoration', 2),
     ('https://img.ltwebstatic.com/images3_pi/2023/08/15/e2/1692064319338c82b5bb056f04e4cfa4d746a61936_thumbnail_900x.webp', 'Cut Out',14.13 , 50, 'Tingoan', 'Made In VietNam', 'Mint Green', 'Cotton', 'EZwear Cut Out Waist Ruched Side Dress', 2),
-    ('https://img.ltwebstatic.com/images3_pi/2024/03/25/8b/1711375698601b903bd334a2b6f254e22c11fec110_thumbnail_900x.webp', 'Striped Casual',5.88 , 50, 'Gumac', 'Made In VietNam', 'Brown', 'Cotton', 'LUNE Summer Women Striped Casual & Holiday Tank Dress Split Hem Twist Front Sleeveless Dress', 2),
-    ('https://img.ltwebstatic.com/images3_pi/2023/07/06/16886492682caf35e703fbb1cdc8270f17b6083676.png', 'Rib-knit',7.02 , 50, 'Gucci', 'Made In USA', 'Black', 'Cotton', 'Essnce Rib-knit Solid Bodycon Dress', 2);
+    ('https://img.ltwebstatic.com/images3_pi/2024/03/25/8b/1711375698601b903bd334a2b6f254e22c11fec110_thumbnail_900x.webp', 'Striped Casual',5.88 , 50, 'Gumac', 'Made In VietNam', 'Brown', 'Cotton', 'LUNE Summer Women Striped Casual & Holiday Tank Dress Split Hem Twist Front Sleeveless Dress', 2)
 
 INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/01/29/03/17064954500cda97b0005e132be8d6a452275b6968_thumbnail_900x.webp', 'Waistband Skirt',7.02 , 50, 'Gumac', 'Made In VietNam', 'Black', 'Cotton', 'EZwear Solid Color Elastic Waistband Skirt With Phone Pocket', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/22/83/1705903148fce8f829fb5a8023193b6fb644da5ce8_thumbnail_900x.webp', 'Drawstring Shorts',4.75 , 50, 'Canifa', 'Made In VietNam', 'Dark Grey', 'Cotton', 'EZwear Ladies Drawstring Shorts', 3),
     ('https://img.ltwebstatic.com/images3_pi/2023/07/12/1689151526892f784241228e8ec71a116ca33bbe85_thumbnail_900x.webp', 'Leg Shorts',3.59 , 50, 'Yody', 'Made In China', 'Black', 'Cotton', 'VCAY Paperbag Waist Belted Wide Leg Shorts', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/10/ca/17048650028634cf5e00ecafe7e73cd438760a551c_thumbnail_900x.webp', 'Casual Shorts',12.94 , 50, 'OWen', 'Made In Indonesia', 'Multicolor', 'Cotton', 'VCAY Women Solid Color Casual Shorts', 3),
-    ('https://img.ltwebstatic.com/images3_pi/2023/07/06/16886492682caf35e703fbb1cdc8270f17b6083676.png', 'Waist Side Tie',6.65 , 50, 'Gumac', 'Made In VietNam', 'Army Green', 'Cotton', 'Essnce Casual Green Elastic Waist Side Tie Fashionable Summer Skort', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/26/d2/1714121909902fdecaab46007228668b4fe2ea465c_thumbnail_900x.webp', 'Elegant Solid',9.09 , 50, 'Tingoan', 'Made In VietNam', 'Apricot', 'Cotton', 'DAZY Women Elegant Solid Color Side Slit Skort For Summer', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/07/6d/1712475007d729c9eeaa18a00cd4d8c30fce67c1a3_thumbnail_900x.webp', 'Casual Short Leggings',3.76 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'EZwear Solid Color Wide-Waist Casual Short Leggings', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/08/c6/17151407498a0d26a1381f4ebf4279751f35c366bf_thumbnail_900x.webp', 'Casual Brown',7.47 , 50, 'Gucci', 'Made In USA', 'Dark Grey', 'Cotton', 'EZwear Summer Loose And Casual Brown Elastic Waist Patched Detail Sports Shorts', 3);
@@ -186,7 +182,7 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
 
 INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/05/16/ba/171583719666b8fdadfbc0f86e0bc6cfab7682ef3f_thumbnail_900x.webp', 'Printed Holiday',7.34 , 50, 'Gumac', 'Made In VietNam', 'Blue White', 'Cotton', 'WYWH Women Blue And White Printed Holiday Spaghetti Strap Bodysuit', 6),
-    ('https://img.ltwebstatic.com/images3_pi/2024/05/15/99/17157381111b9c3eae412a4b86cec29d2c32dade0b_thumbnail_900x.webp', 'Pleated Short',11.61 , 50, 'Canifa', 'Made In VietNam', 'Khaki', 'Cotton', 'Privé Women Khaki Pleated Short Wide Leg Jumpsuit,Belt Not Included,Suitable For Daily, Commuting, Holiday, Dating,Wide-Legged One-Piece Shorts', 6),
+    ('https://img.ltwebstatic.com/images3_pi/2024/05/15/99/17157381111b9c3eae412a4b86cec29d2c32dade0b_thumbnail_900x.webp', 'Pleated Short',11.61 , 50, 'Canifa', 'Made In VietNam', 'Khaki', 'Cotton', 'Privï¿½ Women Khaki Pleated Short Wide Leg Jumpsuit,Belt Not Included,Suitable For Daily, Commuting, Holiday, Dating,Wide-Legged One-Piece Shorts', 6),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/11/ac/1715419601d9e06fdec18f85b4dc043c24295d58bc_thumbnail_900x.webp', 'Ladies 3pcs ',9.79 , 50, 'Yody', 'Made In China', 'Multicolor', 'Cotton', 'EZwear Ladies 3pcs Tight-Fitting Casual Sleeveless Bodysuit For Summer', 6),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/11/4a/17154062623980849b36556ee665a2f6d3c891fe4d_thumbnail_900x.webp', 'Strapless Bodysuit',7.11 , 50, 'OWen', 'Made In Indonesia', 'Blue', 'Cotton', 'WYWH Blue Strapless Bodysuit, Suitable For Vacation, Beach', 6),
     ('https://img.ltwebstatic.com/images3_pi/2020/05/13/1589356399a48feaf2a5a5019d8e682b772e0d8eb7_thumbnail_900x.webp', 'Front Wide Leg',7.35 , 50, 'Gumac', 'Made In VietNam', 'Navy Blue', 'Cotton', 'LUNE Button Front Wide Leg Belted Cami Romper', 6),
@@ -209,7 +205,6 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/05/11/ae/171539253701021f6805b9c4d51d3fa0f8960c738b_thumbnail_900x.webp', 'Vintage Hooded1',10.95 , 50, 'Gumac', 'Made In VietNam', 'White', 'Cotton', 'ROMWE Fairycore Women Vintage Hooded Cape Coat, Forest Elf Queen Style', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/29/d7/1716949978ba6dadd3a64f84be8e5bb1b67d905359_thumbnail_900x.webp', 'Colorblock Letter1',9.51 , 50, 'Canifa', 'Made In VietNam', 'Grey', 'Cotton', 'EZwear Colorblock Letter Patched Detail Drop Shoulder Jacket Without Cami Top', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/14/54/171565878452f698c8c90822d5bda95b6b4e51eba4_thumbnail_900x.webp', 'Raglan Sleeve1',10.24 , 50, 'Yody', 'Made In China', 'White', 'Cotton', 'EZwear Spring Colorblock Raglan Sleeve Drawstring Hem Zip Up Windbreaker Jacket', 8),
-    ('https://img.ltwebstatic.com/images3_pi/2023/11/29/d5/170124409255376db3e592e24ac73ab0bacb23173c.png', 'Clasi Raglan1',18.20 , 50, 'OWen1', 'Made In Indonesia', 'Khaki', 'Cotton', 'Clasi Raglan Sleeve Double Breasted Belted Trench Coat', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/30/36/17170417963e7c70b515d48f7aa2ee792a3e783d4b_thumbnail_900x.webp', 'Virginia & ZeFelipe1',8.60 , 50, 'Gumac', 'Made In VietNam', 'Black', 'Cotton', 'X Virginia & ZeFelipe Letter Graphic Colorblock Drop Shoulder Crop Bomber Y2k Jacket', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/23/9c/171643705381ae31239edd435ec27b82e27c485f8c_thumbnail_900x.webp', 'EZwear Zip1',10.42 , 50, 'Tingoan', 'Made In VietNam', 'Multicolor', 'Cotton', 'EZwear Zip Up Drawstring Hooded Jacket', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/22/26/1705889372576a0a5eab5dfc0a9cb42ec85237c04a_thumbnail_900x.webp', 'Trucker Jacket1',8.06 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'LUNE Colorblock Button-Front Cropped Trucker Jacket', 8),
@@ -218,13 +213,7 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
 
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2023/06/05/1685955393f0e710719eae6180d2f7a3dbface933b_thumbnail_900x.webp', 'Manfinity Homme',11.49 , 50, 'Gumac', 'Made In VietNam', ' Navy Blue', 'Cotton', 'Manfinity Homme Men Plus Solid Notched Neck Tee', 9),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Men Plus Solid',5.35 , 50, 'Canifa', 'Made In VietNam', 'White', 'Cotton', 'Manfinity Homme Men Plus Solid Round Neck Tee', 9),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Striped Short',20.99 , 50, 'Yody', 'Made In China', 'Navy Blue', 'Cotton', 'Manfinity Homme MenS Plus Size Striped Short Sleeve Shirt And Shorts Set', 9),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Cargo Pants',15.49 , 50, 'OWen', 'Made In Indonesia', 'Khaki', 'Cotton', 'Mens Plus Size Fashionable Cargo Pants With Printed Smiling Faces And Letters', 9),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Landscape Printed',8.09 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'Mens Landscape Printed Round Neck Plus Size T-Shirt', 9),
-    ('https://img.ltwebstatic.com/images3_pi/2023/11/12/72/16997184565887a2d672a6f6e818fe7783ee669e93_thumbnail_900x.webp', 'Solid Color Round',10.49 , 50, 'Tingoan', 'Made In VietNam', 'Grey', 'Cotton', 'Mens Plus Size Ombre Short Sleeve T-shirt And Shorts', 9),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Ombre Short',6.99 , 50, 'Gumac', 'Made In VietNam', 'Colorblock', 'Cotton', 'Manfinity Homme Mens Plus Size Solid Color Round Neck Short Sleeve Casual T-Shirt And Drawstring Waist Shorts Set For Summer', 9),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Fashionable Simple',9.99 , 50, 'Gucci', 'Made In USA', 'Grey', 'Cotton', 'Mens Fashionable Simple All-Match Big Size Polo Shirt', 9);
+    ('https://img.ltwebstatic.com/images3_pi/2023/11/12/72/16997184565887a2d672a6f6e818fe7783ee669e93_thumbnail_900x.webp', 'Solid Color Round',10.49 , 50, 'Tingoan', 'Made In VietNam', 'Grey', 'Cotton', 'Mens Plus Size Ombre Short Sleeve T-shirt And Shorts', 9)
 
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/03/15/46/17104885504d190d91e02e7f5ededb7157a57a3b56_thumbnail_900x.webp', 'Block Round',10.95 , 50, 'Gumac', 'Made In VietNam', 'Navy Blue', 'Cotton', 'Manfinity Homme Mens Color Block Round Neck Short Sleeve Casual T-Shirt', 10),
@@ -253,7 +242,6 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/03/25/f6/1711330959fc038548fb5716edb1f61bbc2084027f_thumbnail_900x.webp', 'Slant Pocket Pants Suit',58.99 , 50, 'OWen', 'Made In Indonesia', 'Ash Gray', 'Cotton', 'Manfinity Bizformal Mens Solid Casual Lapel Neck Blazer & Slant Pocket Pants Suit Set', 12),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/21/a8/1716275846d132f11042e2ce080a0bfe4a28d2bb3b_thumbnail_900x.webp', 'Size Single-Breasted',52.99 , 50, 'Gumac', 'Made In VietNam', 'Navy Blue', 'Cotton', 'Manfinity Mode Mens Plus Size Single-Breasted Suit Jacket And Suit Pants Set', 12),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/06/1e/17124086802e9c67db7c76fad162d31bdc9012c9be_thumbnail_900x.webp', 'Shawl Collar Long',19.47 , 50, 'Tingoan', 'Made In VietNam', 'Black', 'Cotton', 'Manfinity Mode MenS Shawl Collar Long Sleeve Blazer Suit', 12),
-    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Lapel Collar Long',15.52 , 50, 'Gumac', 'Made In VietNam', 'Navy Pink', 'Cotton', 'Manfinity AFTRDRK Mens Plus Size Lapel Collar Long Sleeve Suit Jacket And Gradient Color Pants Set', 12),
     ('https://img.ltwebstatic.com/images3_pi/2024/06/07/e7/1717738691ad1db7aedb252dbc184aadc37f2113e6_thumbnail_900x.webp', 'Breasted Suit Coat',38.99 , 50, 'Gucci', 'Made In USA', 'Ash Gray', 'Cotton', 'Manfinity Mode Mens Suit Jacket & Pants Set, Classic Work Wear Single-Breasted Suit Coat With Notch Lape', 12);
 
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
@@ -267,7 +255,6 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2021/08/27/16300421444fc432366bd3efab5c8ca2571eb36fc2_thumbnail_900x.webp', 'Painting Pattern Jumper',22.49 , 50, 'Gucci', 'Made In USA', 'Grey', 'Cotton', 'Manfinity Homme Men Ink Painting Pattern Jumper Cartoon Graphic Tee', 13);
 	
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
-    ('https://img.ltwebstatic.com/images3_pi/2023/10/11/15/1697024608890db542d5fc29f668d59ac673257b12.png', 'Bomber Jacket',15.72 , 50, 'Gumac', 'Made In VietNam', 'Dark Grey', 'Cotton', 'Manfinity Mode Men Zip Up Bomber Jacket Short Sleeve Casual T-Shirt', 14),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/26/b0/17141215798cde6c613e338bd74822ba732881ffe9_thumbnail_900x.webp', 'Baseball Jacket',24.49 , 50, 'Canifa', 'Made In VietNam', ' Black', 'Cotton', 'Manfinity Homme Men Plus Size Casual Solid Color Baseball Jacket', 14),
     ('https://img.ltwebstatic.com/images3_pi/2023/12/01/bb/17014235990688c226d76edf2c76505a8560628183_thumbnail_900x.webp', 'Striped Baseball Jacket',16.99 , 50, 'Yody', 'Made In China', 'Black', 'Cotton', 'Manfinity Homme Letter Printed Striped Baseball Jacket', 14),
     ('https://img.ltwebstatic.com/images3_pi/2023/12/27/e1/17036678037dd8a676c130303b8295cfccca77eb87_thumbnail_900x.webp', 'Letter Patchwork Detail',32.79 , 50, 'OWen', 'Made In Indonesia', 'Khaki', 'Cotton', 'Manfinity Homme Men Loose Fit Corduroy Jacket With Letter Patchwork Detail And Teddy Lining', 14),
@@ -347,7 +334,7 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/04/03/3d/171213602346e1ff60e5825eada24ae8c4488ba656_thumbnail_900x.webp', 'Sports Crown',5.99 , 50, 'Gumac', 'Made In VietNam', 'Army Green', 'Cotton', 'Two-Piece Set Teen Boy Casual Sports Crown & Letter Printed Short-Sleeved T-Shirt And Shorts For Summer', 24),
     ('https://img.ltwebstatic.com/images3_pi/2023/12/18/85/1702878093095479142ab60fc7ac81e7cf86d6e962_thumbnail_900x.webp', 'Card Printed Short',5.00 , 50, 'Gucci', 'Made In USA', 'White', 'Cotton', 'Teen Boys Casual Skull & Playing Card Printed Short Sleeve T-Shirt, Suitable For Summer', 24);
 
-select * from products join product_sizes on products.id = product_sizes.product_id
+-- select * from products join product_sizes on products.id = product_sizes.product_id
 
 select * from product_sizes
 -- Insert sample data into product_sizes
@@ -505,12 +492,6 @@ INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,1), ('M',
   INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,153), ('M', 50, 153), ('L', 50,153), ('XL', 50,153);
   INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,154), ('M', 50, 154), ('L', 50,154), ('XL', 50,154);
   INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,155), ('M', 50, 155), ('L', 50,155), ('XL', 50,155);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,156), ('M', 50, 156), ('L', 50,156), ('XL', 50,156);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,157), ('M', 50, 157), ('L', 50,157), ('XL', 50,157);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,158), ('M', 50, 158), ('L', 50,158), ('XL', 50,158);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,159), ('M', 50, 159), ('L', 50,159), ('XL', 50,159);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,160), ('M', 50, 160), ('L', 50,160), ('XL', 50,160);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,161), ('M', 50, 161), ('L', 50,161), ('XL', 50,161);
 
   INSERT INTO product_images (image_url, product_id) VALUES 
 ('product1_image1.jpg', 1),
