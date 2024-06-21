@@ -6,7 +6,7 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
     $scope.showSuccessAlert = false;
 
     // Lấy dữ liệu sản phẩm từ API
-    $http.get('http://localhost:8080/api/v1/product/landing?page=5&limit=8')
+    $http.get('http://localhost:8080/api/v1/product/landing?page=1&limit=8')
         .then(function(response) {
             $scope.products = response.data.content;
         })
@@ -78,3 +78,13 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         $scope.cart = JSON.parse(storedCart);
     }
 }]);
+
+app.filter('floor', function() {
+    return function(input) {
+        if (isNaN(input)) {
+            console.log("string")
+            return input;
+        } 
+        return Math.floor(input * 100) / 100;
+    };
+});
