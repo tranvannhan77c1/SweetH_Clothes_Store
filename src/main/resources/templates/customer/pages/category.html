@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sweet H Store - Category</title>
-    <link rel="icon" href="img/logoshop.jpg" type="image/jpg">
-    <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="vendors/linericon/style.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
-    <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+    <link rel="icon" href="../img/logoshop.jpg" type="image/jpg">
+    <link rel="stylesheet" href="../vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../vendors/linericon/style.css">
+    <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-pgjyf4I5V5ly/Oy7fv4RoGuhOZXz7r0n5xe5zGZAz6aE0sgSjgq2j49B3P2vD9g7fu3bVt+jBQYHunLvebfiTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body ng-controller="ProductController">
@@ -25,76 +25,24 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand logo_h" href="index.html"><img src="img/logoshop.jpg" alt="" width="200px" height="100px"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand logo_h" href="../index.html"><img style="width: 126px; height: 26px" src="../img/logo.jpg" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Trang Chủ</a></li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cửa Hàng</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="category.html">Danh mục cửa hàng</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-product.html">Thông tin chi tiết</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="checkout.html">Kiểm tra sản phẩm</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="confirmation.html">Xác nhận</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trang</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="login.html">Đăng Nhập</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="register.html">Đăng Ký</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="tracking-order.html">Theo Dõi</a></li>
-                                </ul>
-                            </li>
+                            <li class="nav-item active"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="category.html">Của Hàng</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
-
                         <ul class="nav-shop">
-                            <li class="nav-item">
-                                <form id="search-form" action="search.html" method="GET" class="search-form d-flex">
-                                    <div class="input-group">
-                                        <input type="text" name="query" id="search-input" class="form-control" placeholder="Tìm kiếm..." aria-label="Search">
-                                        <button class="btn btn-outline-secondary" type="submit">
-                                            <i class="ti-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </li>
-                            <li class="nav-item">
-                                <a href="cart.html">
-                                    <button>
-                                        <i class="ti-shopping-cart"></i>
-                                        <span class="nav-shop__circle">3</span>
-                                    </button>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="button button-header " href="category.html">Mua Ngay</a>
-                            </li>
-                            <!-- Your HTML structure -->
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fas fa-user-alt"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li class="nav-item"><a class="nav-link" href="#">Thông Tin Tài Khoản</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Đổi Mật Khẩu</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Đăng Xuất</a></li>
-                                    <p></p>
-
-                                </ul>
-                            </li>
-
-
+                            <li class="nav-item"><a href="cart.html"><button><i class="ti-user"></i></button> </a></li>
+                            <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span
+                                    class="nav-shop__circle">{{cart.length}}</span></button> </a></li>
+                            <li class="nav-item"><a class="button button-header" href="category.html">Mua Ngay</a></li>
                         </ul>
                     </div>
                 </div>
@@ -104,9 +52,9 @@
     <!--================ End Header Menu Area =================-->
 
     <!-- ================ start banner area ================= -->
-    <section class="blog-banner-area" id="category" style="background-image: url('img/anhbanner13.jpg'); width: 100%; height: 500px;">
+<!--    <section class="blog-banner-area" id="category" style="background-image: url('img/anhbanner13.jpg'); width: 100%; height: 500px;">-->
 
-    </section>
+<!--    </section>-->
     <!-- ================ end banner area ================= -->
 
 
@@ -212,7 +160,7 @@
                                     <div class="card-product__img">
                                         <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                                         <ul class="card-product__imgOverlay">
-                                            <li><button><i class="ti-search"></i></button></li>
+                                            <li><button><a ng-href="single-product.html?id={{ product.id }}"><i class="ti-search"></i></a></button></li>
                                             <li><button ng-click="addToCart(product)"><i class="ti-shopping-cart"></i></button></li>
                                             <li><button><i class="ti-heart"></i></button></li>
                                         </ul>
@@ -270,47 +218,21 @@
                 <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
                     <div class="single-search-product-wrapper">
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-1.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
                             </div>
                         </div>
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-2.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
                             </div>
                         </div>
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-4.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-5.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-6.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-3.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
@@ -322,21 +244,21 @@
                 <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
                     <div class="single-search-product-wrapper">
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-7.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-4.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
                             </div>
                         </div>
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-8.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-5.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
                             </div>
                         </div>
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-9.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-6.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
@@ -348,21 +270,47 @@
                 <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
                     <div class="single-search-product-wrapper">
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-7.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
                             </div>
                         </div>
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-8.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
                             </div>
                         </div>
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
+                            <a href="#"><img src="../img/product/product-sm-9.png" alt=""></a>
+                            <div class="desc">
+                                <a href="#" class="title">Gray Coffee Cup</a>
+                                <div class="price">$170.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+                    <div class="single-search-product-wrapper">
+                        <div class="single-search-product d-flex">
+                            <a href="#"><img src="../img/product/product-sm-1.png" alt=""></a>
+                            <div class="desc">
+                                <a href="#" class="title">Gray Coffee Cup</a>
+                                <div class="price">$170.00</div>
+                            </div>
+                        </div>
+                        <div class="single-search-product d-flex">
+                            <a href="#"><img src="../img/product/product-sm-2.png" alt=""></a>
+                            <div class="desc">
+                                <a href="#" class="title">Gray Coffee Cup</a>
+                                <div class="price">$170.00</div>
+                            </div>
+                        </div>
+                        <div class="single-search-product d-flex">
+                            <a href="#"><img src="../img/product/product-sm-3.png" alt=""></a>
                             <div class="desc">
                                 <a href="#" class="title">Gray Coffee Cup</a>
                                 <div class="price">$170.00</div>
@@ -419,13 +367,12 @@
                     </div>
                     <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Link nhanh</h4>
+                            <h4 class="footer_title">Truy cập nhanh</h4>
                             <ul class="list">
-                                <li><a href="#">Trang Chủ</a></li>
-                                <li><a href="#">Cửa Hàng</a></li>
-                                <li><a href="#">Sản Phẩm</a></li>
-                                <li><a href="#">Nhãn Hàng</a></li>
-                                <li><a href="#">Liên Hệ</a></li>
+                                <li><a href="..//index.html">Trang Chủ</a></li>
+                                <li><a href="category.html">Cửa Hàng</a></li>
+                                <li><a href="cart.html">Giỏ Hàng</a></li>
+                                <li><a href="contact.html">Liên Hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -433,12 +380,12 @@
                         <div class="single-footer-widget instafeed">
                             <h4 class="footer_title">Phòng trưng bày</h4>
                             <ul class="list instafeed d-flex flex-wrap">
-                                <li><img src="img/gallery/r1.jpg" alt=""></li>
-                                <li><img src="img/gallery/r2.jpg" alt=""></li>
-                                <li><img src="img/gallery/r3.jpg" alt=""></li>
-                                <li><img src="img/gallery/r5.jpg" alt=""></li>
-                                <li><img src="img/gallery/r7.jpg" alt=""></li>
-                                <li><img src="img/gallery/r8.jpg" alt=""></li>
+                                <li><img src="../img/gallery/r1.jpg" alt=""></li>
+                                <li><img src="../img/gallery/r2.jpg" alt=""></li>
+                                <li><img src="../img/gallery/r3.jpg" alt=""></li>
+                                <li><img src="../img/gallery/r5.jpg" alt=""></li>
+                                <li><img src="../img/gallery/r7.jpg" alt=""></li>
+                                <li><img src="../img/gallery/r8.jpg" alt=""></li>
                             </ul>
                         </div>
                     </div>
@@ -476,17 +423,17 @@
 
 
 
-    <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="vendors/skrollr.min.js"></script>
-    <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-    <script src="vendors/nouislider/nouislider.min.js"></script>
-    <script src="vendors/jquery.ajaxchimp.min.js"></script>
-    <script src="vendors/mail-script.js"></script>
-    <script src="vendors/angular/angular.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/category.js"></script>
+    <script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../vendors/skrollr.min.js"></script>
+    <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="../vendors/nouislider/nouislider.min.js"></script>
+    <script src="../vendors/jquery.ajaxchimp.min.js"></script>
+    <script src="../vendors/mail-script.js"></script>
+    <script src="../vendors/angular/angular.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/category.js"></script>
 </body>
 
 </html>
