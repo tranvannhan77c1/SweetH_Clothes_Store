@@ -15,5 +15,7 @@ public class OrderDetailDTO {
     private BigDecimal price;
     private String size;
     private Integer productId;
+    private String productName;
+    private String productImage;
     private Integer orderId;  // Thay vì sử dụng `Order order`
 }
