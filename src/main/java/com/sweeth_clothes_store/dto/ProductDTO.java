@@ -28,5 +28,5 @@ public class ProductDTO {
 	private List<FeedbackDTO> feedbacks;
 	private List<String> productImages;
     private List<String> productSizes;
-	private List<OrderDetailsDTO> orderDetails;
+	private List<OrderDetailDTO> orderDetails;
 }
