@@ -30,17 +30,21 @@ public class SecurityConfig {
 
 		http
 		.csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests(authorizeHttpRequests ->
-            authorizeHttpRequests
-                .requestMatchers(
-                		"/login",
-                		"/css/**", 
-                		"/img/**",
-                		"/js/**",
-                		"/scss/**",
-                		"/vendors/**").permitAll()
-                .requestMatchers("/admin").authenticated()
-                .anyRequest().permitAll()//anonymous
+        .authorizeHttpRequests(authorizeHttpRequests -> {
+        	authorizeHttpRequests.requestMatchers(
+            		"/login",
+            		"/css/**", 
+            		"/img/**",
+            		"/js/**",
+            		"/scss/**",
+            		"/vendors/**",
+            		"/api/v1/account/signup").permitAll();
+
+        	authorizeHttpRequests.requestMatchers("/api/v1/admin/**").hasRole("ADMIN");
+        	authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasRole("USER");
+        	authorizeHttpRequests.anyRequest().permitAll();//anonymous
+        }
+            
         )
         .formLogin(formLogin ->
             formLogin
