@@ -40,7 +40,7 @@ public class ProductMapper {
 				.map(ProductSize::getSize)
 				.collect(Collectors.toList()));
 		dto.setOrderDetails(product.getOrderDetails().stream()
-				.map(OrderDetailsMapper::toOrderDetailsDTO)
+				.map(OrderDetailMapper::toOrderDetailDTO)
 				.collect(Collectors.toList()));
 		return dto;
 	}

@@ -2,6 +2,9 @@ package com.sweeth_clothes_store.service;
 
 import com.sweeth_clothes_store.model.Account;
 import com.sweeth_clothes_store.repository.AccountRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,7 +25,7 @@ public class AccountService {
     public Account addAccount(Account data) {
         System.out.println("Adding new account: " + data);
         Account checkEmailDup = accountRepository.findByEmail(data.getEmail());
-        Account checkUsernameDup = accountRepository.findByUsername(data.getUsername());
+        Optional<Account> checkUsernameDup = accountRepository.findByUsername(data.getUsername());
         Account checkPhoneDup = accountRepository.findByPhone(data.getPhone());
         if (checkEmailDup == null && checkUsernameDup == null && checkPhoneDup == null) {
         	data.setPassword(passwordEncoder.encode(data.getPassword()));

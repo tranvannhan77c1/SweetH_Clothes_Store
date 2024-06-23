@@ -1,4 +1,4 @@
-create database SweetH_Clothes_Store
+﻿create database SweetH_Clothes_Store
 go
 use SweetH_Clothes_Store
 go
@@ -47,7 +47,7 @@ create table product_images(
 create table accounts(
     id int identity(1,1),
     username varchar(50) not null unique,
-    [password] varchar(255) not null,
+    [password] varchar(50) not null,
     email varchar(100) not null unique,
     full_name nvarchar(100),
     phone nvarchar(10) not null unique,
@@ -113,32 +113,33 @@ go
 
 -- Insert into items
 INSERT INTO items ([name]) VALUES 
-('Women'), ('Men'), ('Kids'), ('Curve'), ('Beachwear'), ('Sports & Outdoor'), 
-('Underwear & Sleepwear'), ('Shoes'), ('Accessories & Jewelry'), ('Bags & Luggage');
+	('Women'), ('Men'), ('Kids'), ('Curve'), ('Beachwear'), ('Sports & Outdoor'), 
+	('Underwear & Sleepwear'), ('Shoes'), ('Accessories & Jewelry'), ('Bags & Luggage');
+select * from items
 
 -- Insert into categories
 INSERT INTO categories ([name], item_id) VALUES 
-('Maternity clothing', 1), ('Dresses', 1), ('Bottoms', 1), ('Wedding wear', 1), ('Co-ords', 1), ('Jumpsuits & bodysuits', 1), ('Jacket & coats', 1), ('Sweatshirts', 1),
-('Plus size clothing', 2), ('Collection', 2), ('Hoodies & sweatshirts', 2), ('Suits & separates', 2), ('Sweaters', 2), ('Outerwear', 2), ('Swimwear', 2), ('Jumpsuites & overalls', 2),
-('Socks & tights', 3), ('Family outfits', 3), ('Young girls (3-7 yrs)', 3), ('Tween girls (8-12 yrs)', 3), ('Teen girls (13-16 yrs)', 3), ('Young boys (3-7 yrs)', 3), ('Tween boys (8-12 yrs)', 3), ('Teen boys (13-16 yrs)', 3),
-('Activewear', 4), ('T-shirt', 4), ('Blouses', 4), ('Tank tops & camis', 4), ('Leggings', 4), ('Suits', 4), ('Pants', 4), ('Party wear', 4),
-('Top rated', 5), ('Women', 5), ('Curve', 5), ('Maternities', 5),
-('Brands', 6), ('Women activewear', 6), ('Curve activewear', 6), ('Men activewear', 6), ('Women out - door apparel', 6), ('Men outdoor apparel', 6),
-('Women curve', 7), ('Men', 7), ('Maternity', 7), ('Couple', 7), ('Spring & Summer', 7),
-('Work & Safety shoes', 8), ('Sandal', 8), ('Pumps', 8), ('Slipper', 8), ('Flats', 8), ('Sneaker', 8), ('Ion boots', 8), ('Shoe accessories', 8),
-('Gender neu - tral', 9), ('Fine jewelry', 9), ('Watches & accs', 9), ('Wedding & event', 9), ('Body jewelry & othes', 9), ('Women hats & gloves', 9), ('Women hair accessories', 9), ('Women earrings', 9),
-('Bag accessories', 10), ('Women bags', 10), ('Men bags', 10), ('Luggage & travek gear', 10), ('Wallets & cardholders', 10), ('Functional bags', 10), ('Premium brands', 10), ('Makeup bags', 10);
-
+	('Maternity clothing', 1), ('Dresses', 1), ('Bottoms', 1), ('Wedding wear', 1), ('Co-ords', 1), ('Jumpsuits & bodysuits', 1), ('Jacket & coats', 1), ('Sweatshirts', 1),
+	('Plus size clothing', 2), ('Collection', 2), ('Hoodies & sweatshirts', 2), ('Suits & separates', 2), ('Sweaters', 2), ('Outerwear', 2), ('Swimwear', 2), ('Jumpsuites & overalls', 2),
+	('Socks & tights', 3), ('Family outfits', 3), ('Young girls (3-7 yrs)', 3), ('Tween girls (8-12 yrs)', 3), ('Teen girls (13-16 yrs)', 3), ('Young boys (3-7 yrs)', 3), ('Tween boys (8-12 yrs)', 3), ('Teen boys (13-16 yrs)', 3),
+	('Activewear', 4), ('T-shirt', 4), ('Blouses', 4), ('Tank tops & camis', 4), ('Leggings', 4), ('Suits', 4), ('Pants', 4), ('Party wear', 4),
+	('Top rated', 5), ('Women', 5), ('Curve', 5), ('Maternities', 5),
+	('Brands', 6), ('Women activewear', 6), ('Curve activewear', 6), ('Men activewear', 6), ('Women out - door apparel', 6), ('Men outdoor apparel', 6),
+	('Women curve', 7), ('Men', 7), ('Maternity', 7), ('Couple', 7), ('Spring & Summer', 7),
+	('Work & Safety shoes', 8), ('Sandal', 8), ('Pumps', 8), ('Slipper', 8), ('Flats', 8), ('Sneaker', 8), ('Ion boots', 8), ('Shoe accessories', 8),
+	('Gender neu - tral', 9), ('Fine jewelry', 9), ('Watches & accs', 9), ('Wedding & event', 9), ('Body jewelry & othes', 9), ('Women hats & gloves', 9), ('Women hair accessories', 9), ('Women earrings', 9),
+	('Bag accessories', 10), ('Women bags', 10), ('Men bags', 10), ('Luggage & travek gear', 10), ('Wallets & cardholders', 10), ('Functional bags', 10), ('Premium brands', 10), ('Makeup bags', 10);
 select * from categories
--- Insert sample data into products
 
---1
+-- Insert sample data into products
 INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/05/24/50/1716520581c6e49abcc8f061f96bff6f00d51d242f_thumbnail_900x.webp', 'Solid Color Off',16.93 , 50, 'Gumac', 'Made In VietNam', 'Blue', 'Cotton', 'MOD Womens Fashionable Solid Color Off-Shoulder Ruffle Sleeve Dress', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/16/1b/17158257961db624e042f79d6b205261c19348a902_thumbnail_900x.webp', 'Pleated Pocket',11.33 , 50, 'Canifa', 'Made In VietNam', 'Navy Blue', 'Cotton', 'Essnce Women Solid Color Pleated Pocket Design Casual Summer Dress', 1),
     ('https://img.ltwebstatic.com/images3_pi/2022/09/01/1661996761c131255723b52480e42d4da500a98ad2_thumbnail_900x.webp', 'Block Tank',3.59 , 50, 'Yody', 'Made In China', 'Multicolor', 'Cotton', 'EZwear Color Block Tank Top', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/13/db/1715564713e28027143c04cc79e46a7b011c078cb1_thumbnail_900x.webp', 'Vacation Casual Solid',12.94 , 50, 'OWen', 'Made In Indonesia', 'Redwood', 'Cotton', 'Frenchy Plus Size Vacation Casual Solid Color Bandeau Top And Shorts Two-Piece Set', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/20/a6/17161706439a09b0a1f0b5b7337a1a9de281035540_thumbnail_900x.webp', 'Ladies Ribbed',7.13 , 50, 'Gumac', 'Made In VietNam', 'Purple', 'Cotton', 'Qutie Ladies Ribbed Patchwork One-Piece Dress', 1),
+    ('https://img.ltwebstatic.com/images3_pi/2022/04/12/164975212574c93c659411b8d7a0404617f71feec3.png', 'Layered Cake Skirt',14.13 , 50, 'Tingoan', 'Made In VietNam', 'White', 'Cotton', 'MOD White Layered Cake Skirt Cute Square Neck Summer Dress Dresses Graduation Formal Dresses Wedding Brides Maid Dresses Bridgerton Style Dress', 1),
+    ('https://img.ltwebstatic.com/images3_pi/2022/11/16/166859174215d9bc0064f7cd2454529c83bdfd9b15.png', 'Padded Square Neck',12.24 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'EZwear 3pcs/Pack Padded Square Neck Bra-Free Slim-Fit Women Tank Top', 1),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/10/cc/1715325794e32ded29ab5dd3acec827f56aa0790c2_thumbnail_900x.webp', 'Fit Backless',10.77 , 50, 'Gucci', 'Made In USA', 'Beige-colored', 'Cotton', 'EZwear Casual Fit Backless Drawstring Waist Batwing Sleeve One Piece Jumpsuit For Summer', 1);
 
 INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
@@ -148,13 +149,15 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/01/24/86/1706083142d5f67dcce7623c5d8fce5607c1cf7651_thumbnail_900x.webp', 'Strap Cami',10.58 , 50, 'OWen', 'Made In Indonesia', 'Baby Blue', 'Cotton', 'MOD Women Solid Color Criss-Cross Strap Cami Dress', 2),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/11/13/17049405644345f21c23f854200a761a2b9478eda2_thumbnail_900x.webp', 'Sleeveless Dress',9.34 , 50, 'Gumac', 'Made In VietNam', 'Dark Grey', 'Cotton', 'ROMWE PUNK Women Sleeveless Dress With Rivet Decoration', 2),
     ('https://img.ltwebstatic.com/images3_pi/2023/08/15/e2/1692064319338c82b5bb056f04e4cfa4d746a61936_thumbnail_900x.webp', 'Cut Out',14.13 , 50, 'Tingoan', 'Made In VietNam', 'Mint Green', 'Cotton', 'EZwear Cut Out Waist Ruched Side Dress', 2),
-    ('https://img.ltwebstatic.com/images3_pi/2024/03/25/8b/1711375698601b903bd334a2b6f254e22c11fec110_thumbnail_900x.webp', 'Striped Casual',5.88 , 50, 'Gumac', 'Made In VietNam', 'Brown', 'Cotton', 'LUNE Summer Women Striped Casual & Holiday Tank Dress Split Hem Twist Front Sleeveless Dress', 2)
+    ('https://img.ltwebstatic.com/images3_pi/2024/03/25/8b/1711375698601b903bd334a2b6f254e22c11fec110_thumbnail_900x.webp', 'Striped Casual',5.88 , 50, 'Gumac', 'Made In VietNam', 'Brown', 'Cotton', 'LUNE Summer Women Striped Casual & Holiday Tank Dress Split Hem Twist Front Sleeveless Dress', 2),
+    ('https://img.ltwebstatic.com/images3_pi/2023/07/06/16886492682caf35e703fbb1cdc8270f17b6083676.png', 'Rib-knit',7.02 , 50, 'Gucci', 'Made In USA', 'Black', 'Cotton', 'Essnce Rib-knit Solid Bodycon Dress', 2);
 
 INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/01/29/03/17064954500cda97b0005e132be8d6a452275b6968_thumbnail_900x.webp', 'Waistband Skirt',7.02 , 50, 'Gumac', 'Made In VietNam', 'Black', 'Cotton', 'EZwear Solid Color Elastic Waistband Skirt With Phone Pocket', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/22/83/1705903148fce8f829fb5a8023193b6fb644da5ce8_thumbnail_900x.webp', 'Drawstring Shorts',4.75 , 50, 'Canifa', 'Made In VietNam', 'Dark Grey', 'Cotton', 'EZwear Ladies Drawstring Shorts', 3),
     ('https://img.ltwebstatic.com/images3_pi/2023/07/12/1689151526892f784241228e8ec71a116ca33bbe85_thumbnail_900x.webp', 'Leg Shorts',3.59 , 50, 'Yody', 'Made In China', 'Black', 'Cotton', 'VCAY Paperbag Waist Belted Wide Leg Shorts', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/10/ca/17048650028634cf5e00ecafe7e73cd438760a551c_thumbnail_900x.webp', 'Casual Shorts',12.94 , 50, 'OWen', 'Made In Indonesia', 'Multicolor', 'Cotton', 'VCAY Women Solid Color Casual Shorts', 3),
+    ('https://img.ltwebstatic.com/images3_pi/2023/07/06/16886492682caf35e703fbb1cdc8270f17b6083676.png', 'Waist Side Tie',6.65 , 50, 'Gumac', 'Made In VietNam', 'Army Green', 'Cotton', 'Essnce Casual Green Elastic Waist Side Tie Fashionable Summer Skort', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/26/d2/1714121909902fdecaab46007228668b4fe2ea465c_thumbnail_900x.webp', 'Elegant Solid',9.09 , 50, 'Tingoan', 'Made In VietNam', 'Apricot', 'Cotton', 'DAZY Women Elegant Solid Color Side Slit Skort For Summer', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/07/6d/1712475007d729c9eeaa18a00cd4d8c30fce67c1a3_thumbnail_900x.webp', 'Casual Short Leggings',3.76 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'EZwear Solid Color Wide-Waist Casual Short Leggings', 3),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/08/c6/17151407498a0d26a1381f4ebf4279751f35c366bf_thumbnail_900x.webp', 'Casual Brown',7.47 , 50, 'Gucci', 'Made In USA', 'Dark Grey', 'Cotton', 'EZwear Summer Loose And Casual Brown Elastic Waist Patched Detail Sports Shorts', 3);
@@ -205,6 +208,7 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/05/11/ae/171539253701021f6805b9c4d51d3fa0f8960c738b_thumbnail_900x.webp', 'Vintage Hooded1',10.95 , 50, 'Gumac', 'Made In VietNam', 'White', 'Cotton', 'ROMWE Fairycore Women Vintage Hooded Cape Coat, Forest Elf Queen Style', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/29/d7/1716949978ba6dadd3a64f84be8e5bb1b67d905359_thumbnail_900x.webp', 'Colorblock Letter1',9.51 , 50, 'Canifa', 'Made In VietNam', 'Grey', 'Cotton', 'EZwear Colorblock Letter Patched Detail Drop Shoulder Jacket Without Cami Top', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/14/54/171565878452f698c8c90822d5bda95b6b4e51eba4_thumbnail_900x.webp', 'Raglan Sleeve1',10.24 , 50, 'Yody', 'Made In China', 'White', 'Cotton', 'EZwear Spring Colorblock Raglan Sleeve Drawstring Hem Zip Up Windbreaker Jacket', 8),
+    ('https://img.ltwebstatic.com/images3_pi/2023/11/29/d5/170124409255376db3e592e24ac73ab0bacb23173c.png', 'Clasi Raglan1',18.20 , 50, 'OWen1', 'Made In Indonesia', 'Khaki', 'Cotton', 'Clasi Raglan Sleeve Double Breasted Belted Trench Coat', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/30/36/17170417963e7c70b515d48f7aa2ee792a3e783d4b_thumbnail_900x.webp', 'Virginia & ZeFelipe1',8.60 , 50, 'Gumac', 'Made In VietNam', 'Black', 'Cotton', 'X Virginia & ZeFelipe Letter Graphic Colorblock Drop Shoulder Crop Bomber Y2k Jacket', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/23/9c/171643705381ae31239edd435ec27b82e27c485f8c_thumbnail_900x.webp', 'EZwear Zip1',10.42 , 50, 'Tingoan', 'Made In VietNam', 'Multicolor', 'Cotton', 'EZwear Zip Up Drawstring Hooded Jacket', 8),
     ('https://img.ltwebstatic.com/images3_pi/2024/01/22/26/1705889372576a0a5eab5dfc0a9cb42ec85237c04a_thumbnail_900x.webp', 'Trucker Jacket1',8.06 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'LUNE Colorblock Button-Front Cropped Trucker Jacket', 8),
@@ -213,7 +217,13 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
 
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2023/06/05/1685955393f0e710719eae6180d2f7a3dbface933b_thumbnail_900x.webp', 'Manfinity Homme',11.49 , 50, 'Gumac', 'Made In VietNam', ' Navy Blue', 'Cotton', 'Manfinity Homme Men Plus Solid Notched Neck Tee', 9),
-    ('https://img.ltwebstatic.com/images3_pi/2023/11/12/72/16997184565887a2d672a6f6e818fe7783ee669e93_thumbnail_900x.webp', 'Solid Color Round',10.49 , 50, 'Tingoan', 'Made In VietNam', 'Grey', 'Cotton', 'Mens Plus Size Ombre Short Sleeve T-shirt And Shorts', 9)
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Men Plus Solid',5.35 , 50, 'Canifa', 'Made In VietNam', 'White', 'Cotton', 'Manfinity Homme Men Plus Solid Round Neck Tee', 9),
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Striped Short',20.99 , 50, 'Yody', 'Made In China', 'Navy Blue', 'Cotton', 'Manfinity Homme MenS Plus Size Striped Short Sleeve Shirt And Shorts Set', 9),
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Cargo Pants',15.49 , 50, 'OWen', 'Made In Indonesia', 'Khaki', 'Cotton', 'Mens Plus Size Fashionable Cargo Pants With Printed Smiling Faces And Letters', 9),
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Landscape Printed',8.09 , 50, 'Gumac', 'Made In VietNam', 'Multicolor', 'Cotton', 'Mens Landscape Printed Round Neck Plus Size T-Shirt', 9),
+    ('https://img.ltwebstatic.com/images3_pi/2023/11/12/72/16997184565887a2d672a6f6e818fe7783ee669e93_thumbnail_900x.webp', 'Solid Color Round',10.49 , 50, 'Tingoan', 'Made In VietNam', 'Grey', 'Cotton', 'Mens Plus Size Ombre Short Sleeve T-shirt And Shorts', 9),
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Ombre Short',6.99 , 50, 'Gumac', 'Made In VietNam', 'Colorblock', 'Cotton', 'Manfinity Homme Mens Plus Size Solid Color Round Neck Short Sleeve Casual T-Shirt And Drawstring Waist Shorts Set For Summer', 9),
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Fashionable Simple',9.99 , 50, 'Gucci', 'Made In USA', 'Grey', 'Cotton', 'Mens Fashionable Simple All-Match Big Size Polo Shirt', 9);
 
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
     ('https://img.ltwebstatic.com/images3_pi/2024/03/15/46/17104885504d190d91e02e7f5ededb7157a57a3b56_thumbnail_900x.webp', 'Block Round',10.95 , 50, 'Gumac', 'Made In VietNam', 'Navy Blue', 'Cotton', 'Manfinity Homme Mens Color Block Round Neck Short Sleeve Casual T-Shirt', 10),
@@ -242,6 +252,7 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/03/25/f6/1711330959fc038548fb5716edb1f61bbc2084027f_thumbnail_900x.webp', 'Slant Pocket Pants Suit',58.99 , 50, 'OWen', 'Made In Indonesia', 'Ash Gray', 'Cotton', 'Manfinity Bizformal Mens Solid Casual Lapel Neck Blazer & Slant Pocket Pants Suit Set', 12),
     ('https://img.ltwebstatic.com/images3_pi/2024/05/21/a8/1716275846d132f11042e2ce080a0bfe4a28d2bb3b_thumbnail_900x.webp', 'Size Single-Breasted',52.99 , 50, 'Gumac', 'Made In VietNam', 'Navy Blue', 'Cotton', 'Manfinity Mode Mens Plus Size Single-Breasted Suit Jacket And Suit Pants Set', 12),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/06/1e/17124086802e9c67db7c76fad162d31bdc9012c9be_thumbnail_900x.webp', 'Shawl Collar Long',19.47 , 50, 'Tingoan', 'Made In VietNam', 'Black', 'Cotton', 'Manfinity Mode MenS Shawl Collar Long Sleeve Blazer Suit', 12),
+    ('https://img.shein.com/images3/2024/05/14/17/1715689312788b85986121b72ef9076bc31307f706.png', 'Lapel Collar Long',15.52 , 50, 'Gumac', 'Made In VietNam', 'Navy Pink', 'Cotton', 'Manfinity AFTRDRK Mens Plus Size Lapel Collar Long Sleeve Suit Jacket And Gradient Color Pants Set', 12),
     ('https://img.ltwebstatic.com/images3_pi/2024/06/07/e7/1717738691ad1db7aedb252dbc184aadc37f2113e6_thumbnail_900x.webp', 'Breasted Suit Coat',38.99 , 50, 'Gucci', 'Made In USA', 'Ash Gray', 'Cotton', 'Manfinity Mode Mens Suit Jacket & Pants Set, Classic Work Wear Single-Breasted Suit Coat With Notch Lape', 12);
 
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
@@ -255,6 +266,7 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2021/08/27/16300421444fc432366bd3efab5c8ca2571eb36fc2_thumbnail_900x.webp', 'Painting Pattern Jumper',22.49 , 50, 'Gucci', 'Made In USA', 'Grey', 'Cotton', 'Manfinity Homme Men Ink Painting Pattern Jumper Cartoon Graphic Tee', 13);
 	
 	INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, color, material, description, category_id) VALUES
+    ('https://img.ltwebstatic.com/images3_pi/2023/10/11/15/1697024608890db542d5fc29f668d59ac673257b12.png', 'Bomber Jacket',15.72 , 50, 'Gumac', 'Made In VietNam', 'Dark Grey', 'Cotton', 'Manfinity Mode Men Zip Up Bomber Jacket Short Sleeve Casual T-Shirt', 14),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/26/b0/17141215798cde6c613e338bd74822ba732881ffe9_thumbnail_900x.webp', 'Baseball Jacket',24.49 , 50, 'Canifa', 'Made In VietNam', ' Black', 'Cotton', 'Manfinity Homme Men Plus Size Casual Solid Color Baseball Jacket', 14),
     ('https://img.ltwebstatic.com/images3_pi/2023/12/01/bb/17014235990688c226d76edf2c76505a8560628183_thumbnail_900x.webp', 'Striped Baseball Jacket',16.99 , 50, 'Yody', 'Made In China', 'Black', 'Cotton', 'Manfinity Homme Letter Printed Striped Baseball Jacket', 14),
     ('https://img.ltwebstatic.com/images3_pi/2023/12/27/e1/17036678037dd8a676c130303b8295cfccca77eb87_thumbnail_900x.webp', 'Letter Patchwork Detail',32.79 , 50, 'OWen', 'Made In Indonesia', 'Khaki', 'Cotton', 'Manfinity Homme Men Loose Fit Corduroy Jacket With Letter Patchwork Detail And Teddy Lining', 14),
@@ -333,198 +345,268 @@ INSERT INTO products (thumbnail_image, [name], price, quantity, brand, made_in, 
     ('https://img.ltwebstatic.com/images3_pi/2024/02/27/9c/1709022384578e64abbacd9727b3c5e851b65371e3_thumbnail_900x.webp', 'Tropical Plant Leaf',8.5 , 50, 'Tingoan', 'Made In VietNam', 'White', 'Cotton', 'SHEIN Teen Boys Casual Tropical Plant Leaf Print Short Sleeve Shirt And Drawstring Shorts 2pcs Outfit, Summer', 24),
     ('https://img.ltwebstatic.com/images3_pi/2024/04/03/3d/171213602346e1ff60e5825eada24ae8c4488ba656_thumbnail_900x.webp', 'Sports Crown',5.99 , 50, 'Gumac', 'Made In VietNam', 'Army Green', 'Cotton', 'Two-Piece Set Teen Boy Casual Sports Crown & Letter Printed Short-Sleeved T-Shirt And Shorts For Summer', 24),
     ('https://img.ltwebstatic.com/images3_pi/2023/12/18/85/1702878093095479142ab60fc7ac81e7cf86d6e962_thumbnail_900x.webp', 'Card Printed Short',5.00 , 50, 'Gucci', 'Made In USA', 'White', 'Cotton', 'Teen Boys Casual Skull & Playing Card Printed Short Sleeve T-Shirt, Suitable For Summer', 24);
+select * from products
 
--- select * from products join product_sizes on products.id = product_sizes.product_id
-
-select * from product_sizes
 -- Insert sample data into product_sizes
-INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,1), ('M', 50, 1), ('L', 50,1), ('XL', 50,1);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,2), ('M', 50, 2), ('L', 50,2), ('XL', 50,2);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,3), ('M', 50, 3), ('L', 50,3), ('XL', 50,3);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,4), ('M', 50, 4), ('L', 50,4), ('XL', 50,4);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,5), ('M', 50, 5), ('L', 50,5), ('XL', 50,5);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,6), ('M', 50, 6), ('L', 50,6), ('XL', 50,6);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,7), ('M', 50, 7), ('L', 50,7), ('XL', 50,7);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,8), ('M', 50, 8), ('L', 50,8), ('XL', 50,8);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,9), ('M', 50, 9), ('L', 50,9), ('XL', 50,9);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,10), ('M', 50, 10), ('L', 50,10), ('XL', 50,10);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,11), ('M', 50, 11), ('L', 50,11), ('XL', 50,11);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,12), ('M', 50, 12), ('L', 50,12), ('XL', 50,12);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,13), ('M', 50, 13), ('L', 50,13), ('XL', 50,13);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,14), ('M', 50, 14), ('L', 50,14), ('XL', 50,14);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,15), ('M', 50, 15), ('L', 50,15), ('XL', 50,15);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,16), ('M', 50, 16), ('L', 50,16), ('XL', 50,16);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,17), ('M', 50, 17), ('L', 50,17), ('XL', 50,17);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,18), ('M', 50, 18), ('L', 50,18), ('XL', 50,18);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,19), ('M', 50, 19), ('L', 50,19), ('XL', 50,19);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,20), ('M', 50, 20), ('L', 50,20), ('XL', 50,20);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,21), ('M', 50, 21), ('L', 50,21), ('XL', 50,21);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,22), ('M', 50, 22), ('L', 50,22), ('XL', 50,22);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,23), ('M', 50, 23), ('L', 50,23), ('XL', 50,23);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,24), ('M', 50, 24), ('L', 50,24), ('XL', 50,24);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,25), ('M', 50, 25), ('L', 50,25), ('XL', 50,25);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,26), ('M', 50, 26), ('L', 50,26), ('XL', 50,26);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,27), ('M', 50, 27), ('L', 50,27), ('XL', 50,27);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,28), ('M', 50, 28), ('L', 50,28), ('XL', 50,28);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,29), ('M', 50, 29), ('L', 50,29), ('XL', 50,29);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,30), ('M', 50, 30), ('L', 50,30), ('XL', 50,30);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,31), ('M', 50, 31), ('L', 50,31), ('XL', 50,31);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,32), ('M', 50, 32), ('L', 50,32), ('XL', 50,32);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,33), ('M', 50, 33), ('L', 50,33), ('XL', 50,33);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,34), ('M', 50, 34), ('L', 50,34), ('XL', 50,34);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,35), ('M', 50, 35), ('L', 50,35), ('XL', 50,35);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,36), ('M', 50, 36), ('L', 50,36), ('XL', 50,36);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,37), ('M', 50, 37), ('L', 50,37), ('XL', 50,37);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,38), ('M', 50, 38), ('L', 50,38), ('XL', 50,38);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,39), ('M', 50, 39), ('L', 50,39), ('XL', 50,39);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,40), ('M', 50, 40), ('L', 50,40), ('XL', 50,40);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,41), ('M', 50, 41), ('L', 50,41), ('XL', 50,41);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,42), ('M', 50, 42), ('L', 50,42), ('XL', 50,42);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,43), ('M', 50, 43), ('L', 50,43), ('XL', 50,43);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,44), ('M', 50, 44), ('L', 50,44), ('XL', 50,44);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,45), ('M', 50, 45), ('L', 50,45), ('XL', 50,45);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,46), ('M', 50, 46), ('L', 50,46), ('XL', 50,46);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,47), ('M', 50, 47), ('L', 50,47), ('XL', 50,47);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,48), ('M', 50, 48), ('L', 50,48), ('XL', 50,48);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,49), ('M', 50, 49), ('L', 50,49), ('XL', 50,49);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,50), ('M', 50, 50), ('L', 50,50), ('XL', 50,50);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,51), ('M', 50, 51), ('L', 50,51), ('XL', 50,51);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,52), ('M', 50, 52), ('L', 50,52), ('XL', 50,52);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,53), ('M', 50, 53), ('L', 50,53), ('XL', 50,53);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,54), ('M', 50, 54), ('L', 50,54), ('XL', 50,54);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,55), ('M', 50, 55), ('L', 50,55), ('XL', 50,55);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,56), ('M', 50, 56), ('L', 50,56), ('XL', 50,56);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,58), ('M', 50, 58), ('L', 50,58), ('XL', 50,58);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,59), ('M', 50, 59), ('L', 50,59), ('XL', 50,59);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,60), ('M', 50, 60), ('L', 50,60), ('XL', 50,60);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,61), ('M', 50, 61), ('L', 50,61), ('XL', 50,61);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,62), ('M', 50, 62), ('L', 50,62), ('XL', 50,62);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,63), ('M', 50, 63), ('L', 50,63), ('XL', 50,63);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,64), ('M', 50, 64), ('L', 50,64), ('XL', 50,64);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,65), ('M', 50, 65), ('L', 50,65), ('XL', 50,65);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,66), ('M', 50, 66), ('L', 50,66), ('XL', 50,66);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,67), ('M', 50, 67), ('L', 50,67), ('XL', 50,67);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,68), ('M', 50, 68), ('L', 50,68), ('XL', 50,68);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,69), ('M', 50, 69), ('L', 50,69), ('XL', 50,69);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,70), ('M', 50, 70), ('L', 50,70), ('XL', 50,70);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,71), ('M', 50, 71), ('L', 50,71), ('XL', 50,71);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,72), ('M', 50, 72), ('L', 50,72), ('XL', 50,72);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,73), ('M', 50, 73), ('L', 50,73), ('XL', 50,73);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,74), ('M', 50, 74), ('L', 50,74), ('XL', 50,74);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,75), ('M', 50, 75), ('L', 50,75), ('XL', 50,75);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,76), ('M', 50, 76), ('L', 50,76), ('XL', 50,76);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,77), ('M', 50, 77), ('L', 50,77), ('XL', 50,77);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,78), ('M', 50, 78), ('L', 50,78), ('XL', 50,78);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,79), ('M', 50, 79), ('L', 50,79), ('XL', 50,79);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,80), ('M', 50, 80), ('L', 50,80), ('XL', 50,80);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,81), ('M', 50, 81), ('L', 50,81), ('XL', 50,81);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,82), ('M', 50, 82), ('L', 50,82), ('XL', 50,82);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,83), ('M', 50, 83), ('L', 50,83), ('XL', 50,83);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,84), ('M', 50, 84), ('L', 50,84), ('XL', 50,84);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,85), ('M', 50, 85), ('L', 50,85), ('XL', 50,85);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,86), ('M', 50, 86), ('L', 50,86), ('XL', 50,86);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,87), ('M', 50, 87), ('L', 50,87), ('XL', 50,87);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,88), ('M', 50, 88), ('L', 50,88), ('XL', 50,88);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,89), ('M', 50, 89), ('L', 50,89), ('XL', 50,89);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,90), ('M', 50, 90), ('L', 50,90), ('XL', 50,90);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,91), ('M', 50, 91), ('L', 50,91), ('XL', 50,91);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,92), ('M', 50, 92), ('L', 50,92), ('XL', 50,92);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,93), ('M', 50, 93), ('L', 50,93), ('XL', 50,93);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,94), ('M', 50, 94), ('L', 50,94), ('XL', 50,94);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,95), ('M', 50, 95), ('L', 50,95), ('XL', 50,95);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,96), ('M', 50, 96), ('L', 50,96), ('XL', 50,96);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,97), ('M', 50, 97), ('L', 50,97), ('XL', 50,97);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,98), ('M', 50, 98), ('L', 50,98), ('XL', 50,98);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,99), ('M', 50, 99), ('L', 50,99), ('XL', 50,99);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,100), ('M', 50, 100), ('L', 50,100), ('XL', 50,100);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,101), ('M', 50, 101), ('L', 50,101), ('XL', 50,101);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,102), ('M', 50, 102), ('L', 50,102), ('XL', 50,102);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,103), ('M', 50, 103), ('L', 50,103), ('XL', 50,103);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,104), ('M', 50, 104), ('L', 50,104), ('XL', 50,104);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,105), ('M', 50, 105), ('L', 50,105), ('XL', 50,105);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,106), ('M', 50, 106), ('L', 50,106), ('XL', 50,106);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,107), ('M', 50, 107), ('L', 50,107), ('XL', 50,107);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,108), ('M', 50, 108), ('L', 50,108), ('XL', 50,108);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,109), ('M', 50, 109), ('L', 50,109), ('XL', 50,109);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,110), ('M', 50, 110), ('L', 50,110), ('XL', 50,110);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,111), ('M', 50, 111), ('L', 50,111), ('XL', 50,111);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,112), ('M', 50, 112), ('L', 50,112), ('XL', 50,112);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,113), ('M', 50, 113), ('L', 50,113), ('XL', 50,113);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,114), ('M', 50, 114), ('L', 50,114), ('XL', 50,114);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,115), ('M', 50, 115), ('L', 50,115), ('XL', 50,115);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,116), ('M', 50, 116), ('L', 50,116), ('XL', 50,116);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,117), ('M', 50, 117), ('L', 50,117), ('XL', 50,117);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,118), ('M', 50, 118), ('L', 50,118), ('XL', 50,118);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,119), ('M', 50, 119), ('L', 50,119), ('XL', 50,119);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,120), ('M', 50, 120), ('L', 50,120), ('XL', 50,120);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,121), ('M', 50, 121), ('L', 50,121), ('XL', 50,121);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,122), ('M', 50, 122), ('L', 50,122), ('XL', 50,122);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,123), ('M', 50, 123), ('L', 50,123), ('XL', 50,123);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,124), ('M', 50, 124), ('L', 50,124), ('XL', 50,124);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,125), ('M', 50, 125), ('L', 50,125), ('XL', 50,125);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,126), ('M', 50, 126), ('L', 50,126), ('XL', 50,126);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,127), ('M', 50, 127), ('L', 50,127), ('XL', 50,127);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,128), ('M', 50, 128), ('L', 50,128), ('XL', 50,128);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,129), ('M', 50, 129), ('L', 50,129), ('XL', 50,129);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,130), ('M', 50, 130), ('L', 50,130), ('XL', 50,130);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,131), ('M', 50, 131), ('L', 50,131), ('XL', 50,131);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,132), ('M', 50, 132), ('L', 50,132), ('XL', 50,132);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,133), ('M', 50, 133), ('L', 50,133), ('XL', 50,133);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,134), ('M', 50, 134), ('L', 50,134), ('XL', 50,134);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,135), ('M', 50, 135), ('L', 50,135), ('XL', 50,135);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,136), ('M', 50, 136), ('L', 50,136), ('XL', 50,136);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,137), ('M', 50, 137), ('L', 50,137), ('XL', 50,137);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,138), ('M', 50, 138), ('L', 50,138), ('XL', 50,138);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,139), ('M', 50, 139), ('L', 50,139), ('XL', 50,139);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,140), ('M', 50, 140), ('L', 50,140), ('XL', 50,140);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,141), ('M', 50, 141), ('L', 50,141), ('XL', 50,141);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,142), ('M', 50, 142), ('L', 50,142), ('XL', 50,142);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,143), ('M', 50, 143), ('L', 50,143), ('XL', 50,143);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,144), ('M', 50, 144), ('L', 50,144), ('XL', 50,144);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,145), ('M', 50, 145), ('L', 50,145), ('XL', 50,145);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,146), ('M', 50, 146), ('L', 50,146), ('XL', 50,146);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,147), ('M', 50, 147), ('L', 50,147), ('XL', 50,147);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,148), ('M', 50, 148), ('L', 50,148), ('XL', 50,148);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,149), ('M', 50, 149), ('L', 50,149), ('XL', 50,149);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,150), ('M', 50, 150), ('L', 50,150), ('XL', 50,150);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,151), ('M', 50, 151), ('L', 50,151), ('XL', 50,151);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,152), ('M', 50, 152), ('L', 50,152), ('XL', 50,152);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,153), ('M', 50, 153), ('L', 50,153), ('XL', 50,153);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,154), ('M', 50, 154), ('L', 50,154), ('XL', 50,154);
-  INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,155), ('M', 50, 155), ('L', 50,155), ('XL', 50,155);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,1), ('M', 50, 1), ('L', 50,1), ('XL', 50,1);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,2), ('M', 50, 2), ('L', 50,2), ('XL', 50,2);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,3), ('M', 50, 3), ('L', 50,3), ('XL', 50,3);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,4), ('M', 50, 4), ('L', 50,4), ('XL', 50,4);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,5), ('M', 50, 5), ('L', 50,5), ('XL', 50,5);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,6), ('M', 50, 6), ('L', 50,6), ('XL', 50,6);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,7), ('M', 50, 7), ('L', 50,7), ('XL', 50,7);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,8), ('M', 50, 8), ('L', 50,8), ('XL', 50,8);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,9), ('M', 50, 9), ('L', 50,9), ('XL', 50,9);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,10), ('M', 50, 10), ('L', 50,10), ('XL', 50,10);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,11), ('M', 50, 11), ('L', 50,11), ('XL', 50,11);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,12), ('M', 50, 12), ('L', 50,12), ('XL', 50,12);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,13), ('M', 50, 13), ('L', 50,13), ('XL', 50,13);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,14), ('M', 50, 14), ('L', 50,14), ('XL', 50,14);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,15), ('M', 50, 15), ('L', 50,15), ('XL', 50,15);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,16), ('M', 50, 16), ('L', 50,16), ('XL', 50,16);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,17), ('M', 50, 17), ('L', 50,17), ('XL', 50,17);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,18), ('M', 50, 18), ('L', 50,18), ('XL', 50,18);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,19), ('M', 50, 19), ('L', 50,19), ('XL', 50,19);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,20), ('M', 50, 20), ('L', 50,20), ('XL', 50,20);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,21), ('M', 50, 21), ('L', 50,21), ('XL', 50,21);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,22), ('M', 50, 22), ('L', 50,22), ('XL', 50,22);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,23), ('M', 50, 23), ('L', 50,23), ('XL', 50,23);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,24), ('M', 50, 24), ('L', 50,24), ('XL', 50,24);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,25), ('M', 50, 25), ('L', 50,25), ('XL', 50,25);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,26), ('M', 50, 26), ('L', 50,26), ('XL', 50,26);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,27), ('M', 50, 27), ('L', 50,27), ('XL', 50,27);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,28), ('M', 50, 28), ('L', 50,28), ('XL', 50,28);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,29), ('M', 50, 29), ('L', 50,29), ('XL', 50,29);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,30), ('M', 50, 30), ('L', 50,30), ('XL', 50,30);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,31), ('M', 50, 31), ('L', 50,31), ('XL', 50,31);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,32), ('M', 50, 32), ('L', 50,32), ('XL', 50,32);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,33), ('M', 50, 33), ('L', 50,33), ('XL', 50,33);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,34), ('M', 50, 34), ('L', 50,34), ('XL', 50,34);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,35), ('M', 50, 35), ('L', 50,35), ('XL', 50,35);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,36), ('M', 50, 36), ('L', 50,36), ('XL', 50,36);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,37), ('M', 50, 37), ('L', 50,37), ('XL', 50,37);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,38), ('M', 50, 38), ('L', 50,38), ('XL', 50,38);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,39), ('M', 50, 39), ('L', 50,39), ('XL', 50,39);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,40), ('M', 50, 40), ('L', 50,40), ('XL', 50,40);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,41), ('M', 50, 41), ('L', 50,41), ('XL', 50,41);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,42), ('M', 50, 42), ('L', 50,42), ('XL', 50,42);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,43), ('M', 50, 43), ('L', 50,43), ('XL', 50,43);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,44), ('M', 50, 44), ('L', 50,44), ('XL', 50,44);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,45), ('M', 50, 45), ('L', 50,45), ('XL', 50,45);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,46), ('M', 50, 46), ('L', 50,46), ('XL', 50,46);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,47), ('M', 50, 47), ('L', 50,47), ('XL', 50,47);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,48), ('M', 50, 48), ('L', 50,48), ('XL', 50,48);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,49), ('M', 50, 49), ('L', 50,49), ('XL', 50,49);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,50), ('M', 50, 50), ('L', 50,50), ('XL', 50,50);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,51), ('M', 50, 51), ('L', 50,51), ('XL', 50,51);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,52), ('M', 50, 52), ('L', 50,52), ('XL', 50,52);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,53), ('M', 50, 53), ('L', 50,53), ('XL', 50,53);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,54), ('M', 50, 54), ('L', 50,54), ('XL', 50,54);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,55), ('M', 50, 55), ('L', 50,55), ('XL', 50,55);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,56), ('M', 50, 56), ('L', 50,56), ('XL', 50,56);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,58), ('M', 50, 58), ('L', 50,58), ('XL', 50,58);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,59), ('M', 50, 59), ('L', 50,59), ('XL', 50,59);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,60), ('M', 50, 60), ('L', 50,60), ('XL', 50,60);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,61), ('M', 50, 61), ('L', 50,61), ('XL', 50,61);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,62), ('M', 50, 62), ('L', 50,62), ('XL', 50,62);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,63), ('M', 50, 63), ('L', 50,63), ('XL', 50,63);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,64), ('M', 50, 64), ('L', 50,64), ('XL', 50,64);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,65), ('M', 50, 65), ('L', 50,65), ('XL', 50,65);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,66), ('M', 50, 66), ('L', 50,66), ('XL', 50,66);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,67), ('M', 50, 67), ('L', 50,67), ('XL', 50,67);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,68), ('M', 50, 68), ('L', 50,68), ('XL', 50,68);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,69), ('M', 50, 69), ('L', 50,69), ('XL', 50,69);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,70), ('M', 50, 70), ('L', 50,70), ('XL', 50,70);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,71), ('M', 50, 71), ('L', 50,71), ('XL', 50,71);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,72), ('M', 50, 72), ('L', 50,72), ('XL', 50,72);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,73), ('M', 50, 73), ('L', 50,73), ('XL', 50,73);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,74), ('M', 50, 74), ('L', 50,74), ('XL', 50,74);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,75), ('M', 50, 75), ('L', 50,75), ('XL', 50,75);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,76), ('M', 50, 76), ('L', 50,76), ('XL', 50,76);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,77), ('M', 50, 77), ('L', 50,77), ('XL', 50,77);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,78), ('M', 50, 78), ('L', 50,78), ('XL', 50,78);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,79), ('M', 50, 79), ('L', 50,79), ('XL', 50,79);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,80), ('M', 50, 80), ('L', 50,80), ('XL', 50,80);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,81), ('M', 50, 81), ('L', 50,81), ('XL', 50,81);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,82), ('M', 50, 82), ('L', 50,82), ('XL', 50,82);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,83), ('M', 50, 83), ('L', 50,83), ('XL', 50,83);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,84), ('M', 50, 84), ('L', 50,84), ('XL', 50,84);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,85), ('M', 50, 85), ('L', 50,85), ('XL', 50,85);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,86), ('M', 50, 86), ('L', 50,86), ('XL', 50,86);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,87), ('M', 50, 87), ('L', 50,87), ('XL', 50,87);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,88), ('M', 50, 88), ('L', 50,88), ('XL', 50,88);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,89), ('M', 50, 89), ('L', 50,89), ('XL', 50,89);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,90), ('M', 50, 90), ('L', 50,90), ('XL', 50,90);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,91), ('M', 50, 91), ('L', 50,91), ('XL', 50,91);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,92), ('M', 50, 92), ('L', 50,92), ('XL', 50,92);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,93), ('M', 50, 93), ('L', 50,93), ('XL', 50,93);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,94), ('M', 50, 94), ('L', 50,94), ('XL', 50,94);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,95), ('M', 50, 95), ('L', 50,95), ('XL', 50,95);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,96), ('M', 50, 96), ('L', 50,96), ('XL', 50,96);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,97), ('M', 50, 97), ('L', 50,97), ('XL', 50,97);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,98), ('M', 50, 98), ('L', 50,98), ('XL', 50,98);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,99), ('M', 50, 99), ('L', 50,99), ('XL', 50,99);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,100), ('M', 50, 100), ('L', 50,100), ('XL', 50,100);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,101), ('M', 50, 101), ('L', 50,101), ('XL', 50,101);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,102), ('M', 50, 102), ('L', 50,102), ('XL', 50,102);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,103), ('M', 50, 103), ('L', 50,103), ('XL', 50,103);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,104), ('M', 50, 104), ('L', 50,104), ('XL', 50,104);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,105), ('M', 50, 105), ('L', 50,105), ('XL', 50,105);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,106), ('M', 50, 106), ('L', 50,106), ('XL', 50,106);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,107), ('M', 50, 107), ('L', 50,107), ('XL', 50,107);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,108), ('M', 50, 108), ('L', 50,108), ('XL', 50,108);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,109), ('M', 50, 109), ('L', 50,109), ('XL', 50,109);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,110), ('M', 50, 110), ('L', 50,110), ('XL', 50,110);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,111), ('M', 50, 111), ('L', 50,111), ('XL', 50,111);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,112), ('M', 50, 112), ('L', 50,112), ('XL', 50,112);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,113), ('M', 50, 113), ('L', 50,113), ('XL', 50,113);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,114), ('M', 50, 114), ('L', 50,114), ('XL', 50,114);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,115), ('M', 50, 115), ('L', 50,115), ('XL', 50,115);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,116), ('M', 50, 116), ('L', 50,116), ('XL', 50,116);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,117), ('M', 50, 117), ('L', 50,117), ('XL', 50,117);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,118), ('M', 50, 118), ('L', 50,118), ('XL', 50,118);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,119), ('M', 50, 119), ('L', 50,119), ('XL', 50,119);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,120), ('M', 50, 120), ('L', 50,120), ('XL', 50,120);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,121), ('M', 50, 121), ('L', 50,121), ('XL', 50,121);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,122), ('M', 50, 122), ('L', 50,122), ('XL', 50,122);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,123), ('M', 50, 123), ('L', 50,123), ('XL', 50,123);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,124), ('M', 50, 124), ('L', 50,124), ('XL', 50,124);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,125), ('M', 50, 125), ('L', 50,125), ('XL', 50,125);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,126), ('M', 50, 126), ('L', 50,126), ('XL', 50,126);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,127), ('M', 50, 127), ('L', 50,127), ('XL', 50,127);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,128), ('M', 50, 128), ('L', 50,128), ('XL', 50,128);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,129), ('M', 50, 129), ('L', 50,129), ('XL', 50,129);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,130), ('M', 50, 130), ('L', 50,130), ('XL', 50,130);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,131), ('M', 50, 131), ('L', 50,131), ('XL', 50,131);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,132), ('M', 50, 132), ('L', 50,132), ('XL', 50,132);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,133), ('M', 50, 133), ('L', 50,133), ('XL', 50,133);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,134), ('M', 50, 134), ('L', 50,134), ('XL', 50,134);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,135), ('M', 50, 135), ('L', 50,135), ('XL', 50,135);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,136), ('M', 50, 136), ('L', 50,136), ('XL', 50,136);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,137), ('M', 50, 137), ('L', 50,137), ('XL', 50,137);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,138), ('M', 50, 138), ('L', 50,138), ('XL', 50,138);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,139), ('M', 50, 139), ('L', 50,139), ('XL', 50,139);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,140), ('M', 50, 140), ('L', 50,140), ('XL', 50,140);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,141), ('M', 50, 141), ('L', 50,141), ('XL', 50,141);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,142), ('M', 50, 142), ('L', 50,142), ('XL', 50,142);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,143), ('M', 50, 143), ('L', 50,143), ('XL', 50,143);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,144), ('M', 50, 144), ('L', 50,144), ('XL', 50,144);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,145), ('M', 50, 145), ('L', 50,145), ('XL', 50,145);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,146), ('M', 50, 146), ('L', 50,146), ('XL', 50,146);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,147), ('M', 50, 147), ('L', 50,147), ('XL', 50,147);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,148), ('M', 50, 148), ('L', 50,148), ('XL', 50,148);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,149), ('M', 50, 149), ('L', 50,149), ('XL', 50,149);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,150), ('M', 50, 150), ('L', 50,150), ('XL', 50,150);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,151), ('M', 50, 151), ('L', 50,151), ('XL', 50,151);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,152), ('M', 50, 152), ('L', 50,152), ('XL', 50,152);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,153), ('M', 50, 153), ('L', 50,153), ('XL', 50,153);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,154), ('M', 50, 154), ('L', 50,154), ('XL', 50,154);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,155), ('M', 50, 155), ('L', 50,155), ('XL', 50,155);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,156), ('M', 50, 156), ('L', 50,156), ('XL', 50,156);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,157), ('M', 50, 157), ('L', 50,157), ('XL', 50,157);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,158), ('M', 50, 158), ('L', 50,158), ('XL', 50,158);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,159), ('M', 50, 159), ('L', 50,159), ('XL', 50,159);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,160), ('M', 50, 160), ('L', 50,160), ('XL', 50,160);
+	INSERT INTO product_sizes (size, quantity, product_id) VALUES ('S', 50,161), ('M', 50, 161), ('L', 50,161), ('XL', 50,161);
+select * from product_sizes
 
-  INSERT INTO product_images (image_url, product_id) VALUES 
-('product1_image1.jpg', 1),
-('product1_image2.jpg', 1);
+  -- Insert data into product_images
+INSERT INTO product_images (image_url, product_id) VALUES
+	('http://example.com/product1_img1.jpg', 1),
+	('http://example.com/product2_img1.jpg', 2),
+	('http://example.com/product3_img1.jpg', 3),
+	('http://example.com/product4_img1.jpg', 4),
+	('http://example.com/product5_img1.jpg', 5),
+	('http://example.com/product6_img1.jpg', 6),
+	('http://example.com/product7_img1.jpg', 7),
+	('http://example.com/product8_img1.jpg', 8),
+	('http://example.com/product9_img1.jpg', 9),
+	('http://example.com/product10_img1.jpg', 10);
+select * from product_images
 
--- Insert sample data into accounts
-INSERT INTO accounts (username, [password], email, full_name, phone, [address], [role]) VALUES 
-('john_doe', 'password123', 'john@example.com', 'John Doe', '1234567890', '123 Elm Street', 'Customer'),
-('jane_doe', 'password456', 'jane@example.com', 'Jane Doe', '0987654321', '456 Oak Street', 'Customer');
+-- Insert data into accounts
+INSERT INTO accounts (username, [password], email, full_name, phone, [address], [role]) VALUES
+	('user1', 'pass1', 'user1@example.com', 'User One', '1234567890', '123 Example St, City', 'customer'),
+	('user2', 'pass2', 'user2@example.com', 'User Two', '1234567891', '124 Example St, City', 'customer'),
+	('user3', 'pass3', 'user3@example.com', 'User Three', '1234567892', '125 Example St, City', 'customer'),
+	('user4', 'pass4', 'user4@example.com', 'User Four', '1234567893', '126 Example St, City', 'customer'),
+	('user5', 'pass5', 'user5@example.com', 'User Five', '1234567894', '127 Example St, City', 'customer'),
+	('user6', 'pass6', 'user6@example.com', 'User Six', '1234567895', '128 Example St, City', 'customer'),
+	('user7', 'pass7', 'user7@example.com', 'User Seven', '1234567896', '129 Example St, City', 'customer'),
+	('user8', 'pass8', 'user8@example.com', 'User Eight', '1234567897', '130 Example St, City', 'customer'),
+	('user9', 'pass9', 'user9@example.com', 'User Nine', '1234567898', '131 Example St, City', 'customer'),
+	('user10', 'pass10', 'user10@example.com', 'User Ten', '1234567899', '132 Example St, City', 'customer');
+select * from accounts
 
--- Insert sample data into favorites
-INSERT INTO favorites (account_id, product_id) VALUES 
-(1, 1),
-(2, 2);
+-- Insert data into favorites
+INSERT INTO favorites (account_id, product_id) VALUES
+	(1, 1),
+	(2, 2),
+	(3, 3),
+	(4, 4),
+	(5, 5),
+	(6, 6),
+	(7, 7),
+	(8, 8),
+	(9, 9),
+	(10, 10);
+select * from favorites
 
--- Insert sample data into feedbacks
-INSERT INTO feedbacks (rate, content, create_date, [status], account_id, product_id) VALUES 
-(5, 'Great product!', GETDATE(), 1, 1, 1),
-(4, 'Good value for money.', GETDATE(), 1, 2, 1);
+-- Insert data into feedbacks
+INSERT INTO feedbacks (rate, content, create_date, [status], account_id, product_id) VALUES
+	(5, 'Great product!', '2023-01-01 10:00:00', 1, 1, 1),
+	(4, 'Good value for money.', '2023-02-01 11:00:00', 1, 2, 2),
+	(3, 'Average quality.', '2023-03-01 12:00:00', 1, 3, 3),
+	(5, 'Excellent!', '2023-04-01 13:00:00', 1, 4, 4),
+	(2, 'Not as expected.', '2023-05-01 14:00:00', 0, 5, 5),
+	(4, 'Satisfied.', '2023-06-01 15:00:00', 1, 6, 6),
+	(5, 'Will buy again.', '2023-07-01 16:00:00', 1, 7, 7),
+	(3, 'Okay.', '2023-08-01 17:00:00', 1, 8, 8),
+	(4, 'Pretty good.', '2023-09-01 18:00:00', 1, 9, 9),
+	(2, 'Could be better.', '2023-10-01 19:00:00', 0, 10, 10);
+select * from feedbacks
 
--- Insert sample data into vouchers
-INSERT INTO vouchers (code, discount_amount, [condition], valid_form, valid_to, create_date) VALUES 
-('DISCOUNT10', 10.00, 50.00, '2024-01-01', '2024-12-31', GETDATE()),
-('DISCOUNT20', 20.00, 100.00, '2024-01-01', '2024-12-31', GETDATE());
+-- Insert data into vouchers
+INSERT INTO vouchers (code, discount_amount, condition, valid_form, valid_to, create_date) VALUES
+	('DISCOUNT10', 10.00, 50.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('SAVE20', 20.00, 100.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('OFFER15', 15.00, 75.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('PROMO5', 5.00, 25.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('SALE30', 30.00, 150.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('DEAL25', 25.00, 125.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('DISCOUNT50', 50.00, 200.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('SAVE10', 10.00, 50.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('OFFER20', 20.00, 100.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00'),
+	('PROMO15', 15.00, 75.00, '2023-01-01 00:00:00', '2023-12-31 23:59:59', '2023-01-01 00:00:00');
+select * from vouchers
 
--- Insert sample data into orders
-INSERT INTO orders (order_date, total_amount, [status], [address], phone, voucher_id, account_id) VALUES 
-(GETDATE(), 989.99, 'Processing', '123 Elm Street', '1234567890', 1, 1),
-(GETDATE(), 29.99, 'Shipped', '456 Oak Street', '0987654321', 2, 2);
+-- Insert data into orders
+INSERT INTO orders (order_date, total_amount, [status], [address], phone, voucher_id, account_id) VALUES
+	('2023-01-01 10:00:00', 100.00, 'Shipped', '123 Example St, City', '1234567890', 1, 1),
+	('2023-02-01 11:00:00', 200.00, 'Delivered', '124 Example St, City', '1234567891', 2, 2),
+	('2023-03-01 12:00:00', 300.00, 'Processing', '125 Example St, City', '1234567892', 3, 3),
+	('2023-04-01 13:00:00', 400.00, 'Cancelled', '126 Example St, City', '1234567893', 4, 4),
+	('2023-05-01 14:00:00', 500.00, 'Shipped', '127 Example St, City', '1234567894', 5, 5),
+	('2023-06-01 15:00:00', 600.00, 'Delivered', '128 Example St, City', '1234567895', 6, 6),
+	('2023-07-01 16:00:00', 700.00, 'Processing', '129 Example St, City', '1234567896', 7, 7),
+	('2023-08-01 17:00:00', 800.00, 'Cancelled', '130 Example St, City', '1234567897', 8, 8),
+	('2023-09-01 18:00:00', 900.00, 'Shipped', '131 Example St, City', '1234567898', 9, 9),
+	('2023-10-01 19:00:00', 1000.00, 'Delivered', '132 Example St, City', '1234567899', 10, 10);
+select * from orders
 
+-- Insert data into order_details
+INSERT INTO order_details (quantity, price, size, order_id, product_id) VALUES
+	(1, 10.00, 'M', 1, 1),
+	(2, 20.00, 'L', 2, 2),
+	(3, 30.00, 'XL', 3, 3),
+	(4, 40.00, 'S', 4, 4),
+	(5, 50.00, 'M', 5, 5),
+	(6, 60.00, 'L', 6, 6),
+	(7, 70.00, 'XL', 7, 7),
+	(8, 80.00, 'S', 8, 8),
+	(9, 90.00, 'M', 9, 9),
+	(10, 100.00, 'L', 10, 10);
+select * from orders
 
--- Insert sample data into order_details
-INSERT INTO order_details (quantity, price, size, order_id, product_id) VALUES 
-(1, 999.99, 'XL', 1, 1),
-(2, 19.99, 'XL',2, 2); 
 --  drop database SweetH_Clothes_Store
+--  DROP DATABASE SweetH_Clothes_Store;
