@@ -4880,12 +4880,14 @@ a {
     max-width: 385px;
     margin: 10px auto;
     display: none;
+padding: 10px;
 }
 
 .err_form.active {
     display: block;
-    background-color: #FF3333;
-    color: #FFF;
+    background-color: rgb(252 165 165);
+    color: rgb(153 27 27);
+	border: 1px solid rgb(185 28 28);
 }
 
 .success_form.active {
@@ -5130,5 +5132,32 @@ h4.total-amount {
 .btn-close-modal:hover {
     background-color: #654321; /* Màu hover (nếu cần) */
 }
+
+
+.layer{
+    position: relative;
+}
+
+.search-result{
+    position: absolute;
+    top: 40px;
+    left: 0;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    display: none;
+}
+
+
+.search-result.active{
+    display: block;
+}
+
 
 
