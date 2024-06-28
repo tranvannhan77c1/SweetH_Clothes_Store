@@ -5158,6 +5158,28 @@ h4.total-amount {
 .search-result.active{
     display: block;
 }
+.product-container {
+    text-align: center; /* Căn giữa các phần tử */
+    display: flex;
+    flex-direction: column; /* Đảm bảo các phần tử con được sắp xếp theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+    margin-bottom: 10px; /* Khoảng cách giữa ảnh chính và ảnh thumbnail */
+}
 
+.thumbnail-container {
+    display: flex;
+    justify-content: center; /* Căn giữa các thumbnail */
+    gap: 5px; /* Khoảng cách giữa các thumbnail */
+    margin-top: 10px; /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
+}
 
+.thumbnail {
+    width: 60px; /* Kích thước của thumbnail */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s; /* Hiệu ứng khi di chuột */
+}
 
+.thumbnail:hover {
+    transform: scale(1.1); /* Phóng to thumbnail khi di chuột */
+}
