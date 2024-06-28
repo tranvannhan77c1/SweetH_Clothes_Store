@@ -5,6 +5,12 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
     $scope.cart = [];
     $scope.showSuccessAlert = false;
 
+    $scope.query = '';
+
+    $scope.searching = function() {
+        console.log($scope.query)
+    }
+
     // Lấy dữ liệu sản phẩm từ API
     $http.get('http://localhost:8080/api/v1/product/landing?page=1&limit=8')
         .then(function(response) {

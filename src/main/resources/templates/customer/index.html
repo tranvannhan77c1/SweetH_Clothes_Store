@@ -40,14 +40,18 @@
 
                         <ul class="nav-shop">
                             <li class="nav-item">
-                                <form id="search-form" action="search.html" method="GET" class="search-form d-flex">
-                                    <div class="input-group">
-                                        <input type="text" name="query" id="search-input" class="form-control" placeholder="Tìm kiếm..." aria-label="Search">
+                                <div id="search-form" class="search-form d-flex">
+                                    <div class="input-group layer" >
+                                        <input type="text" name="query" ng-model="query" ng-change="searching()" id="search-input" class="form-control" placeholder="Tìm kiếm..." aria-label="Search">
                                         <button class="btn btn-outline-secondary" type="submit">
                                             <i class="ti-search"></i>
                                         </button>
+
+                                        <div class="search-result">
+
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </li>
                             <li class="nav-item"><a href="pages/cart.html">
                                 <a href="pages/cart.html">
@@ -562,6 +566,7 @@
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
     <script src="js/category.js"></script>
+    <script src="js/func.js"></script>
 </body>
 
 </html>
