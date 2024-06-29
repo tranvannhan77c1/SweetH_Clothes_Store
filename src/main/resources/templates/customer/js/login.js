@@ -1,0 +1,42 @@
+var app = angular.module('loginApp', []);
+
+app.controller('loginController', ['$scope', '$http', '$window', function($scope, $http) {
+    $scope.cart = [];
+    $scope.username = '';
+    $scope.password = '';
+
+
+    // Load giỏ hàng từ local storage khi trang được tải
+    var storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+        $scope.cart = JSON.parse(storedCart);
+    }
+
+    $scope.login = function() {
+        var loginData = {
+            username: $scope.username,
+            password: $scope.password
+        };
+
+        // console.log($scope.username)
+        // console.log($scope.password)
+
+        $http.post('http://localhost:8080/api/auth/login', loginData)
+            .then(function(response) {
+                // Handle success
+                console.log('Login successful:', response.data);
+                
+                // Store the JWT token
+                var token = response.data.accessToken;
+                localStorage.setItem('jwtToken', JSON.stringify(token));
+                var accountDetail = response.data.account;
+                localStorage.setItem('accountDetail', JSON.stringify(accountDetail));
+                // Redirect to a secure page or perform other actions
+                // Example: $window.location.href = '/secure-page';
+            })
+            .catch(function(error) {
+                // Handle error
+                console.error('Login failed:', error);
+            });
+    };
+}]);
