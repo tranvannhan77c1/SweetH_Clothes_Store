@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
   <!-- Required meta tags -->
@@ -131,35 +131,45 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <div class="main-panel" ng-controller="AccountController">
         <div class="content-wrapper mb-0 pb-0">
           <div class="row mb-0">
             <div class="col-md-4 grid-margin stretch-card mb-0">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Thông Tin Tài Khoản</h4>
-                  <form class="forms-sample">
+                  <form class="forms-sample" ng-init="isEditMode = false">
                     <div class="form-group">
                       <label for="Username">Tên Đăng Nhập</label>
-                      <input type="text" class="form-control" id="Username" placeholder="Tên Đăng Nhập">
+                      <input type="text" class="form-control" id="Username" placeholder="Tên Đăng Nhập" ng-model="account.username" ng-disabled="!isEditMode">
                     </div>
                     <div class="form-group">
                       <label for="Email">Địa Chỉ Email</label>
-                      <input type="email" class="form-control" id="Email" placeholder="Địa Chỉ Email">
+                      <input type="email" class="form-control" id="Email" placeholder="Địa Chỉ Email" ng-model="account.email" ng-disabled="!isEditMode">
                     </div>
                     <div class="form-group">
                       <label for="Fullname">Họ Và Tên</label>
-                      <input type="text" class="form-control" id="Fullname" placeholder="Họ Và Tên">
+                      <input type="text" class="form-control" id="Fullname" placeholder="Họ Và Tên" ng-model="account.fullName" ng-disabled="!isEditMode">
                     </div>
                     <div class="form-group">
                       <label for="Phone">Số Điện Thoại</label>
-                      <input type="text" class="form-control" id="Phone" placeholder="Số Điện Thoại">
+                      <input type="text" class="form-control" id="Phone" placeholder="Số Điện Thoại" ng-model="account.phone" ng-disabled="!isEditMode">
                     </div>
                     <div class="form-group">
                       <label for="Address">Địa Chỉ</label>
-                      <input type="text" class="form-control" id="Address" placeholder="Địa Chỉ">
+                      <input type="text" class="form-control" id="Address" placeholder="Địa Chỉ" ng-model="account.address" ng-disabled="!isEditMode">
                     </div>
-                    <button type="submit" class="btn btn-inverse-success mr-2">Thêm Nhân Viên</button>
+                    <div class="form-group" ng-show="showPasswordInputs">
+                      <label for="Password">Mật khẩu</label>
+                      <input type="password" class="form-control" id="Password" ng-model="account.password" placeholder="Mật khẩu">
+                    </div>
+                    <div class="form-group" ng-show="showPasswordInputs">
+                      <label for="ConfirmPassword">Nhập lại mật khẩu</label>
+                      <input type="password" class="form-control" id="ConfirmPassword" ng-model="confirmPassword" placeholder="Nhập lại mật khẩu">
+                    </div>
+
+                    <button type="submit" class="btn btn-inverse-success mr-2" ng-click="addEmployee()">Thêm Nhân Viên</button>
+                    <button type="button" class="btn btn-inverse-info mt-2" ng-click="resetForm()">Hiện Form Thêm Nhân Viên</button>
                   </form>
                 </div>
               </div>
@@ -173,65 +183,39 @@
                     <table class="table table-hover table-bordered">
                       <thead>
                         <tr>
+                          <th>Hành Động</th>
                           <th>Tên Đăng Nhập</th>
                           <th>Địa Chỉ Email</th>
                           <th>Họ Và Tên</th>
                           <th>Số Điện Thoại</th>
+                          <th>Phân Quyền</th>
                           <th>Địa Chỉ</th>
-                          <th>Hành Động</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>nhanproyt123</td>
-                          <td>nhanproyt123@gmail.com</td>
-                          <td>Trần Văn Nhân </td>
-                          <td>0376758600</td>
-                          <td>Địa Chỉ</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td>nhanproyt123</td>
-                          <td>nhanproyt123@gmail.com</td>
-                          <td>Trần Văn Nhân </td>
-                          <td>0376758600</td>
-                          <td>Địa Chỉ</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td>nhanproyt123</td>
-                          <td>nhanproyt123@gmail.com</td>
-                          <td>Trần Văn Nhân </td>
-                          <td>0376758600</td>
-                          <td>Địa Chỉ</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td>nhanproyt123</td>
-                          <td>nhanproyt123@gmail.com</td>
-                          <td>Trần Văn Nhân </td>
-                          <td>0376758600</td>
-                          <td>Địa Chỉ</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td>nhanproyt123</td>
-                          <td>nhanproyt123@gmail.com</td>
-                          <td>Trần Văn Nhân </td>
-                          <td>0376758600</td>
-                          <td>Địa Chỉ</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button></td>
+                        <tr ng-repeat="account in accounts">
+                          <td><button type="button" class="btn btn-inverse-info btn-sm" ng-click="viewAccountDetails(account.id)">Xem Chi Tiết</button></td>
+                          <td>{{ account.username }}</td>
+                          <td>{{ account.email }}</td>
+                          <td>{{ account.fullName }}</td>
+                          <td>{{ account.phone }}</td>
+                          <td>{{ account.address }}</td>
+                          <td>{{ account.role }}</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="mt-2">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-secondary">1</button>
-                      <button type="button" class="btn btn-outline-secondary">2</button>
-                      <button type="button" class="btn btn-outline-secondary">3</button>
-                      <button type="button" class="btn btn-outline-secondary">4</button>
-                      <button type="button" class="btn btn-outline-secondary"><i class="mdi mdi mdi-arrow-right"></i></button>
+                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0"
+                              ng-click="previousPage()"><i class="mdi mdi-chevron-double-left"></i></button>
+                      <button type="button" class="btn btn-outline-secondary" ng-repeat="page in paginationButtons"
+                              ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">
+                        {{ page + 1 }}
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary"
+                              ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()"><i
+                              class="mdi mdi-chevron-double-right"></i></button>
                     </div>
                   </div>
                 </div>
@@ -274,7 +258,10 @@
   <script src="../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  
+  <script src="../js/angular/angular.min.js"></script>
+  <script src="../jsAdmin/app.js"></script>
+  <script src="../jsAdmin/account/accountService.js"></script>
+  <script src="../jsAdmin/account/accountController.js"></script>
   <!-- End custom js for this page-->
 </body>
 
