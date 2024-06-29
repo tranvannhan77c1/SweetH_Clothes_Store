@@ -21,7 +21,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.sweeth_clothes_store.service.AccountDetailsService;
 import com.sweeth_clothes_store.util.JwtAuthenticationFilter;
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity

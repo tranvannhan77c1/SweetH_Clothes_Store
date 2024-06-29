@@ -18,7 +18,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "thumbnail_image")
     private String thumbnailImage;
@@ -28,12 +28,6 @@ public class Product {
 
     @Column(name = "price", nullable = false)
     private BigDecimal price;
-
-    @Column(name = "weight", nullable = false)
-    private Integer weight;
-
-    @Column(name = "size", nullable = false)
-    private String size;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
@@ -58,18 +52,22 @@ public class Product {
 	private Category category;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<Favorite> favorites;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<Feedback> feedbacks;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductImage> productImages;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<ProductSize> productSizes;
+
 	@JsonIgnore
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<OrderDetail> orderDetails;
 }

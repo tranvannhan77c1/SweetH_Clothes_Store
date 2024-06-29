@@ -150,7 +150,7 @@ a {
     padding: 0px;
     border: 0px;
     border-radius: 0px;
-    font-size:  17px;
+    font-size: 17px;
 }
 
 .header_area .navbar .nav .nav-item {
@@ -929,7 +929,7 @@ a {
 }
 
 .offer {
-    background-image: url("/img/anhbanner2.jpg");
+    background-image: url("/templates/customer/img/anhbanner2.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3710,7 +3710,6 @@ a {
 
 @media (min-width: 1000px) {
     .login_form_inner {
-        padding-top: 115px;
         padding-bottom: 0
     }
 }
@@ -3719,7 +3718,6 @@ a {
     color: #8B4513;
     text-transform: uppercase;
     font-size: 40px;
-    margin-bottom: 90px
 }
 
 .login_form_inner .login_form {
@@ -3797,10 +3795,6 @@ a {
     color: #777;
     margin-top: 20px;
     display: block
-}
-
-.register_form_inner {
-    padding-top: 70px
 }
 
 .instagram_area {
@@ -4073,35 +4067,52 @@ a {
 }
 
 .cart_inner .table tbody tr.shipping_area td:nth-child(3) {
-    vertical-align: top
+    vertical-align: top;
 }
 
-.cart_inner .table tbody tr.shipping_area .shipping_box {
-    margin-top: -5px;
-    margin-left: -250px;
-    text-align: right
+.shipping_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.shipping-select-container {
+    display: flex;
+    gap: 10px;
+    /* Khoảng cách giữa các phần tử select */
+    margin-bottom: 10px;
+    /* Khoảng cách dưới */
+    margin-right: 50px;
+}
+
+.shipping_select {
+    width: 100%;
+    /* Đặt chiều rộng 100% để phù hợp với container */
+    background: #f1f6f7;
+    border: 1px solid #eeeeee;
+    height: 40px;
+    color: #999999;
+    margin-right: 500px;
 }
 
 .cart_inner .table tbody tr.shipping_area h5 {
     text-align: right;
-    /* Căn phải nội dung của phần tử */
     margin-right: 10px;
-    /* Tạo khoảng cách bên phải */
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li {
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li:last-child {
-    margin-bottom: 0px
+    margin-bottom: 0px;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a {
     padding-right: 30px;
     font-size: 15px;
     color: #777;
-    position: relative
+    position: relative;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:before {
@@ -4114,7 +4125,7 @@ a {
     position: absolute;
     right: 0px;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:after {
@@ -4128,11 +4139,11 @@ a {
     right: 3px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0
+    opacity: 0;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li.active a:after {
-    opacity: 1
+    opacity: 1;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box h6 {
@@ -4150,35 +4161,10 @@ a {
 }
 
 .address-section {
-    margin-top: -22px;
-    /* Điều chỉnh giá trị này để di chuyển lên hoặc xuống */
-    margin-left: 250px;
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select {
-    display: block;
-    width: 100%;
-    background: #f1f6f7;
-    border: 1px solid #eeeeee;
-    height: 40px;
-    color: #999999;
-    margin-bottom: 10px;
-    /* Giảm margin-bottom để di chuyển lên trên */
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select:after {
-    right: 20px
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list {
-    width: 100%;
-    border-radius: 0px
-}
-
-.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list li {
-    font-size: 14px;
-    font-weight: normal;
-    color: #777
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    padding: 0;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box input {
@@ -4190,11 +4176,11 @@ a {
     font-size: 14px;
     color: #999999;
     padding: 0px 15px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box input::placeholder {
-    color: #999999
+    color: #999999;
 }
 
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner {
@@ -4886,4 +4872,314 @@ a {
 .search-form i {
     margin-right: 5px;
     /* Thêm khoảng cách giữa biểu tượng và văn bản */
+}
+
+.err_form,
+.success_form {
+    width: 100%;
+    max-width: 385px;
+    margin: 10px auto;
+    display: none;
+padding: 10px;
+}
+
+.err_form.active {
+    display: block;
+    background-color: rgb(252 165 165);
+    color: rgb(153 27 27);
+	border: 1px solid rgb(185 28 28);
+}
+
+.success_form.active {
+    display: block;
+    background-color: #5dcd95;
+    color: #FFF;
+}
+
+.cart-item__thumbnail {
+    width: 50px;
+    /* Thiết lập chiều rộng của ảnh */
+    height: auto;
+    /* Cho phép chiều cao tự động tính toán để giữ tỷ lệ khung hình */
+}
+
+
+/* Đảm bảo toàn bộ thẻ <td> được căn chỉnh giữa */
+
+
+/* Đảm bảo toàn bộ thẻ <td> được căn chỉnh giữa */
+
+td.total {
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #f2f2f2;
+}
+
+
+/* Định dạng cho phần tổng tiền */
+
+h4.total-amount {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin: 180px 0 0 0;
+    /* Thêm khoảng cách phía trên */
+}
+
+.shipping_area {
+    border-collapse: collapse;
+    /* Để các đường viền của bảng liền nhau */
+    width: 100%;
+    /* Chiều rộng bảng là 100% của phần tử chứa nó */
+}
+
+.shipping_area td {
+    padding: 10px;
+    /* Để tăng khoảng cách nội dung bên trong từng ô */
+    border: 1px solid #ccc;
+    /* Để tạo đường viền xung quanh từng ô */
+}
+
+.shipping_area label {
+    display: block;
+    /* Để label chiếm toàn bộ chiều rộng của ô */
+    margin-bottom: 10px;
+    /* Để tăng khoảng cách giữa các label */
+    font-size: 15px;
+}
+
+.shipping_area select,
+.shipping_area input[type="text"] {
+    width: 100%;
+    /* Để input và select có độ rộng bằng nhau và bằng 100% của ô chứa */
+    padding: 8px;
+    /* Để tăng khoảng cách bên trong input và select */
+    margin-bottom: 10px;
+    /* Để tăng khoảng cách giữa các input và select */
+}
+
+.shipping_area .total {
+    text-align: center;
+    /* Căn giữa nội dung trong ô có class "total" */
+}
+
+.total-amount {
+    margin: 0;
+    /* Để loại bỏ khoảng cách lề của phần tử h4 */
+}
+
+.total-shipping-cost strong {
+    font-weight: bold;
+}
+
+.bold-label {
+    font-weight: bold;
+    font-size: 16px;
+    /* Tùy chỉnh kích thước font nếu cần */
+    color: #333;
+    /* Tùy chỉnh màu sắc nếu cần */
+    margin-bottom: 10px;
+    /* Tùy chỉnh khoảng cách dưới nếu cần */
+}
+
+
+/* General styling for the container */
+
+
+/* General styling for the container */
+
+.row.product_size {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Styling for the label */
+
+.row.product_size p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+/* Styling for the size buttons container */
+
+.size-buttons {
+    display: flex;
+}
+
+
+/* Styling for each size button */
+
+.size-button {
+    padding: 5px 10px;
+    font-size: 13px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    margin-right: 10px;
+    margin-top: -30px;
+    /* Add space between buttons */
+}
+
+
+/* Change background and border color on hover */
+
+.size-button:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+
+/* Change border color to red when selected */
+
+.size-button.selected {
+    background-color: #fff;
+    color: #000;
+    border-color: red;
+}
+.dropdown-toggle::after {
+    display: none !important;
+}
+/* CSS để trang trí menu dropdown */
+.nav-item {
+    list-style-type: none; /* Bỏ đi kiểu danh sách mặc định */
+    padding: 0; /* Bỏ padding để căn chỉnh với biểu tượng */
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem; /* Điều chỉnh padding tùy theo nhu cầu */
+    color: #212529; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền mượt */
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
+    color: #8B4513; /* Màu chữ khi di chuột qua */
+}
+
+.dropdown-menu {
+    min-width: 180px; /* Điều chỉnh chiều rộng tùy theo nhu cầu */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Tạo bóng cho dropdown */
+    border: 1px solid rgba(0, 0, 0, 0.15); /* Viền dropdown */
+    background-color: #ffffff; /* Màu nền dropdown */
+    left: -50px; /* Di chuyển dropdown về bên trái 10px */
+}
+
+.dropdown-menu .nav-item {
+    margin: 0; /* Bỏ margin của các mục danh sách */
+}
+
+.dropdown-menu .nav-link {
+    display: block;
+    padding: 0.5rem 1rem; /* Điều chỉnh padding tùy theo nhu cầu */
+    color: #212529; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền mượt */
+}
+
+.dropdown-menu .nav-link:hover {
+    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
+    color: #8B4513; /* Màu chữ khi di chuột qua */
+}
+
+.dropdown-menu-end {
+    right: 0; /* Đặt dropdown menu bên phải */
+}
+
+.dropdown-menu .nav-item {
+    text-align: left; /* Căn chỉnh chữ trái */
+}
+.single-prd-item {
+    text-align: center; /* Căn giữa nội dung */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa của single-prd-item */
+    margin: 0 auto; /* Canh giữa single-prd-item */
+}
+
+.single-prd-item img {
+    max-width: 100%; /* Giới hạn chiều rộng tối đa của ảnh là 100% của phần tử cha */
+    height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
+    display: block; /* Đảm bảo ảnh hiển thị là một khối */
+}
+.modal-content {
+    border-radius: 0;
+}
+.modal-header {
+    background-color: #8B4513;
+    color: #fff;
+}
+.modal-title {
+    color: #fff;
+}
+.modal-body {
+    text-align: center;
+}
+.modal-footer {
+    justify-content: center;
+}
+.btn-close-modal {
+    background-color: #8B4513;
+    color: #fff; /* Màu chữ trắng */
+    border: none; /* Bỏ viền */
+}
+.btn-close-modal:hover {
+    background-color: #654321; /* Màu hover (nếu cần) */
+}
+
+
+.layer{
+    position: relative;
+}
+
+.search-result{
+    position: absolute;
+    top: 40px;
+    left: 0;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    display: none;
+}
+
+
+.search-result.active{
+    display: block;
+}
+.product-container {
+    text-align: center; /* Căn giữa các phần tử */
+    display: flex;
+    flex-direction: column; /* Đảm bảo các phần tử con được sắp xếp theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+    margin-bottom: 10px; /* Khoảng cách giữa ảnh chính và ảnh thumbnail */
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center; /* Căn giữa các thumbnail */
+    gap: 5px; /* Khoảng cách giữa các thumbnail */
+    margin-top: 10px; /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
+}
+
+.thumbnail {
+    width: 60px; /* Kích thước của thumbnail */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s; /* Hiệu ứng khi di chuột */
+}
+
+.thumbnail:hover {
+    transform: scale(1.1); /* Phóng to thumbnail khi di chuột */
 }

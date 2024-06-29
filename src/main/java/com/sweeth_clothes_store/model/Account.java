@@ -17,7 +17,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
@@ -25,17 +25,20 @@ public class Account {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true , nullable = false)
     private String phone;
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "role", nullable = false)
+    private String role = "Customer"; // Giá trị mặc định
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
@@ -44,10 +47,6 @@ public class Account {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	private List<Feedback> feedbacks;
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
-	private List<Authority> authorities;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
