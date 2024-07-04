@@ -44,15 +44,52 @@ angular.module('app')
             $scope.confirmPassword = '';
         };
 
+        const validateEmail = (email) => {
+            return String(email)
+                .toLowerCase()
+                .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        };
+
         $scope.addEmployee = function() {
             // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp nhau không
-            if ($scope.account.password !== $scope.confirmPassword) {
+
+            if (!$scope.account.username ||
+                !$scope.account.password ||
+                !$scope.account.email ||
+                !$scope.account.fullname ||
+                !$scope.account.phone ||
+                !$scope.account.address) {
+                alert("Vui lòng nhập đầy đủ thông tin")
+                return
+            }
+
+            if(!validateEmail($scope.account.email)){
+                alert("Email không đúng định dạng")
+                return
+            }
+
+            if ($scope.account.username.length <= 5){
+                alert('Tài khoản phải có ít nhất 6 kí tự');
+                return
+            }
+
+
+            if($scope.account.password !== $scope.confirmPassword) {
                 alert('Mật khẩu và nhập lại mật khẩu không khớp.');
                 return;
             }
+
+            var regex = /^0\d{9,10}$/;
+            if(!regex.test($scope.account.phone)){
+                alert("Số điện thoại không hợp lệ")
+                return
+            }
+
+
             // Thiết lập role mặc định là "Employee"
             $scope.account.role = "Employee";
-
             // Gọi service để thực hiện thêm nhân viên và xử lý response
             AccountService.addEmployee($scope.account)
                 .then(function(response) {
