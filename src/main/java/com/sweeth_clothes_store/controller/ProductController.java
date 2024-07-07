@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,21 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<ProductDTO>> getSingleProduct(@PathVariable int id) {
 		return new ResponseEntity<Optional<ProductDTO>>(productService.getProductByID(id), HttpStatus.OK);
+	}
+	// Endpoint để lấy danh sách sản phẩm theo màu sắc
+	@GetMapping("/color/{color}")
+	public ResponseEntity<List<ProductDTO>> getProductsByColor(@PathVariable String color) {
+		return new ResponseEntity<List<ProductDTO>>(productService.getProductsByColor(color), HttpStatus.OK);
+	}
+	// lấy sp theo danh mục
+	@GetMapping("/item/{itemId}")
+	public ResponseEntity<List<ProductDTO>> getProductsByItem(@PathVariable int itemId) {
+		List<ProductDTO> products = productService.getProductsByItem(itemId);
+		return new ResponseEntity<>(products, HttpStatus.OK);
+	}
+	@GetMapping("/color/{color}/item/{itemId}")
+	public ResponseEntity<List<ProductDTO>> getProductsByColorAndItem(@PathVariable String color, @PathVariable int itemId) {
+		List<ProductDTO> products = productService.getProductsByColorAndItem(color, itemId);
+		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 }

@@ -1,6 +1,8 @@
 package com.sweeth_clothes_store.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,4 +28,19 @@ public class ProductService {
 		Optional<Product> product = productRepository.findById(id);
         return product.map(ProductMapper::toDTO);
 	}
+	// Phương thức để lấy danh sách sản phẩm theo màu sắc
+	public List<ProductDTO> getProductsByColor(String color) {
+		List<Product> products = productRepository.findByColor(color);
+		return products.stream().map(ProductMapper::toDTO).collect(Collectors.toList());
+	}
+	//lấy sp theo danh mục
+	public List<ProductDTO> getProductsByItem(int itemId) {
+		List<Product> products = productRepository.findByCategory_Item_Id(itemId);
+		return products.stream().map(ProductMapper::toDTO).collect(Collectors.toList());
+	}
+	public List<ProductDTO> getProductsByColorAndItem(String color, int itemId) {
+		List<Product> products = productRepository.findByColorAndCategory_Item_Id(color, itemId);
+		return products.stream().map(ProductMapper::toDTO).collect(Collectors.toList());
+	}
+
 }
