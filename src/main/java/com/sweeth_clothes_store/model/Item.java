@@ -13,17 +13,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Items")
+@Table(name = "items")
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-	@Column(name = "name" , unique = true, nullable = false)
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     @JsonIgnore
     @OneToMany(mappedBy = "item")
-    private List<Category> categories;
+    private List<Category> categories; // Nếu không dùng đến thì bỏ dòng này
 }

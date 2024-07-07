@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -144,16 +144,16 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Thông Tin Danh Mục</h4>
-                  <form class="forms-sample">
+                  <form class="forms-sample" th:action="@{/admin/items/add}" th:object="${item}" method="post">
                     <div class="form-group">
                       <label for="name">Tên Danh Mục</label>
-                      <input type="text" class="form-control" id="name" placeholder="Tên Danh Mục">
+                      <input type="text" class="form-control" th:field="*{name}" placeholder="Tên Danh Mục">
                     </div>
                     <div>
                       <button type="submit" class="btn btn-inverse-success mr-2">Thêm</button>
-                      <button type="submit" class="btn btn-inverse-warning mr-2">Cập Nhập</button>
-                      <button type="submit" class="btn btn-inverse-danger mr-2">Xoá</button>
-                      <button type="submit" class="btn btn-inverse-info mr-2 mt-2">Làm Mới</button>
+                      <button type="submit" class="btn btn-inverse-warning mr-2" th:action="@{/admin/items/update/{id}(id=${item.id})}">Cập Nhập</button>
+                      <button type="button" class="btn btn-inverse-danger mr-2" onclick="deleteItem(${item.id})">Xoá</button>
+                      <button type="reset" class="btn btn-inverse-info mr-2 mt-2">Làm Mới</button>
                     </div>
                   </form>
                 </div>
@@ -167,50 +167,21 @@
                   <div class="table-responsive">
                     <table class="table table-hover table-bordered">
                       <thead>
-                        <tr>
-                          <th>Tên Danh Mục</th>
-                          <th>Số Chủng Loại</th>
-                          <th>Số Sản Phẩm</th>
-                          <th>Hành Động</th>
-                        </tr>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                      </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Quần Jeans</td>
-                          <td>10</td>
-                          <td>100</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button>
-                            <button type="button" class="btn btn-inverse-danger btn-sm">Xoá</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Áo Thun</td>
-                          <td>10</td>
-                          <td>100</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button>
-                            <button type="button" class="btn btn-inverse-danger btn-sm">Xoá</button></td>
-                        </tr>
-                        <tr>
-                          <td>Đầm</td>
-                          <td>10</td>
-                          <td>100</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button>
-                            <button type="button" class="btn btn-inverse-danger btn-sm">Xoá</button></td>
-                        </tr>
-                        <tr>
-                          <td>Sfsadf</td>
-                          <td>10</td>
-                          <td>100</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button>
-                            <button type="button" class="btn btn-inverse-danger btn-sm">Xoá</button></td>
-                        </tr>
-                        <tr>
-                          <td>Quần Jeans</td>
-                          <td>10</td>
-                          <td>100</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button>
-                            <button type="button" class="btn btn-inverse-danger btn-sm">Xoá</button></td>
-                        </tr>
+                      <tr th:each="item : ${items}">
+                        <td th:text="${item.id}">ID</td>
+                        <td th:text="${item.name}">Name</td>
+                        <td>
+                          <button type="button" class="btn btn-inverse-info btn-sm" th:onclick="'location.href=\'/admin/items/edit/' + ${item.id} + '\''">Chỉnh Sửa</button>
+                          <button type="button" class="btn btn-inverse-danger btn-sm" th:onclick="'location.href=\'/admin/items/delete/' + ${item.id} + '\''">Xoá</button>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
