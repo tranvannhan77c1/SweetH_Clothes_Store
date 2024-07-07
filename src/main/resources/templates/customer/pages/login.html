@@ -67,14 +67,14 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Đăng Nhập </h3>
-						<form class="row login_form" action="/login" id="contactForm" method="post">
+						<form class="row login_form" ng-submit="login()" id="contactForm" method="post">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="username" name="username"
+								<input type="text" class="form-control" id="username" name="username" ng-model="username"
 									placeholder="Tài khoản" onfocus="this.placeholder = ''"
 									onblur="this.placeholder = 'Tài khoản'" required>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="password" name="password"
+								<input type="password" class="form-control" id="password" name="password" ng-model="password"
 									placeholder="Mật khẩu" onfocus="this.placeholder = ''"
 									onblur="this.placeholder = 'Mật khẩu'" required>
 							</div>

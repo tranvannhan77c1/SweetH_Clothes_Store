@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('OrdersController', ['$scope', 'OrdersService', function($scope, OrdersService) {
+    .controller('OrderController', ['$scope', 'OrderService', function($scope, OrderService) {
 
         $scope.currentPage = 0; // Trang hiện tại
         $scope.pageSize = 8; // Kích thước mỗi trang
@@ -17,7 +17,7 @@ angular.module('app')
         };
 
         $scope.getOrders = function(page, size) {
-            OrdersService.getAllOrders(page, size)
+            OrderService.getAllOrders(page, size)
                 .then(function(data) {
                     $scope.orders = data.content;
                     $scope.totalPages = data.totalPages;
@@ -59,7 +59,7 @@ angular.module('app')
 
         // Hàm lấy chi tiết đơn hàng
         $scope.getOrderDetails = function(orderId) {
-            OrdersService.getOrderDetails(orderId)
+            OrderService.getOrderDetails(orderId)
                 .then(function(orderDetails) {
                     $scope.orderDetails = orderDetails;
                     console.log(orderDetails)

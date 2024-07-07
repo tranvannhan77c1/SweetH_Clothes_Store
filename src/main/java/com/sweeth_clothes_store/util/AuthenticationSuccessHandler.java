@@ -1,4 +1,4 @@
-package com.sweeth_clothes_store.config;
+package com.sweeth_clothes_store.util;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
