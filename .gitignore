@@ -37,3 +37,4 @@ build/
 
 # Ignore application.properties to prevent committing sensitive information
 /src/main/resources/application.properties
+

@@ -55,15 +55,15 @@ angular.module('app')
         $scope.addEmployee = function() {
             // Kiểm tra mật khẩu và nhập lại mật khẩu có khớp nhau không
 
-            if (!$scope.account.username ||
-                !$scope.account.password ||
-                !$scope.account.email ||
-                !$scope.account.fullname ||
-                !$scope.account.phone ||
-                !$scope.account.address) {
-                alert("Vui lòng nhập đầy đủ thông tin")
-                return
-            }
+            // if (!$scope.account.username ||
+            //     !$scope.account.password ||
+            //     !$scope.account.email ||
+            //     !$scope.account.fullname ||
+            //     !$scope.account.phone ||
+            //     !$scope.account.address == "") {
+            //     alert("Vui lòng nhập đầy đủ thông tin")
+            //     return
+            // }
 
             if(!validateEmail($scope.account.email)){
                 alert("Email không đúng định dạng")
