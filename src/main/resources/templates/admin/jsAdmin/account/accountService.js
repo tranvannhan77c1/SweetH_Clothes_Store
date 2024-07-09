@@ -26,9 +26,7 @@ angular.module('app')
                     throw error;
                 });
         };
-
-
-
+        
         // Hàm thêm nhân viên
         this.addEmployee = function(account) {
             return $http.post(baseUrl + '/signup', account)
