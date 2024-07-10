@@ -5183,3 +5183,35 @@ h4.total-amount {
 .thumbnail:hover {
     transform: scale(1.1); /* Phóng to thumbnail khi di chuột */
 }
+.btn-outline-custom {
+    border: none;
+    color: #8B4513;
+    background: none;
+    padding: 0.5rem 1rem;
+}
+
+.btn-outline-custom:hover, .btn-outline-custom:focus {
+    background-color: #8B4513;
+    color: white;
+}
+
+.btn-group .btn.active {
+    background-color: #8B4513;
+    color: white;
+    border: none;
+}
+
+.bi-arrow-left, .bi-arrow-right {
+    font-size: 1.2em;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.btn.btn-outline-custom.active:hover {
+    background-color: #8B4513; /* Màu nâu nhạt */
+    color: white; /* Màu chữ trắng */
+}
+
+
