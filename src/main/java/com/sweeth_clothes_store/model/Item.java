@@ -23,6 +23,7 @@ public class Item {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "item")
     private List<Category> categories;
 }
