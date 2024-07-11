@@ -9,6 +9,7 @@
   <!-- base:css -->
   <link rel="stylesheet" href="../vendors/typicons/typicons.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../css/custom.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css"/>
@@ -142,30 +143,37 @@
                     <div class="form-group">
                       <label for="Username">Tên Đăng Nhập</label>
                       <input type="text" class="form-control" id="Username" placeholder="Tên Đăng Nhập" ng-model="account.username" ng-disabled="!isEditMode">
+                      <div id="username_error" class="error"></div>
                     </div>
                     <div class="form-group">
                       <label for="Email">Địa Chỉ Email</label>
                       <input type="email" class="form-control" id="Email" placeholder="Địa Chỉ Email" ng-model="account.email" ng-disabled="!isEditMode">
+                      <div id="email_error" class="error"></div>
                     </div>
                     <div class="form-group">
                       <label for="Fullname">Họ Và Tên</label>
                       <input type="text" class="form-control" id="Fullname" placeholder="Họ Và Tên" ng-model="account.fullName" ng-disabled="!isEditMode">
+                      <div id="fullname_error" class="error"></div>
                     </div>
                     <div class="form-group">
                       <label for="Phone">Số Điện Thoại</label>
                       <input type="text" class="form-control" id="Phone" placeholder="Số Điện Thoại" ng-model="account.phone" ng-disabled="!isEditMode">
+                      <div id="phone_error" class="error"></div>
                     </div>
                     <div class="form-group">
                       <label for="Address">Địa Chỉ</label>
                       <input type="text" class="form-control" id="Address" placeholder="Địa Chỉ" ng-model="account.address" ng-disabled="!isEditMode">
+                      <div id="address_error" class="error"></div>
                     </div>
                     <div class="form-group" ng-show="showPasswordInputs">
                       <label for="Password">Mật khẩu</label>
                       <input type="password" class="form-control" id="Password" ng-model="account.password" placeholder="Mật khẩu">
+                      <div id="password_error" class="error"></div>
                     </div>
                     <div class="form-group" ng-show="showPasswordInputs">
                       <label for="ConfirmPassword">Nhập lại mật khẩu</label>
                       <input type="password" class="form-control" id="ConfirmPassword" ng-model="confirmPassword" placeholder="Nhập lại mật khẩu">
+                      <div id="confirm_password_error" class="error"></div>
                     </div>
 
                     <button type="submit" class="btn btn-inverse-success mr-2" ng-click="addEmployee()">Thêm Nhân Viên</button>
