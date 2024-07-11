@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <!-- Required meta tags -->
@@ -137,23 +137,25 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <div class="main-panel" ng-controller="ItemController">
         <div class="content-wrapper mb-0 pb-0">
           <div class="row mb-0">
             <div class="col-md-4 grid-margin stretch-card mb-0">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Thông Tin Danh Mục</h4>
-                  <form class="forms-sample" th:action="@{/admin/items/add}" th:object="${item}" method="post">
+                  <form class="forms-sample">
                     <div class="form-group">
-                      <label for="name">Tên Danh Mục</label>
-                      <input type="text" class="form-control" th:field="*{name}" placeholder="Tên Danh Mục">
+                      <label>ID</label>
+                      <input type="text" class="form-control" ng-model="item.id" disabled>
+                      <label>Tên Danh Mục</label>
+                      <input type="text" class="form-control" ng-model="item.name">
                     </div>
                     <div>
-                      <button type="submit" class="btn btn-inverse-success mr-2">Thêm</button>
-                      <button type="submit" class="btn btn-inverse-warning mr-2" th:action="@{/admin/items/update/{id}(id=${item.id})}">Cập Nhập</button>
-                      <button type="button" class="btn btn-inverse-danger mr-2" onclick="deleteItem(${item.id})">Xoá</button>
-                      <button type="reset" class="btn btn-inverse-info mr-2 mt-2">Làm Mới</button>
+                      <button type="submit" class="btn btn-inverse-success mr-2" ng-click="createItem()" ng-show="!isEditMode">Thêm</button>
+                      <button type="button" class="btn btn-inverse-warning mr-2" ng-click="updateItem()" ng-show="isEditMode">Cập Nhập</button>
+                      <button type="button" class="btn btn-inverse-danger mr-2" ng-click="deleteItem(item.id)" ng-show="isEditMode">Xoá</button>
+                      <button type="reset" class="btn btn-inverse-info mr-2" ng-click="resetForm()">Làm Mới</button>
                     </div>
                   </form>
                 </div>
@@ -169,17 +171,21 @@
                       <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Action</th>
+                        <th>Tên Danh Mục</th>
+                        <th>Số Chủng Loại</th>
+                        <th>Số Sản Phẩm</th>
+                        <th>Hành Động</th>
                       </tr>
                       </thead>
                       <tbody>
-                      <tr th:each="item : ${items}">
-                        <td th:text="${item.id}">ID</td>
-                        <td th:text="${item.name}">Name</td>
+                      <tr ng-repeat="item in items" ng-class="{ 'table-success': item.id === highlightedItemId }">
+                        <td>{{ item.id }}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{ item.categoryCount }}</td>
+                        <td>{{ item.productCount }}</td>
                         <td>
-                          <button type="button" class="btn btn-inverse-info btn-sm" th:onclick="'location.href=\'/admin/items/edit/' + ${item.id} + '\''">Chỉnh Sửa</button>
-                          <button type="button" class="btn btn-inverse-danger btn-sm" th:onclick="'location.href=\'/admin/items/delete/' + ${item.id} + '\''">Xoá</button>
+                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="viewItemDetails(item.id)">Chỉnh Sửa</button>
+                          <button type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteItem(item.id)">Xoá</button>
                         </td>
                       </tr>
                       </tbody>
@@ -187,18 +193,25 @@
                   </div>
                   <div class="mt-2">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-secondary">1</button>
-                      <button type="button" class="btn btn-outline-secondary">2</button>
-                      <button type="button" class="btn btn-outline-secondary">3</button>
-                      <button type="button" class="btn btn-outline-secondary">4</button>
-                      <button type="button" class="btn btn-outline-secondary"><i
-                          class="mdi mdi mdi-arrow-right"></i></button>
+                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0" ng-click="previousPage()">
+                        <i class="mdi mdi-chevron-double-left"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary" ng-repeat="page in paginationButtons"
+                              ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">
+                        {{ page + 1 }}
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">
+                        <i class="mdi mdi-chevron-double-right"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+
+
 
         </div>
         <!-- content-wrapper ends -->
@@ -239,6 +252,10 @@
   <script src="../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="../js/angular/angular.min.js"></script>
+  <script src="../jsAdmin/app.js"></script>
+  <script src="../jsAdmin/item/itemService.js"></script>
+  <script src="../jsAdmin/item/itemController.js"></script>
   <!-- End custom js for this page-->
 </body>
 
