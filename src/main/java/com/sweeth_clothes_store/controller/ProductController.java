@@ -24,28 +24,28 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/landing")
+	@GetMapping("/public/landing")
 	public ResponseEntity<Page<ProductDTO>> getAllProducts(@RequestParam int page, @RequestParam int limit) {
 		Pageable pageable = PageRequest.of(page, limit);
 		return new ResponseEntity<Page<ProductDTO>>(productService.getLimitedProducts(pageable), HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/public/{id}")
 	public ResponseEntity<Optional<ProductDTO>> getSingleProduct(@PathVariable int id) {
 		return new ResponseEntity<Optional<ProductDTO>>(productService.getProductByID(id), HttpStatus.OK);
 	}
 	// Endpoint để lấy danh sách sản phẩm theo màu sắc
-	@GetMapping("/color/{color}")
+	@GetMapping("/public/color/{color}")
 	public ResponseEntity<List<ProductDTO>> getProductsByColor(@PathVariable String color) {
 		return new ResponseEntity<List<ProductDTO>>(productService.getProductsByColor(color), HttpStatus.OK);
 	}
 	// lấy sp theo danh mục
-	@GetMapping("/item/{itemId}")
+	@GetMapping("/public/item/{itemId}")
 	public ResponseEntity<List<ProductDTO>> getProductsByItem(@PathVariable int itemId) {
 		List<ProductDTO> products = productService.getProductsByItem(itemId);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
-	@GetMapping("/color/{color}/item/{itemId}")
+	@GetMapping("/public/color/{color}/item/{itemId}")
 	public ResponseEntity<List<ProductDTO>> getProductsByColorAndItem(@PathVariable String color, @PathVariable int itemId) {
 		List<ProductDTO> products = productService.getProductsByColorAndItem(color, itemId);
 		return new ResponseEntity<>(products, HttpStatus.OK);
