@@ -64,26 +64,59 @@ angular.module('app')
             //     alert("Vui lòng nhập đầy đủ thông tin")
             //     return
             // }
-
-            if(!validateEmail($scope.account.email)){
-                alert("Email không đúng định dạng")
+            if(!$scope.account.fullname){
+                let mess = document.getElementById("fullname_error");
+                mess.classList.add("active");
+                mess.textContent = "Tên không được để trống"
                 return
             }
 
-            if ($scope.account.username.length <= 5){
-                alert('Tài khoản phải có ít nhất 6 kí tự');
+            if(!$scope.account.password){
+                let mess = document.getElementById("password_error");
+                mess.classList.add("active");
+                mess.textContent = "Mật khẩu không được để trống"
                 return
+            }
+
+            if(!$scope.account.address){
+                let mess = document.getElementById("address_error");
+                mess.classList.add("active");
+                mess.textContent = "Địa chỉ không được để trống"
+                return
+            }
+
+            if(!$scope.account.email || !validateEmail($scope.account.email)){
+                //alert("Email không đúng định dạng")
+                let mess = document.getElementById("email_error");
+                mess.classList.add("active");
+                mess.textContent = "Email không đúng định dạng"
+                return
+            }
+
+            if (!$scope.account.username || $scope.account.username.length <= 5){
+                //alert('Tài khoản phải có ít nhất 6 kí tự');
+                let mess = document.getElementById("username_error");
+                mess.classList.add("active");
+                mess.textContent = "Tài khoản phải có ít nhất 6 kí tự"
+                return
+
             }
 
 
             if($scope.account.password !== $scope.confirmPassword) {
-                alert('Mật khẩu và nhập lại mật khẩu không khớp.');
+                //alert('Mật khẩu và nhập lại mật khẩu không khớp.');
+                let mess = document.getElementById("confirm_password_error");
+                mess.classList.add("active");
+                mess.textContent = "Mật khẩu và nhập lại mật khẩu không khớp."
                 return;
             }
 
             var regex = /^0\d{9,10}$/;
             if(!regex.test($scope.account.phone)){
-                alert("Số điện thoại không hợp lệ")
+                //alert("Số điện thoại không hợp lệ")
+                let mess = document.getElementById("phone_error");
+                mess.classList.add("active");
+                mess.textContent = "Số điện thoại không hợp lệ"
                 return
             }
 

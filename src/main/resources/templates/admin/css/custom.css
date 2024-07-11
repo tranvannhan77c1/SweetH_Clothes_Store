@@ -1,0 +1,12 @@
+
+.error{
+    display: none;
+}
+
+.error.active{
+    display: block;
+    /*background-color: #f2545b; */
+    color: #f2545b;
+    font-size: 14px;
+    padding-top: 5px;
+}
