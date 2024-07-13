@@ -27,7 +27,7 @@ public class ProductController {
 	@GetMapping("/public/landing")
 	public ResponseEntity<Page<ProductDTO>> getAllProducts(@RequestParam int page, @RequestParam int limit) {
 		Pageable pageable = PageRequest.of(page, limit);
-		return new ResponseEntity<Page<ProductDTO>>(productService.getLimitedProducts(pageable), HttpStatus.OK);
+		return new ResponseEntity<Page<ProductDTO>>(productService.getProducts(pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping("/public/{id}")
@@ -36,18 +36,24 @@ public class ProductController {
 	}
 	// Endpoint để lấy danh sách sản phẩm theo màu sắc
 	@GetMapping("/public/color/{color}")
-	public ResponseEntity<List<ProductDTO>> getProductsByColor(@PathVariable String color) {
-		return new ResponseEntity<List<ProductDTO>>(productService.getProductsByColor(color), HttpStatus.OK);
+	public ResponseEntity<Page<ProductDTO>> getProductsByColor(@PathVariable String color, @RequestParam int page, @RequestParam int limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return new ResponseEntity<Page<ProductDTO>>(productService.getProductsByColor(color, pageable), HttpStatus.OK);
 	}
 	// lấy sp theo danh mục
 	@GetMapping("/public/item/{itemId}")
-	public ResponseEntity<List<ProductDTO>> getProductsByItem(@PathVariable int itemId) {
-		List<ProductDTO> products = productService.getProductsByItem(itemId);
-		return new ResponseEntity<>(products, HttpStatus.OK);
+	public ResponseEntity<Page<ProductDTO>> getProductsByItem(@PathVariable int itemId, @RequestParam int page, @RequestParam int limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return new ResponseEntity<Page<ProductDTO>>(productService.getProductsByItem(itemId, pageable), HttpStatus.OK);
 	}
 	@GetMapping("/public/color/{color}/item/{itemId}")
-	public ResponseEntity<List<ProductDTO>> getProductsByColorAndItem(@PathVariable String color, @PathVariable int itemId) {
-		List<ProductDTO> products = productService.getProductsByColorAndItem(color, itemId);
-		return new ResponseEntity<>(products, HttpStatus.OK);
+	public ResponseEntity<Page<ProductDTO>> getProductsByColorAndItem(@PathVariable String color, @PathVariable int itemId, @RequestParam int page, @RequestParam int limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return new ResponseEntity<Page<ProductDTO>>(productService.getProductsByColorAndItem(color, itemId, pageable), HttpStatus.OK);
+	}
+
+	@GetMapping("/public/allColor")
+	public ResponseEntity<List<String>> getAllColor() {
+		return new ResponseEntity<List<String>>(productService.getAllColor(), HttpStatus.OK);
 	}
 }
