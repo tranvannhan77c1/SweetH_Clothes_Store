@@ -1,42 +1,119 @@
 var app = angular.module('categoryApp', []);
 
-app.controller('ProductController', ['$scope', '$http', function($scope, $http) {
+app.controller('ProductController', ['$scope', '$http', function ($scope, $http) {
     $scope.products = [];
     $scope.cart = [];
     $scope.showSuccessAlert = false;
     $scope.query = '';
     $scope.currentPage = 1;
     $scope.totalPages = 1;
-    $scope.pageSize = 8;
+    $scope.pageSize = 9;
+    $scope.productAmount = 0;
+    $scope.colors = [];
+    $scope.colorsWithQuantity = [];
+    $scope.selectedColor = null;
 
-    $scope.searching = function() {
-        console.log($scope.query)
-    }
+    // Function to log the search query
+    $scope.searching = function () {
+        console.log($scope.query);
+    };
 
-    // Lấy dữ liệu sản phẩm từ API
-    $scope.getProducts = function(page) {
-        $http.get(`http://localhost:8080/api/v1/product/landing?page=${page}&limit=${$scope.pageSize}`)
-            .then(function(response) {
+    // Lấy data sản phẩm từ backend
+    $scope.getProducts = function (page) {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/landing?page=${page}&limit=${$scope.pageSize}`;
+
+        $http.get(apiUrl)
+            .then(response => {
                 $scope.products = response.data.content;
-                $scope.totalPages = Math.ceil(response.data.totalElements / $scope.pageSize);
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
             })
-            .catch(function(error) {
+            .catch(error => {
                 console.error('Error fetching products:', error);
             });
     };
 
-    $scope.getProducts($scope.currentPage);
+    // Gọi sản phẩm 
+    $scope.getProducts($scope.currentPage - 1);
 
-    // Hàm chuyển trang
-    $scope.changePage = function(page) {
-        if (page >= 1 && page <= $scope.totalPages) {
-            $scope.currentPage = page;
-            $scope.getProducts(page);
+    // Lấy màu để làm filter
+    $scope.fetchColors = function () {
+        $http.get("http://localhost:8080/api/v1/product/public/allColor")
+            .then(response => {
+                $scope.colors = response.data;
+                $scope.colors.forEach(color => {
+                    $scope.calculateColorQuantity(color);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching colors:', error);
+            });
+    };
+    // tính số lượng sản phẩm mỗi màu
+    $scope.calculateColorQuantity = function (color) {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/color/${color}?page=${0}&limit=${1000000}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                const quantity = response.data.totalElements;
+                $scope.colorsWithQuantity.push({ color: color, quantity: quantity });
+            })
+            .catch(error => {
+                console.error('Error fetching products by color:', error);
+            });
+
+    }
+
+    // Lấy sản phẩm dựa trên màu đã chọn
+    $scope.getProductsByColor = function (page, color) {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/color/${color}?page=${page}&limit=${$scope.pageSize}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                $scope.products = response.data.content;
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
+            })
+            .catch(error => {
+                console.error('Error fetching products by color:', error);
+            });
+    };
+
+    // lọc sản phẩm dựa trên màu đã chọn
+    $scope.filterProductsByColor = function (color) {
+        $scope.selectedColor = color;
+        $scope.currentPage = 1; // Reset to first page
+        if (color) {
+            $scope.getProductsByColor($scope.currentPage - 1, color);
+            smoothRoll();
+        } else {
+            // If no color is selected, show all products
+            $scope.getProducts($scope.currentPage - 1);
+            smoothRoll();
         }
     };
 
+    // Hàm chuyển trang
+    $scope.changePage = function (page) {
+        if (page >= 1 && page <= $scope.totalPages) {
+            $scope.currentPage = page;
+
+            if ($scope.selectedColor) {
+                $scope.getProductsByColor($scope.currentPage - 1, $scope.selectedColor);
+            } else {
+                $scope.getProducts($scope.currentPage - 1);
+            }
+        }
+
+        smoothRoll();
+    };
+
+    // gọi màu sản phẩm
+    $scope.fetchColors();
+
+
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
-    $scope.addToCart = function(product) {
+    $scope.addToCart = function (product) {
         let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
 
         if (existingProductIndex !== -1) {
@@ -50,7 +127,7 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         $('#successModal').modal('show');
     };
 
-    $scope.increaseQuantity = function(item) {
+    $scope.increaseQuantity = function (item) {
         let index = $scope.cart.findIndex(product => product.id === item.id);
 
         if (index !== -1) {
@@ -59,7 +136,7 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         }
     };
 
-    $scope.decreaseQuantity = function(item) {
+    $scope.decreaseQuantity = function (item) {
         let index = $scope.cart.findIndex(product => product.id === item.id);
 
         if (index !== -1) {
@@ -72,12 +149,12 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         }
     };
 
-    $scope.clearCart = function() {
+    $scope.clearCart = function () {
         $scope.cart = [];
         localStorage.removeItem('cart');
     };
 
-    $scope.calculateTotal = function() {
+    $scope.calculateTotal = function () {
         return $scope.cart.reduce((total, item) => {
             return total + item.price * item.quantity;
         }, 0);
@@ -90,8 +167,9 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
 
 }]);
 
-app.filter('floor', function() {
-    return function(input) {
+// làm chẵn số tiền trong giỏ hàng
+app.filter('floor', function () {
+    return function (input) {
         if (isNaN(input)) {
             console.log("string")
             return input;
@@ -99,3 +177,11 @@ app.filter('floor', function() {
         return Math.floor(input * 100) / 100;
     };
 });
+
+// tạo hiệu ứng lướt mượt hơn
+function smoothRoll() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}

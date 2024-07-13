@@ -1,5 +1,7 @@
 package com.sweeth_clothes_store.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,7 +21,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	public Page<ProductDTO> getLimitedProducts(Pageable pageable) {
+	public Page<ProductDTO> getProducts(Pageable pageable) {
 		Page<Product> products = productRepository.findAll(pageable);
 		return products.map(ProductMapper::toDTO);
 	}
@@ -29,18 +31,29 @@ public class ProductService {
         return product.map(ProductMapper::toDTO);
 	}
 	// Phương thức để lấy danh sách sản phẩm theo màu sắc
-	public List<ProductDTO> getProductsByColor(String color) {
-		List<Product> products = productRepository.findByColor(color);
-		return products.stream().map(ProductMapper::toDTO).collect(Collectors.toList());
+	public Page<ProductDTO> getProductsByColor(String color, Pageable pageable) {
+		Page<Product> products = productRepository.findByColor(color, pageable);
+		return products.map(ProductMapper::toDTO);
 	}
 	//lấy sp theo danh mục
-	public List<ProductDTO> getProductsByItem(int itemId) {
-		List<Product> products = productRepository.findByCategory_Item_Id(itemId);
-		return products.stream().map(ProductMapper::toDTO).collect(Collectors.toList());
+	public Page<ProductDTO> getProductsByItem(int itemId, Pageable pageable) {
+		Page<Product> products = productRepository.findByCategory_Item_Id(itemId, pageable);
+		return products.map(ProductMapper::toDTO);
 	}
-	public List<ProductDTO> getProductsByColorAndItem(String color, int itemId) {
-		List<Product> products = productRepository.findByColorAndCategory_Item_Id(color, itemId);
-		return products.stream().map(ProductMapper::toDTO).collect(Collectors.toList());
+	public Page<ProductDTO> getProductsByColorAndItem(String color, int itemId, Pageable pageable) {
+		Page<Product> products = productRepository.findByColorAndCategory_Item_Id(color, itemId, pageable);
+		return products.map(ProductMapper::toDTO);
+	}
+
+//	lay color san pham
+	public List<String> getAllColor() {
+		List<Product> product = productRepository.findAll();
+		List<String> colors = new ArrayList<String>();
+		for(Product color : product) {
+			colors.add(color.getColor().trim());
+		}
+
+		return new ArrayList<String>(new HashSet<String>(colors));
 	}
 
 }

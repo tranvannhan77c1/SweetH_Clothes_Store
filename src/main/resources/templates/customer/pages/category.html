@@ -86,11 +86,16 @@
                             <form action="#">
 
                                 <ul>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color" onclick="filterProductsByColor('Black')"><label for="black">Black<span>(29)</span></label></li>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="blue" name="color" onclick="filterProductsByColor('Blue')"><label for="blue">Blue<span>(29)</span></label></li>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="gray" name="color" onclick="filterProductsByColor('Grey')"><label for="gray">Grey<span>(19)</span></label></li>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="white" name="color" onclick="filterProductsByColor('White')"><label for="white">White<span>(19)</span></label></li>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="pink" name="color" onclick="filterProductsByColor('Pink')"><label for="pink">Pink<span>(19)</span></label></li>
+                                    <!-- về mặc định -->
+                                    <li class="filter-list" >
+                                        <input class="pixel-radio" type="radio" id="all_color" name="color" ng-click="filterProductsByColor(color)">
+                                        <label for="all_color">All Color</label>
+                                    </li>
+                                    <!-- tạo danh sách màu -->
+                                    <li ng-repeat="color in colorsWithQuantity"  class="filter-list" >
+                                        <input class="pixel-radio" type="radio" id="{{color.color}}" name="color" ng-click="filterProductsByColor(color.color)">
+                                        <label for="{{color.color}}">{{color.color}}<span>({{color.quantity}})</span></label>
+                                    </li>
                                 </ul>
                             </form>
                         </div>
@@ -432,21 +437,21 @@
         </div>
 
     </footer>
-    <script>
+    <!-- <script>
         let selectedColor = null;
         let selectedItem = null;
         let selectedCategory = null;
 
 
         function filterProducts() {
-            let url = 'http://localhost:8080/api/v1/product';
+            let url = 'http://localhost:8080/api/v1/product/public';
 
             if (selectedColor && selectedItem) {
-                url += `/color/${selectedColor}/item/${selectedItem}`;
+                url += `/color/${selectedColor}/item/${selectedItem}?page=${0}&limit=${9}`;
             } else if (selectedColor) {
-                url += `/color/${selectedColor}`;
+                url += `/color/${selectedColor}?page=${0}&limit=${9}`;
             } else if (selectedItem) {
-                url += `/item/${selectedItem}`;
+                url += `/item/${selectedItem}?page=${0}&limit=${9}`;
             } else {
                 return;
             }
@@ -457,7 +462,7 @@
                     const productsContainer = document.querySelector('.lattest-product-area .row');
                     productsContainer.innerHTML = '';
 
-                    products.forEach(product => {
+                    products.content.forEach(product => {
                         const productHTML = `
                     <div class="col-md-6 col-lg-4">
                         <div class="card text-center card-product">
@@ -481,18 +486,22 @@
                     });
                 })
                 .catch(error => console.error('Error fetching products:', error));
+            console.log("filter called")
+
         }
 
         function filterProductsByColor(color) {
             selectedColor = color;
+            console.log("color called")
             filterProducts();
         }
 
         function filterProductsByItem(itemId) {
             selectedItem = itemId;
+            console.log("item called")
             filterProducts();
         }
-    </script>
+    </script> -->
     <!--================ End footer Area  =================-->
 
 
