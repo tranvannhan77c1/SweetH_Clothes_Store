@@ -5,7 +5,7 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
     $scope.cart = [];
     $scope.showSuccessAlert = false;
 
-    $http.get('http://localhost:8080/api/v1/product/landing?page=1&limit=8')
+    $http.get('http://localhost:8080/api/v1/product/public/landing?page=1&limit=8')
         .then(function(response) {
             $scope.products = response.data.content;
             console.log(response.data.content[0].thumbnailImage)
