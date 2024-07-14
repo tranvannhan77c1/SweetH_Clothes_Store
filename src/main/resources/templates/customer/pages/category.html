@@ -15,9 +15,8 @@
     <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-pgjyf4I5V5ly/Oy7fv4RoGuhOZXz7r0n5xe5zGZAz6aE0sgSjgq2j49B3P2vD9g7fu3bVt+jBQYHunLvebfiTw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-pgjyf4I5V5ly/Oy7fv4RoGuhOZXz7r0n5xe5zGZAz6aE0sgSjgq2j49B3P2vD9g7fu3bVt+jBQYHunLvebfiTw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -28,11 +27,8 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand logo_h" href="../index.html"><img style="width: 126px; height: 26px"
-                            src="../img/logo.jpg" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand logo_h" href="../index.html"><img style="width: 126px; height: 26px" src="../img/logo.jpg" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -67,25 +63,13 @@
                                     <ul>
                                         <!-- về mặc định -->
                                         <li class="filter-list">
-                                            <input class="pixel-radio" type="radio" id="all_item" name="item"
-                                                ng-click="filterProductsByItem(null)">
+                                            <input class="pixel-radio" type="radio" id="all_item" name="item" ng-click="filterProductsByItem(null)">
                                             <label for="all_item">All</label>
                                         </li>
                                         <li ng-repeat="item in itemsWithQuantity" class="filter-list">
-                                            <input class="pixel-radio" type="radio" id="{{item.id}}" name="item"
-                                                ng-click="filterProductsByItem(item.id)">
-                                            <label
-                                                for="{{item.id}}">{{item.name}}<span>({{item.quantity}})</span></label>
+                                            <input class="pixel-radio" type="radio" id="{{item.id}}" name="item" ng-click="filterProductsByItem(item.id)">
+                                            <label for="{{item.id}}">{{item.name}}<span>({{item.quantity}})</span></label>
                                         </li>
-                                        <!-- <li class="filter-list"><input class="pixel-radio" type="radio" id="2" name="item" onclick="filterProductsByItem(2)"><label for="2">Men<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="3" name="item" onclick="filterProductsByItem(3)"><label for="3">Kids<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="4" name="item" onclick="filterProductsByItem(4)"><label for="4">Curve<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="5" name="item" onclick="filterProductsByItem(5)"><label for="5">Beachwear<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="6" name="item" onclick="filterProductsByItem(6)"><label for="6">Sports<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="7" name="item" onclick="filterProductsByItem(7)"><label for="7">Underwear<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="8" name="item" onclick="filterProductsByItem(8)"><label for="8">Shoes<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="9" name="item" onclick="filterProductsByItem(9)"><label for="9">Accessories<span> (3600)</span></label></li>
-                                        <li class="filter-list"><input class="pixel-radio" type="radio" id="10" name="item" onclick="filterProductsByItem(10)"><label for="10">Bags<span> (3600)</span></label></li> -->
                                     </ul>
                                 </form>
                             </li>
@@ -94,25 +78,18 @@
                     <div class="sidebar-filter">
                         <div class="top-filter-head">Bộ lọc sản phẩm</div>
                         <div class="common-filter">
-
-                        </div>
-                        <div class="common-filter">
-                            <div class="head">Màu</div>
+                            <div class="head">Bộ Màu: </div>
                             <form action="#">
-
                                 <ul>
                                     <!-- về mặc định -->
                                     <li class="filter-list">
-                                        <input class="pixel-radio" type="radio" id="all_color" name="color"
-                                            ng-click="filterProductsByColor(color)">
+                                        <input class="pixel-radio" type="radio" id="all_color" name="color" ng-click="filterProductsByColor(color)">
                                         <label for="all_color">All Color</label>
                                     </li>
                                     <!-- tạo danh sách màu -->
                                     <li ng-repeat="color in colorsWithQuantity" class="filter-list">
-                                        <input class="pixel-radio" type="radio" id="{{color.color}}" name="color"
-                                            ng-click="filterProductsByColor(color.color)">
-                                        <label
-                                            for="{{color.color}}">{{color.color}}<span>({{color.quantity}})</span></label>
+                                        <input class="pixel-radio" type="radio" id="{{color.color}}" name="color" ng-click="filterProductsByColor(color.color)">
+                                        <label for="{{color.color}}">{{color.color}}<span>({{color.quantity}})</span></label>
                                     </li>
                                 </ul>
                             </form>
@@ -169,8 +146,7 @@
                             <div class="col-md-6 col-lg-4" ng-repeat="product in products">
                                 <div class="card text-center card-product">
                                     <div class="card-product__img">
-                                        <img class="card-img" ng-src="{{ product.thumbnailImage }}"
-                                            alt="{{ product.name }}">
+                                        <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                                         <ul class="card-product__imgOverlay">
                                             <li><button><a ng-href="single-product.html?id={{ product.id }}"><i
                                                             class="ti-search"></i></a></button></li>
@@ -181,20 +157,17 @@
                                     </div>
                                     <div class="card-body">
                                         <p>{{ product.category.name }}</p>
-                                        <h4 class="card-product__title"><a
-                                                ng-href="single-product.html?id={{ product.id }}">{{ product.name }}</a>
+                                        <h4 class="card-product__title"><a ng-href="single-product.html?id={{ product.id }}">{{ product.name }}</a>
                                         </h4>
                                         <p class="card-product__price">{{ product.price }}$</p>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="successModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="successModalLabel">Thông báo</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -203,8 +176,7 @@
                                                 <p><i class="fas fa-check-circle fa-5x text-success"></i></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-close-modal"
-                                                    data-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-close-modal" data-dismiss="modal">Đóng</button>
                                             </div>
                                         </div>
                                     </div>
@@ -212,24 +184,19 @@
                             </div>
                         </div>
                         <div class="pagination d-flex justify-content-center mt-4">
-                            <button class="btn btn-outline-custom me-1" style="margin-right: 0.5rem;"
-                                ng-disabled="currentPage === 1" ng-click="changePage(currentPage - 1)">
+                            <button class="btn btn-outline-custom me-1" style="margin-right: 0.5rem;" ng-disabled="currentPage === 1" ng-click="changePage(currentPage - 1)">
                                 <i class="fas fa-angle-left"></i>
                             </button>
                             <div class="btn-group" role="group" aria-label="Pagination">
-                                <button type="button" class="btn btn-outline-custom"
-                                    ng-repeat="page in [].constructor(totalPages) | limitTo: 5 track by $index"
-                                    ng-class="{'active': $index + 1 === currentPage}" ng-click="changePage($index + 1)">
+                                <button type="button" class="btn btn-outline-custom" ng-repeat="page in [].constructor(totalPages) | limitTo: 5 track by $index" ng-class="{'active': $index + 1 === currentPage}" ng-click="changePage($index + 1)">
                                     {{$index + 1}}
                                 </button>
                                 <span class="btn btn-outline-custom disabled">...</span>
-                                <button type="button" class="btn btn-outline-custom" ng-show="currentPage > 5"
-                                    ng-style="{'background-color': '#8B4513', 'color': 'white', 'margin-left': '0.5rem'}">
+                                <button type="button" class="btn btn-outline-custom" ng-show="currentPage > 5" ng-style="{'background-color': '#8B4513', 'color': 'white', 'margin-left': '0.5rem'}">
                                     {{ currentPage }}
                                 </button>
                             </div>
-                            <button class="btn btn-outline-custom ms-1" style="margin-left: 0.5rem;"
-                                ng-disabled="currentPage === totalPages" ng-click="changePage(currentPage + 1)">
+                            <button class="btn btn-outline-custom ms-1" style="margin-left: 0.5rem;" ng-disabled="currentPage === totalPages" ng-click="changePage(currentPage + 1)">
                                 <i class="fas fa-angle-right"></i>
                             </button>
                         </div>
@@ -375,12 +342,9 @@
                 <h3 class="subscribe__title">Nhận Thông Báo</h3>
                 <p>Đăng ký email để nhận tất cả thông báo từ cửa hàng</p>
                 <div id="mc_embed_signup">
-                    <form target="_blank"
-                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                        method="get" class="subscribe-form form-inline mt-5 pt-1">
+                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
                         <div class="form-group ml-sm-auto">
-                            <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '">
+                            <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '">
                             <div class="info"></div>
                         </div>
                         <button class="button button-subscribe mr-auto mb-1" type="submit">Đăng Ký Ngay</button>
@@ -406,13 +370,10 @@
                         <div class="single-footer-widget tp_widgets">
                             <h4 class="footer_title large_title">Nhiệm vụ</h4>
                             <p>
-                                Hãy gieo hạt giống màu xanh mà gia súc có cánh ở đó. Tập hợp những thứ được tạo ra, bay
-                                mà không bị chia cắt, di chuyển chúng tôi vào đất liền, tập hợp những thứ sống động của
-                                chúng tôi vào đất liền qua nhiều năm
+                                Hãy gieo hạt giống màu xanh mà gia súc có cánh ở đó. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển chúng tôi vào đất liền, tập hợp những thứ sống động của chúng tôi vào đất liền qua nhiều năm
                             </p>
                             <p>
-                                Gieo hạt giống xanh nơi gia súc có cánh ở. Tập hợp những thứ được tạo ra, bay mà không
-                                bị chia cắt, di chuyển sâu.
+                                Gieo hạt giống xanh nơi gia súc có cánh ở. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển sâu.
                             </p>
                         </div>
                     </div>
