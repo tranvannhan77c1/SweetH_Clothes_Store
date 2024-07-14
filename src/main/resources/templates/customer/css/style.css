@@ -2568,7 +2568,7 @@ a {
 }
 
 .sidebar-categories .main-categories {
-    padding: 20px 28px;
+    padding: 10px 15px;
     background: #f1f6f7
 }
 
@@ -2619,7 +2619,7 @@ a {
 
 .sidebar-filter .head {
     line-height: 60px;
-    padding: 0 30px;
+    padding: 0px 30px;
     font-size: 15px;
     font-weight: 400;
     color: #222;
@@ -2629,7 +2629,8 @@ a {
 .sidebar-filter .common-filter {
     background: #f1f6f7;
     border-bottom: 1px solid #eee;
-    padding-bottom: 25px
+    padding-bottom: 0px;
+    padding: 0px -20px;
 }
 
 .sidebar-filter .common-filter .filter-list {
@@ -2656,7 +2657,8 @@ a {
 
 .filter-list label {
     margin-bottom: 3px;
-    cursor: pointer
+    cursor: pointer;
+    font-size: 14px;
 }
 
 @-webkit-keyframes click-wave {
@@ -4880,14 +4882,14 @@ a {
     max-width: 385px;
     margin: 10px auto;
     display: none;
-padding: 10px;
+    padding: 10px;
 }
 
 .err_form.active {
     display: block;
     background-color: rgb(252 165 165);
     color: rgb(153 27 27);
-	border: 1px solid rgb(185 28 28);
+    border: 1px solid rgb(185 28 28);
 }
 
 .success_form.active {
@@ -5043,146 +5045,196 @@ h4.total-amount {
     color: #000;
     border-color: red;
 }
+
 .dropdown-toggle::after {
     display: none !important;
 }
+
+
 /* CSS để trang trí menu dropdown */
+
 .nav-item {
-    list-style-type: none; /* Bỏ đi kiểu danh sách mặc định */
-    padding: 0; /* Bỏ padding để căn chỉnh với biểu tượng */
+    list-style-type: none;
+    /* Bỏ đi kiểu danh sách mặc định */
+    padding: 0;
+    /* Bỏ padding để căn chỉnh với biểu tượng */
 }
 
 .nav-link {
     display: block;
-    padding: 0.5rem 1rem; /* Điều chỉnh padding tùy theo nhu cầu */
-    color: #212529; /* Màu chữ */
-    text-decoration: none; /* Bỏ gạch chân */
-    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền mượt */
+    padding: 0.5rem 1rem;
+    /* Điều chỉnh padding tùy theo nhu cầu */
+    color: #212529;
+    /* Màu chữ */
+    text-decoration: none;
+    /* Bỏ gạch chân */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển đổi màu nền mượt */
 }
 
 .nav-link:hover {
-    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
-    color: #8B4513; /* Màu chữ khi di chuột qua */
+    background-color: #f8f9fa;
+    /* Màu nền khi di chuột qua */
+    color: #8B4513;
+    /* Màu chữ khi di chuột qua */
 }
 
 .dropdown-menu {
-    min-width: 180px; /* Điều chỉnh chiều rộng tùy theo nhu cầu */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Tạo bóng cho dropdown */
-    border: 1px solid rgba(0, 0, 0, 0.15); /* Viền dropdown */
-    background-color: #ffffff; /* Màu nền dropdown */
-    left: -50px; /* Di chuyển dropdown về bên trái 10px */
+    min-width: 180px;
+    /* Điều chỉnh chiều rộng tùy theo nhu cầu */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    /* Tạo bóng cho dropdown */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    /* Viền dropdown */
+    background-color: #ffffff;
+    /* Màu nền dropdown */
+    left: -50px;
+    /* Di chuyển dropdown về bên trái 10px */
 }
 
 .dropdown-menu .nav-item {
-    margin: 0; /* Bỏ margin của các mục danh sách */
+    margin: 0;
+    /* Bỏ margin của các mục danh sách */
 }
 
 .dropdown-menu .nav-link {
     display: block;
-    padding: 0.5rem 1rem; /* Điều chỉnh padding tùy theo nhu cầu */
-    color: #212529; /* Màu chữ */
-    text-decoration: none; /* Bỏ gạch chân */
-    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền mượt */
+    padding: 0.5rem 1rem;
+    /* Điều chỉnh padding tùy theo nhu cầu */
+    color: #212529;
+    /* Màu chữ */
+    text-decoration: none;
+    /* Bỏ gạch chân */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển đổi màu nền mượt */
 }
 
 .dropdown-menu .nav-link:hover {
-    background-color: #f8f9fa; /* Màu nền khi di chuột qua */
-    color: #8B4513; /* Màu chữ khi di chuột qua */
+    background-color: #f8f9fa;
+    /* Màu nền khi di chuột qua */
+    color: #8B4513;
+    /* Màu chữ khi di chuột qua */
 }
 
 .dropdown-menu-end {
-    right: 0; /* Đặt dropdown menu bên phải */
+    right: 0;
+    /* Đặt dropdown menu bên phải */
 }
 
 .dropdown-menu .nav-item {
-    text-align: left; /* Căn chỉnh chữ trái */
+    text-align: left;
+    /* Căn chỉnh chữ trái */
 }
+
 .single-prd-item {
-    text-align: center; /* Căn giữa nội dung */
-    max-width: 400px; /* Giới hạn chiều rộng tối đa của single-prd-item */
-    margin: 0 auto; /* Canh giữa single-prd-item */
+    text-align: center;
+    /* Căn giữa nội dung */
+    max-width: 400px;
+    /* Giới hạn chiều rộng tối đa của single-prd-item */
+    margin: 0 auto;
+    /* Canh giữa single-prd-item */
 }
 
 .single-prd-item img {
-    max-width: 100%; /* Giới hạn chiều rộng tối đa của ảnh là 100% của phần tử cha */
-    height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
-    display: block; /* Đảm bảo ảnh hiển thị là một khối */
+    max-width: 100%;
+    /* Giới hạn chiều rộng tối đa của ảnh là 100% của phần tử cha */
+    height: auto;
+    /* Đảm bảo tỷ lệ khung hình không bị méo */
+    display: block;
+    /* Đảm bảo ảnh hiển thị là một khối */
 }
+
 .modal-content {
     border-radius: 0;
 }
+
 .modal-header {
     background-color: #8B4513;
     color: #fff;
 }
+
 .modal-title {
     color: #fff;
 }
+
 .modal-body {
     text-align: center;
 }
+
 .modal-footer {
     justify-content: center;
 }
+
 .btn-close-modal {
     background-color: #8B4513;
-    color: #fff; /* Màu chữ trắng */
-    border: none; /* Bỏ viền */
+    color: #fff;
+    /* Màu chữ trắng */
+    border: none;
+    /* Bỏ viền */
 }
+
 .btn-close-modal:hover {
-    background-color: #654321; /* Màu hover (nếu cần) */
+    background-color: #654321;
+    /* Màu hover (nếu cần) */
 }
 
-
-.layer{
+.layer {
     position: relative;
 }
 
-.search-result{
+.search-result {
     position: absolute;
     top: 40px;
     left: 0;
-
     padding: 10px;
     border-radius: 10px;
-
     width: 100%;
     height: 100px;
     background-color: #FFF;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
     display: none;
 }
 
-
-.search-result.active{
+.search-result.active {
     display: block;
 }
+
 .product-container {
-    text-align: center; /* Căn giữa các phần tử */
+    text-align: center;
+    /* Căn giữa các phần tử */
     display: flex;
-    flex-direction: column; /* Đảm bảo các phần tử con được sắp xếp theo chiều dọc */
-    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
-    margin-bottom: 10px; /* Khoảng cách giữa ảnh chính và ảnh thumbnail */
+    flex-direction: column;
+    /* Đảm bảo các phần tử con được sắp xếp theo chiều dọc */
+    align-items: center;
+    /* Căn giữa các phần tử theo chiều ngang */
+    margin-bottom: 10px;
+    /* Khoảng cách giữa ảnh chính và ảnh thumbnail */
 }
 
 .thumbnail-container {
     display: flex;
-    justify-content: center; /* Căn giữa các thumbnail */
-    gap: 5px; /* Khoảng cách giữa các thumbnail */
-    margin-top: 10px; /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
+    justify-content: center;
+    /* Căn giữa các thumbnail */
+    gap: 5px;
+    /* Khoảng cách giữa các thumbnail */
+    margin-top: 10px;
+    /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
 }
 
 .thumbnail {
-    width: 60px; /* Kích thước của thumbnail */
+    width: 60px;
+    /* Kích thước của thumbnail */
     height: auto;
     cursor: pointer;
-    transition: transform 0.3s; /* Hiệu ứng khi di chuột */
+    transition: transform 0.3s;
+    /* Hiệu ứng khi di chuột */
 }
 
 .thumbnail:hover {
-    transform: scale(1.1); /* Phóng to thumbnail khi di chuột */
+    transform: scale(1.1);
+    /* Phóng to thumbnail khi di chuột */
 }
+
 .btn-outline-custom {
     border: none;
     color: #8B4513;
@@ -5190,7 +5242,8 @@ h4.total-amount {
     padding: 0.5rem 1rem;
 }
 
-.btn-outline-custom:hover, .btn-outline-custom:focus {
+.btn-outline-custom:hover,
+.btn-outline-custom:focus {
     background-color: #8B4513;
     color: white;
 }
@@ -5201,19 +5254,21 @@ h4.total-amount {
     border: none;
 }
 
-.bi-arrow-left, .bi-arrow-right {
+.bi-arrow-left,
+.bi-arrow-right {
     font-size: 1.2em;
 }
 
-.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
     opacity: 0.5;
     pointer-events: none;
 }
+
 .btn.btn-outline-custom.active:hover {
-    background-color: #8B4513; /* Màu nâu nhạt */
-    color: white; /* Màu chữ trắng */
+    background-color: #8B4513;
+    /* Màu nâu nhạt */
+    color: white;
+    /* Màu chữ trắng */
 }
-
-
-
-
