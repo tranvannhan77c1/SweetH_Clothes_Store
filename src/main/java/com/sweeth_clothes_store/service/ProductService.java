@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.sweeth_clothes_store.model.Item;
+import com.sweeth_clothes_store.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,9 @@ import com.sweeth_clothes_store.repository.ProductRepository;
 public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
+
+	@Autowired
+	private ItemRepository itemRepository;
 	
 	public Page<ProductDTO> getProducts(Pageable pageable) {
 		Page<Product> products = productRepository.findAll(pageable);
@@ -54,6 +59,10 @@ public class ProductService {
 		}
 
 		return new ArrayList<String>(new HashSet<String>(colors));
+	}
+
+	public List<Item> getAllItems() {
+		return itemRepository.findAll();
 	}
 
 }

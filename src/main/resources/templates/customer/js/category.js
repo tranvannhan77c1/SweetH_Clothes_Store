@@ -12,6 +12,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.colors = [];
     $scope.colorsWithQuantity = [];
     $scope.selectedColor = null;
+    $scope.items = [];
+    $scope.itemsWithQuantity = [];
+    $scope.selectedItem = null;
 
     // Function to log the search query
     $scope.searching = function () {
@@ -93,6 +96,61 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }
     };
 
+    // Lấy item để làm filter
+    $scope.fetchItems = function () {
+        $http.get("http://localhost:8080/api/v1/product/public/allItem")
+            .then(response => {
+                $scope.items = response.data;
+                $scope.items.forEach(item => {
+                    $scope.calculateItemQuantity(item);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching items:', error);
+            });
+    };
+    // tính số lượng sản phẩm mỗi item
+    $scope.calculateItemQuantity = function (item) {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/item/${item.id}?page=${0}&limit=${1000000}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                const quantity = response.data.totalElements;
+                $scope.itemsWithQuantity.push({id: item.id, name: item.name.trim(), quantity: quantity });
+            })
+            .catch(error => {
+                console.error('Error fetching products by item:', error);
+            });
+
+    };
+    // Lấy sản phẩm dựa trên item đã chọn
+    $scope.getProductsByItem = function (page, itemid) {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/item/${itemid}?page=${page}&limit=${$scope.pageSize}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                $scope.products = response.data.content;
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
+            })
+            .catch(error => {
+                console.error('Error fetching products by item:', error);
+            });
+    };
+    // lọc sản phẩm dựa trên item đã chọn
+    $scope.filterProductsByItem = function (item) {
+        $scope.selectedItem = item;
+        $scope.currentPage = 1; // Reset to first page
+        if (item) {
+            $scope.getProductsByItem($scope.currentPage - 1, item);
+            smoothRoll();
+        } else {
+            // If no color is selected, show all products
+            $scope.getProducts($scope.currentPage - 1);
+            smoothRoll();
+        }
+    };
+
     // Hàm chuyển trang
     $scope.changePage = function (page) {
         if (page >= 1 && page <= $scope.totalPages) {
@@ -100,6 +158,8 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
 
             if ($scope.selectedColor) {
                 $scope.getProductsByColor($scope.currentPage - 1, $scope.selectedColor);
+            } else if($scope.selectedItem) {
+                $scope.getProductsByItem($scope.currentPage - 1, $scope.selectedItem);
             } else {
                 $scope.getProducts($scope.currentPage - 1);
             }
@@ -110,6 +170,8 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
 
     // gọi màu sản phẩm
     $scope.fetchColors();
+    // gọi item sản phẩm
+    $scope.fetchItems();
 
 
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
