@@ -3,6 +3,7 @@ package com.sweeth_clothes_store.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.sweeth_clothes_store.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -55,5 +56,10 @@ public class ProductController {
 	@GetMapping("/public/allColor")
 	public ResponseEntity<List<String>> getAllColor() {
 		return new ResponseEntity<List<String>>(productService.getAllColor(), HttpStatus.OK);
+	}
+
+	@GetMapping("/public/allItem")
+	public ResponseEntity<List<Item>> getAllItems() {
+		return new ResponseEntity<List<Item>>(productService.getAllItems(), HttpStatus.OK	);
 	}
 }
