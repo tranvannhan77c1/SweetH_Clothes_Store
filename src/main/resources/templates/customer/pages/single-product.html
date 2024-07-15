@@ -27,8 +27,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand logo_h" href="../index.html"><img style="width: 126px; height: 26px" src="../img/logo.jpg" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -58,20 +57,21 @@
 
 
     <!--================Single Product Area =================-->
-    <div class="product_image_area" >
-        <div class="container" >
+    <div class="product_image_area">
+        <div class="container">
             <div class="row s_product_inner">
                 <div class="col-lg-6">
                     <div class="owl-carousel owl-theme s_Product_carousel">
                         <div class="product-container">
                             <div class="single-prd-item">
                                 <img class="img-fluid" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
+                                <!-- Ảnh chính -->
                             </div>
                             <div class="thumbnail-container">
                                 <img class="thumbnail" ng-src="{{ product.thumbnail1 }}" alt="{{ product.name }} thumbnail 1" ng-click="setMainImage(product.thumbnail1)">
                                 <img class="thumbnail" ng-src="{{ product.thumbnail2 }}" alt="{{ product.name }} thumbnail 2" ng-click="setMainImage(product.thumbnail2)">
                                 <img class="thumbnail" ng-src="{{ product.thumbnail3 }}" alt="{{ product.name }} thumbnail 3" ng-click="setMainImage(product.thumbnail3)">
-                                <!-- Thêm nhiều ảnh thumbnail nếu cần -->
+                                <!-- Thêm nhiều ảnh phụ nếu cần -->
                             </div>
                         </div>
                     </div>
