@@ -67,33 +67,12 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
 
     }
 
-    // Lấy sản phẩm dựa trên màu đã chọn
-    $scope.getProductsByColor = function (page, color) {
-        const apiUrl = `http://localhost:8080/api/v1/product/public/color/${color}?page=${page}&limit=${$scope.pageSize}`;
-
-        $http.get(apiUrl)
-            .then(response => {
-                $scope.products = response.data.content;
-                $scope.productAmount = response.data.totalElements;
-                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
-            })
-            .catch(error => {
-                console.error('Error fetching products by color:', error);
-            });
-    };
-
     // lọc sản phẩm dựa trên màu đã chọn
     $scope.filterProductsByColor = function (color) {
         $scope.selectedColor = color;
         $scope.currentPage = 1; // Reset to first page
-        if (color) {
-            $scope.getProductsByColor($scope.currentPage - 1, color);
-            smoothRoll();
-        } else {
-            // If no color is selected, show all products
-            $scope.getProducts($scope.currentPage - 1);
-            smoothRoll();
-        }
+        $scope.filterProducts($scope.currentPage - 1);
+        smoothRoll()
     };
 
     // Lấy item để làm filter
@@ -116,16 +95,31 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         $http.get(apiUrl)
             .then(response => {
                 const quantity = response.data.totalElements;
-                $scope.itemsWithQuantity.push({id: item.id, name: item.name.trim(), quantity: quantity });
+                $scope.itemsWithQuantity.push({ id: item.id, name: item.name.trim(), quantity: quantity });
             })
             .catch(error => {
                 console.error('Error fetching products by item:', error);
             });
 
     };
-    // Lấy sản phẩm dựa trên item đã chọn
-    $scope.getProductsByItem = function (page, itemid) {
-        const apiUrl = `http://localhost:8080/api/v1/product/public/item/${itemid}?page=${page}&limit=${$scope.pageSize}`;
+    // lọc sản phẩm dựa trên item đã chọn
+    $scope.filterProductsByItem = function (item) {
+        $scope.selectedItem = item;
+        $scope.filterProducts($scope.currentPage - 1);
+        smoothRoll();
+    };
+
+    $scope.filterProducts = function (page) {
+        let apiUrl = "http://localhost:8080/api/v1/product/public";
+        if ($scope.selectedColor && $scope.selectedItem) {
+            apiUrl += `/color/${$scope.selectedColor}/item/${$scope.selectedItem}?page=${page}&limit=${$scope.pageSize}`;
+        } else if ($scope.selectedColor) {
+            apiUrl += `/color/${$scope.selectedColor}?page=${page}&limit=${$scope.pageSize}`;
+        } else if ($scope.selectedItem) {
+            apiUrl += `/item/${$scope.selectedItem}?page=${page}&limit=${$scope.pageSize}`;
+        } else {
+            $scope.getProducts($scope.currentPage - 1)
+        }
 
         $http.get(apiUrl)
             .then(response => {
@@ -137,31 +131,18 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
                 console.error('Error fetching products by item:', error);
             });
     };
-    // lọc sản phẩm dựa trên item đã chọn
-    $scope.filterProductsByItem = function (item) {
-        $scope.selectedItem = item;
-        $scope.currentPage = 1; // Reset to first page
-        if (item) {
-            $scope.getProductsByItem($scope.currentPage - 1, item);
-            smoothRoll();
-        } else {
-            // If no color is selected, show all products
-            $scope.getProducts($scope.currentPage - 1);
-            smoothRoll();
-        }
-    };
 
     // Hàm chuyển trang
     $scope.changePage = function (page) {
         if (page >= 1 && page <= $scope.totalPages) {
             $scope.currentPage = page;
 
-            if ($scope.selectedColor) {
-                $scope.getProductsByColor($scope.currentPage - 1, $scope.selectedColor);
-            } else if($scope.selectedItem) {
-                $scope.getProductsByItem($scope.currentPage - 1, $scope.selectedItem);
-            } else {
-                $scope.getProducts($scope.currentPage - 1);
+            if ($scope.selectedColor && $scope.selectedItem) {
+                $scope.filterProducts($scope.currentPage - 1);
+            } else if ($scope.selectedColor) {
+                $scope.filterProducts($scope.currentPage - 1);
+            } else if ($scope.selectedItem) {
+                $scope.filterProducts($scope.currentPage - 1);
             }
         }
 
