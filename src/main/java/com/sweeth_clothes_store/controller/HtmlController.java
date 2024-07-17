@@ -7,6 +7,6 @@ public class HtmlController {
 
     @GetMapping("/otp-form")
     public String otpForm() {
-        return "customer/otp_form"; // This will resolve to otp_form.html
+        return "customer/pages/Forgotpassword"; // This will resolve to otp_form.html
     }
 }
