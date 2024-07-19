@@ -88,7 +88,7 @@
                                     </div>
                                 </td>
                                 <td class="fixed-width">
-                                    <h5>{{ item.price }}$</h5>
+                                    <h5>{{ item.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
                                 </td>
                                 <td class="fixed-width">
                                     <div class="product_count">
@@ -98,7 +98,7 @@
                                     </div>
                                 </td>
                                 <td class="fixed-width">
-                                    <h5>{{ item.price * item.quantity | floor}}$</h5>
+                                    <h5>{{ (item.price * item.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</h5>
                                 </td>
                             </tr>
 
@@ -181,7 +181,7 @@
 
 
                                 <td class="total" ng-if="cart.length > 0" colspan="2">
-                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal() | floor }}$</h4>
+                                    <h4 class="total-amount">Tổng Tiền: {{ calculateTotal().toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</h4>
                                 </td>
 
                             </tr>
@@ -205,7 +205,7 @@
                                 <td>
                                     <div class="checkout_btn_inner d-flex justify-content-end align-items-center">
                                         <a class="gray_btn mr-2" href="category.html">Tiếp tục mua sắm</a>
-                                        <a class="primary-btn" href="#">Thanh Toán</a>
+                                        <a class="primary-btn" href="checkout.html">Thanh Toán</a>
                                     </div>
 
                                 </td>
