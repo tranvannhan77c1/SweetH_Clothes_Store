@@ -40,18 +40,22 @@ public class SecurityConfig {
 
 		http
         .authorizeHttpRequests(authorizeHttpRequests -> {
-        	authorizeHttpRequests.requestMatchers(
-            		"/api/auth/login",
-            		"/css/**", 
+        	authorizeHttpRequests.requestMatchers("/css/**",
             		"/img/**",
             		"/js/**",
             		"/scss/**",
             		"/vendors/**",
-            		"/api/v1/account/signup").permitAll();
+					"/api/v1/customer/orders/createOrder"
+			).permitAll();
 
-        	authorizeHttpRequests.requestMatchers("/api/v1/admin/**").hasRole("ADMIN");
-        	authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasRole("USER");
-        	authorizeHttpRequests.anyRequest().permitAll();//anonymous
+        	authorizeHttpRequests.requestMatchers("/api/v1/admin/**",
+					"/api/v1/product/admin/**"
+			).hasRole("ADMIN");
+//        	authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("USER", "ADMIN");
+//        	authorizeHttpRequests.requestMatchers("/api/v1/product/public/**",
+//					"/api/v1/auth/**"
+//			).permitAll();
+			authorizeHttpRequests.anyRequest().permitAll();
         }  
         )
         .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

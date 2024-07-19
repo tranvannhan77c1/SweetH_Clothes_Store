@@ -19,22 +19,7 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping("/signup")
-    public ResponseEntity<AccountDTO> signUp(@RequestBody AccountDTO accountDTO) {
-        try {
-            if (accountDTO == null || accountDTO.getUsername() == null || accountDTO.getPassword() == null || accountDTO.getEmail() == null) {
-                return ResponseEntity.badRequest().body(null);
-            }
-            AccountDTO createdAccount = accountService.addAccount(accountDTO);
-            if (createdAccount == null) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-            } else {
-                return ResponseEntity.ok(createdAccount);
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
+
     @GetMapping("/{id}")
     public ResponseEntity<AccountDTO> getAccountById(@PathVariable Integer id) {
         try {
