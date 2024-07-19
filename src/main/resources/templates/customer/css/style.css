@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+
 body {
     color: #777;
     font-family: "Roboto", sans-serif;
@@ -105,6 +106,7 @@ a {
         margin: 120px auto;
         /* Cập nhật margin cho kích thước màn hình lớn hơn */
     }
+
     .section-margin.calc-60px {
         margin: 120px auto 70px;
         /* Cập nhật margin với lớp calc-60px */
@@ -145,15 +147,15 @@ a {
     font-size: 14px;
     padding: 8px 16px;
     border-width: 2px;
-    color: #8B4513;
-    border-color: #8B4513;
+    color: #FFD39B;
+    border-color: #FFD39B;
 }
 
 .btn-outline-primary:hover {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     /* Thay đổi màu nền khi hover */
     color: #fff;
-    border-color: #8B4513;
+    border-color: #FFD39B;
     /* Thay đổi màu chữ khi hover */
 }
 
@@ -208,7 +210,7 @@ a {
 
 .header_area .navbar .nav .nav-item:hover .nav-link,
 .header_area .navbar .nav .nav-item.active .nav-link {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .header_area .navbar .nav .nav-item.submenu {
@@ -280,8 +282,7 @@ a {
 }
 
 .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     color: #fff
 }
 
@@ -479,7 +480,7 @@ a {
 .nav-shop li button .nav-shop__circle {
     font-size: 9px;
     display: inline-block;
-    background: #8B4513;
+    background: #FFD39B;
     color: #fff;
     padding: 0px 5px;
     border-radius: 50%;
@@ -502,9 +503,11 @@ a {
     .header_area .navbar .nav .nav-item {
         margin-right: 28px
     }
+
     .home_banner_area .banner_inner {
         padding: 100px 0px
     }
+
     .header_area .navbar .tickets_btn {
         margin-left: 40px
     }
@@ -519,50 +522,61 @@ a {
         margin-top: 27px;
         margin-bottom: 23px
     }
+
     .header_area .navbar {
         background: #ffffff
     }
+
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
         opacity: 1
     }
+
     .navbar-toggler[aria-expanded="true"] span:nth-child(2) {
         opacity: 0
     }
+
     .navbar-toggler[aria-expanded="true"] span:first-child {
         transform: rotate(-45deg);
         position: relative;
         top: 7.5px
     }
+
     .navbar-toggler[aria-expanded="true"] span:last-child {
         transform: rotate(45deg);
         bottom: 6px;
         position: relative
     }
+
     .navbar-toggler span {
         display: block;
         width: 25px;
         height: 3px;
-        background: #8B4513;
+        background: #FFD39B;
         margin: auto;
         margin-bottom: 4px;
         transition: all 400ms linear;
         cursor: pointer
     }
+
     .navbar .container {
         padding-left: 15px;
         padding-right: 15px
     }
+
     .nav {
         padding: 0px 0px
     }
-    .header_area+section,
-    .header_area+row,
-    .header_area+div {
+
+    .header_area + section,
+    .header_area + row,
+    .header_area + div {
         margin-top: 117px
     }
+
     .header_top .nav {
         padding: 0px
     }
+
     .header_area .navbar .nav .nav-item .nav-link {
         line-height: 30px;
         margin-right: 0px;
@@ -570,63 +584,81 @@ a {
         border-bottom: 1px solid #ededed33;
         border-radius: 0px;
     }
+
     .header_area .navbar .nav-shop {
         padding-bottom: 40px
     }
+
     .header_area .navbar .search {
         margin-left: 0px
     }
+
     .header_area .navbar-collapse {
         max-height: 340px;
         overflow-y: scroll;
     }
+
     .header_area .navbar .nav .nav-item.submenu ul .nav-item .nav-link {
         padding: 0px 15px
     }
+
     .header_area .navbar .nav .nav-item {
         margin-right: 0px
     }
-    .header_area+section,
-    .header_area+row,
-    .header_area+div {
+
+    .header_area + section,
+    .header_area + row,
+    .header_area + div {
         margin-top: 0px;
         padding-top: 71px;
     }
+
     .header_area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
         line-height: 40px
     }
+
     .categories_post img {
         width: 100%
     }
+
     .categories_post {
         max-width: 360px;
         margin: 0 auto
     }
+
     .blog_categorie_area .col-lg-4 {
         margin-top: 30px
     }
+
     .blog_area {
         padding-bottom: 80px
     }
+
     .single-post-area .blog_right_sidebar {
         margin-top: 30px
     }
+
     .contact_info {
         margin-bottom: 50px
     }
+
     .home_banner_area .donation_inner {
         margin-bottom: -30px
     }
+
     .home_banner_area .dontation_item {
         max-width: 350px;
         margin: auto
     }
+
     .footer-area .col-sm-6 {
         margin-bottom: 30px
     }
+
     .header_area .navbar .tickets_btn {
         margin-left: 0px
     }
+
     .home_banner_area {
         min-height: 700px
     }
@@ -636,34 +668,43 @@ a {
     .home_banner_area {
         min-height: 500px
     }
+
     .home_banner_area .banner_inner {
         min-height: 500px
     }
+
     .home_banner_area .banner_inner .banner_content {
         margin-top: 0px
     }
+
     .blog_banner .banner_inner .blog_b_text h2 {
         font-size: 40px;
         line-height: 50px
     }
+
     .blog_info.text-right {
         text-align: left !important;
         margin-bottom: 10px
     }
+
     .home_banner_area .banner_inner .banner_content h3 {
         font-size: 30px
     }
+
     .home_banner_area .banner_inner .banner_content p br {
         display: none
     }
+
     .home_banner_area .banner_inner .banner_content h3 span {
         line-height: 45px;
         padding-bottom: 0px;
         padding-top: 0px
     }
+
     .footer-bottom {
         text-align: center
     }
+
     .footer-bottom .footer-social {
         text-align: center;
         margin-top: 15px
@@ -674,48 +715,61 @@ a {
     .top_menu {
         display: none
     }
-    .header_area+section,
-    .header_area+row,
-    .header_area+div {
+
+    .header_area + section,
+    .header_area + row,
+    .header_area + div {
         margin-top: 0px;
         padding-top: 71px
     }
+
     .home_banner_area .banner_inner .banner_content h2 {
         font-size: 40px;
         line-height: 44px
     }
+
     .home_banner_area {
         min-height: 500px
     }
+
     .home_banner_area .banner_inner {
         min-height: 500px
     }
+
     .blog_banner .banner_inner .blog_b_text {
         margin-top: 0px
     }
+
     .home_banner_area .banner_inner .banner_content img {
         display: none
     }
+
     .home_banner_area .banner_inner .banner_content h5 {
         margin-top: 0px
     }
+
     .sample-text-area {
         padding: 70px 0 70px 0
     }
+
     .generic-blockquote {
         padding: 30px 15px 30px 30px
     }
+
     .blog_details h2 {
         font-size: 20px;
         line-height: 30px
     }
+
     .blog_banner .banner_inner .blog_b_text h2 {
         font-size: 28px;
         line-height: 38px
     }
+
     .footer-area {
         padding: 70px 0px
     }
+
     .single-footer-widget .sub-btn {
         right: 0px
     }
@@ -725,15 +779,19 @@ a {
     .header_area .navbar-collapse {
         max-height: 250px
     }
+
     .home_banner_area .banner_inner .banner_content {
         margin-top: 0px
     }
+
     .home_banner_area .banner_inner .banner_content h3 {
         font-size: 24px
     }
+
     .banner_area .banner_inner .banner_content h2 {
         font-size: 32px
     }
+
     .comments-area .thumb {
         margin-right: 10px
     }
@@ -744,7 +802,7 @@ a {
 }
 
 .section-intro__style {
-    border-bottom: 2px solid #8B4513;
+    border-bottom: 2px solid #FFD39B;
     padding-bottom: 8px
 }
 
@@ -858,7 +916,7 @@ a {
 .hero-carousel__slideOverlay {
     position: absolute;
     bottom: 50px;
-    background: #8B4513;
+    background: #FFD39B;
     padding: 23px 90px 23px 25px;
     transform: translateY(50px);
     opacity: 0;
@@ -922,7 +980,7 @@ a {
     border: 0;
     border-radius: 0;
     padding: 7px 12px;
-    background: #8894ff
+    background: #FFD39B
 }
 
 .card-product__imgOverlay li button i,
@@ -933,7 +991,7 @@ a {
 }
 
 .card-product__imgOverlay li button:hover {
-    background: #8B4513
+    background: #FFD39B
 }
 
 .card-product__imgOverlay li:not(:last-child) {
@@ -956,7 +1014,7 @@ a {
 }
 
 .card-product:hover .card-product__title a {
-    color: #8B4513
+    color: #FFD39B
 }
 
 .offer {
@@ -1019,13 +1077,13 @@ a {
 #bestSellerCarousel .owl-next i,
 #bestSellerCarousel .owl-next span {
     font-size: 15px;
-    color: #8B4513;
+    color: #FFD39B;
     line-height: 40px
 }
 
 #bestSellerCarousel .owl-prev:hover,
 #bestSellerCarousel .owl-next:hover {
-    background: #8B4513
+    background: #FFD39B
 }
 
 #bestSellerCarousel .owl-prev:hover i,
@@ -1116,11 +1174,11 @@ a {
 }
 
 .card-blog:hover .card-blog__title a {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .card-blog:hover .card-blog__link {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .card-blog:hover .card-blog__link i,
@@ -1163,7 +1221,7 @@ a {
     position: absolute;
     top: 50px;
     left: 10px;
-    color: #8B4513
+    color: #FFD39B
 }
 
 .subscribe-form .form-control {
@@ -1207,12 +1265,12 @@ a {
 
 .button {
     display: inline-block;
-    border: 1px solid #8B4513;
+    border: 1px solid #FFD39B;
     border-radius: 30px;
     color: #222;
     font-weight: 500;
     padding: 12px 50px;
-    background: #8B4513;
+    background: #FFD39B;
     color: #fff;
     transition: all .4s ease
 }
@@ -1245,7 +1303,7 @@ a {
 }
 
 .button-blog:hover {
-    background: #8B4513 !important;
+    background: #FFD39B !important;
     color: #fff !important
 }
 
@@ -1302,12 +1360,12 @@ a {
 }
 
 .button--active {
-    background: #8B4513;
+    background: #FFD39B;
     color: #fff
 }
 
 .button-contactForm {
-    border: 1px solid #8B4513 !important;
+    border: 1px solid #FFD39B !important;
     border-radius: 0;
     padding: 11px 26px
 }
@@ -1318,8 +1376,8 @@ a {
 }
 
 .button:hover {
-    border-color: #8B4513;
-    background: #8B4513;
+    border-color: #FFD39B;
+    background: #FFD39B;
     color: white
 }
 
@@ -1329,11 +1387,11 @@ a {
     border-radius: 0;
     padding: 9px 15px;
     text-transform: uppercase;
-    background: #8B4513
+    background: #FFD39B
 }
 
 .button-register:hover {
-    background: #8B4513;
+    background: #FFD39B;
     opacity: .7;
     color: #fff
 }
@@ -1357,7 +1415,7 @@ a {
 .blog-banner h1 {
     font-size: 30px;
     margin-bottom: 10px;
-    color: #8B4513
+    color: #FFD39B
 }
 
 @media (min-width: 992px) {
@@ -1401,12 +1459,12 @@ a {
 }
 
 .blog-banner-btn {
-    border: 2px solid #8B4513;
+    border: 2px solid #FFD39B;
     padding: 10px 45px
 }
 
 .blog-banner-btn:hover {
-    background: #8B4513;
+    background: #FFD39B;
     color: #fff
 }
 
@@ -1425,17 +1483,17 @@ a {
 
 .banner-breadcrumb .breadcrumb-item a {
     text-transform: capitalize;
-    color: #8B4513
+    color: #FFD39B
 }
 
-.banner-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
-    color: #8B4513;
+.banner-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    color: #FFD39B;
     padding-right: .1rem;
     content: "-"
 }
 
 .banner-breadcrumb .breadcrumb-item.active {
-    color: #8B4513
+    color: #FFD39B
 }
 
 .l_blog_item .l_blog_text .date {
@@ -1460,7 +1518,7 @@ a {
 }
 
 .l_blog_item .l_blog_text h4:hover {
-    color: #8B4513
+    color: #FFD39B
 }
 
 .l_blog_item .l_blog_text p {
@@ -1486,7 +1544,7 @@ a {
 }
 
 .causes_slider .owl-dots .owl-dot.active {
-    background: #8B4513
+    background: #FFD39B
 }
 
 .causes_item {
@@ -1520,7 +1578,7 @@ a {
     position: absolute;
     right: -10px;
     bottom: 0px;
-    background: #8B4513;
+    background: #FFD39B;
     color: #fff;
     padding: 0px 5px
 }
@@ -1538,7 +1596,7 @@ a {
 }
 
 .causes_item .causes_text h4:hover {
-    color: #8B4513
+    color: #FFD39B
 }
 
 .causes_item .causes_text p {
@@ -1550,17 +1608,17 @@ a {
 
 .causes_item .causes_bottom a {
     width: 50%;
-    border: 1px solid #8B4513;
+    border: 1px solid #FFD39B;
     text-align: center;
     float: left;
     line-height: 50px;
-    background: #8B4513;
+    background: #FFD39B;
     color: #fff;
     font-size: 14px;
     font-weight: 500
 }
 
-.causes_item .causes_bottom a+a {
+.causes_item .causes_bottom a + a {
     border-color: #eeeeee;
     background: #fff;
     font-size: 14px;
@@ -1615,10 +1673,10 @@ a {
 }
 
 .tags .tag_btn:before {
-    background: #8B4513;
+    background: #FFD39B;
 }
 
-.tags .tag_btn+.tag_btn {
+.tags .tag_btn + .tag_btn {
     margin-left: 2px
 }
 
@@ -1710,7 +1768,7 @@ a {
 }
 
 .blog_info .post_tag a.active {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .blog_info .blog_meta li a {
@@ -1731,7 +1789,7 @@ a {
 }
 
 .blog_info .blog_meta li a:hover {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .blog_post img {
@@ -1751,7 +1809,7 @@ a {
 }
 
 .blog_details h2:hover {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .blog_details p {
@@ -1777,8 +1835,7 @@ a {
 .blog_right_sidebar .widget_title {
     font-size: 18px;
     line-height: 25px;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     text-align: center;
     color: #fff;
     padding: 8px 0px;
@@ -1795,7 +1852,7 @@ a {
     padding-left: 20px;
     border-radius: 45px;
     z-index: 0;
-    background: #8B4513;
+    background: #FFD39B;
 }
 
 .blog_right_sidebar .search_widget .input-group .form-control.placeholder {
@@ -1858,12 +1915,12 @@ a {
     transition: all 0.2s linear
 }
 
-.blog_right_sidebar .author_widget .social_icon a+a {
+.blog_right_sidebar .author_widget .social_icon a + a {
     margin-left: 20px
 }
 
 .blog_right_sidebar .author_widget .social_icon a:hover {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body {
@@ -1881,7 +1938,7 @@ a {
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body h3:hover {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
@@ -1890,7 +1947,7 @@ a {
     margin-bottom: 0px
 }
 
-.blog_right_sidebar .popular_post_widget .post_item+.post_item {
+.blog_right_sidebar .popular_post_widget .post_item + .post_item {
     margin-top: 20px
 }
 
@@ -1910,16 +1967,16 @@ a {
     margin-bottom: 0px
 }
 
-.blog_right_sidebar .post_category_widget .cat-list li+li {
+.blog_right_sidebar .post_category_widget .cat-list li + li {
     padding-top: 15px
 }
 
 .blog_right_sidebar .post_category_widget .cat-list li:hover {
-    border-color: #8B4513;
+    border-color: #FFD39B;
 }
 
 .blog_right_sidebar .post_category_widget .cat-list li:hover a {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .blog_right_sidebar .newsletter_widget {
@@ -1980,8 +2037,7 @@ a {
 }
 
 .blog_right_sidebar .newsletter_widget .bbtns {
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     color: #fff;
     font-size: 12px;
     line-height: 38px;
@@ -2011,8 +2067,7 @@ a {
 }
 
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     color: #fff
 }
 
@@ -2042,8 +2097,7 @@ a {
 }
 
 .blog-pagination .page-item.active .page-link {
-    background-color: #8B4513;
-    ;
+    background-color: #FFD39B;;
     border-color: transparent;
     color: #fff
 }
@@ -2070,8 +2124,7 @@ a {
 .blog-pagination .page-link:hover {
     color: #fff;
     text-decoration: none;
-    background-color: #8B4513;
-    ;
+    background-color: #FFD39B;;
     border-color: #eee
 }
 
@@ -2267,9 +2320,11 @@ a {
     .comments-area .comment-list .single-comment h5 {
         font-size: 12px
     }
+
     .comments-area .comment-list .single-comment .date {
         font-size: 11px
     }
+
     .comments-area .comment-list .single-comment .comment {
         font-size: 10px
     }
@@ -2304,8 +2359,7 @@ a {
 }
 
 .comments-area .btn-reply:hover {
-    background-color: #8B4513;
-    ;
+    background-color: #FFD39B;;
     color: #fff;
     font-weight: 700
 }
@@ -2455,14 +2509,12 @@ a {
 }
 
 .contact-banner-btn {
-    border: 2px solid #8B4513;
-    ;
+    border: 2px solid #FFD39B;;
     padding: 10px 45px
 }
 
 .contact-banner-btn:hover {
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     color: #fff
 }
 
@@ -2472,8 +2524,7 @@ a {
 
 .contact-info__icon i,
 .contact-info__icon span {
-    color: #8B4513;
-    ;
+    color: #FFD39B;;
     font-size: 20px
 }
 
@@ -2590,8 +2641,7 @@ a {
 .sidebar-categories .head {
     font-family: 'Oswald', sans-serif;
     line-height: 50px;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     padding: 0 30px;
     font-size: 18px;
     font-weight: 400;
@@ -2616,7 +2666,7 @@ a {
 }
 
 .sidebar-categories .main-nav-list a:hover {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .sidebar-categories .main-nav-list a .number {
@@ -2640,8 +2690,7 @@ a {
 .sidebar-filter .top-filter-head {
     font-family: 'Oswald', sans-serif;
     line-height: 50px;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     padding: 0 30px;
     font-size: 18px;
     font-weight: 400;
@@ -2770,15 +2819,14 @@ a {
 }
 
 .pixel-radio:checked {
-    border: 8px solid #8B4513;
+    border: 8px solid #FFD39B;
 }
 
 .pixel-radio:checked::after {
     -webkit-animation: click-wave 0.65s;
     -moz-animation: click-wave 0.65s;
     animation: click-wave 0.65s;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     content: '';
     display: block;
     width: 15px;
@@ -2830,8 +2878,7 @@ a {
     top: -5px;
     border-radius: 50%;
     border: 0px;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     box-shadow: none;
     cursor: pointer;
     -webkit-transition: ease 0.1s;
@@ -2845,8 +2892,7 @@ a {
 }
 
 .price-range-area .noUi-horizontal .noUi-handle:hover {
-    border: 3px solid #8B4513;
-    ;
+    border: 3px solid #FFD39B;;
     background: #fff
 }
 
@@ -2918,7 +2964,7 @@ a {
 }
 
 .single-search-product:hover .title {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .order-wrapper {
@@ -2971,8 +3017,7 @@ a {
 
 .billing-alert {
     font-size: 18px;
-    color: #8B4513;
-    ;
+    color: #FFD39B;;
     margin-bottom: 30px
 }
 
@@ -3128,8 +3173,7 @@ a {
 }
 
 .check_title h2 a {
-    color: #8B4513;
-    ;
+    color: #FFD39B;;
     text-decoration: underline
 }
 
@@ -3243,10 +3287,9 @@ a {
 }
 
 .tp_btn:hover {
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     color: #fff;
-    border-color: #8B4513;
+    border-color: #FFD39B;
 }
 
 .billing_details h3 {
@@ -3346,7 +3389,7 @@ a {
 }
 
 .billing_details .contact_form .form-group .creat_account a {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .order_box {
@@ -3457,8 +3500,8 @@ a {
 }
 
 .order_box .payment_item.active h4:before {
-    background: #8B4513;
-    border-color: #8B4513;
+    background: #FFD39B;
+    border-color: #FFD39B;
 }
 
 .order_box .creat_account {
@@ -3646,22 +3689,22 @@ a {
     -webkit-transition: background 0.25s linear
 }
 
-.radion_btn input[type=radio]:checked~.check {
-    border: 1px solid #8B4513;
-    background: #8B4513
+.radion_btn input[type=radio]:checked ~ .check {
+    border: 1px solid #FFD39B;
+    background: #FFD39B
 }
 
-.radion_btn input[type=radio]:checked~.check::before {
+.radion_btn input[type=radio]:checked ~ .check::before {
     background: #fff
 }
 
-.radion_btn input[type=radio]:checked~label {
+.radion_btn input[type=radio]:checked ~ label {
     color: #000
 }
 
 .order_box .creat_account a {
     font-size: 12px;
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .login_box_area .login_box_img {
@@ -3692,7 +3735,7 @@ a {
     height: 100%;
     width: 100%;
     content: "";
-    background: #8B4513;
+    background: #FFD39B;
     opacity: .9
 }
 
@@ -3729,9 +3772,9 @@ a {
 }
 
 .login_box_area .login_box_img .button:hover {
-    background: #8B4513 !important;
+    background: #FFD39B !important;
     color: #fff !important;
-    border-color: #8B4513 !important
+    border-color: #FFD39B !important
 }
 
 .login_form_inner {
@@ -3748,7 +3791,7 @@ a {
 }
 
 .login_form_inner h3 {
-    color: #8B4513;
+    color: #FFD39B;
     text-transform: uppercase;
     font-size: 40px;
 }
@@ -3898,6 +3941,7 @@ a {
     .instagram_image {
         margin-bottom: 70px !important
     }
+
     .instagram_image a {
         flex: 0 0 50%;
         max-width: 50%
@@ -4084,7 +4128,7 @@ a {
     height: 40px;
     line-height: 38px;
     text-transform: uppercase;
-    background: #8B4513;
+    background: #FFD39B;
     padding: 0px 30px;
     margin-right: 20px;
     margin-left: 20px;
@@ -4166,7 +4210,7 @@ a {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background: #8B4513;
+    background: #FFD39B;
     display: inline-block;
     position: absolute;
     right: 3px;
@@ -4225,8 +4269,7 @@ a {
     padding: 0px 44px;
     line-height: 38px;
     text-transform: capitalize;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     border-radius: 30px;
     color: #fff;
     font-weight: 500
@@ -4301,8 +4344,7 @@ a {
     font-family: "Roboto", sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #8B4513;
-    ;
+    color: #FFD39B;;
     margin-bottom: 10px
 }
 
@@ -4515,9 +4557,8 @@ a {
 
 .product_description_area .nav.nav-tabs li a.active {
     color: #fff;
-    background: #8B4513;
-    ;
-    border-color: #8B4513;
+    background: #FFD39B;;
+    border-color: #FFD39B;
 }
 
 .product_description_area .tab-content {
@@ -4537,7 +4578,7 @@ a {
 .product_description_area .tab-content .total_rate .box_total h4 {
     font-size: 48px;
     font-weight: bold;
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .product_description_area .tab-content .total_rate .box_total h5 {
@@ -4661,10 +4702,8 @@ a {
 }
 
 .review_item .media .media-body .reply_btn:hover {
-    background: #8B4513;
-    ;
-    border-color: #8B4513;
-    ;
+    background: #FFD39B;;
+    border-color: #FFD39B;;
     color: #fff
 }
 
@@ -4726,7 +4765,7 @@ a {
 }
 
 .footer-area {
-    background: #8B4513;
+    background: #FFD39B;
     padding: 50px 0px 50px
 }
 
@@ -4775,8 +4814,7 @@ a {
     height: 28px;
     line-height: 28px;
     text-align: center;
-    background: #8B4513;
-    ;
+    background: #FFD39B;;
     color: #ffffff;
     border-radius: 20px
 }
@@ -4791,7 +4829,7 @@ a {
 }
 
 .tp_widgets .list li a:hover {
-    color: #8B4513;
+    color: #FFD39B;
 }
 
 .tp_widgets .list li:last-child {
@@ -4840,8 +4878,7 @@ a {
 }
 
 .footer-bottom .footer-text a {
-    color: #8B4513;
-    ;
+    color: #FFD39B;;
     opacity: 1
 }
 
@@ -4880,7 +4917,7 @@ a {
 }
 
 #search-input:focus {
-    border-color: #8B4513;
+    border-color: #FFD39B;
 }
 
 .search-form button {
@@ -4890,7 +4927,7 @@ a {
     border: 1px solid #ccc;
     border-left: 5px solid #ccc;
     /* Thêm đường viền bên trái */
-    background-color: #8B4513;
+    background-color: #FFD39B;
     border-radius: 0 25px 25px 0;
     cursor: pointer;
     outline: none;
@@ -4898,7 +4935,7 @@ a {
 }
 
 .search-form button:hover {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     border: 1px solid #ccc;
 }
 
@@ -5106,7 +5143,7 @@ h4.total-amount {
 .nav-link:hover {
     background-color: #f8f9fa;
     /* Màu nền khi di chuột qua */
-    color: #8B4513;
+    color: #FFD39B;
     /* Màu chữ khi di chuột qua */
 }
 
@@ -5143,7 +5180,7 @@ h4.total-amount {
 .dropdown-menu .nav-link:hover {
     background-color: #f8f9fa;
     /* Màu nền khi di chuột qua */
-    color: #8B4513;
+    color: #FFD39B;
     /* Màu chữ khi di chuột qua */
 }
 
@@ -5180,7 +5217,7 @@ h4.total-amount {
 }
 
 .modal-header {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     color: #fff;
 }
 
@@ -5197,7 +5234,7 @@ h4.total-amount {
 }
 
 .btn-close-modal {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     color: #fff;
     /* Màu chữ trắng */
     border: none;
@@ -5210,7 +5247,7 @@ h4.total-amount {
 }
 
 #successModal .modal-header {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     /* Màu nền */
     border-bottom: 1px solid #dee2e6;
     /* Viền dưới */
@@ -5222,6 +5259,7 @@ h4.total-amount {
     max-width: 60%;
     /* Giảm chiều rộng tối đa của modal */
     margin-top: 80px;
+
 }
 
 #successModal .modal-title {
@@ -5255,7 +5293,7 @@ h4.total-amount {
 #successModal .s_product_text h2 {
     font-size: 24px;
     /* Kích thước giá */
-    color: #8B4513;
+    color: #FFD39B;
     /* Màu chữ giá */
 }
 
@@ -5292,7 +5330,7 @@ h4.total-amount {
     /* Chiều rộng */
     text-align: left;
     /* Căn giữa văn bản */
-    border: 1px solid #8B4513;
+    border: 1px solid #FFD39B;
     /* Viền */
     border-radius: 5px;
     /* Bo góc */
@@ -5309,7 +5347,7 @@ h4.total-amount {
 
 #successModal .button.primary-btn {
     padding: 10px 20px;
-    background-color: #8B4513;
+    background-color: #FFD39B;
     color: white;
     border: none;
     border-radius: 15px;
@@ -5338,7 +5376,7 @@ h4.total-amount {
 #successModal .btn-close-modal {
     padding: 8px 16px;
     /* Khoảng cách lề */
-    background-color: #8B4513;
+    background-color: #FFD39B;
     /* Màu nền */
     color: white;
     /* Màu chữ */
@@ -5410,19 +5448,19 @@ h4.total-amount {
 
 .btn-outline-custom {
     border: none;
-    color: #8B4513;
+    color: #FFD39B;
     background: none;
     padding: 0.5rem 1rem;
 }
 
 .btn-outline-custom:hover,
 .btn-outline-custom:focus {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     color: white;
 }
 
 .btn-group .btn.active {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     color: white;
     border: none;
 }
@@ -5440,7 +5478,7 @@ fieldset[disabled] .btn {
 }
 
 .btn.btn-outline-custom.active:hover {
-    background-color: #8B4513;
+    background-color: #FFD39B;
     /* Màu nâu nhạt */
     color: white;
     /* Màu chữ trắng */
@@ -5469,7 +5507,7 @@ fieldset[disabled] .btn {
 
 /* Định dạng các slide bên trong carousel */
 
-.carousel-inner>.item>img {
+.carousel-inner > .item > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
