@@ -15,6 +15,10 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.items = [];
     $scope.itemsWithQuantity = [];
     $scope.selectedItem = null;
+    $scope.visibleColors = [];
+    $scope.maxVisibleColors = 5;
+    $scope.showAllColors = false;
+    $scope.selectedProduct = null;
 
     // Function to log the search query
     $scope.searching = function () {
@@ -52,7 +56,8 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
                 console.error('Error fetching colors:', error);
             });
     };
-    // tính số lượng sản phẩm mỗi màu
+
+    // Tính số lượng sản phẩm mỗi màu
     $scope.calculateColorQuantity = function (color) {
         const apiUrl = `http://localhost:8080/api/v1/product/public/color/${color}?page=${0}&limit=${1000000}`;
 
@@ -60,19 +65,31 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             .then(response => {
                 const quantity = response.data.totalElements;
                 $scope.colorsWithQuantity.push({ color: color, quantity: quantity });
+                $scope.updateVisibleColors();
             })
             .catch(error => {
                 console.error('Error fetching products by color:', error);
             });
+    };
 
-    }
-
-    // lọc sản phẩm dựa trên màu đã chọn
+    // Cập nhật danh sách màu hiển thị dựa trên trạng thái "Xem tất cả màu"
+    $scope.updateVisibleColors = function () {
+        if ($scope.showAllColors) {
+            $scope.visibleColors = $scope.colorsWithQuantity;
+        } else {
+            $scope.visibleColors = $scope.colorsWithQuantity.slice(0, $scope.maxVisibleColors);
+        }
+    };
+    $scope.toggleShowAllColors = function () {
+        $scope.showAllColors = !$scope.showAllColors;
+        $scope.updateVisibleColors();
+    };
+    // Lọc sản phẩm dựa trên màu đã chọn
     $scope.filterProductsByColor = function (color) {
         $scope.selectedColor = color;
         $scope.currentPage = 1; // Reset to first page
         $scope.filterProducts($scope.currentPage - 1);
-        smoothRoll()
+        smoothRoll();
     };
 
     // Lấy item để làm filter
@@ -88,7 +105,8 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
                 console.error('Error fetching items:', error);
             });
     };
-    // tính số lượng sản phẩm mỗi item
+
+    // Tính số lượng sản phẩm mỗi item
     $scope.calculateItemQuantity = function (item) {
         const apiUrl = `http://localhost:8080/api/v1/product/public/item/${item.id}?page=${0}&limit=${1000000}`;
 
@@ -100,9 +118,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             .catch(error => {
                 console.error('Error fetching products by item:', error);
             });
-
     };
-    // lọc sản phẩm dựa trên item đã chọn
+
+    // Lọc sản phẩm dựa trên item đã chọn
     $scope.filterProductsByItem = function (item) {
         $scope.selectedItem = item;
         $scope.filterProducts($scope.currentPage - 1);
@@ -118,7 +136,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         } else if ($scope.selectedItem) {
             apiUrl += `/item/${$scope.selectedItem}?page=${page}&limit=${$scope.pageSize}`;
         } else {
-            $scope.getProducts($scope.currentPage - 1)
+            $scope.getProducts($scope.currentPage - 1);
         }
 
         $http.get(apiUrl)
@@ -137,23 +155,21 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         if (page >= 1 && page <= $scope.totalPages) {
             $scope.currentPage = page;
 
-            if ($scope.selectedColor && $scope.selectedItem) {
-                $scope.filterProducts($scope.currentPage - 1);
-            } else if ($scope.selectedColor) {
-                $scope.filterProducts($scope.currentPage - 1);
-            } else if ($scope.selectedItem) {
-                $scope.filterProducts($scope.currentPage - 1);
-            }
+            $scope.filterProducts($scope.currentPage - 1);
         }
 
         smoothRoll();
     };
 
-    // gọi màu sản phẩm
+    // Gọi màu sản phẩm
     $scope.fetchColors();
-    // gọi item sản phẩm
+    // Gọi item sản phẩm
     $scope.fetchItems();
 
+    $scope.showSuccessModal = function (product) {
+        $scope.selectedProduct = product;
+        $('#successModal').modal('show');
+    };
 
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
     $scope.addToCart = function (product) {
@@ -167,7 +183,6 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }
 
         localStorage.setItem('cart', JSON.stringify($scope.cart));
-        $('#successModal').modal('show');
     };
 
     $scope.increaseQuantity = function (item) {
@@ -210,18 +225,18 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
 
 }]);
 
-// làm chẵn số tiền trong giỏ hàng
+// Làm chẵn số tiền trong giỏ hàng
 app.filter('floor', function () {
     return function (input) {
         if (isNaN(input)) {
-            console.log("string")
+            console.log("string");
             return input;
         }
         return Math.floor(input * 100) / 100;
     };
 });
 
-// tạo hiệu ứng lướt mượt hơn
+// Tạo hiệu ứng lướt mượt hơn
 function smoothRoll() {
     window.scrollTo({
         top: 0,

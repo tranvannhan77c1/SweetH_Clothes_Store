@@ -87,26 +87,35 @@ a {
 }
 
 .section-margin {
-    margin: 45px 0
+    width: 90%;
+    /* Đặt chiều rộng tương tự như .banner-main */
+    margin: 45px auto;
+    /* Căn giữa với khoảng cách trên và dưới */
 }
 
 @media (min-width: 980px) {
     .section-margin {
-        margin: 70px 0
+        margin: 70px auto;
+        /* Cập nhật margin cho kích thước màn hình lớn hơn */
     }
 }
 
 @media (min-width: 1100px) {
     .section-margin {
-        margin: 120px 0
+        margin: 120px auto;
+        /* Cập nhật margin cho kích thước màn hình lớn hơn */
     }
     .section-margin.calc-60px {
-        margin: 120px 0 70px 0
+        margin: 120px auto 70px;
+        /* Cập nhật margin với lớp calc-60px */
     }
 }
 
 .section-margin--small {
-    margin: 35px 0
+    width: 90%;
+    /* Đặt chiều rộng tương tự như .banner-main */
+    margin: 35px auto;
+    /* Căn giữa với khoảng cách trên và dưới */
 }
 
 @media (min-width: 1000px) {
@@ -123,6 +132,29 @@ a {
     .section-padding {
         padding: 130px 0
     }
+}
+
+.filter-list.ng-hide {
+    display: none;
+}
+
+
+/* Tùy chỉnh thêm cho nút Xem tất cả màu */
+
+.btn-outline-primary {
+    font-size: 14px;
+    padding: 8px 16px;
+    border-width: 2px;
+    color: #8B4513;
+    border-color: #8B4513;
+}
+
+.btn-outline-primary:hover {
+    background-color: #8B4513;
+    /* Thay đổi màu nền khi hover */
+    color: #fff;
+    border-color: #8B4513;
+    /* Thay đổi màu chữ khi hover */
 }
 
 .pb-60px {
@@ -733,7 +765,6 @@ a {
     display: block;
     width: 5%;
     height: 100%;
-    background: #8B4513;
     position: absolute;
     top: 0;
     left: 0
@@ -5178,6 +5209,148 @@ h4.total-amount {
     /* Màu hover (nếu cần) */
 }
 
+#successModal .modal-header {
+    background-color: #8B4513;
+    /* Màu nền */
+    border-bottom: 1px solid #dee2e6;
+    /* Viền dưới */
+    padding: 12px;
+    /* Đệm */
+}
+
+#successModal .modal-dialog {
+    max-width: 60%;
+    /* Giảm chiều rộng tối đa của modal */
+    margin-top: 80px;
+}
+
+#successModal .modal-title {
+    font-size: 20px;
+    /* Kích thước tiêu đề */
+}
+
+
+/* Phần thân của Modal */
+
+#successModal .modal-body {
+    padding: 20px;
+    max-height: calc(80vh - 100px);
+    /* Điều chỉnh chiều cao tối đa của modal */
+    overflow-y: auto;
+    /* Bật cuộn dọc nếu nội dung tràn */
+}
+
+#successModal .product_image_area .img-fluid {
+    max-width: 100%;
+    /* Hình ảnh phản hồi */
+    height: auto;
+    /* Chiều cao tự động */
+}
+
+#successModal .s_product_text h3 {
+    font-size: 30px;
+    /* Kích thước tiêu đề sản phẩm */
+}
+
+#successModal .s_product_text h2 {
+    font-size: 24px;
+    /* Kích thước giá */
+    color: #8B4513;
+    /* Màu chữ giá */
+}
+
+#successModal .list {
+    padding-left: 0;
+    /* Xóa lề trái của danh sách */
+    list-style: none;
+    /* Xóa dấu đầu dòng */
+}
+
+#successModal .list li {
+    margin-bottom: 10px;
+    /* Khoảng cách giữa các mục */
+}
+
+#successModal .product_size {
+    margin-top: 20px;
+    /* Khoảng cách với phần trước đó */
+}
+
+#successModal .size-buttons {
+    margin-top: 10px;
+    /* Khoảng cách với phần trước đó */
+}
+
+#successModal .product_count {
+    margin-top: -100px;
+    /* Khoảng cách với phần trước đó */
+    margin-left: -250px;
+}
+
+#successModal .input-text.qty {
+    width: 50px;
+    /* Chiều rộng */
+    text-align: left;
+    /* Căn giữa văn bản */
+    border: 1px solid #8B4513;
+    /* Viền */
+    border-radius: 5px;
+    /* Bo góc */
+}
+
+
+/* Điều chỉnh margin cho các nút tăng và giảm */
+
+#successModal .product_count .increase1,
+#successModal .product_count .reduced2 {
+    margin-left: -26px;
+    /* Di chuyển qua bên trái */
+}
+
+#successModal .button.primary-btn {
+    padding: 10px 20px;
+    background-color: #8B4513;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: -30px;
+    margin-left: 180px;
+    /* Điều chỉnh khoảng cách từ bên trái */
+    margin-right: 0;
+    /* Tự động căn chỉnh bên phải */
+    display: block;
+    /* Đảm bảo nút là khối để margin-left hoạt động */
+}
+
+
+/* Phần chân của Modal */
+
+#successModal .modal-footer {
+    padding: 12px;
+    /* Đệm */
+    border-top: 1px solid #dee2e6;
+    /* Viền trên */
+    text-align: right;
+    /* Căn phải */
+}
+
+#successModal .btn-close-modal {
+    padding: 8px 16px;
+    /* Khoảng cách lề */
+    background-color: #8B4513;
+    /* Màu nền */
+    color: white;
+    /* Màu chữ */
+    border: none;
+    /* Xóa viền */
+    border-radius: 5px;
+    /* Bo góc */
+    cursor: pointer;
+    /* Con trỏ */
+    margin-left: 750px;
+}
+
 .layer {
     position: relative;
 }
@@ -5271,4 +5444,114 @@ fieldset[disabled] .btn {
     /* Màu nâu nhạt */
     color: white;
     /* Màu chữ trắng */
+}
+
+
+/* Đảm bảo carousel chiếm toàn bộ chiều rộng của phần tử chứa */
+
+.banner-main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* Định dạng carousel */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    /* Điều chỉnh chiều cao theo nhu cầu của bạn */
+    overflow: hidden;
+    /* Đảm bảo không có phần ảnh nào tràn ra ngoài */
+}
+
+
+/* Định dạng các slide bên trong carousel */
+
+.carousel-inner>.item>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị kéo dãn */
+}
+
+
+/* Định dạng các điều khiển của carousel */
+
+.carousel-control {
+    width: 5%;
+    /* Chiều rộng của các nút điều khiển */
+    background-image: none;
+    /* Loại bỏ hình nền mặc định */
+    height: 100%;
+    /* Đảm bảo điều khiển chiếm toàn bộ chiều cao của carousel */
+    display: flex;
+    /* Sử dụng flexbox để căn giữa nội dung */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    /* Căn giữa theo chiều ngang */
+    color: white;
+    /* Màu chữ của điều khiển */
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    /* Đổ bóng cho điều khiển */
+}
+
+
+/* Định dạng các điều khiển bên trái và bên phải */
+
+.carousel-control.left,
+.carousel-control.right {
+    height: 100%;
+    /* Đảm bảo điều khiển chiếm toàn bộ chiều cao của carousel */
+}
+
+
+/* Định dạng các biểu tượng chevron bên trong điều khiển */
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+    font-size: 30px;
+    /* Kích thước của các biểu tượng */
+    color: white;
+    /* Màu của các biểu tượng */
+}
+
+
+/* Định dạng chỉ báo slide */
+
+.carousel-indicators {
+    bottom: 10px;
+    /* Khoảng cách từ đáy carousel */
+}
+
+
+/* Định dạng các chỉ báo slide */
+
+.carousel-indicators li {
+    background-color: white;
+    /* Màu nền trong suốt cho các chỉ báo không hoạt động */
+    border: 1px solid #999999;
+    border-color: white;
+    /* Thêm viền màu xám nhạt cho các chỉ báo không hoạt động */
+}
+
+
+/* Định dạng chỉ báo slide đang hoạt động */
+
+.carousel-indicators .active {
+    background-color: white;
+    /* Màu nền của chỉ báo đang hoạt động */
+}
+
+.highlighted-text {
+    text-align: center;
+    /* Căn giữa văn bản */
+    font-size: 2em;
+    /* Kích thước chữ lớn hơn (2em tương đương với 200% kích thước chữ gốc) */
+    font-weight: bold;
+    /* In đậm văn bản */
+    color: #000;
+    margin-top: 70px;
 }
