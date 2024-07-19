@@ -21,7 +21,7 @@ app.controller('loginController', ['$scope', '$http', '$window', function($scope
         // console.log($scope.username)
         // console.log($scope.password)
 
-        $http.post('http://localhost:8080/api/auth/login', loginData)
+        $http.post('http://localhost:8080/api/v1/auth/login', loginData)
             .then(function(response) {
                 // Handle success
                 console.log('Login successful:', response.data);

@@ -32,7 +32,7 @@ window.onload=function() {
     
                     const data = JSON.stringify(user);
                     console.log("data sent to server: ", data)
-                    fetch("http://localhost:8080/api/v1/account/signup", {
+                    fetch("http://localhost:8080/api/v1/auth/signup", {
                         method: "POST",
                         body: data,
                         headers: {

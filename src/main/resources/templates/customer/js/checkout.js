@@ -1,6 +1,6 @@
 var app = angular.module('checkoutApp', []);
 
-app.controller('CheckoutController', ['$scope', '$http', function($scope, $http) {
+app.controller('CheckoutController', ['$scope', '$http', function ($scope, $http) {
     $scope.products = [];
     $scope.cart = [];
     $scope.showSuccessAlert = false;
@@ -21,6 +21,47 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
     if (storedCart) {
         $scope.cart = JSON.parse(storedCart);
     }
+
+
+    $scope.payment = function () {
+        let order_totalAmount = 0;
+        var orderDetail = [];
+        $scope.cart.forEach(product => {
+            order_totalAmount += product.price * product.quantity;
+            orderDetail.push({
+                quantity: product.quantity,
+                price: product.price,
+                size: "test",
+                productId: product.id
+            })
+        })
+
+        var order = {
+            totalAmount: order_totalAmount,
+            status: null,
+            address: "test address",
+            phone: "1234567890",
+            voucherId: null,
+            accountId: null
+        }
+
+        var orderRequest = {
+            order: order,
+            orderDetails: orderDetail
+        }
+
+        $http.post('http://localhost:8080/api/v1/customer/orders/createOrder', orderRequest)
+        .then(function(response) {
+            // Handle success
+            console.log('Payment successful:', response.data);
+            
+        })
+        .catch(function(error) {
+            // Handle error
+            console.error('Payment failed:', error);
+        });
+    }
+
 }]);
 
 app.filter('floor', function () {

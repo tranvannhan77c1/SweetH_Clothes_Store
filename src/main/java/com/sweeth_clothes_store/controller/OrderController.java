@@ -1,6 +1,8 @@
 package com.sweeth_clothes_store.controller;
 
 import com.sweeth_clothes_store.dto.OrderDTO;
+import com.sweeth_clothes_store.model.Order;
+import com.sweeth_clothes_store.payload.OrderRequest;
 import com.sweeth_clothes_store.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,9 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/v1/customer/orders")
 public class OrderController {
 
     @Autowired
@@ -45,10 +48,9 @@ public class OrderController {
 //        return orderService.getAllOrders();
 //    }
 
-    @PostMapping
-    public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderDTO orderDTO) {
-        OrderDTO createdOrder = orderService.createOrder(orderDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+    @PostMapping("/createOrder")
+    public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {
+        return new ResponseEntity<Order>(orderService.createOrder(orderRequest.getOrder(), orderRequest.getOrderDetails()), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
