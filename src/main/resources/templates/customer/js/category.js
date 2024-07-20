@@ -19,6 +19,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.maxVisibleColors = 5;
     $scope.showAllColors = false;
     $scope.selectedProduct = null;
+    $scope.showSuccessMessage = false; // New variable
 
     // Function to log the search query
     $scope.searching = function () {
@@ -40,7 +41,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             });
     };
 
-    // Gọi sản phẩm 
+    // Gọi sản phẩm
     $scope.getProducts($scope.currentPage - 1);
 
     // Lấy màu để làm filter
@@ -183,6 +184,12 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }
 
         localStorage.setItem('cart', JSON.stringify($scope.cart));
+        $scope.showSuccessMessage = true; // Show success message
+
+        setTimeout(() => {
+            $scope.showSuccessMessage = false; // Hide success message after 3 seconds
+            $scope.$apply();
+        }, 3000);
     };
 
     $scope.increaseQuantity = function (item) {

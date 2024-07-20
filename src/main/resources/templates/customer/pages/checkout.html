@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
-
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -39,9 +38,20 @@
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
                         <ul class="nav-shop">
-                            <li class="nav-item"><a href="cart.html"><button><i class="ti-user"></i></button> </a></li>
-                            <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span
-                                    class="nav-shop__circle">{{cart.length}}</span></button> </a></li>
+                            <!-- User Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-user"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
+                                    <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
+                                    <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">{{cart.length}}</span></button></a></li>
                             <li class="nav-item"><a class="button button-header" href="category.html">Mua Ngay</a></li>
                         </ul>
                     </div>
@@ -160,7 +170,7 @@
                     <div class="col-lg-4">
                         <div class="order_box">
                             <h2>Đơn hàng của bạn</h2>
-                            <ul class="list" >
+                            <ul class="list">
                                 <li>
                                     <a href="#">
                                         <h4>Sản Phẩm <span>Tổng</span></h4>

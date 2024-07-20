@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
-
 body {
     color: #777;
     font-family: "Roboto", sans-serif;
@@ -16,7 +15,7 @@ ul {
 }
 
 a:hover {
-    text-decoration: none;
+    text-decoration: none
 }
 
 button {
@@ -88,36 +87,26 @@ a {
 }
 
 .section-margin {
-    width: 90%;
-    /* Đặt chiều rộng tương tự như .banner-main */
-    margin: 45px auto;
-    /* Căn giữa với khoảng cách trên và dưới */
+    margin: 45px 0
 }
 
 @media (min-width: 980px) {
     .section-margin {
-        margin: 70px auto;
-        /* Cập nhật margin cho kích thước màn hình lớn hơn */
+        margin: 70px 0
     }
 }
 
 @media (min-width: 1100px) {
     .section-margin {
-        margin: 120px auto;
-        /* Cập nhật margin cho kích thước màn hình lớn hơn */
+        margin: 120px 0
     }
-
     .section-margin.calc-60px {
-        margin: 120px auto 70px;
-        /* Cập nhật margin với lớp calc-60px */
+        margin: 120px 0 70px 0
     }
 }
 
 .section-margin--small {
-    width: 90%;
-    /* Đặt chiều rộng tương tự như .banner-main */
-    margin: 35px auto;
-    /* Căn giữa với khoảng cách trên và dưới */
+    margin: 35px 0
 }
 
 @media (min-width: 1000px) {
@@ -134,29 +123,6 @@ a {
     .section-padding {
         padding: 130px 0
     }
-}
-
-.filter-list.ng-hide {
-    display: none;
-}
-
-
-/* Tùy chỉnh thêm cho nút Xem tất cả màu */
-
-.btn-outline-primary {
-    font-size: 14px;
-    padding: 8px 16px;
-    border-width: 2px;
-    color: #FFD39B;
-    border-color: #FFD39B;
-}
-
-.btn-outline-primary:hover {
-    background-color: #FFD39B;
-    /* Thay đổi màu nền khi hover */
-    color: #fff;
-    border-color: #FFD39B;
-    /* Thay đổi màu chữ khi hover */
 }
 
 .pb-60px {
@@ -176,15 +142,14 @@ a {
     width: 100%;
     z-index: 9999;
     transition: background 0.4s, all 0.3s linear;
-    box-shadow: 0px 10px 27px 3px rgba(221, 221, 221, 0.3);
+    box-shadow: 0px 10px 27px 3px rgba(221, 221, 221, 0.3)
 }
 
 .header_area .navbar {
     background: transparent;
     padding: 0px;
     border: 0px;
-    border-radius: 0px;
-    font-size: 17px;
+    border-radius: 0px
 }
 
 .header_area .navbar .nav .nav-item {
@@ -194,8 +159,7 @@ a {
 .header_area .navbar .nav .nav-item .nav-link {
     text-transform: capitalize;
     color: #222;
-    display: inline-block;
-    /* font-size: 15px; */
+    display: inline-block
 }
 
 @media (min-width: 991px) {
@@ -210,7 +174,7 @@ a {
 
 .header_area .navbar .nav .nav-item:hover .nav-link,
 .header_area .navbar .nav .nav-item.active .nav-link {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .header_area .navbar .nav .nav-item.submenu {
@@ -273,8 +237,7 @@ a {
     padding: 0px 30px;
     transition: all 150ms linear;
     display: block;
-    margin-right: 0px;
-    font-size: 15px;
+    margin-right: 0px
 }
 
 .header_area .navbar .nav .nav-item.submenu ul .nav-item:last-child {
@@ -282,7 +245,7 @@ a {
 }
 
 .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
-    background: #FFD39B;;
+    background: #8B1A1A;
     color: #fff
 }
 
@@ -470,17 +433,10 @@ a {
     position: relative
 }
 
-.nav-shop {
-    margin-right: -100px;
-}
-
-
-/* styles.css */
-
 .nav-shop li button .nav-shop__circle {
     font-size: 9px;
     display: inline-block;
-    background: #FFD39B;
+    background: #8B1A1A;
     color: #fff;
     padding: 0px 5px;
     border-radius: 50%;
@@ -503,11 +459,9 @@ a {
     .header_area .navbar .nav .nav-item {
         margin-right: 28px
     }
-
     .home_banner_area .banner_inner {
         padding: 100px 0px
     }
-
     .header_area .navbar .tickets_btn {
         margin-left: 40px
     }
@@ -522,143 +476,114 @@ a {
         margin-top: 27px;
         margin-bottom: 23px
     }
-
     .header_area .navbar {
         background: #ffffff
     }
-
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
         opacity: 1
     }
-
     .navbar-toggler[aria-expanded="true"] span:nth-child(2) {
         opacity: 0
     }
-
     .navbar-toggler[aria-expanded="true"] span:first-child {
         transform: rotate(-45deg);
         position: relative;
         top: 7.5px
     }
-
     .navbar-toggler[aria-expanded="true"] span:last-child {
         transform: rotate(45deg);
         bottom: 6px;
         position: relative
     }
-
     .navbar-toggler span {
         display: block;
         width: 25px;
         height: 3px;
-        background: #FFD39B;
+        background: #8B1A1A;
         margin: auto;
         margin-bottom: 4px;
         transition: all 400ms linear;
         cursor: pointer
     }
-
     .navbar .container {
         padding-left: 15px;
         padding-right: 15px
     }
-
     .nav {
         padding: 0px 0px
     }
-
-    .header_area + section,
-    .header_area + row,
-    .header_area + div {
+    .header_area+section,
+    .header_area+row,
+    .header_area+div {
         margin-top: 117px
     }
-
     .header_top .nav {
         padding: 0px
     }
-
     .header_area .navbar .nav .nav-item .nav-link {
         line-height: 30px;
         margin-right: 0px;
         display: block;
         border-bottom: 1px solid #ededed33;
-        border-radius: 0px;
+        border-radius: 0px
     }
-
     .header_area .navbar .nav-shop {
         padding-bottom: 40px
     }
-
     .header_area .navbar .search {
         margin-left: 0px
     }
-
     .header_area .navbar-collapse {
         max-height: 340px;
-        overflow-y: scroll;
+        overflow-y: scroll
     }
-
     .header_area .navbar .nav .nav-item.submenu ul .nav-item .nav-link {
         padding: 0px 15px
     }
-
     .header_area .navbar .nav .nav-item {
         margin-right: 0px
     }
-
-    .header_area + section,
-    .header_area + row,
-    .header_area + div {
+    .header_area+section,
+    .header_area+row,
+    .header_area+div {
         margin-top: 0px;
-        padding-top: 71px;
+        padding-top: 71px
     }
-
     .header_area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
         line-height: 40px
     }
-
     .categories_post img {
         width: 100%
     }
-
     .categories_post {
         max-width: 360px;
         margin: 0 auto
     }
-
     .blog_categorie_area .col-lg-4 {
         margin-top: 30px
     }
-
     .blog_area {
         padding-bottom: 80px
     }
-
     .single-post-area .blog_right_sidebar {
         margin-top: 30px
     }
-
     .contact_info {
         margin-bottom: 50px
     }
-
     .home_banner_area .donation_inner {
         margin-bottom: -30px
     }
-
     .home_banner_area .dontation_item {
         max-width: 350px;
         margin: auto
     }
-
     .footer-area .col-sm-6 {
         margin-bottom: 30px
     }
-
     .header_area .navbar .tickets_btn {
         margin-left: 0px
     }
-
     .home_banner_area {
         min-height: 700px
     }
@@ -668,43 +593,34 @@ a {
     .home_banner_area {
         min-height: 500px
     }
-
     .home_banner_area .banner_inner {
         min-height: 500px
     }
-
     .home_banner_area .banner_inner .banner_content {
         margin-top: 0px
     }
-
     .blog_banner .banner_inner .blog_b_text h2 {
         font-size: 40px;
         line-height: 50px
     }
-
     .blog_info.text-right {
         text-align: left !important;
         margin-bottom: 10px
     }
-
     .home_banner_area .banner_inner .banner_content h3 {
         font-size: 30px
     }
-
     .home_banner_area .banner_inner .banner_content p br {
         display: none
     }
-
     .home_banner_area .banner_inner .banner_content h3 span {
         line-height: 45px;
         padding-bottom: 0px;
         padding-top: 0px
     }
-
     .footer-bottom {
         text-align: center
     }
-
     .footer-bottom .footer-social {
         text-align: center;
         margin-top: 15px
@@ -715,61 +631,48 @@ a {
     .top_menu {
         display: none
     }
-
-    .header_area + section,
-    .header_area + row,
-    .header_area + div {
+    .header_area+section,
+    .header_area+row,
+    .header_area+div {
         margin-top: 0px;
         padding-top: 71px
     }
-
     .home_banner_area .banner_inner .banner_content h2 {
         font-size: 40px;
         line-height: 44px
     }
-
     .home_banner_area {
         min-height: 500px
     }
-
     .home_banner_area .banner_inner {
         min-height: 500px
     }
-
     .blog_banner .banner_inner .blog_b_text {
         margin-top: 0px
     }
-
     .home_banner_area .banner_inner .banner_content img {
         display: none
     }
-
     .home_banner_area .banner_inner .banner_content h5 {
         margin-top: 0px
     }
-
     .sample-text-area {
         padding: 70px 0 70px 0
     }
-
     .generic-blockquote {
         padding: 30px 15px 30px 30px
     }
-
     .blog_details h2 {
         font-size: 20px;
         line-height: 30px
     }
-
     .blog_banner .banner_inner .blog_b_text h2 {
         font-size: 28px;
         line-height: 38px
     }
-
     .footer-area {
         padding: 70px 0px
     }
-
     .single-footer-widget .sub-btn {
         right: 0px
     }
@@ -779,19 +682,15 @@ a {
     .header_area .navbar-collapse {
         max-height: 250px
     }
-
     .home_banner_area .banner_inner .banner_content {
         margin-top: 0px
     }
-
     .home_banner_area .banner_inner .banner_content h3 {
         font-size: 24px
     }
-
     .banner_area .banner_inner .banner_content h2 {
         font-size: 32px
     }
-
     .comments-area .thumb {
         margin-right: 10px
     }
@@ -802,7 +701,7 @@ a {
 }
 
 .section-intro__style {
-    border-bottom: 2px solid #FFD39B;
+    border-bottom: 2px solid #8B1A1A;
     padding-bottom: 8px
 }
 
@@ -823,6 +722,7 @@ a {
     display: block;
     width: 5%;
     height: 100%;
+    background: #8B1A1A;
     position: absolute;
     top: 0;
     left: 0
@@ -916,7 +816,7 @@ a {
 .hero-carousel__slideOverlay {
     position: absolute;
     bottom: 50px;
-    background: #FFD39B;
+    background: #8B1A1A;
     padding: 23px 90px 23px 25px;
     transform: translateY(50px);
     opacity: 0;
@@ -937,7 +837,7 @@ a {
 
 .hero-carousel__slide:hover::after {
     transform: translateY(0);
-    opacity: 1
+
 }
 
 .hero-carousel__slide:hover .hero-carousel__slideOverlay {
@@ -980,7 +880,7 @@ a {
     border: 0;
     border-radius: 0;
     padding: 7px 12px;
-    background: #FFD39B
+    background: #8B1A1A
 }
 
 .card-product__imgOverlay li button i,
@@ -991,7 +891,7 @@ a {
 }
 
 .card-product__imgOverlay li button:hover {
-    background: #FFD39B
+    background: #8B1A1A
 }
 
 .card-product__imgOverlay li:not(:last-child) {
@@ -1014,16 +914,12 @@ a {
 }
 
 .card-product:hover .card-product__title a {
-    color: #FFD39B
+    color: #8B1A1A
 }
 
 .offer {
-    background-image: url("/templates/customer/img/anhbanner2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    /* Tạo hiệu ứng parallax */
+    background: url("") right center no-repeat;
+    background-size: cover
 }
 
 @media (min-width: 1200px) {
@@ -1051,18 +947,16 @@ a {
 @media (min-width: 650px) {
     .offer__content h3 {
         font-size: 50px;
-        margin-bottom: 25px;
-        color: white;
+        margin-bottom: 25px
     }
 }
 
 .offer__content h4 {
-    font-size: 30px;
-    color: white;
+    font-size: 30px
 }
 
 .offer__content p {
-    color: white
+    color: #555555
 }
 
 #bestSellerCarousel .owl-prev,
@@ -1077,13 +971,13 @@ a {
 #bestSellerCarousel .owl-next i,
 #bestSellerCarousel .owl-next span {
     font-size: 15px;
-    color: #FFD39B;
+    color: #8B1A1A;
     line-height: 40px
 }
 
 #bestSellerCarousel .owl-prev:hover,
 #bestSellerCarousel .owl-next:hover {
-    background: #FFD39B
+    background: #8B1A1A
 }
 
 #bestSellerCarousel .owl-prev:hover i,
@@ -1174,11 +1068,11 @@ a {
 }
 
 .card-blog:hover .card-blog__title a {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .card-blog:hover .card-blog__link {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .card-blog:hover .card-blog__link i,
@@ -1221,7 +1115,7 @@ a {
     position: absolute;
     top: 50px;
     left: 10px;
-    color: #FFD39B
+    color: #8B1A1A
 }
 
 .subscribe-form .form-control {
@@ -1265,12 +1159,12 @@ a {
 
 .button {
     display: inline-block;
-    border: 1px solid #FFD39B;
+    border: 1px solid #8B1A1A;
     border-radius: 30px;
     color: #222;
     font-weight: 500;
     padding: 12px 50px;
-    background: #FFD39B;
+    background: #8B1A1A;
     color: #fff;
     transition: all .4s ease
 }
@@ -1303,7 +1197,7 @@ a {
 }
 
 .button-blog:hover {
-    background: #FFD39B !important;
+    background: #8B1A1A !important;
     color: #fff !important
 }
 
@@ -1352,7 +1246,7 @@ a {
     padding: 10px 45px;
     background: transparent;
     color: #222;
-    border-color: #8a8a8a
+    border-color: #EEEEEE
 }
 
 .button-hero {
@@ -1360,12 +1254,12 @@ a {
 }
 
 .button--active {
-    background: #FFD39B;
+    background: #8B1A1A;
     color: #fff
 }
 
 .button-contactForm {
-    border: 1px solid #FFD39B !important;
+    border: 1px solid #8B1A1A !important;
     border-radius: 0;
     padding: 11px 26px
 }
@@ -1376,9 +1270,9 @@ a {
 }
 
 .button:hover {
-    border-color: #FFD39B;
-    background: #FFD39B;
-    color: white
+    border-color: #8B1A1A;
+    background: transparent;
+    color: #222
 }
 
 .button-register {
@@ -1387,11 +1281,11 @@ a {
     border-radius: 0;
     padding: 9px 15px;
     text-transform: uppercase;
-    background: #FFD39B
+    background: #c5322d
 }
 
 .button-register:hover {
-    background: #FFD39B;
+    background: #c5322d;
     opacity: .7;
     color: #fff
 }
@@ -1415,7 +1309,7 @@ a {
 .blog-banner h1 {
     font-size: 30px;
     margin-bottom: 10px;
-    color: #FFD39B
+    color: #222
 }
 
 @media (min-width: 992px) {
@@ -1452,19 +1346,17 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/anhbanner2.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+    background: #f1f6f7;
+    z-index: -1
 }
 
 .blog-banner-btn {
-    border: 2px solid #FFD39B;
+    border: 2px solid #8B1A1A;
     padding: 10px 45px
 }
 
 .blog-banner-btn:hover {
-    background: #FFD39B;
+    background: #8B1A1A;
     color: #fff
 }
 
@@ -1483,17 +1375,17 @@ a {
 
 .banner-breadcrumb .breadcrumb-item a {
     text-transform: capitalize;
-    color: #FFD39B
+    color: #777777
 }
 
-.banner-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-    color: #FFD39B;
+.banner-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+    color: #777777;
     padding-right: .1rem;
     content: "-"
 }
 
 .banner-breadcrumb .breadcrumb-item.active {
-    color: #FFD39B
+    color: #777777
 }
 
 .l_blog_item .l_blog_text .date {
@@ -1518,7 +1410,7 @@ a {
 }
 
 .l_blog_item .l_blog_text h4:hover {
-    color: #FFD39B
+    color: #8B1A1A
 }
 
 .l_blog_item .l_blog_text p {
@@ -1544,7 +1436,7 @@ a {
 }
 
 .causes_slider .owl-dots .owl-dot.active {
-    background: #FFD39B
+    background: #8B1A1A
 }
 
 .causes_item {
@@ -1567,7 +1459,7 @@ a {
 .causes_item .causes_img .c_parcent span {
     width: 70%;
     height: 3px;
-    background: #A52AA2;
+    background: #8B1A1A;
     position: absolute;
     left: 0px;
     bottom: 0px
@@ -1578,7 +1470,7 @@ a {
     position: absolute;
     right: -10px;
     bottom: 0px;
-    background: #FFD39B;
+    background: #8B1A1A;
     color: #fff;
     padding: 0px 5px
 }
@@ -1596,7 +1488,7 @@ a {
 }
 
 .causes_item .causes_text h4:hover {
-    color: #FFD39B
+    color: #8B1A1A
 }
 
 .causes_item .causes_text p {
@@ -1608,17 +1500,17 @@ a {
 
 .causes_item .causes_bottom a {
     width: 50%;
-    border: 1px solid #FFD39B;
+    border: 1px solid #8B1A1A;
     text-align: center;
     float: left;
     line-height: 50px;
-    background: #FFD39B;
+    background: #8B1A1A;
     color: #fff;
     font-size: 14px;
     font-weight: 500
 }
 
-.causes_item .causes_bottom a + a {
+.causes_item .causes_bottom a+a {
     border-color: #eeeeee;
     background: #fff;
     font-size: 14px;
@@ -1673,10 +1565,10 @@ a {
 }
 
 .tags .tag_btn:before {
-    background: #FFD39B;
+    background: #8B1A1A
 }
 
-.tags .tag_btn + .tag_btn {
+.tags .tag_btn+.tag_btn {
     margin-left: 2px
 }
 
@@ -1747,7 +1639,7 @@ a {
 }
 
 .categories_post:hover .categories_details {
-    background: rgba(165, 42, 42, 0.8);
+    background: rgba(56, 74, 235, 0.85)
 }
 
 .blog_item {
@@ -1768,7 +1660,7 @@ a {
 }
 
 .blog_info .post_tag a.active {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .blog_info .blog_meta li a {
@@ -1789,7 +1681,7 @@ a {
 }
 
 .blog_info .blog_meta li a:hover {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .blog_post img {
@@ -1809,7 +1701,7 @@ a {
 }
 
 .blog_details h2:hover {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .blog_details p {
@@ -1835,7 +1727,7 @@ a {
 .blog_right_sidebar .widget_title {
     font-size: 18px;
     line-height: 25px;
-    background: #FFD39B;;
+    background: #8B1A1A;
     text-align: center;
     color: #fff;
     padding: 8px 0px;
@@ -1852,7 +1744,7 @@ a {
     padding-left: 20px;
     border-radius: 45px;
     z-index: 0;
-    background: #FFD39B;
+    background: #8B1A1A
 }
 
 .blog_right_sidebar .search_widget .input-group .form-control.placeholder {
@@ -1915,12 +1807,12 @@ a {
     transition: all 0.2s linear
 }
 
-.blog_right_sidebar .author_widget .social_icon a + a {
+.blog_right_sidebar .author_widget .social_icon a+a {
     margin-left: 20px
 }
 
 .blog_right_sidebar .author_widget .social_icon a:hover {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body {
@@ -1938,7 +1830,7 @@ a {
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body h3:hover {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
@@ -1947,7 +1839,7 @@ a {
     margin-bottom: 0px
 }
 
-.blog_right_sidebar .popular_post_widget .post_item + .post_item {
+.blog_right_sidebar .popular_post_widget .post_item+.post_item {
     margin-top: 20px
 }
 
@@ -1967,16 +1859,16 @@ a {
     margin-bottom: 0px
 }
 
-.blog_right_sidebar .post_category_widget .cat-list li + li {
+.blog_right_sidebar .post_category_widget .cat-list li+li {
     padding-top: 15px
 }
 
 .blog_right_sidebar .post_category_widget .cat-list li:hover {
-    border-color: #FFD39B;
+    border-color: #8B1A1A
 }
 
 .blog_right_sidebar .post_category_widget .cat-list li:hover a {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .blog_right_sidebar .newsletter_widget {
@@ -2037,7 +1929,7 @@ a {
 }
 
 .blog_right_sidebar .newsletter_widget .bbtns {
-    background: #FFD39B;;
+    background: #8B1A1A;
     color: #fff;
     font-size: 12px;
     line-height: 38px;
@@ -2067,7 +1959,7 @@ a {
 }
 
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-    background: #FFD39B;;
+    background: #8B1A1A;
     color: #fff
 }
 
@@ -2097,7 +1989,7 @@ a {
 }
 
 .blog-pagination .page-item.active .page-link {
-    background-color: #FFD39B;;
+    background-color: #8B1A1A;
     border-color: transparent;
     color: #fff
 }
@@ -2124,7 +2016,7 @@ a {
 .blog-pagination .page-link:hover {
     color: #fff;
     text-decoration: none;
-    background-color: #FFD39B;;
+    background-color: #8B1A1A;
     border-color: #eee
 }
 
@@ -2320,11 +2212,9 @@ a {
     .comments-area .comment-list .single-comment h5 {
         font-size: 12px
     }
-
     .comments-area .comment-list .single-comment .date {
         font-size: 11px
     }
-
     .comments-area .comment-list .single-comment .comment {
         font-size: 10px
     }
@@ -2359,7 +2249,7 @@ a {
 }
 
 .comments-area .btn-reply:hover {
-    background-color: #FFD39B;;
+    background-color: #8B1A1A;
     color: #fff;
     font-weight: 700
 }
@@ -2509,12 +2399,12 @@ a {
 }
 
 .contact-banner-btn {
-    border: 2px solid #FFD39B;;
+    border: 2px solid #8B1A1A;
     padding: 10px 45px
 }
 
 .contact-banner-btn:hover {
-    background: #FFD39B;;
+    background: #8B1A1A;
     color: #fff
 }
 
@@ -2524,7 +2414,7 @@ a {
 
 .contact-info__icon i,
 .contact-info__icon span {
-    color: #FFD39B;;
+    color: #8B1A1A;
     font-size: 20px
 }
 
@@ -2641,7 +2531,7 @@ a {
 .sidebar-categories .head {
     font-family: 'Oswald', sans-serif;
     line-height: 50px;
-    background: #FFD39B;;
+    background: #8B1A1A;
     padding: 0 30px;
     font-size: 18px;
     font-weight: 400;
@@ -2666,7 +2556,7 @@ a {
 }
 
 .sidebar-categories .main-nav-list a:hover {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .sidebar-categories .main-nav-list a .number {
@@ -2690,7 +2580,7 @@ a {
 .sidebar-filter .top-filter-head {
     font-family: 'Oswald', sans-serif;
     line-height: 50px;
-    background: #FFD39B;;
+    background: #8B1A1A;
     padding: 0 30px;
     font-size: 18px;
     font-weight: 400;
@@ -2699,7 +2589,7 @@ a {
 
 .sidebar-filter .head {
     line-height: 60px;
-    padding: 0px 30px;
+    padding: 0 30px;
     font-size: 15px;
     font-weight: 400;
     color: #222;
@@ -2709,8 +2599,7 @@ a {
 .sidebar-filter .common-filter {
     background: #f1f6f7;
     border-bottom: 1px solid #eee;
-    padding-bottom: 0px;
-    padding: 0px -20px;
+    padding-bottom: 25px
 }
 
 .sidebar-filter .common-filter .filter-list {
@@ -2737,8 +2626,7 @@ a {
 
 .filter-list label {
     margin-bottom: 3px;
-    cursor: pointer;
-    font-size: 14px;
+    cursor: pointer
 }
 
 @-webkit-keyframes click-wave {
@@ -2819,14 +2707,14 @@ a {
 }
 
 .pixel-radio:checked {
-    border: 8px solid #FFD39B;
+    border: 8px solid #8B1A1A
 }
 
 .pixel-radio:checked::after {
     -webkit-animation: click-wave 0.65s;
     -moz-animation: click-wave 0.65s;
     animation: click-wave 0.65s;
-    background: #FFD39B;;
+    background: #8B1A1A;
     content: '';
     display: block;
     width: 15px;
@@ -2878,7 +2766,7 @@ a {
     top: -5px;
     border-radius: 50%;
     border: 0px;
-    background: #FFD39B;;
+    background: #8B1A1A;
     box-shadow: none;
     cursor: pointer;
     -webkit-transition: ease 0.1s;
@@ -2892,7 +2780,7 @@ a {
 }
 
 .price-range-area .noUi-horizontal .noUi-handle:hover {
-    border: 3px solid #FFD39B;;
+    border: 3px solid #8B1A1A;
     background: #fff
 }
 
@@ -2964,7 +2852,7 @@ a {
 }
 
 .single-search-product:hover .title {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .order-wrapper {
@@ -3017,7 +2905,7 @@ a {
 
 .billing-alert {
     font-size: 18px;
-    color: #FFD39B;;
+    color: #8B1A1A;
     margin-bottom: 30px
 }
 
@@ -3173,7 +3061,7 @@ a {
 }
 
 .check_title h2 a {
-    color: #FFD39B;;
+    color: #8B1A1A;
     text-decoration: underline
 }
 
@@ -3287,9 +3175,9 @@ a {
 }
 
 .tp_btn:hover {
-    background: #FFD39B;;
+    background: #8B1A1A;
     color: #fff;
-    border-color: #FFD39B;
+    border-color: #8B1A1A
 }
 
 .billing_details h3 {
@@ -3389,7 +3277,7 @@ a {
 }
 
 .billing_details .contact_form .form-group .creat_account a {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .order_box {
@@ -3500,8 +3388,8 @@ a {
 }
 
 .order_box .payment_item.active h4:before {
-    background: #FFD39B;
-    border-color: #FFD39B;
+    background: #8B1A1A;
+    border-color: #8B1A1A
 }
 
 .order_box .creat_account {
@@ -3689,22 +3577,22 @@ a {
     -webkit-transition: background 0.25s linear
 }
 
-.radion_btn input[type=radio]:checked ~ .check {
-    border: 1px solid #FFD39B;
-    background: #FFD39B
+.radion_btn input[type=radio]:checked~.check {
+    border: 1px solid #C5322D;
+    background: #C5322D
 }
 
-.radion_btn input[type=radio]:checked ~ .check::before {
+.radion_btn input[type=radio]:checked~.check::before {
     background: #fff
 }
 
-.radion_btn input[type=radio]:checked ~ label {
+.radion_btn input[type=radio]:checked~label {
     color: #000
 }
 
 .order_box .creat_account a {
     font-size: 12px;
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .login_box_area .login_box_img {
@@ -3735,7 +3623,7 @@ a {
     height: 100%;
     width: 100%;
     content: "";
-    background: #FFD39B;
+    background: #8B1A1A;
     opacity: .9
 }
 
@@ -3772,9 +3660,9 @@ a {
 }
 
 .login_box_area .login_box_img .button:hover {
-    background: #FFD39B !important;
+    background: #c5322d !important;
     color: #fff !important;
-    border-color: #FFD39B !important
+    border-color: #c5322d !important
 }
 
 .login_form_inner {
@@ -3786,14 +3674,16 @@ a {
 
 @media (min-width: 1000px) {
     .login_form_inner {
+        padding-top: 115px;
         padding-bottom: 0
     }
 }
 
 .login_form_inner h3 {
-    color: #FFD39B;
+    color: #222;
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 18px;
+    margin-bottom: 75px
 }
 
 .login_form_inner .login_form {
@@ -3873,6 +3763,10 @@ a {
     display: block
 }
 
+.register_form_inner {
+    padding-top: 70px
+}
+
 .instagram_area {
     position: relative
 }
@@ -3941,7 +3835,6 @@ a {
     .instagram_image {
         margin-bottom: 70px !important
     }
-
     .instagram_image a {
         flex: 0 0 50%;
         max-width: 50%
@@ -4003,7 +3896,7 @@ a {
     font-size: 15px;
     color: #222;
     font-family: "Roboto", sans-serif;
-    margin-bottom: 10px
+    margin-bottom: 0px
 }
 
 .cart_inner .table tbody tr td .product_count {
@@ -4128,15 +4021,14 @@ a {
     height: 40px;
     line-height: 38px;
     text-transform: uppercase;
-    background: #FFD39B;
-    padding: 0px 30px;
-    margin-right: 20px;
-    margin-left: 20px;
+    background: #8B1A1A;
+    padding: 0px 38px;
+    margin-right: 5px;
+    margin-left: 10px;
     border-radius: 30px;
     text-transform: capitalize;
     font-weight: 500;
-    color: #fff;
-    margin: 4px;
+    color: #fff
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text .gray_btn {
@@ -4144,52 +4036,27 @@ a {
 }
 
 .cart_inner .table tbody tr.shipping_area td:nth-child(3) {
-    vertical-align: top;
+    vertical-align: top
 }
 
-.shipping_box {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.shipping-select-container {
-    display: flex;
-    gap: 10px;
-    /* Khoảng cách giữa các phần tử select */
-    margin-bottom: 10px;
-    /* Khoảng cách dưới */
-    margin-right: 50px;
-}
-
-.shipping_select {
-    width: 100%;
-    /* Đặt chiều rộng 100% để phù hợp với container */
-    background: #f1f6f7;
-    border: 1px solid #eeeeee;
-    height: 40px;
-    color: #999999;
-    margin-right: 500px;
-}
-
-.cart_inner .table tbody tr.shipping_area h5 {
-    text-align: right;
-    margin-right: 10px;
+.cart_inner .table tbody tr.shipping_area .shipping_box {
+    margin-left: -250px;
+    text-align: right
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li {
-    margin-bottom: 10px;
+    margin-bottom: 12px
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0px
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a {
     padding-right: 30px;
     font-size: 15px;
     color: #777;
-    position: relative;
+    position: relative
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:before {
@@ -4202,7 +4069,7 @@ a {
     position: absolute;
     right: 0px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%)
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li a:after {
@@ -4210,17 +4077,17 @@ a {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background: #FFD39B;
+    background: #8B1A1A;
     display: inline-block;
     position: absolute;
     right: 3px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0;
+    opacity: 0
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box .list li.active a:after {
-    opacity: 1;
+    opacity: 1
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box h6 {
@@ -4229,19 +4096,37 @@ a {
     color: #222;
     font-size: 16px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box h6 i {
     color: #222;
-    padding-left: 5px;
+    padding-left: 5px
 }
 
-.address-section {
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
-    padding: 0;
+.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select {
+    display: block;
+    width: 100%;
+    background: #f1f6f7;
+    border: 1px solid #eeeeee;
+    height: 40px;
+    color: #999999;
+    margin-bottom: 20px
+}
+
+.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select:after {
+    right: 20px
+}
+
+.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list {
+    width: 100%;
+    border-radius: 0px
+}
+
+.cart_inner .table tbody tr.shipping_area .shipping_box .shipping_select .list li {
+    font-size: 14px;
+    font-weight: normal;
+    color: #777
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box input {
@@ -4253,11 +4138,11 @@ a {
     font-size: 14px;
     color: #999999;
     padding: 0px 15px;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
 .cart_inner .table tbody tr.shipping_area .shipping_box input::placeholder {
-    color: #999999;
+    color: #999999
 }
 
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner {
@@ -4269,7 +4154,7 @@ a {
     padding: 0px 44px;
     line-height: 38px;
     text-transform: capitalize;
-    background: #FFD39B;;
+    background: #8B1A1A;
     border-radius: 30px;
     color: #fff;
     font-weight: 500
@@ -4344,7 +4229,7 @@ a {
     font-family: "Roboto", sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #FFD39B;;
+    color: #8B1A1A;
     margin-bottom: 10px
 }
 
@@ -4470,14 +4355,13 @@ a {
     box-shadow: none;
     cursor: pointer;
     position: absolute;
-    right: -40px;
+    right: 0px;
     font-size: 14px;
     color: #cccccc;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    padding: 0px;
+    transition: all 0.3s ease 0s
 }
 
 .product_count button:hover {
@@ -4485,27 +4369,11 @@ a {
 }
 
 .product_count .increase {
-    top: 200px;
-    left: 120px;
+    top: -4px
 }
 
 .product_count .reduced {
-    bottom: 28px;
-    left: 120px;
-}
-
-.product_count .increase1 {
-    top: -5px;
-    left: 80px;
-}
-
-.product_count .reduced2 {
-    bottom: -2px;
-    left: 80px;
-}
-
-.product_count a {
-    right: -500px;
+    bottom: -8px
 }
 
 .product_description_area {
@@ -4557,8 +4425,8 @@ a {
 
 .product_description_area .nav.nav-tabs li a.active {
     color: #fff;
-    background: #FFD39B;;
-    border-color: #FFD39B;
+    background: #8B1A1A;
+    border-color: #8B1A1A
 }
 
 .product_description_area .tab-content {
@@ -4578,7 +4446,7 @@ a {
 .product_description_area .tab-content .total_rate .box_total h4 {
     font-size: 48px;
     font-weight: bold;
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .product_description_area .tab-content .total_rate .box_total h5 {
@@ -4702,8 +4570,8 @@ a {
 }
 
 .review_item .media .media-body .reply_btn:hover {
-    background: #FFD39B;;
-    border-color: #FFD39B;;
+    background: #8B1A1A;
+    border-color: #8B1A1A;
     color: #fff
 }
 
@@ -4765,7 +4633,7 @@ a {
 }
 
 .footer-area {
-    background: #FFD39B;
+    background: #002347;
     padding: 50px 0px 50px
 }
 
@@ -4814,7 +4682,7 @@ a {
     height: 28px;
     line-height: 28px;
     text-align: center;
-    background: #FFD39B;;
+    background: #8B1A1A;
     color: #ffffff;
     border-radius: 20px
 }
@@ -4824,12 +4692,12 @@ a {
 }
 
 .tp_widgets .list li a {
-    color: white;
+    color: #7b838a;
     font-family: "Roboto", sans-serif
 }
 
 .tp_widgets .list li a:hover {
-    color: #FFD39B;
+    color: #8B1A1A
 }
 
 .tp_widgets .list li:last-child {
@@ -4837,7 +4705,7 @@ a {
 }
 
 .tp_widgets p {
-    color: white;
+    color: #7b838a
 }
 
 .footer_title {
@@ -4873,12 +4741,12 @@ a {
 }
 
 .footer-bottom .footer-text {
-    color: white;
+    color: #fff;
     margin-bottom: 0
 }
 
 .footer-bottom .footer-text a {
-    color: #FFD39B;;
+    color: #8B1A1A;
     opacity: 1
 }
 
@@ -4917,7 +4785,7 @@ a {
 }
 
 #search-input:focus {
-    border-color: #FFD39B;
+    border-color: #8B1A1A;
 }
 
 .search-form button {
@@ -4927,7 +4795,7 @@ a {
     border: 1px solid #ccc;
     border-left: 5px solid #ccc;
     /* Thêm đường viền bên trái */
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     border-radius: 0 25px 25px 0;
     cursor: pointer;
     outline: none;
@@ -4935,7 +4803,7 @@ a {
 }
 
 .search-form button:hover {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     border: 1px solid #ccc;
 }
 
@@ -5143,7 +5011,7 @@ h4.total-amount {
 .nav-link:hover {
     background-color: #f8f9fa;
     /* Màu nền khi di chuột qua */
-    color: #FFD39B;
+    color: #8B1A1A;
     /* Màu chữ khi di chuột qua */
 }
 
@@ -5180,7 +5048,7 @@ h4.total-amount {
 .dropdown-menu .nav-link:hover {
     background-color: #f8f9fa;
     /* Màu nền khi di chuột qua */
-    color: #FFD39B;
+    color: #8B1A1A;
     /* Màu chữ khi di chuột qua */
 }
 
@@ -5217,7 +5085,7 @@ h4.total-amount {
 }
 
 .modal-header {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     color: #fff;
 }
 
@@ -5234,7 +5102,7 @@ h4.total-amount {
 }
 
 .btn-close-modal {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     color: #fff;
     /* Màu chữ trắng */
     border: none;
@@ -5247,7 +5115,7 @@ h4.total-amount {
 }
 
 #successModal .modal-header {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     /* Màu nền */
     border-bottom: 1px solid #dee2e6;
     /* Viền dưới */
@@ -5259,7 +5127,6 @@ h4.total-amount {
     max-width: 60%;
     /* Giảm chiều rộng tối đa của modal */
     margin-top: 80px;
-
 }
 
 #successModal .modal-title {
@@ -5293,7 +5160,7 @@ h4.total-amount {
 #successModal .s_product_text h2 {
     font-size: 24px;
     /* Kích thước giá */
-    color: #FFD39B;
+    color: #8B1A1A;
     /* Màu chữ giá */
 }
 
@@ -5330,7 +5197,7 @@ h4.total-amount {
     /* Chiều rộng */
     text-align: left;
     /* Căn giữa văn bản */
-    border: 1px solid #FFD39B;
+    border: 1px solid #8B1A1A;
     /* Viền */
     border-radius: 5px;
     /* Bo góc */
@@ -5347,7 +5214,7 @@ h4.total-amount {
 
 #successModal .button.primary-btn {
     padding: 10px 20px;
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     color: white;
     border: none;
     border-radius: 15px;
@@ -5376,7 +5243,7 @@ h4.total-amount {
 #successModal .btn-close-modal {
     padding: 8px 16px;
     /* Khoảng cách lề */
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     /* Màu nền */
     color: white;
     /* Màu chữ */
@@ -5448,19 +5315,19 @@ h4.total-amount {
 
 .btn-outline-custom {
     border: none;
-    color: #FFD39B;
+    color: #8B1A1A;
     background: none;
     padding: 0.5rem 1rem;
 }
 
 .btn-outline-custom:hover,
 .btn-outline-custom:focus {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     color: white;
 }
 
 .btn-group .btn.active {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     color: white;
     border: none;
 }
@@ -5478,7 +5345,7 @@ fieldset[disabled] .btn {
 }
 
 .btn.btn-outline-custom.active:hover {
-    background-color: #FFD39B;
+    background-color: #8B1A1A;
     /* Màu nâu nhạt */
     color: white;
     /* Màu chữ trắng */
@@ -5507,7 +5374,7 @@ fieldset[disabled] .btn {
 
 /* Định dạng các slide bên trong carousel */
 
-.carousel-inner > .item > img {
+.carousel-inner>.item>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -5593,3 +5460,63 @@ fieldset[disabled] .btn {
     color: #000;
     margin-top: 70px;
 }
+
+
+/* thông báo thêm sản phẩm thành công */
+
+.toast-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1050;
+    background-color: #8B1A1A;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 570px;
+    margin-right: 280px;
+}
+
+.toast-message {
+    font-size: 16px;
+}
+
+.btn-outline-primary {
+    color: #8B1A1A;
+    border-color: #8B1A1A;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #8B1A1A;
+    border-color: #8B1A1A;
+}
+
+.btn-show-all {
+    background-color: #8B1A1A;
+    color: #fff;
+}
+
+.btn-hide {
+    background-color: #8B1A1A;
+    color: #fff;
+}
+
+/* căn chỉnh anh bộ sưu tập */
+.section-margin1 {
+    width: 90%; /* Đặt chiều rộng của section là 90% */
+    margin: 0 auto; /* Căn giữa phần tử */
+}
+
+.owl-carousel .hero-carousel__slide img {
+    width: 100%; /* Đặt hình ảnh chiếm 100% chiều rộng của phần tử chứa */
+    height: auto; /* Đảm bảo tỷ lệ khung hình được giữ */
+    max-height: 380px; /* Giới hạn chiều cao tối đa của hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh lấp đầy phần tử mà không bị biến dạng */
+}
+
+
