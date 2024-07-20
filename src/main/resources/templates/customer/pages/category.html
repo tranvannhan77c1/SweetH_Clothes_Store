@@ -152,6 +152,7 @@
                             <div class="col-md-6 col-lg-4" ng-repeat="product in products">
                                 <div class="card text-center card-product">
                                     <div class="card-product__img">
+                                        <span class="hot-label">HOT</span>
                                         <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                                         <ul class="card-product__imgOverlay">
                                             <li><button><a ng-href="single-product.html?id={{ product.id }}"><i
@@ -166,7 +167,7 @@
                                         <p>{{ product.category.name }}</p>
                                         <h4 class="card-product__title"><a ng-href="single-product.html?id={{ product.id }}">{{ product.name }}</a>
                                         </h4>
-                                        <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</p>
+                                        <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }} <span class="original-price">500,000đ</span></p>
                                     </div>
                                 </div>
                                 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">

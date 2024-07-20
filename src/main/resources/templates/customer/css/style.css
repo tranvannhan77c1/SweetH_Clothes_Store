@@ -5593,3 +5593,123 @@ fieldset[disabled] .btn {
     color: #000;
     margin-top: 70px;
 }
+.card-product__img {
+    position: relative;
+}
+.hot-label {
+    position: absolute;
+    top: 10px; 
+    background-color: orange;
+    color: white;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 15px;
+    margin-left: 10px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: gray;
+    
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-product__price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa giá gốc và giá hiện tại */
+}
+.order_box .list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order_box .list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.order_box .list li a {
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order_box .list li a h4 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.order_box .list li a .middle {
+    flex: 1;
+    text-align: center;
+}
+
+.order_box .list li a .quantity {
+    flex: 0.5; /* Điều chỉnh kích thước cho phù hợp */
+    text-align: center;
+}
+
+.order_box .list li a .last {
+    flex: 1;
+    text-align: right;
+}
+.order_box .list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order_box .list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.order_box .list li h4 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.order_box .list li a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.order_box .list .product-name {
+    flex: 2;
+    text-align: left;
+}
+
+.order_box .list .product-quantity {
+    flex: 1;
+    text-align: center;
+}
+
+.order_box .list .product-total {
+    flex: 1;
+    text-align: right;
+}
