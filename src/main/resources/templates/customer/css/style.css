@@ -5520,3 +5520,50 @@ fieldset[disabled] .btn {
 }
 
 
+
+
+.order-summary-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for each list item */
+.order-summary-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+/* Style for the anchor tags within the list items */
+.order-summary-list a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Flex properties to ensure proper alignment */
+.order-summary-list .product-name {
+    flex: 1;
+    text-align: left;
+}
+
+.order-summary-list .product-quantity {
+    flex: 0 0 50px;  /* Adjust width as needed */
+    text-align: center;
+}
+
+.order-summary-list .product-total {
+    flex: 0 0 100px;  /* Adjust width as needed */
+    text-align: right;
+}
+
+.order-summary-list .middle,
+.order-summary-list .last {
+    white-space: nowrap;
+}
+

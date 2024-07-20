@@ -50,7 +50,8 @@ public class OrderController {
 
     @PostMapping("/createOrder")
     public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {
-        return new ResponseEntity<Order>(orderService.createOrder(orderRequest.getOrder(), orderRequest.getOrderDetails()), HttpStatus.OK);
+//        System.out.println("orderRequest = " + orderRequest);
+        return new ResponseEntity<Order>(orderService.createOrder(orderRequest.getOrder(), orderRequest.getOrderDetailDTOs()), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

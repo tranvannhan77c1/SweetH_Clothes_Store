@@ -45,7 +45,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
+                                    <a class="dropdown-item" href="register.html">Đăng Ký</a>
                                     <a class="dropdown-item" href="#">Đăng Xuất</a>
                                 </div>
                             </li>
@@ -102,7 +102,7 @@
             </div>
             <div class="billing_details">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         <h3>Chi tiết thanh toán</h3>
                         <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                             <div class="col-md-6 form-group p_star">
@@ -167,17 +167,17 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         <div class="order_box">
                             <h2>Đơn hàng của bạn</h2>
-                            <ul class="list">
+                            <ul class="list order-summary-list">
                                 <li>
                                     <a href="#">
                                         <h4>Sản Phẩm <span>Tổng</span></h4>
                                     </a>
                                 </li>
                                 <!-- phần code sản phẩm lên  -->
-                                <li ng-repeat="product in cart track by $index"><a ng-href="single-product.html?id={{ product.id }}">{{product.name}} <span class="middle">x{{product.quantity}}</span> <span class="last">{{(product.price * product.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</span></a></li>
+                                <li ng-repeat="product in cart track by $index"><a ng-href="single-product.html?id={{ product.id }}">{{product.name}} <span class="product-quantity middle">x{{product.quantity}}</span> <span class="product-total last">{{(product.price * product.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</span></a></li>
                                 <!-- <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
                                 <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li> -->
                             </ul>
