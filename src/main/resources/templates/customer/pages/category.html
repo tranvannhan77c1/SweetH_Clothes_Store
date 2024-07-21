@@ -197,16 +197,17 @@
                                                     <div class="container">
                                                         <div class="row s_product_inner">
                                                             <div class="col-lg-6">
+                                                                <div class="single-prd-item">
+                                                                    <img class="img-fluid" ng-src="{{ selectedProduct.thumbnailImage }}" alt="{{ selectedProduct.name }}">
+                                                                </div>
+                                                                <div class="thumbnail-container">
+                                                                    <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail1 }}" alt="{{ selectedProduct.name }} thumbnail 1" ng-click="setMainImage(selectedProduct.thumbnail1)">
+                                                                    <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail2 }}" alt="{{ selectedProduct.name }} thumbnail 2" ng-click="setMainImage(selectedProduct.thumbnail2)">
+                                                                    <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail3 }}" alt="{{ selectedProduct.name }} thumbnail 3" ng-click="setMainImage(selectedProduct.thumbnail3)">
+                                                                </div>
                                                                 <div class="owl-carousel owl-theme s_Product_carousel">
                                                                     <div class="product-container">
-                                                                        <div class="single-prd-item">
-                                                                            <img class="img-fluid" ng-src="{{ selectedProduct.thumbnailImage }}" alt="{{ selectedProduct.name }}">
-                                                                        </div>
-                                                                        <div class="thumbnail-container">
-                                                                            <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail1 }}" alt="{{ selectedProduct.name }} thumbnail 1" ng-click="setMainImage(selectedProduct.thumbnail1)">
-                                                                            <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail2 }}" alt="{{ selectedProduct.name }} thumbnail 2" ng-click="setMainImage(selectedProduct.thumbnail2)">
-                                                                            <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail3 }}" alt="{{ selectedProduct.name }} thumbnail 3" ng-click="setMainImage(selectedProduct.thumbnail3)">
-                                                                        </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
