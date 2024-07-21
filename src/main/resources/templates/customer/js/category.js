@@ -20,6 +20,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.showAllColors = false;
     $scope.selectedProduct = null;
 
+    $scope.showSuccessMessage = false; // New variable
+
+
     // Function to log the search query
     $scope.searching = function () {
         console.log($scope.query);
@@ -40,7 +43,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             });
     };
 
-    // Gọi sản phẩm 
+
+    // Gọi sản phẩm
+
     $scope.getProducts($scope.currentPage - 1);
 
     // Lấy màu để làm filter
@@ -92,6 +97,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         smoothRoll();
     };
 
+
     // Lấy item để làm filter
     $scope.fetchItems = function () {
         $http.get("http://localhost:8080/api/v1/product/public/allItem")
@@ -114,11 +120,13 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             .then(response => {
                 const quantity = response.data.totalElements;
                 $scope.itemsWithQuantity.push({ id: item.id, name: item.name.trim(), quantity: quantity });
+
             })
             .catch(error => {
                 console.error('Error fetching products by item:', error);
             });
     };
+
 
     // Lọc sản phẩm dựa trên item đã chọn
     $scope.filterProductsByItem = function (item) {
@@ -158,6 +166,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             $scope.filterProducts($scope.currentPage - 1);
         }
 
+
         smoothRoll();
     };
 
@@ -183,6 +192,14 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }
 
         localStorage.setItem('cart', JSON.stringify($scope.cart));
+
+        $scope.showSuccessMessage = true; // Show success message
+
+        setTimeout(() => {
+            $scope.showSuccessMessage = false; // Hide success message after 3 seconds
+            $scope.$apply();
+        }, 3000);
+
     };
 
     $scope.increaseQuantity = function (item) {

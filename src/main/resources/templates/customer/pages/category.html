@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-pgjyf4I5V5ly/Oy7fv4RoGuhOZXz7r0n5xe5zGZAz6aE0sgSjgq2j49B3P2vD9g7fu3bVt+jBQYHunLvebfiTw==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+
+
+
+
+
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 
 <body ng-controller="ProductController">
@@ -40,9 +43,21 @@
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
                         <ul class="nav-shop">
-                            <li class="nav-item"><a href="cart.html"><button><i class="ti-user"></i></button> </a></li>
-                            <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span
-                                            class="nav-shop__circle">{{cart.length}}</span></button> </a></li>
+
+                            <!-- User Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-user"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
+                                    <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
+                                    <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">{{cart.length}}</span></button></a></li>
+
                             <li class="nav-item"><a class="button button-header" href="category.html">Mua Ngay</a></li>
                         </ul>
                     </div>
@@ -112,9 +127,10 @@
                                     <div class="to">Đến</div>
 
                                     <div id="upper-value"></div>
-                                </div>
+
 
                                 </div>
+
                             </div>
                         </div>
                 </div>
@@ -167,15 +183,21 @@
                                         <p>{{ product.category.name }}</p>
                                         <h4 class="card-product__title"><a ng-href="single-product.html?id={{ product.id }}">{{ product.name }}</a>
                                         </h4>
-                                        <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }} <span class="original-price">500,000đ</span></p>
+
+                                        <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</p>
+
                                     </div>
                                 </div>
+
+
+                                <!-- Your existing modal HTML here -->
                                 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="successModalLabel">Thông tin sản phẩm</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -235,11 +257,22 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-close-modal" data-dismiss="modal">Đóng</button>
+
+                                                <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Đóng</button>
+                                            </div>
+                                            <div class="toast-container" ng-show="showSuccessMessage">
+                                                <div class="toast-message">
+                                                    Sản phẩm đã được thêm vào giỏ hàng thành công!
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
+
                             </div>
                         </div>
                         <div class="pagination d-flex justify-content-center mt-4">
@@ -261,15 +294,7 @@
                         </div>
 
 
-
                     </section>
-
-
-
-
-
-
-
 
 
                 </div>
@@ -570,7 +595,9 @@
     <script src="../vendors/angular/angular.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/category.js"></script>
-<script src="../js/singleProduct.js"></script>
+
+    <script src="../js/singleProduct.js"></script>
+
 </body>
 
 </html>

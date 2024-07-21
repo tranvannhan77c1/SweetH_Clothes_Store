@@ -54,7 +54,8 @@ app.controller('SingleProductController', ['$scope', '$http', '$location', funct
     var productId = params['id'];
 
     // Fetch product details from the API
-    $http.get('http://localhost:8080/api/v1/product/' + productId)
+
+    $http.get('http://localhost:8080/api/v1/product/public/' + productId)
         .then(function (response) {
             $scope.product = response.data;
         })

@@ -1,76 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="checkoutApp">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Sweet H Store - Checkout</title>
-        <link rel="icon" href="../../../static/img/logomian.png" type="image/jpg">
-        <link rel="stylesheet" href="../vendors/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="../vendors/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="../vendors/themify-icons/themify-icons.css">
-        <link rel="stylesheet" href="../vendors/linericon/style.css">
-        <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
-        <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
-        <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
-        <link rel="stylesheet" href="../css/style.css">
-    </head>
-    <body ng-controller="CheckoutController">
-        <!--================ Start Header Menu Area =================-->
-        <header class="header_area">
-            <div class="main_menu">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container">
-                        <a class="navbar-brand logo_h" href="index.html">
-                            <img src="../../../static/img/logomian.png" alt="">
-                        </a>
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="../index.html">Trang Chủ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="category.html">Của Hàng</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Liên Hệ</a>
-                                </li>
-                            </ul>
-                            <ul class="nav-shop">
-                                <li class="nav-item">
-                                    <a href="cart.html">
-                                        <button>
-                                            <i class="ti-user"></i>
-                                        </button>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="cart.html">
-                                        <button>
-                                            <i class="ti-shopping-cart"></i>
-                                            <span class="nav-shop__circle">{{cart.length}}</span>
-                                        </button>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="button button-header" href="category.html">Mua Ngay</a>
-                                </li>
-                            </ul>
-                        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sweet H Store - Checkout</title>
+    <link rel="icon" href="../../../static/img/logomian.png" type="image/jpg">
+
+    <link rel="stylesheet" href="../vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../vendors/linericon/style.css">
+    <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body ng-controller="CheckoutController">
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand logo_h" href="index.html"><img src="../../../static/img/logomian.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                            <li class="nav-item active"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="category.html">Của Hàng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
+                        </ul>
+                        <ul class="nav-shop">
+                            <!-- User Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-user"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
+                                    <a class="dropdown-item" href="register.html">Đăng Ký</a>
+                                    <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">{{cart.length}}</span></button></a></li>
+                            <li class="nav-item"><a class="button button-header" href="category.html">Mua Ngay</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+
+    <!-- ================ start banner area ================= -->
+
+    <!-- ================ end banner area ================= -->
+
+
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section-margin--small">
+        <div class="container">
+            <div class="returning_customer">
+                <div class="check_title">
+                    <h2>Phản hồi khách hàng? <a href="#">Nhấn vào đây để đăng nhập</a></h2>
+                </div>
+                <p>Nếu bạn đã từng mua hàng với chúng tôi trước đây, vui lòng nhập thông tin chi tiết của bạn vào các ô bên dưới. Nếu bạn là khách hàng mới, vui lòng chuyển sang phần Thanh toán & Vận chuyển.</p>
+                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                    <div class="col-md-6 form-group p_star">
+                        <input type="text" class="form-control" placeholder="Tài khoản*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Tài khoản*'" id="name" name="name">
+                        <!-- <span class="placeholder" data-placeholder="Username or Email"></span> -->
                     </div>
                 </nav>
             </div>
@@ -137,25 +143,64 @@
                     <input type="text" placeholder="Nhập mã">
                     <a class="button button-coupon" href="#">Áp dụng phiếu giảm giá</a>
                 </div>
-                <div class="billing_details">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <h3>Chi tiết thanh toán</h3>
-                            <form
-                                class="row contact_form"
-                                action="#"
-                                method="post"
-                                novalidate="novalidate"
-                            >
-                                <div class="col-md-6 form-group p_star">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="first"
-                                        name="name"
-                                        placeholder="Họ"
-                                    >
-                                    <span class="placeholder" data-placeholder="First name"></span>
+                <input type="text" placeholder="Nhập mã">
+                <a class="button button-coupon" href="#">Áp dụng phiếu giảm giá</a>
+            </div>
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <h3>Chi tiết thanh toán</h3>
+                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="first" name="name" placeholder="Họ">
+                                <span class="placeholder" data-placeholder="First name"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="last" name="name" placeholder="Tên">
+                                <span class="placeholder" data-placeholder="Last name"></span>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="text" class="form-control" id="company" name="company" placeholder="Số Điện Thoại">
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="number" name="number" placeholder="Thành Phố">
+                                <span class="placeholder" data-placeholder="Phone number"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="email" name="compemailany" placeholder="Huyện">
+                                <span class="placeholder" data-placeholder="Email Address"></span>
+                            </div>
+                            <!--                            <div class="col-md-12 form-group p_star">-->
+                            <!--                                <select class="country_select">-->
+                            <!--                                <option value="1">Country</option>-->
+                            <!--                                <option value="2">Country</option>-->
+                            <!--                                <option value="4">Country</option>-->
+                            <!--                            </select>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="col-md-12 form-group p_star">-->
+                            <!--                                <input type="text" class="form-control" id="add1" name="add1">-->
+                            <!--                                <span class="placeholder" data-placeholder="Address line 01"></span>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="col-md-12 form-group p_star">-->
+                            <!--                                <input type="text" class="form-control" id="add2" name="add2">-->
+                            <!--                                <span class="placeholder" data-placeholder="Address line 02"></span>-->
+                            <!--                            </div>-->
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Địa chỉ cụ thể">
+                                <span class="placeholder" data-placeholder="Town/City"></span>
+                            </div>
+                            <!--                            <div class="col-md-12 form-group p_star">-->
+                            <!--                                <select class="country_select">-->
+                            <!--                                <option value="1">District</option>-->
+                            <!--                                <option value="2">District</option>-->
+                            <!--                                <option value="4">District</option>-->
+                            <!--                            </select>-->
+                            <!--                            </div>-->
+
+                            <div class="col-md-12 form-group">
+                                <div class="creat_account">
+                                    <input type="checkbox" id="f-option2" name="selector">
+                                    <label for="f-option2">Tạo một tài khoản?</label>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input
@@ -167,14 +212,34 @@
                                     >
                                     <span class="placeholder" data-placeholder="Last name"></span>
                                 </div>
-                                <div class="col-md-12 form-group">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="company"
-                                        name="company"
-                                        placeholder="Số Điện Thoại"
-                                    >
+                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="order_box">
+                            <h2>Đơn hàng của bạn</h2>
+                            <ul class="list order-summary-list">
+                                <li>
+                                    <a href="#">
+                                        <h4>Sản Phẩm <span>Tổng</span></h4>
+                                    </a>
+                                </li>
+                                <!-- phần code sản phẩm lên  -->
+                                <li ng-repeat="product in cart track by $index"><a ng-href="single-product.html?id={{ product.id }}">{{product.name}} <span class="product-quantity middle">x{{product.quantity}}</span> <span class="product-total last">{{(product.price * product.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</span></a></li>
+                                <!-- <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
+                                <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li> -->
+                            </ul>
+                            <ul class="list list_2">
+                                <li><a href="#">Tổng phụ <span>{{ calculateTotal().toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
+                                <li><a href="#">Vận Chuyển <span>Flat rate: 50.000</span></a></li>
+                                <li><a href="#">Tổng cộng <span>{{ (calculateTotal() + 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
+                            </ul>
+                            <div class="payment_item">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option5" name="selector">
+                                    <label for="f-option5">Thanh toàn khi nhận hàng</label>
+                                    <div class="check"></div>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input
@@ -332,6 +397,20 @@
                                         <button class="button button-paypal" type="submit">Tiếp tục với VNPAY</button>
                                     </form>
                                 </div>
+
+                                <p>Thanh toán qua ví điện tử VNPAY
+                                </p>
+                            </div>
+                            <div class="creat_account">
+                                <input type="checkbox" id="f-option4" name="selector">
+                                <label for="f-option4">Tôi đã đọc và chấp nhận </label>
+                                <a href="#">Điều khoản và điều kiện*</a>
+                            </div>
+                            <div class="text-center">
+                                <form ng-submit="payment()" method="post">
+                                    <button class="button button-paypal" type="submit">Tiếp tục với VNPAY</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -430,17 +509,22 @@
                     </div>
                 </div>
             </div>
-        </footer>
-        <!--================ End footer Area  =================-->
-        <script src="../vendors/angular/angular.min.js"></script>
-        <script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
-        <script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
-        <script src="../vendors/skrollr.min.js"></script>
-        <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
-        <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
-        <script src="../vendors/jquery.ajaxchimp.min.js"></script>
-        <script src="../vendors/mail-script.js"></script>
-        <script src="../js/main.js"></script>
-        <script src="../js/checkout.js"></script>
-    </body>
+        </div>
+
+    </footer>
+    <!--================ End footer Area  =================-->
+
+
+    <script src="../vendors/angular/angular.min.js"></script>
+    <script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../vendors/skrollr.min.js"></script>
+    <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="../vendors/jquery.ajaxchimp.min.js"></script>
+    <script src="../vendors/mail-script.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/checkout.js"></script>
+</body>
+
 </html>

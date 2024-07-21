@@ -32,9 +32,11 @@ app.controller('CheckoutController', ['$scope', '$http', function ($scope, $http
                 quantity: product.quantity,
                 price: product.price,
                 size: "test",
-                productId: product.id
+
+                productId: product.id  
             })
         })
+        
 
         var order = {
             totalAmount: order_totalAmount,
@@ -47,8 +49,11 @@ app.controller('CheckoutController', ['$scope', '$http', function ($scope, $http
 
         var orderRequest = {
             order: order,
-            orderDetails: orderDetail
+
+            orderDetailDTOs: orderDetail
         }
+
+        
 
         $http.post('http://localhost:8080/api/v1/customer/orders/createOrder', orderRequest)
         .then(function(response) {
