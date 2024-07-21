@@ -151,6 +151,7 @@
                     <div class="col-md-6 col-lg-3" ng-repeat="product in products">
                         <div class="card text-center card-product">
                             <div class="card-product__img">
+                                <span class="hot-label">HOT</span>
                                 <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                                 <ul class="card-product__imgOverlay">
                                     <li><button><a ng-href="./pages/single-product.html?id={{ product.id }}"><i class="ti-search"></i></a></button></li>
@@ -161,7 +162,7 @@
                             <div class="card-body">
                                 <p>{{ product.category.name }}</p>
                                 <h4 class="card-product__title"><a ng-href="./pages/single-product.html?id={{ product.id }}">{{ product.name }}</a></h4>
-                                <p class="card-product__price">{{ product.price }}$</p>
+                                <p class="card-product__price">{{ product.price }}đ <span class="original-price">500,000đ</span></p>
                             </div>
                         </div>
 

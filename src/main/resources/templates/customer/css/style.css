@@ -5566,4 +5566,80 @@ fieldset[disabled] .btn {
 .order-summary-list .last {
     white-space: nowrap;
 }
+.card-product__img {
+    position: relative;
+}
+.hot-label {
+    position: absolute;
+    top: 10px; /* Điều chỉnh giá trị này để đặt nhãn "HOT" bên dưới nhãn giảm giá */
+    left: 10px;
+    background-color: orange;
+    color: white;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-product__price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa giá gốc và giá hiện tại */
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: gray;
+}
+.order_box .list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order_box .list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.order_box .list li h4 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.order_box .list li a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.order_box .list .product-name {
+    flex: 2;
+    text-align: left;
+}
+
+.order_box .list .product-quantity {
+    flex: 1;
+    text-align: center;
+}
+
+.order_box .list .product-total {
+    flex: 1;
+    text-align: right;
+}
 
