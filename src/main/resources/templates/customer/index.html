@@ -35,7 +35,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="index.html">Trang Chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pages/category.html">Của Hàng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pages/category.html">Cửa Hàng</a></li>
                             <li class="nav-item"><a class="nav-link" href="pages/contact.html">Liên Hệ</a></li>
                         </ul>
                         <ul class="nav-shop">
@@ -105,7 +105,7 @@
 
         <!--================ Hero banner start =================-->
         <p class="highlighted-text">
-            <strong>Bộ Sưu Tập Nổi Bật</strong>
+            Bộ Sưu Tập Nổi Bật
         </p>
 
         <!--================ Hero Carousel start =================-->
@@ -136,7 +136,9 @@
 
 
         <!--================ Hero Carousel end =================-->
-
+        <div class="additional-image">
+            <img src="img/anhbannerindex.png" alt="Ảnh banner" class="img-fluid">
+        </div>
         <!-- ================ trending product section start ================= -->
         <section class="section-margin calc-60px">
             <div class="container">
@@ -148,46 +150,105 @@
                 <!-- Phần code sản phẩm -->
 
                 <div class="row">
-                    <div class="col-md-6 col-lg-3" ng-repeat="product in products">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <span class="hot-label">HOT</span>
-                                <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
-                                <ul class="card-product__imgOverlay">
-                                    <li><button><a ng-href="./pages/single-product.html?id={{ product.id }}"><i class="ti-search"></i></a></button></li>
-                                    <li><button ng-click="addToCart(product)"><i class="ti-shopping-cart"></i></button></li>
-                                    <li><button><i class="ti-heart"></i></button></li>
-                                </ul>
+                        <div class="col-md-6 col-lg-3" ng-repeat="product in products">
+                            <div class="card text-center card-product">
+                                <div class="card-product__img">
+                                    <span class="hot-label">HOT</span>
+                                    <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
+                                    <ul class="card-product__imgOverlay">
+                                        <li><button><a ng-href="./pages/single-product.html?id={{ product.id }}"><i class="ti-search"></i></a></button></li>
+                                        <li> <button ng-click="showSuccessModal(product)">
+                                            <i class="ti-shopping-cart"></i>
+                                        </button></li>
+                                        <li><button><i class="ti-heart"></i></button></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <p>{{ product.category.name }}</p>
+                                    <h4 class="card-product__title"><a ng-href="./pages/single-product.html?id={{ product.id }}">{{ product.name }}</a></h4>
+                                    <p class="card-product__price">{{ product.price }}đ <span class="original-price">500,000đ</span></p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p>{{ product.category.name }}</p>
-                                <h4 class="card-product__title"><a ng-href="./pages/single-product.html?id={{ product.id }}">{{ product.name }}</a></h4>
-                                <p class="card-product__price">{{ product.price }}đ <span class="original-price">500,000đ</span></p>
-                            </div>
-                        </div>
 
-                        <!-- Modal thông báo -->
-                        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="successModalLabel">Thông báo</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <p><i class="fas fa-check-circle fa-5x text-success"></i></p>
-                                        <p class="mt-2">Thêm sản phẩm vào giỏ hàng thành công!</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-close-modal" data-dismiss="modal">Đóng</button>
+                            <!-- Modal thông báo -->
+                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="successModalLabel">Thông tin sản phẩm</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="product_image_area">
+                                                <div class="container">
+                                                    <div class="row s_product_inner">
+                                                        <div class="col-lg-6">
+                                                            <div class="single-prd-item">
+                                                                <img class="img-fluid" ng-src="{{ selectedProduct.thumbnailImage }}" alt="{{ selectedProduct.name }}">
+                                                            </div>
+                                                            <div class="thumbnail-container">
+                                                                <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail1 }}" alt="{{ selectedProduct.name }} thumbnail 1" ng-click="setMainImage(selectedProduct.thumbnail1)">
+                                                                <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail2 }}" alt="{{ selectedProduct.name }} thumbnail 2" ng-click="setMainImage(selectedProduct.thumbnail2)">
+                                                                <img class="thumbnail" ng-src="{{ selectedProduct.thumbnail3 }}" alt="{{ selectedProduct.name }} thumbnail 3" ng-click="setMainImage(selectedProduct.thumbnail3)">
+                                                            </div>
+                                                            <div class="owl-carousel owl-theme s_Product_carousel">
+                                                                <div class="product-container">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-5 offset-lg-1">
+                                                            <div class="s_product_text">
+                                                                <h3>{{ selectedProduct.name }}</h3>
+                                                                <h2>{{ selectedProduct.price }}đ</h2>
+                                                                <ul class="list">
+                                                                    <li><a class="active" href="#"><span>Category</span> : {{ selectedProduct.category.name }}</a></li>
+                                                                    <li><a href="#"><span>Availability</span> : {{ selectedProduct.quantity }}</a></li>
+                                                                </ul>
+                                                                <p>{{ selectedProduct.description }}</p>
+                                                                <div class="row product_size">
+                                                                    <p>Size: </p>
+                                                                    <div class="size-buttons mt-4">
+                                                                        <button type="button" class="size-button" ng-click="selectedSize = 'M'" ng-class="{ 'selected': selectedSize === 'M' }">M</button>
+                                                                        <button type="button" class="size-button" ng-click="selectedSize = 'L'" ng-class="{ 'selected': selectedSize === 'L' }">L</button>
+                                                                        <button type="button" class="size-button" ng-click="selectedSize = 'XL'" ng-class="{ 'selected': selectedSize === 'XL' }">XL</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product_count">
+                                                                    <label for="qty">Quantity:</label>
+                                                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase1 items-count" type="button">
+                                                                        <i class="fas fa-angle-up"></i>
+                                                                    </button>
+                                                                    <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;" class="reduced2 items-count" type="button">
+                                                                        <i class="fas fa-angle-down"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <button class="button primary-btn" ng-click="addToCart(selectedProduct)">Thêm Giỏ Hàng</button>
+                                                                <div class="card_area d-flex align-items-center">
+                                                                    <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-close-modal" data-dismiss="modal">Đóng</button>
+                                        </div>
+                                        <div class="toast-container" ng-show="showSuccessMessage">
+                                            <div class="toast-message">
+                                                Sản phẩm đã được thêm vào giỏ hàng thành công!
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
 
                 </div>
             </div>
@@ -197,7 +258,7 @@
 
         <!-- ================ offer section start ================= -->
         <section class="offer" id="parallax-1"
-                 style="background-image: url('img/anhbanner7.jpg');
+                 style="background-image: url('img/anhbanner10.jpg');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -543,6 +604,7 @@
     <script src="js/index.js"></script>
     <script src="js/category.js"></script>
     <script src="js/func.js"></script>
+    <script src="../js/singleProduct.js"></script>
 </body>
 
 </html>

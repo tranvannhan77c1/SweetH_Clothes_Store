@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
 body {
     color: #777;
-    font-family: "Roboto", sans-serif;
+    font-family: inherit;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.667
@@ -28,16 +28,19 @@ button:focus {
 }
 
 h1,
-h2,
 h3,
-h4,
 h5,
 h6 {
-    font-family: "Oswald", sans-serif;
-    color: #222;
+    font-family: inherit;
+    color: white;
     line-height: 1.1
 }
-
+h4{
+    color: black;
+}
+h2{
+    color: black;
+}
 h1,
 .h1 {
     font-size: 50px;
@@ -837,7 +840,6 @@ a {
 
 .hero-carousel__slide:hover::after {
     transform: translateY(0);
-
 }
 
 .hero-carousel__slide:hover .hero-carousel__slideOverlay {
@@ -918,7 +920,6 @@ a {
 }
 
 .offer {
-    background: url("") right center no-repeat;
     background-size: cover
 }
 
@@ -956,7 +957,7 @@ a {
 }
 
 .offer__content p {
-    color: #555555
+    color: white;
 }
 
 #bestSellerCarousel .owl-prev,
@@ -4633,7 +4634,7 @@ a {
 }
 
 .footer-area {
-    background: #002347;
+    background: #8B1A1A;
     padding: 50px 0px 50px
 }
 
@@ -4669,7 +4670,7 @@ a {
 }
 
 .single-footer-widget .sm-head {
-    color: #fff;
+    color: white;
     margin-bottom: 0px
 }
 
@@ -4692,12 +4693,12 @@ a {
 }
 
 .tp_widgets .list li a {
-    color: #7b838a;
+    color: white;
     font-family: "Roboto", sans-serif
 }
 
 .tp_widgets .list li a:hover {
-    color: #8B1A1A
+    color: blue;
 }
 
 .tp_widgets .list li:last-child {
@@ -4705,7 +4706,7 @@ a {
 }
 
 .tp_widgets p {
-    color: #7b838a
+    color: white;
 }
 
 .footer_title {
@@ -4714,7 +4715,7 @@ a {
     font-weight: 500;
     font-family: "Oswald", sans-serif;
     text-transform: capitalize;
-    color: #fff;
+    color: white;
     margin-bottom: 28px
 }
 
@@ -4741,7 +4742,7 @@ a {
 }
 
 .footer-bottom .footer-text {
-    color: #fff;
+    color: white;
     margin-bottom: 0
 }
 
@@ -4860,7 +4861,7 @@ h4.total-amount {
     font-size: 24px;
     color: #333;
     font-weight: bold;
-    margin: 180px 0 0 0;
+
     /* Thêm khoảng cách phía trên */
 }
 
@@ -5186,16 +5187,13 @@ h4.total-amount {
     /* Khoảng cách với phần trước đó */
 }
 
-#successModal .product_count {
-    margin-top: -100px;
-    /* Khoảng cách với phần trước đó */
-    margin-left: -250px;
-}
+
 
 #successModal .input-text.qty {
     width: 50px;
     /* Chiều rộng */
-    text-align: left;
+    text-align: center;
+
     /* Căn giữa văn bản */
     border: 1px solid #8B1A1A;
     /* Viền */
@@ -5206,11 +5204,25 @@ h4.total-amount {
 
 /* Điều chỉnh margin cho các nút tăng và giảm */
 
-#successModal .product_count .increase1,
-#successModal .product_count .reduced2 {
-    margin-left: -26px;
-    /* Di chuyển qua bên trái */
+#successModal .product_count {
+    display: flex;
+    align-items: center;
+    margin-top: -10px; /* Khoảng cách với phần trước đó */
+ margin-left: -15px;
 }
+#successModal .increase1 {
+    position: relative;
+    left: 21px;
+    top: -5px;
+    /* Điều chỉnh giá trị này để di chuyển nút theo ý muốn */
+}
+
+#successModal .reduced2 {
+    position: relative;
+    left: -49px;
+    top: 7px;/* Điều chỉnh giá trị này để di chuyển nút theo ý muốn */
+}
+
 
 #successModal .button.primary-btn {
     padding: 10px 20px;
@@ -5477,7 +5489,7 @@ fieldset[disabled] .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 570px;
+    margin-top: 300px;
     margin-right: 280px;
 }
 
@@ -5506,21 +5518,26 @@ fieldset[disabled] .btn {
     color: #fff;
 }
 
+
 /* căn chỉnh anh bộ sưu tập */
+
 .section-margin1 {
-    width: 90%; /* Đặt chiều rộng của section là 90% */
-    margin: 0 auto; /* Căn giữa phần tử */
+    width: 90%;
+    /* Đặt chiều rộng của section là 90% */
+    margin: 0 auto;
+    /* Căn giữa phần tử */
 }
 
 .owl-carousel .hero-carousel__slide img {
-    width: 100%; /* Đặt hình ảnh chiếm 100% chiều rộng của phần tử chứa */
-    height: auto; /* Đảm bảo tỷ lệ khung hình được giữ */
-    max-height: 380px; /* Giới hạn chiều cao tối đa của hình ảnh */
-    object-fit: cover; /* Đảm bảo hình ảnh lấp đầy phần tử mà không bị biến dạng */
+    width: 100%;
+    /* Đặt hình ảnh chiếm 100% chiều rộng của phần tử chứa */
+    height: auto;
+    /* Đảm bảo tỷ lệ khung hình được giữ */
+    max-height: 380px;
+    /* Giới hạn chiều cao tối đa của hình ảnh */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh lấp đầy phần tử mà không bị biến dạng */
 }
-
-
-
 
 .order-summary-list {
     list-style-type: none;
@@ -5528,7 +5545,9 @@ fieldset[disabled] .btn {
     margin: 0;
 }
 
+
 /* Style for each list item */
+
 .order-summary-list li {
     display: flex;
     justify-content: space-between;
@@ -5536,7 +5555,9 @@ fieldset[disabled] .btn {
     padding: 8px 0;
 }
 
+
 /* Style for the anchor tags within the list items */
+
 .order-summary-list a {
     text-decoration: none;
     color: #000;
@@ -5546,19 +5567,23 @@ fieldset[disabled] .btn {
     align-items: center;
 }
 
+
 /* Flex properties to ensure proper alignment */
+
 .order-summary-list .product-name {
     flex: 1;
     text-align: left;
 }
 
 .order-summary-list .product-quantity {
-    flex: 0 0 50px;  /* Adjust width as needed */
+    flex: 0 0 50px;
+    /* Adjust width as needed */
     text-align: center;
 }
 
 .order-summary-list .product-total {
-    flex: 0 0 100px;  /* Adjust width as needed */
+    flex: 0 0 100px;
+    /* Adjust width as needed */
     text-align: right;
 }
 
@@ -5566,12 +5591,15 @@ fieldset[disabled] .btn {
 .order-summary-list .last {
     white-space: nowrap;
 }
+
 .card-product__img {
     position: relative;
 }
+
 .hot-label {
     position: absolute;
-    top: 10px; /* Điều chỉnh giá trị này để đặt nhãn "HOT" bên dưới nhãn giảm giá */
+    top: 10px;
+    /* Điều chỉnh giá trị này để đặt nhãn "HOT" bên dưới nhãn giảm giá */
     left: 10px;
     background-color: orange;
     color: white;
@@ -5580,6 +5608,7 @@ fieldset[disabled] .btn {
     font-weight: bold;
     border-radius: 5px;
 }
+
 .card-body {
     display: flex;
     flex-direction: column;
@@ -5590,13 +5619,15 @@ fieldset[disabled] .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Khoảng cách giữa giá gốc và giá hiện tại */
+    gap: 10px;
+    /* Khoảng cách giữa giá gốc và giá hiện tại */
 }
 
 .original-price {
     text-decoration: line-through;
     color: gray;
 }
+
 .order_box .list {
     list-style-type: none;
     padding: 0;
@@ -5641,5 +5672,33 @@ fieldset[disabled] .btn {
 .order_box .list .product-total {
     flex: 1;
     text-align: right;
+}
+
+.additional-image {
+    text-align: center;
+    /* Căn giữa ảnh */
+    margin-top: 20px;
+    /* Khoảng cách phía trên ảnh */
+}
+
+.additional-image img {
+    width: 90%;
+    /* Đặt kích thước ảnh nếu cần */
+    height: auto;
+    /* Đảm bảo tỷ lệ khung hình được giữ */
+}
+.total-label {
+    color: #8B1A1A; /* Màu chữ cho "Tổng Tiền" */
+}
+/* Cập nhật màu nền của nút */
+.btn.btn-primary {
+    background-color: #8B1A1A; /* Màu nền */
+    border-color: #8B1A1A; /* Màu viền */
+}
+
+/* Thay đổi màu nền của nút khi di chuột qua */
+.btn.btn-primary:hover {
+    background-color: #6a0d0d; /* Màu nền khi hover (tối hơn một chút) */
+    border-color: #6a0d0d; /* Màu viền khi hover */
 }
 

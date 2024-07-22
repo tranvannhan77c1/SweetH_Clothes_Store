@@ -37,7 +37,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="category.html">Của Hàng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="category.html">Cửa Hàng</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
                         <ul class="nav-shop">
@@ -159,6 +159,12 @@
                     <!-- End Filter Bar -->
                     <!-- Start Best Seller -->
                     <section class="lattest-product-area pb-40 category-list">
+
+                    </section>
+                    <section>
+
+
+
                         <div class="row" id="searchResults" class="product-list">
                             <div class="col-md-6 col-lg-4" ng-repeat="product in products">
                                 <div class="card text-center card-product">
@@ -167,7 +173,7 @@
                                         <img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
                                         <ul class="card-product__imgOverlay">
                                             <li><button><a ng-href="single-product.html?id={{ product.id }}"><i
-                                                            class="ti-search"></i></a></button></li>
+                                                    class="ti-search"></i></a></button></li>
                                             <li> <button ng-click="showSuccessModal(product)">
                                                 <i class="ti-shopping-cart"></i>
                                             </button></li>
@@ -189,7 +195,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="successModalLabel">Thông tin sản phẩm</h5>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -208,7 +214,7 @@
                                                                 </div>
                                                                 <div class="owl-carousel owl-theme s_Product_carousel">
                                                                     <div class="product-container">
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -250,8 +256,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-close-modal" data-dismiss="modal">Đóng</button>
                                             </div>
                                             <div class="toast-container" ng-show="showSuccessMessage">
                                                 <div class="toast-message">
@@ -296,109 +301,21 @@
     <section class="related-product-area">
         <div class="container">
             <div class="section-intro pb-60px">
-                <p>Mặt hàng phổ biến trên thị trường</p>
                 <h2>Sản Phẩm <span class="section-intro__style"> Top</span></h2>
+                <p>Mặt hàng phổ biến trên thị trường</p>
             </div>
             <div class="row mt-30">
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0" ng-repeat="product in products">
                     <div class="single-search-product-wrapper">
                         <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-1.png" alt=""></a>
+                            <a href="#"><img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}"></a>
                             <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-2.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-3.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-4.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-5.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-6.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-7.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-8.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-9.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-1.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-2.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="../img/product/product-sm-3.png" alt=""></a>
-                            <div class="desc">
-                                <a href="#" class="title">Gray Coffee Cup</a>
-                                <div class="price">$170.00</div>
+                                <a href="#" class="title" ng-href="single-product.html?id={{ product.id }}">{{ product.name }}</a>
+                                <div class="price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</div>
+                                <!-- Thêm các nút cho modal -->
+                                <div class="btn-group">
+                                    <button class="btn btn-primary" ng-click="showSuccessModal(product)">Xem Chi Tiết</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -406,6 +323,7 @@
             </div>
         </div>
     </section>
+
     <!-- ================ top product area end ================= -->
 
     <!-- ================ Subscribe section start ================= -->

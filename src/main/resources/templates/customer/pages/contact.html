@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="categoryApp">
 
 <head>
     <meta charset="UTF-8">
@@ -13,10 +13,12 @@
     <link rel="stylesheet" href="../vendors/linericon/style.css">
     <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body ng-controller="ProductController">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -31,7 +33,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="category.html">Của Hàng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="category.html">Cửa Hàng</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
                         <ul class="nav-shop">
@@ -210,13 +212,13 @@
     <script src="../vendors/skrollr.min.js"></script>
     <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
     <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
-    <script src="../vendors/jquery.form.js"></script>
-    <script src="../vendors/jquery.validate.min.js"></script>
-    <script src="../vendors/contact.js"></script>
+    <script src="../vendors/nouislider/nouislider.min.js"></script>
     <script src="../vendors/jquery.ajaxchimp.min.js"></script>
     <script src="../vendors/mail-script.js"></script>
+    <script src="../vendors/angular/angular.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/category.js"></script>
+    <script src="../js/singleProduct.js"></script>
 </body>
 
 </html>
