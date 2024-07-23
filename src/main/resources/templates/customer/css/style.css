@@ -23,7 +23,8 @@ a:hover {
 }
 
 button {
-    cursor: pointer
+    cursor: pointer;
+
 }
 
 button:focus {
@@ -1298,9 +1299,27 @@ a {
     /*CSS new*/
     background: #8B1A1A;
     color: #fff;
-    transition: all .4s ease
+    transition: all .4s ease;
+
 }
 
+.buttonremovecart:hover {
+    border-color: #8B1A1A;
+    background: transparent;
+    color: #222;
+}
+.buttonremovecart {
+    display: inline-block;
+    border: 1px solid #8B1A1A;
+    border-radius: 30px;
+    color: #222;
+    font-weight: 500;
+    padding: 12px 50px;
+    background: #8B1A1A;
+    color: #fff;
+    transition: all .4s ease;
+    margin-right: 100px;
+}
 @media (max-width: 767px) {
     .button {
         padding: 8px 25px !important
@@ -1416,7 +1435,8 @@ a {
     /*CSS new*/
     border-color: #8B1A1A;
     background: transparent;
-    color: #222
+    color: #222;
+
 }
 
 .button-register {
@@ -4309,7 +4329,8 @@ a {
     border-radius: 30px;
     text-transform: capitalize;
     font-weight: 500;
-    color: #fff
+    color: #fff;
+
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text .gray_btn {

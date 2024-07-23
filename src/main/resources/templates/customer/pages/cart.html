@@ -121,8 +121,9 @@
                                     <h4 class="total-amount">Tổng Tiền:<span class="total-label"> {{ calculateTotal().toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></h4>
                                 </td>
                                 <td class="fixed-width">
-                                    <a class="button" href="#" ng-click="clearCart()">Xóa Giỏ Hàng</a>
+                                    <a class="buttonremovecart" href="#" ng-click="clearCart()">Xóa Giỏ Hàng</a>
                                 </td>
+
                                 <td>
 
                                 </td>
@@ -130,12 +131,14 @@
                                    <a class="gray_btn mr-2" href="category.html">Tiếp tục mua sắm</a>
                                    <a class="primary-btn" href="checkout.html">Thanh Toán</a>
                                </div></td>
+
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
     </section>
 
     <!--================End Cart Area =================-->
