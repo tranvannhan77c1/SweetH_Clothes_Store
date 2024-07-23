@@ -4990,78 +4990,78 @@ h4.total-amount {
 
 /* CSS để trang trí menu dropdown */
 
-.nav-item {
-    list-style-type: none;
-    /* Bỏ đi kiểu danh sách mặc định */
-    padding: 0;
-    /* Bỏ padding để căn chỉnh với biểu tượng */
-}
+/*.nav-item {*/
+/*    list-style-type: none;*/
+/*    !* Bỏ đi kiểu danh sách mặc định *!*/
+/*    padding: 0;*/
+/*    !* Bỏ padding để căn chỉnh với biểu tượng *!*/
+/*}*/
 
-.nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    /* Điều chỉnh padding tùy theo nhu cầu */
-    color: #212529;
-    /* Màu chữ */
-    text-decoration: none;
-    /* Bỏ gạch chân */
-    transition: background-color 0.3s;
-    /* Hiệu ứng chuyển đổi màu nền mượt */
-}
+/*.nav-link {*/
+/*    display: block;*/
+/*    padding: 0.5rem 1rem;*/
+/*    !* Điều chỉnh padding tùy theo nhu cầu *!*/
+/*    color: #212529;*/
+/*    !* Màu chữ *!*/
+/*    text-decoration: none;*/
+/*    !* Bỏ gạch chân *!*/
+/*    transition: background-color 0.3s;*/
+/*    !* Hiệu ứng chuyển đổi màu nền mượt *!*/
+/*}*/
 
-.nav-link:hover {
-    background-color: #f8f9fa;
-    /* Màu nền khi di chuột qua */
-    color: #8B1A1A;
-    /* Màu chữ khi di chuột qua */
-}
+/*.nav-link:hover {*/
+/*    !*background-color: #f8f9fa;*!*/
+/*    !* Màu nền khi di chuột qua *!*/
+/*    color: #8B1A1A;*/
+/*    !* Màu chữ khi di chuột qua *!*/
+/*}*/
 
-.dropdown-menu {
-    min-width: 180px;
-    /* Điều chỉnh chiều rộng tùy theo nhu cầu */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    /* Tạo bóng cho dropdown */
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    /* Viền dropdown */
-    background-color: #ffffff;
-    /* Màu nền dropdown */
-    left: -50px;
-    /* Di chuyển dropdown về bên trái 10px */
-}
+/*.dropdown-menu {*/
+/*    min-width: 180px;*/
+/*    !* Điều chỉnh chiều rộng tùy theo nhu cầu *!*/
+/*    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);*/
+/*    !* Tạo bóng cho dropdown *!*/
+/*    border: 1px solid rgba(0, 0, 0, 0.15);*/
+/*    !* Viền dropdown *!*/
+/*    background-color: #ffffff;*/
+/*    !* Màu nền dropdown *!*/
+/*    left: -50px;*/
+/*    !* Di chuyển dropdown về bên trái 10px *!*/
+/*}*/
 
-.dropdown-menu .nav-item {
-    margin: 0;
-    /* Bỏ margin của các mục danh sách */
-}
+/*.dropdown-menu .nav-item {*/
+/*    margin: 0;*/
+/*    !* Bỏ margin của các mục danh sách *!*/
+/*}*/
 
-.dropdown-menu .nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    /* Điều chỉnh padding tùy theo nhu cầu */
-    color: #212529;
-    /* Màu chữ */
-    text-decoration: none;
-    /* Bỏ gạch chân */
-    transition: background-color 0.3s;
-    /* Hiệu ứng chuyển đổi màu nền mượt */
-}
+/*.dropdown-menu .nav-link {*/
+/*    display: block;*/
+/*    padding: 0.5rem 1rem;*/
+/*    !* Điều chỉnh padding tùy theo nhu cầu *!*/
+/*    color: #212529;*/
+/*    !* Màu chữ *!*/
+/*    text-decoration: none;*/
+/*    !* Bỏ gạch chân *!*/
+/*    transition: background-color 0.3s;*/
+/*    !* Hiệu ứng chuyển đổi màu nền mượt *!*/
+/*}*/
 
-.dropdown-menu .nav-link:hover {
-    background-color: #f8f9fa;
-    /* Màu nền khi di chuột qua */
-    color: #8B1A1A;
-    /* Màu chữ khi di chuột qua */
-}
+/*.dropdown-menu .nav-link:hover {*/
+/*    background-color: #f8f9fa;*/
+/*    !* Màu nền khi di chuột qua *!*/
+/*    color: #8B1A1A;*/
+/*    !* Màu chữ khi di chuột qua *!*/
+/*}*/
 
-.dropdown-menu-end {
-    right: 0;
-    /* Đặt dropdown menu bên phải */
-}
+/*.dropdown-menu-end {*/
+/*    right: 0;*/
+/*    !* Đặt dropdown menu bên phải *!*/
+/*}*/
 
-.dropdown-menu .nav-item {
-    text-align: left;
-    /* Căn chỉnh chữ trái */
-}
+/*.dropdown-menu .nav-item {*/
+/*    text-align: left;*/
+/*    !* Căn chỉnh chữ trái *!*/
+/*}*/
 
 .single-prd-item {
     text-align: center;

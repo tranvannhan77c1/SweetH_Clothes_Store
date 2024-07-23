@@ -12,10 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FeedbackDTO {
-	private long id;
+	private Integer id;
 	private Integer rate;
 	private String content;
 	private Date createDate;
-	private Boolean status;
-	private Account account;
+	private boolean status;
+	private Integer accountId;
+	private Integer productId;
+	private String accountName;
+	private String productName;
 }

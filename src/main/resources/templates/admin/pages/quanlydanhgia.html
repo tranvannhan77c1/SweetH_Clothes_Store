@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
   <!-- Required meta tags -->
@@ -138,7 +138,7 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <div class="main-panel" ng-controller="FeedbackController">
         <div class="content-wrapper mb-0 pb-0">
           <div class="row mb-0">
             <div class="col-lg-12 grid-margin stretch-card mb-0">
@@ -146,93 +146,47 @@
                 <div class="card-body">
                   <h4 class="card-title">Danh Sách Đánh Giá</h4>
                   <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-bordered text-center">
                       <thead>
-                        <tr>
-                          <th>Số Sao</th>
-                          <th>Nội Dung Đánh Giá</th>
-                          <th>Ngày Tạo</th>
-                          <th>Trạng Thái</th>
-                          <th>Đánh Giá Sản Phẩm</th>
-                          <th>Người Tạo Đánh Giá</th>
-                          <th>Hành Động</th>
-                        </tr>
+                      <tr>
+                        <th>Số Sao</th>
+                        <th>Nội Dung Đánh Giá</th>
+                        <th>Ngày Tạo</th>
+                        <th>Trạng Thái</th>
+                        <th>Đánh Giá Sản Phẩm</th>
+                        <th>Người Tạo Đánh Giá</th>
+                        <th>Hành Động</th>
+                      </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-danger">Đã Ẩn</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-success btn-sm">Hiện Đánh Giá</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-success">Đang Hiện</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-sm">Ẩn Đánh Giá</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-success">Đang Hiện</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-sm">Ẩn Đánh Giá</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-danger">Đã Ẩn</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-success btn-sm">Hiện Đánh Giá</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-danger">Đã Ẩn</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-success btn-sm">Hiện Đánh Giá</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-danger">Đã Ẩn</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-success btn-sm">Hiện Đánh Giá</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Hông có gì để đánh giá cả</td>
-                          <td>20:00PM-30/05/2024</td>
-                          <td><label class="badge badge-danger">Đã Ẩn</label></td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>Trần Văn Nhân</td>
-                          <td><button type="button" class="btn btn-inverse-success btn-sm">Hiện Đánh Giá</button></td>
-                        </tr>
+                      <tr ng-repeat="feedback in feedbacks">
+                        <td>{{ feedback.rate }}</td>
+                        <td>{{ feedback.content }}</td>
+                        <td>{{ feedback.createDate | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
+                        <td><label class="badge" ng-class="{'badge-danger': !feedback.status, 'badge-success': feedback.status}">{{ feedback.status ? 'Đang Hiển Thị' : 'Đã Ẩn' }}</label></td>
+                        <td>{{ feedback.productName }}</td>
+                        <td>{{ feedback.accountName }}</td>
+                        <td>
+                          <button type="button" class="btn btn-sm" ng-class="{'btn-inverse-success': !feedback.status, 'btn-inverse-danger': feedback.status}" ng-click="toggleStatus(feedback)">
+                            {{ feedback.status ? 'Ẩn Đánh Giá' : 'Hiện Đánh Giá' }}
+                          </button>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="mt-2">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-secondary">1</button>
-                      <button type="button" class="btn btn-outline-secondary">2</button>
-                      <button type="button" class="btn btn-outline-secondary">3</button>
-                      <button type="button" class="btn btn-outline-secondary">4</button>
-                      <button type="button" class="btn btn-outline-secondary"><i
-                          class="mdi mdi mdi-arrow-right"></i></button>
+                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0" ng-click="previousPage()">
+                        <i class="mdi mdi-chevron-double-left"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary" ng-repeat="page in paginationButtons"
+                              ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">
+                        {{ page + 1 }}
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">
+                        <i class="mdi mdi-chevron-double-right"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -278,6 +232,10 @@
   <script src="../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="../js/angular/angular.min.js"></script>
+  <script src="../jsAdmin/app.js"></script>
+  <script src="../jsAdmin/feedback/feedbackService.js"></script>
+  <script src="../jsAdmin/feedback/feedbackController.js"></script>
   <!-- End custom js for this page-->
 </body>
 

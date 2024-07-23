@@ -17,12 +17,13 @@ public class Feedback {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Column(name = "id")
+	private Integer id;
 
-	@Column(nullable = false)
+	@Column(name = "rate", nullable = false)
 	private Integer rate;
 
-	@Column(nullable = false)
+	@Column(name = "content", nullable = false)
 	private String content;
 
 	@Column(name = "create_date", nullable = false)
