@@ -4,7 +4,9 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
     $scope.products = [];
     $scope.cart = [];
     $scope.showSuccessMessage = false;
+    $scope.modalQuantity = 1;
     $scope.selectedProduct = null;
+
 
     // Lấy danh sách sản phẩm từ backend
     $http.get('http://localhost:8080/api/v1/product/public/landing?page=1&limit=8')
@@ -20,15 +22,23 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         $scope.selectedProduct = product;
         $('#successModal').modal('show');
     };
+    $scope.increaseModalQuantity = function () {
+        $scope.modalQuantity++;
+    };
 
+    $scope.decreaseModalQuantity = function () {
+        if ($scope.modalQuantity > 1) {
+            $scope.modalQuantity--;
+        }
+    };
     // Hàm thêm sản phẩm vào giỏ hàng
-    $scope.addToCart = function (product) {
+    $scope.addToCart = function (product, quantity) {
         let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
 
         if (existingProductIndex !== -1) {
-            $scope.cart[existingProductIndex].quantity++;
+            $scope.cart[existingProductIndex].quantity += quantity;
         } else {
-            product.quantity = 1;
+            product.quantity = quantity;
             $scope.cart.push(product);
         }
 

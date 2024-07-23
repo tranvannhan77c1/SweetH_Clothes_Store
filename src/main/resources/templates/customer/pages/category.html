@@ -158,13 +158,8 @@
                     </div>
                     <!-- End Filter Bar -->
                     <!-- Start Best Seller -->
-                    <section class="lattest-product-area pb-40 category-list">
 
-                    </section>
                     <section>
-
-
-
                         <div class="row" id="searchResults" class="product-list">
                             <div class="col-md-6 col-lg-4" ng-repeat="product in products">
                                 <div class="card text-center card-product">
@@ -187,7 +182,6 @@
                                         <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }} </p>
                                     </div>
                                 </div>
-
 
                                 <!-- Your existing modal HTML here -->
                                 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -237,15 +231,15 @@
                                                                     </div>
                                                                     <div class="product_count">
                                                                         <label for="qty">Quantity:</label>
-                                                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase1 items-count" type="button">
+                                                                        <button ng-click="increaseModalQuantity()" class="increase1 items-count" type="button">
                                                                             <i class="fas fa-angle-up"></i>
                                                                         </button>
-                                                                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;" class="reduced2 items-count" type="button">
+                                                                        <input type="text" name="qty" id="sst" size="2" maxlength="12" ng-model="modalQuantity" class="input-text qty">
+                                                                        <button ng-click="decreaseModalQuantity()" class="reduced2 items-count" type="button">
                                                                             <i class="fas fa-angle-down"></i>
                                                                         </button>
                                                                     </div>
-                                                                    <button class="button primary-btn" ng-click="addToCart(selectedProduct)">Thêm Giỏ Hàng</button>
+                                                                    <button class="button primary-btn" ng-click="addToCart(selectedProduct, modalQuantity)">Thêm Giỏ Hàng</button>
                                                                     <div class="card_area d-flex align-items-center">
                                                                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
                                                                     </div>
@@ -266,11 +260,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
+
                         <div class="pagination d-flex justify-content-center mt-4">
                             <button class="btn btn-outline-custom me-1" style="margin-right: 0.5rem;" ng-disabled="currentPage === 1" ng-click="changePage(currentPage - 1)">
                                 <i class="fas fa-angle-left"></i>

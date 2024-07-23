@@ -19,6 +19,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.maxVisibleColors = 5;
     $scope.showAllColors = false;
     $scope.selectedProduct = null;
+    $scope.modalQuantity = 1;
     $scope.showSuccessMessage = false; // New variable
 
     // Function to log the search query
@@ -171,15 +172,24 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         $scope.selectedProduct = product;
         $('#successModal').modal('show');
     };
+    $scope.increaseModalQuantity = function () {
+        $scope.modalQuantity++;
+    };
+
+    $scope.decreaseModalQuantity = function () {
+        if ($scope.modalQuantity > 1) {
+            $scope.modalQuantity--;
+        }
+    };
 
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
-    $scope.addToCart = function (product) {
+    $scope.addToCart = function (product, quantity) {
         let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
 
         if (existingProductIndex !== -1) {
-            $scope.cart[existingProductIndex].quantity++;
+            $scope.cart[existingProductIndex].quantity += quantity;
         } else {
-            product.quantity = 1;
+            product.quantity = quantity;
             $scope.cart.push(product);
         }
 
@@ -191,6 +201,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             $scope.$apply();
         }, 3000);
     };
+
 
     $scope.increaseQuantity = function (item) {
         let index = $scope.cart.findIndex(product => product.id === item.id);
