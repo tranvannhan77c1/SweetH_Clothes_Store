@@ -26,6 +26,29 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.searching = function () {
         console.log($scope.query);
     };
+    // Function to log the search query
+    $scope.searching = function () {
+        $scope.searchProducts($scope.currentPage - 1);
+    };
+
+    // Tìm kiếm sản phẩm theo tên
+    $scope.searchProducts = function (page) {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/search?name=${encodeURIComponent($scope.query)}&page=${page}&limit=${$scope.pageSize}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                $scope.products = response.data.content;
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
+            })
+            .catch(error => {
+                console.error('Error searching products:', error);
+                // In thêm thông tin lỗi để phân tích
+                if (error.data) {
+                    console.error('Error details:', error.data);
+                }
+            });
+    };
 
     // Lấy data sản phẩm từ backend
     $scope.getProducts = function (page) {
@@ -86,6 +109,7 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         $scope.showAllColors = !$scope.showAllColors;
         $scope.updateVisibleColors();
     };
+
     // Lọc sản phẩm dựa trên màu đã chọn
     $scope.filterProductsByColor = function (color) {
         $scope.selectedColor = color;
@@ -202,7 +226,6 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }, 3000);
     };
 
-
     $scope.increaseQuantity = function (item) {
         let index = $scope.cart.findIndex(product => product.id === item.id);
 
@@ -240,7 +263,6 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     if (storedCart) {
         $scope.cart = JSON.parse(storedCart);
     }
-
 }]);
 
 // Làm chẵn số tiền trong giỏ hàng
@@ -261,3 +283,4 @@ function smoothRoll() {
         behavior: "smooth"
     });
 }
+

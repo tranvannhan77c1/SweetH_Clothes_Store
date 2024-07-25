@@ -65,4 +65,10 @@ public class ProductService {
 		return itemRepository.findAll();
 	}
 
+	// Thêm phương thức tìm kiếm theo tên sản phẩm
+	public Page<ProductDTO> searchProductsByName(String name, Pageable pageable) {
+		Page<Product> products = productRepository.findByNameContainingIgnoreCase(name, pageable);
+		return products.map(ProductMapper::toDTO);
+	}
+
 }

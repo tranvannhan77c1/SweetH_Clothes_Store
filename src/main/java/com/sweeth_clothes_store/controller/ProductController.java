@@ -62,4 +62,10 @@ public class ProductController {
 	public ResponseEntity<List<Item>> getAllItems() {
 		return new ResponseEntity<List<Item>>(productService.getAllItems(), HttpStatus.OK	);
 	}
+	// Thêm endpoint tìm kiếm sản phẩm theo tên
+	@GetMapping("/public/search")
+	public ResponseEntity<Page<ProductDTO>> searchProductsByName(@RequestParam String name, @RequestParam int page, @RequestParam int limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return new ResponseEntity<Page<ProductDTO>>(productService.searchProductsByName(name, pageable), HttpStatus.OK);
+	}
 }
