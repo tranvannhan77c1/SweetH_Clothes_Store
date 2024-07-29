@@ -264,6 +264,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     if (storedCart) {
         $scope.cart = JSON.parse(storedCart);
     }
+
+    var loginToken = localStorage.getItem('jwtToken');
+    $scope.isLogin = loginToken !== null && loginToken.length > 0;
 }]);
 
 // Làm chẵn số tiền trong giỏ hàng

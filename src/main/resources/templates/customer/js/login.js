@@ -11,6 +11,7 @@ app.controller('loginController', ['$scope', '$http', '$window', function($scope
     if (storedCart) {
         $scope.cart = JSON.parse(storedCart);
     }
+    
 
     $scope.login = function() {
         var loginData = {
@@ -32,7 +33,7 @@ app.controller('loginController', ['$scope', '$http', '$window', function($scope
                 var accountDetail = response.data.account;
                 localStorage.setItem('accountDetail', JSON.stringify(accountDetail));
                 // Redirect to a secure page or perform other actions
-                // Example: $window.location.href = '/secure-page';
+                window.location.href = '../index.html';
             })
             .catch(function(error) {
                 // Handle error

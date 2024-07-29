@@ -21,6 +21,9 @@ app.controller('CheckoutController', ['$scope', '$http', function ($scope, $http
     if (storedCart) {
         $scope.cart = JSON.parse(storedCart);
     }
+    
+    var loginToken = localStorage.getItem('jwtToken');
+    $scope.isLogin = loginToken !== null && loginToken.length > 0;
 
 
     $scope.payment = function () {

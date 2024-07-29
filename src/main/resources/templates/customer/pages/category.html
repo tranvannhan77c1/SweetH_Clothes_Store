@@ -42,15 +42,19 @@
                         </ul>
                         <ul class="nav-shop">
                             <!-- User Dropdown -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li class="nav-item dropdown" ng-if="!isLogin">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="ti-user"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="register.html">Đăng Ký</a>
-                                    <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                    <a class="dropdown-item" href="pages/login.html">Đăng Nhập</a>
+                                    <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
                                 </div>
+                            </li>
+                            <li class="nav-item" ng-if="isLogin">
+                                <a class="nav-link" ng-href="pages/profile.html">
+                                    <i class="ti-user"></i>
+                                </a>
                             </li>
 
                             <li class="nav-item"><a href="cart.html"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">{{cart.length}}</span></button></a></li>

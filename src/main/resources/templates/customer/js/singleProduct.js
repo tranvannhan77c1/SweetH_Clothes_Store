@@ -38,6 +38,9 @@ app.controller('SingleProductController', ['$scope', '$http', '$location', funct
         $scope.cart = JSON.parse(storedCart);
     }
 
+    var loginToken = localStorage.getItem('jwtToken');
+    $scope.isLogin = loginToken !== null && loginToken.length > 0;
+
     // Function to get query parameters
     function getQueryParams() {
         var params = {};
