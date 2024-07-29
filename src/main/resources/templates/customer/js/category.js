@@ -207,13 +207,14 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     };
 
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
-    $scope.addToCart = function (product, quantity) {
-        let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
+    $scope.addToCart = function (product, quantity, size) {
+        let existingProductAndSizeIndex = $scope.cart.findIndex(item => item.id === product.id && item.size === product.size);
 
-        if (existingProductIndex !== -1) {
-            $scope.cart[existingProductIndex].quantity += quantity;
+        if (existingProductAndSizeIndex !== -1) {
+            $scope.cart[existingProductAndSizeIndex].quantity += quantity;
         } else {
             product.quantity = quantity;
+            product.size = size;
             $scope.cart.push(product);
         }
 
