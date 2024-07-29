@@ -175,7 +175,7 @@
                                 <!-- phần code sản phẩm lên  -->
                                 <li ng-repeat="product in cart track by $index">
                                     <a ng-href="single-product.html?id={{ product.id }}">
-                                        <span class="product-name">{{product.name}}</span>
+                                        <span class="product-name">{{product.name}} ({{product.size}})</span>
                                         <span class="product-quantity">x{{product.quantity}}</span>
                                         <span class="product-total">{{(product.price * product.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</span>
                                     </a>
@@ -193,7 +193,7 @@
                             </ul> -->
                             <ul class="list list_2">
                                 <li><a href="#">Tổng phụ <span>{{ calculateTotal().toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
-                                <li><a href="#">Vận Chuyển <span>Flat rate: 50.000</span></a></li>
+                                <li><a href="#">Vận Chuyển <span>50.000 ₫</span></a></li>
                                 <li><a href="#">Tổng cộng <span>{{ (calculateTotal() + 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
                             </ul>
                             <div class="payment_item">

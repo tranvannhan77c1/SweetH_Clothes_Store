@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="categoryApp">
+<html lang="en" ng-app="profileApp">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body ng-controller="ProductController">
+<body ng-controller="ProfileController">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -48,7 +48,7 @@
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
                                     <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
-                                    <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                    <a class="dropdown-item" ng-click="logout()">Đăng Xuất</a>
                                 </div>
                             </li>
 
@@ -67,25 +67,22 @@
     <section class="checkout_area section-margin--small">
         <div class="container">
             <div class="returning_customer">
-                <button type="submit" value="submit" class="button" style="background-color: rgb(255, 76, 76); border: none; margin-bottom: 20px;">Đăng Xuất</button>
+                <button type="submit" value="submit" ng-click="logout()" class="button" style="background-color: rgb(255, 76, 76); border: none; margin-bottom: 20px;">Đăng Xuất</button>
                 <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-6">
                             <h3>Thông tin tài khoản</h3>
                             <form class="row contact_form" action="#" method="post">
-                                <div class="col-md-6 form-group p_star">
-                                    <input type="text" class="form-control" id="first" name="name" placeholder="Họ">
-                                </div>
-                                <div class="col-md-6 form-group p_star">
-                                    <input type="text" class="form-control" id="last" name="name" placeholder="Tên">
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="last" name="name" placeholder="Họ Tên" value="{{userInfo.fullName}}">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại">
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại" value="{{userInfo.phone}}">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="email" name="compemailany" placeholder="Email">
+                                    <input type="text" class="form-control" id="email" name="compemailany" placeholder="Email" value="{{userInfo.email}}">
                                 </div>
-                                <div class="col-md-12 form-group p_star">
+                                <!-- <div class="col-md-12 form-group p_star">
                                     <select class="country_select">
                                         <option value="1">Tỉnh/Thành Phố</option>
                                         <option value="2">Hà Nội</option>
@@ -93,23 +90,23 @@
                                         <option value="5">Sóc Trăng</option>
                                         <option value="6">Cà Mau</option>
                                     </select>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
+                                </div> -->
+                                <!-- <div class="col-md-12 form-group p_star">
                                     <select class="country_select">
                                         <option value="1">Quận/Huyện</option>
                                         <option value="2">Hoài Nhơn</option>
                                         <option value="4">Quận Bình Tân</option>
                                     </select>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
+                                </div> -->
+                                <!-- <div class="col-md-12 form-group p_star">
                                     <select class="country_select">
                                         <option value="1">Xã/Phường</option>
                                         <option value="2">Hoài Mỹ</option>
                                         <option value="4">Bình Hưng Hòa B</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12 form-group">
-                                    <input type="text" class="form-control" id="last" name="name" placeholder="Số Nhà/Địa Chỉ Cụ Thể">
+                                    <input type="text" class="form-control" id="last" name="address" placeholder="Số Nhà/Địa Chỉ Cụ Thể" value="{{userInfo.address}}">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <button class="btn button" style="width: 100%;">Sửa Thông Tin</button>
@@ -259,6 +256,8 @@
     <script src="../js/index.js"></script>
     <script src="../js/category.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/profile.js"></script>
+
 </body>
 
 </html>

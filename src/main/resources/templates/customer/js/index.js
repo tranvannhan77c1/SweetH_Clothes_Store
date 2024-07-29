@@ -57,6 +57,9 @@ app.controller('ProductController', ['$scope', '$http', function($scope, $http) 
         $scope.cart = JSON.parse(storedCart);
     }
 
+    var loginToken = localStorage.getItem('jwtToken');
+    $scope.isLogin = loginToken !== null && loginToken.length > 0;
+
     // Đặt hình ảnh chính của sản phẩm
     $scope.setMainImage = function(image) {
         $scope.selectedProduct.thumbnailImage = image;
