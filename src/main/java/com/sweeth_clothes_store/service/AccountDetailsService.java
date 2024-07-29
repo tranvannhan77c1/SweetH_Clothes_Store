@@ -43,14 +43,14 @@ public class AccountDetailsService implements UserDetailsService {
 		
 	}
 	
-	@Transactional
-    public AccountDetail loadUserById(Integer id) {
-		Account account = accountRepository.findById(id).orElseThrow(
-                () -> new UsernameNotFoundException("User not found with id : " + id)
-        );    
-		return new AccountDetail(account);
-		
-	}
+//	@Transactional
+//    public AccountDetail loadUserById(Integer id) {
+//		Account account = accountRepository.findById(id).orElseThrow(
+//                () -> new UsernameNotFoundException("User not found with id : " + id)
+//        );
+//		return new AccountDetail(account);
+//
+//	}
 
 //	private String getRoles(Account account) {
 //		if(account.getRole().equalsIgnoreCase("admin")) {
