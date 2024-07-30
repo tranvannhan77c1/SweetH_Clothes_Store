@@ -2716,7 +2716,7 @@ a {
 }
 
 .filter-bar-search {
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 .filter-bar-search input {
@@ -2751,8 +2751,8 @@ a {
 }
 
 .sorting {
-    margin-top: 10px;
-    margin-right: 10px
+    margin-left: 380px;
+    margin-bottom: -11px;
 }
 
 .sorting .nice-select {

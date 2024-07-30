@@ -115,27 +115,27 @@
                                 </ul>
                             </form>
                         </div>
-                        <div class="common-filter">
-                            <div class="head">Giá</div>
-                            <div class="price-range-area">
-                                <div id="price-range"></div>
-                                <div class="value-wrapper d-flex">
-                                    <div class="price">Giá:</div>
+<!--                        <div class="common-filter">-->
+<!--                            <div class="head">Giá</div>-->
+<!--                            <div class="price-range-area">-->
+<!--                                <div id="price-range"></div>-->
+<!--                                <div class="value-wrapper d-flex">-->
+<!--                                    <div class="price">Giá:</div>-->
 
-                                    <div id="lower-value"></div>
+<!--                                    <div id="lower-value"></div>-->
 
-                                    <div class="to">Đến</div>
+<!--                                    <div class="to">Đến</div>-->
 
-                                    <div id="upper-value"></div>
-                                </div>
+<!--                                    <div id="upper-value"></div>-->
+<!--                                </div>-->
 
-                            </div>
-                        </div>
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-7">
                     <!-- Start Filter Bar -->
-                    <div class="filter-bar d-flex flex-wrap align-items-center">
+                    <div class="filter-bar d-flex flex-wrap align-items-center justify-content-end">
                         <div class="sorting">
                             <select>
                                 <option value="1">Default sorting</option>
@@ -143,22 +143,16 @@
                                 <option value="1">Default sorting</option>
                             </select>
                         </div>
-                        <div class="sorting mr-auto">
-                            <select>
-                                <option value="1">Show 12</option>
-                                <option value="1">Show 12</option>
-                                <option value="1">Show 12</option>
-                            </select>
-                        </div>
-                        <div>
+                        <div class="ml-auto">
                             <div class="input-group filter-bar-search">
                                 <input type="text" ng-model="query" ng-change="searching()" placeholder="Tìm kiếm sản phẩm...">
                                 <div class="input-group-append">
-                                <button type="button" ng-click="searching()"><i class="ti-search"></i></button>
+                                    <button type="button" ng-click="searching()"><i class="ti-search"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- End Filter Bar -->
                     <!-- Start Best Seller -->
 
