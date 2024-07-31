@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="categoryApp">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body ng-controller="ProductController">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -38,14 +38,23 @@
                         </ul>
                         <ul class="nav-shop">
                             <!-- User Dropdown -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li class="nav-item dropdown" ng-if="!isLogin">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="ti-user"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="http://localhost:8080/login">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
-                                    <a class="dropdown-item" href="#">Đăng Xuất</a>
+                                    <a class="dropdown-item" href="login.html">Đăng Nhập</a>
+                                    <a class="dropdown-item" href="register.html">Đăng Ký</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" ng-if="isLogin">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../img/anhdaidien.png" alt="User Profile" class="img-profile">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="profile.html">Thông Tin Cá Nhân</a>
+                                    <a class="dropdown-item" href="profile.html">Đổi Mật Khẩu</a>
+                                    <a class="dropdown-item" href="#" ng-click="logout()">Đăng Xuất</a>
                                 </div>
                             </li>
 
@@ -310,9 +319,13 @@
     <script src="../vendors/skrollr.min.js"></script>
     <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
     <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="../vendors/nouislider/nouislider.min.js"></script>
     <script src="../vendors/jquery.ajaxchimp.min.js"></script>
     <script src="../vendors/mail-script.js"></script>
+    <script src="../vendors/angular/angular.min.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/category.js"></script>
+    <script src="../js/singleProduct.js"></script
 </body>
 
 </html>

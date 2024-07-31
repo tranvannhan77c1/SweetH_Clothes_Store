@@ -44,14 +44,19 @@
                                     <i class="ti-user"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="pages/login.html">Đăng Nhập</a>
-                                    <a class="dropdown-item" href="pages/register.html">Đăng Ký</a>
+                                    <a class="dropdown-item" href="login.html">Đăng Nhập</a>
+                                    <a class="dropdown-item" href="register.html">Đăng Ký</a>
                                 </div>
                             </li>
-                            <li class="nav-item" ng-if="isLogin">
-                                <a class="nav-link" ng-href="pages/profile.html">
-                                    <i class="ti-user"></i>
+                            <li class="nav-item dropdown" ng-if="isLogin">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../img/anhdaidien.png" alt="User Profile" class="img-profile">
                                 </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="profile.html">Thông Tin Cá Nhân</a>
+                                    <a class="dropdown-item" href="profile.html">Đổi Mật Khẩu</a>
+                                    <a class="dropdown-item" href="#" ng-click="logout()">Đăng Xuất</a>
+                                </div>
                             </li>
 
 

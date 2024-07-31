@@ -6037,3 +6037,14 @@ fieldset[disabled] .btn {
     border-color: #6a0d0d; /* Màu viền khi hover */
 }
 
+.img-profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Bo tròn ảnh thành hình tròn */
+    object-fit: cover;/* Đảm bảo ảnh không bị biến dạng */
+    margin-bottom: 10px;
+}
+.forgotpass {
+    margin-top: 44px; /* Điều chỉnh giá trị theo nhu cầu */
+}
+
