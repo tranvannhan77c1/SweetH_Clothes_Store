@@ -121,6 +121,12 @@
                                 </ul>
                             </form>
                         </div>
+                        <div class="price-filter">
+                            <p>Khoảng giá</p>
+                            <input type="number" ng-model="minPrice" placeholder="đ TỪ" step="10000">
+                            <input type="number" ng-model="maxPrice" placeholder="đ Đến" step="10000">
+                            <button ng-click="filterByPrice()">ÁP DỤNG</button>
+                        </div>
 <!--                        <div class="common-filter">-->
 <!--                            <div class="head">Giá</div>-->
 <!--                            <div class="price-range-area">-->
@@ -143,10 +149,10 @@
                     <!-- Start Filter Bar -->
                     <div class="filter-bar d-flex flex-wrap align-items-center justify-content-end">
                         <div class="sorting">
-                            <select>
-                                <option value="1">Default sorting</option>
-                                <option value="1">Default sorting</option>
-                                <option value="1">Default sorting</option>
+                            <select class="price-select" ng-model="sortOrder">
+                                <option value="" selected disabled hidden>Giá</option>
+                                <option value="asc">Giá: Thấp đến Cao</option>
+                                <option value="desc">Giá: Cao đến Thấp</option>
                             </select>
                         </div>
                         <div class="ml-auto">

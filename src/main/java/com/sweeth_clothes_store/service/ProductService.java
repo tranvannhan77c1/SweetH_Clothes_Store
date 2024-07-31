@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -68,6 +69,21 @@ public class ProductService {
 	// Thêm phương thức tìm kiếm theo tên sản phẩm
 	public Page<ProductDTO> searchProductsByName(String name, Pageable pageable) {
 		Page<Product> products = productRepository.findByNameContainingIgnoreCase(name, pageable);
+		return products.map(ProductMapper::toDTO);
+	}
+	// Thêm phương thức sắp xếp theo giá
+	public Page<ProductDTO> getProductsSortedByPrice(String sortOrder, Pageable pageable) {
+		Page<Product> products;
+		if ("asc".equalsIgnoreCase(sortOrder)) {
+			products = productRepository.findAllByOrderByPriceAsc(pageable);
+		} else {
+			products = productRepository.findAllByOrderByPriceDesc(pageable);
+		}
+		return products.map(ProductMapper::toDTO);
+	}
+	// Thêm phương thức tìm sp theo khoảng giá
+	public Page<ProductDTO> getProductsByPriceRange(BigDecimal minPrice, BigDecimal maxPrice, Pageable pageable) {
+		Page<Product> products = productRepository.findByPriceBetween(minPrice, maxPrice, pageable);
 		return products.map(ProductMapper::toDTO);
 	}
 

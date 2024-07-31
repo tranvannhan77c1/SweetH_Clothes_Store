@@ -6047,4 +6047,51 @@ fieldset[disabled] .btn {
 .forgotpass {
     margin-top: 44px; /* Điều chỉnh giá trị theo nhu cầu */
 }
+.sorting{
+    margin-left: 350px;   
+}
+.price-select {
+    width: 200px; /* Tăng chiều dài của select box */
+}
+/* Style cho khối tìm kiếm theo khoảng giá */
+.price-filter {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f1f6f7;
+}
+
+/* Style cho các label */
+.price-filter label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Style cho các input */
+.price-filter input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Style cho nút tìm kiếm */
+.price-filter button {
+    padding: 10px 15px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 

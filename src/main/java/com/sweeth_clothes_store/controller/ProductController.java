@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,5 +68,21 @@ public class ProductController {
 	public ResponseEntity<Page<ProductDTO>> searchProductsByName(@RequestParam String name, @RequestParam int page, @RequestParam int limit) {
 		Pageable pageable = PageRequest.of(page, limit);
 		return new ResponseEntity<Page<ProductDTO>>(productService.searchProductsByName(name, pageable), HttpStatus.OK);
+	}
+	// Thêm phương thức sắp xếp theo giá
+	@GetMapping("/public/sortByPrice")
+	public ResponseEntity<Page<ProductDTO>> getProductsSortedByPrice(@RequestParam String sortOrder, @RequestParam int page, @RequestParam int limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return new ResponseEntity<>(productService.getProductsSortedByPrice(sortOrder, pageable), HttpStatus.OK);
+	}
+	// Thêm phương thức tìm sp theo khoảng giá
+	@GetMapping("/public/price-range")
+	public ResponseEntity<Page<ProductDTO>> getProductsByPriceRange(
+			@RequestParam BigDecimal minPrice,
+			@RequestParam BigDecimal maxPrice,
+			@RequestParam int page,
+			@RequestParam int limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return new ResponseEntity<Page<ProductDTO>>(productService.getProductsByPriceRange(minPrice, maxPrice, pageable), HttpStatus.OK);
 	}
 }

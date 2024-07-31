@@ -21,6 +21,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.selectedProduct = null;
     $scope.modalQuantity = 1;
     $scope.showSuccessMessage = false; // New variable
+    $scope.sortOrder = '';
+    $scope.minPrice = '';
+    $scope.maxPrice = '';
 
     // Function to log the search query
     $scope.searching = function () {
@@ -47,6 +50,63 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
                 if (error.data) {
                     console.error('Error details:', error.data);
                 }
+            });
+    };
+    // sắp xếp theo giá
+    $scope.sortProducts = function () {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/sortByPrice?sortOrder=${$scope.sortOrder}&page=${$scope.currentPage - 1}&limit=${$scope.pageSize}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                $scope.products = response.data.content;
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
+            })
+            .catch(error => {
+                console.error('Error sorting products:', error);
+            });
+    };
+
+    // Cập nhật gọi hàm sortProducts khi chọn sắp xếp giá
+    $scope.$watch('sortOrder', function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+            $scope.sortProducts();
+        }
+    });
+
+    // Lấy data sản phẩm từ backend (sửa đổi để sử dụng sắp xếp nếu có)
+    $scope.getProducts = function (page) {
+        let apiUrl = `http://localhost:8080/api/v1/product/public/landing?page=${page}&limit=${$scope.pageSize}`;
+        if ($scope.sortOrder) {
+            apiUrl = `http://localhost:8080/api/v1/product/public/sortByPrice?sortOrder=${$scope.sortOrder}&page=${page}&limit=${$scope.pageSize}`;
+        }
+
+        $http.get(apiUrl)
+            .then(response => {
+                $scope.products = response.data.content;
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+            });
+    };
+
+    // Gọi sản phẩm
+    $scope.getProducts($scope.currentPage - 1);
+
+    // Tìm sp theo khoảng giá
+    $scope.filterByPrice = function () {
+        const apiUrl = `http://localhost:8080/api/v1/product/public/price-range?minPrice=${$scope.minPrice}&maxPrice=${$scope.maxPrice}&page=${$scope.currentPage - 1}&limit=${$scope.pageSize}`;
+
+        $http.get(apiUrl)
+            .then(response => {
+                $scope.products = response.data.content;
+                $scope.productAmount = response.data.totalElements;
+                $scope.totalPages = Math.ceil($scope.productAmount / $scope.pageSize);
+            })
+            .catch(error => {
+                console.error('Error fetching products by price range:', error);
             });
     };
 

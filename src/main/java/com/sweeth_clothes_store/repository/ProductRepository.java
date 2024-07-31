@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -19,5 +20,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     // Thêm phương thức tìm kiếm theo tên sản phẩm
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
     Page<Product> findByNameContainingIgnoreCase(@Param("name") String name, Pageable pageable);
-
+    // Sắp xếp sản phẩm theo giá tăng dần
+    Page<Product> findAllByOrderByPriceAsc(Pageable pageable);
+    // Sắp xếp sản phẩm theo giá giảm dần
+    Page<Product> findAllByOrderByPriceDesc(Pageable pageable);
+    // Tìm sp theo khoảng giá(min,max)
+    @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice")
+    Page<Product> findByPriceBetween(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice, Pageable pageable);
 }
