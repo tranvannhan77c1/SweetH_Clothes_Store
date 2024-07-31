@@ -347,4 +347,30 @@ function smoothRoll() {
         behavior: "smooth"
     });
 }
+app.directive('currencyInput', function($filter) {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function(value) {
+                return parseInt(value.replace(/[\D\s\._\-]+/g, ''), 10);
+            });
+
+            ngModel.$formatters.push(function(value) {
+                if (!value) return '';
+                return $filter('number')(value, 0) + ' ₫';
+            });
+
+            element.on('blur', function() {
+                var formattedValue = $filter('number')(ngModel.$modelValue, 0) + ' ₫';
+                element.val(formattedValue);
+            });
+
+            element.on('focus', function() {
+                element.val(ngModel.$modelValue);
+            });
+        }
+    };
+});
+
 

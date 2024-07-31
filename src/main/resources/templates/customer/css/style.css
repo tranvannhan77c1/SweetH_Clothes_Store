@@ -6033,8 +6033,9 @@ fieldset[disabled] .btn {
 
 /* Thay đổi màu nền của nút khi di chuột qua */
 .btn.btn-primary:hover {
-    background-color: #6a0d0d; /* Màu nền khi hover (tối hơn một chút) */
-    border-color: #6a0d0d; /* Màu viền khi hover */
+    background-color: white; /* Màu nền khi hover (tối hơn một chút) */
+    border-color: #8B1A1A;
+    color: #8B1A1A/* Màu viền khi hover */
 }
 
 .img-profile {
@@ -6084,14 +6085,12 @@ fieldset[disabled] .btn {
 }
 
 /* Style cho nút tìm kiếm */
-.price-filter button {
-    padding: 10px 15px;
-    background-color: orangered;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+
+
+.form-row {
+    margin-bottom: 10px;
 }
+
+
 
 

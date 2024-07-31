@@ -123,11 +123,19 @@
                         </div>
                         <div class="price-filter">
                             <p>Khoảng giá</p>
-                            <input type="number" ng-model="minPrice" placeholder="đ TỪ" step="10000">
-                            <input type="number" ng-model="maxPrice" placeholder="đ Đến" step="10000">
-                            <button ng-click="filterByPrice()">ÁP DỤNG</button>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" ng-model="minPrice" placeholder="Từ"  class="form-control" currency-input>
+                                </div>
+                                <div class="col">
+                                    <input type="text" ng-model="maxPrice" placeholder="Đến" class="form-control" currency-input>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" ng-click="filterByPrice()"  >Áp Dụng</button>
                         </div>
-<!--                        <div class="common-filter">-->
+
+
+                        <!--                        <div class="common-filter">-->
 <!--                            <div class="head">Giá</div>-->
 <!--                            <div class="price-range-area">-->
 <!--                                <div id="price-range"></div>-->
