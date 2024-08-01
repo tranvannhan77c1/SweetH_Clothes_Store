@@ -24,6 +24,8 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
     $scope.sortOrder = '';
     $scope.minPrice = '';
     $scope.maxPrice = '';
+    $scope.showSizeAlert = false;
+
 
     // Function to log the search query
     $scope.searching = function () {
@@ -268,7 +270,18 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
 
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
     $scope.addToCart = function (product, quantity, size) {
-        let existingProductAndSizeIndex = $scope.cart.findIndex(item => item.id === product.id && item.size === product.size);
+        if (!size) {
+            // Hiển thị thông báo nếu chưa chọn kích thước
+            $scope.showSizeAlert = true;
+
+            setTimeout(() => {
+                $scope.showSizeAlert = false; // Ẩn thông báo sau 3 giây
+                $scope.$apply();
+            }, 3000);
+            return;
+        }
+
+        let existingProductAndSizeIndex = $scope.cart.findIndex(item => item.id === product.id && item.size === size);
 
         if (existingProductAndSizeIndex !== -1) {
             $scope.cart[existingProductAndSizeIndex].quantity += quantity;
@@ -279,10 +292,10 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }
 
         localStorage.setItem('cart', JSON.stringify($scope.cart));
-        $scope.showSuccessMessage = true; // Show success message
+        $scope.showSuccessMessage = true; // Hiển thị thông báo thành công
 
         setTimeout(() => {
-            $scope.showSuccessMessage = false; // Hide success message after 3 seconds
+            $scope.showSuccessMessage = false; // Ẩn thông báo thành công sau 3 giây
             $scope.$apply();
         }, 3000);
     };
