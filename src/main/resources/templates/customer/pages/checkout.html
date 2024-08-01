@@ -177,6 +177,7 @@
                                 <li>
                                     <h4>
                                         <span class="product-name">Sản Phẩm</span>
+                                        <span class="product-size">Size</span>
                                         <span class="product-quantity">Số lượng</span>
                                         <span class="product-total">Tổng</span>
                                     </h4>
@@ -184,7 +185,8 @@
                                 <!-- phần code sản phẩm lên  -->
                                 <li ng-repeat="product in cart track by $index">
                                     <a ng-href="single-product.html?id={{ product.id }}">
-                                        <span class="product-name">{{product.name}} ({{product.size}})</span>
+                                        <span class="product-name">{{product.name}} </span>
+                                        <span class="product-size">{{product.size}}</span>
                                         <span class="product-quantity">x{{product.quantity}}</span>
                                         <span class="product-total">{{(product.price * product.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</span>
                                     </a>
