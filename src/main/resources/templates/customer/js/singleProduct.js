@@ -5,22 +5,16 @@ app.controller('SingleProductController', ['$scope', '$http', '$location', funct
     $scope.showSuccessAlert = false;
 
     $scope.addToCart = function (product) {
-        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
         let existingProductIndex = $scope.cart.findIndex(item => item.id === product.id);
 
         if (existingProductIndex !== -1) {
-            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng lên
             $scope.cart[existingProductIndex].quantity++;
         } else {
-            // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm vào giỏ hàng với số lượng là 1
             product.quantity = 1;
             $scope.cart.push(product);
         }
 
-        // Lưu giỏ hàng mới vào local storage
         localStorage.setItem('cart', JSON.stringify($scope.cart));
-
-        // Hiển thị thông báo thành công
         $('#successModal').modal('show');
     };
 
@@ -41,7 +35,6 @@ app.controller('SingleProductController', ['$scope', '$http', '$location', funct
     var loginToken = localStorage.getItem('jwtToken');
     $scope.isLogin = loginToken !== null && loginToken.length > 0;
 
-    // Function to get query parameters
     function getQueryParams() {
         var params = {};
         var parts = $location.absUrl().split('?')[1].split('&');
@@ -52,19 +45,22 @@ app.controller('SingleProductController', ['$scope', '$http', '$location', funct
         return params;
     }
 
-    // Get product ID from URL
     var params = getQueryParams();
     var productId = params['id'];
-
-    // Fetch product details from the API
 
     $http.get('http://localhost:8080/api/v1/product/public/' + productId)
         .then(function (response) {
             $scope.product = response.data;
+
+            // Ảnh chính mặc định
+            $scope.mainImage = $scope.product.thumbnailImage;
         })
         .catch(function (error) {
             console.error('Error fetching product data:', error);
         });
 
-
+    // Phương thức để thay đổi ảnh chính
+    $scope.setMainImage = function(image) {
+        $scope.mainImage = image;
+    };
 }]);

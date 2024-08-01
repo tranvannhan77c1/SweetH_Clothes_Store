@@ -308,6 +308,9 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
             localStorage.setItem('cart', JSON.stringify($scope.cart));
         }
     };
+    $scope.setMainImage = function(imageUrl) {
+        $scope.selectedProduct.thumbnailImage = imageUrl;
+    };
 
     $scope.clearCart = function () {
         $scope.cart = [];

@@ -79,24 +79,26 @@
     <div class="product_image_area">
         <div class="container">
             <div class="row s_product_inner">
-                <div class="col-lg-6">
-                    <div class="owl-carousel owl-theme s_Product_carousel">
+                <div class="col-lg-6 d-flex">
+                    <div class="thumbnail-container d-flex flex-column align-items-center">
+                        <i class="fas fa-angle-up icon-up"></i>
+                        <img class="thumbnail1" ng-src="{{ product.productImages[0] }}" alt="{{ product.name }} thumbnail 1" ng-click="setMainImage(product.productImages[0])">
+                        <img class="thumbnail1" ng-src="{{ product.productImages[1] }}" alt="{{ product.name }} thumbnail 2" ng-click="setMainImage(product.productImages[1])">
+                        <img class="thumbnail1" ng-src="{{ product.productImages[2] }}" alt="{{ product.name }} thumbnail 3" ng-click="setMainImage(product.productImages[2])">
+                        <i class="fas fa-angle-down icon-down"></i><!-- Thêm nhiều ảnh phụ nếu cần -->
+                    </div>
+                    <div class="owl-carousel owl-theme s_Product_carousel ml-3">
                         <div class="product-container">
                             <div class="single-prd-item">
-                                <img class="img-fluid" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}">
+                                <img class="img-fluid" ng-src="{{ mainImage }}" alt="{{ product.name }}">
                                 <!-- Ảnh chính -->
-                            </div>
-                            <div class="thumbnail-container">
-                                <img class="thumbnail" ng-src="{{ product.productImages[0] }}" alt="{{ product.name }} thumbnail 1" ng-click="setMainImage(product.thumbnail1)">
-                                <img class="thumbnail" ng-src="{{ product.productImages[1] }}" alt="{{ product.name }} thumbnail 2" ng-click="setMainImage(product.thumbnail2)">
-                                <img class="thumbnail" ng-src="{{ product.productImages[2] }}" alt="{{ product.name }} thumbnail 3" ng-click="setMainImage(product.thumbnail3)">
-                                <!-- Thêm nhiều ảnh phụ nếu cần -->
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+
+
+
 
                 <!-- Phần code sản phẩm  -->
                 <div class="col-lg-5 offset-lg-1">
@@ -117,8 +119,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="product_count">
                             <label for="qty">Quantity:</label>
                             <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
@@ -129,8 +129,6 @@
                                 <i class="fas fa-angle-down"></i>
                             </button>
                         </div>
-
-
 
                         <button class="button primary-btn" ng-click="addToCart(product)">Thêm Giỏ Hàng</button>
                         <div class="card_area d-flex align-items-center">

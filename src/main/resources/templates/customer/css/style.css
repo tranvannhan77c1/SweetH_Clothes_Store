@@ -5642,10 +5642,18 @@ h4.total-amount {
     /* Căn giữa các thumbnail */
     gap: 5px;
     /* Khoảng cách giữa các thumbnail */
-    margin-top: 10px;
+    margin-top: -50px;
     /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
 }
-
+.thumbnail-container1 {
+    display: flex;
+    justify-content: center;
+    /* Căn giữa các thumbnail */
+    gap: 5px;
+    /* Khoảng cách giữa các thumbnail */
+    margin-top: -140px;
+    /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
+}
 .thumbnail {
     width: 60px;
     /* Kích thước của thumbnail */
@@ -5659,7 +5667,29 @@ h4.total-amount {
     transform: scale(1.1);
     /* Phóng to thumbnail khi di chuột */
 }
+.thumbnail1 {
+    width: 100px; /* Chiều rộng của ảnh thumbnail */
+    height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */
+    cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
+    transition: transform 0.2s ease-in-out; /* Hiệu ứng chuyển động khi hover */
+}
 
+.thumbnail1:hover {
+    transform: scale(1.1); /* Tăng kích thước ảnh khi hover */
+}
+
+.icon-up, .icon-down {
+    font-size: 24px; /* Kích thước của biểu tượng */
+    color: #333; /* Màu sắc của biểu tượng */
+    margin-bottom: 10px; /* Khoảng cách giữa biểu tượng và ảnh */
+    cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
+    transition: color 0.2s ease-in-out; /* Hiệu ứng chuyển động khi hover */
+}
+
+.icon-up:hover, .icon-down:hover {
+    color: #8B1A1A; /* Đổi màu khi hover */
+}
 .btn-outline-custom {
     border: none;
     color: #8B1A1A;
