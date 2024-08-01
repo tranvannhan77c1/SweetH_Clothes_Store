@@ -5651,7 +5651,7 @@ h4.total-amount {
     /* Căn giữa các thumbnail */
     gap: 5px;
     /* Khoảng cách giữa các thumbnail */
-    margin-top: -140px;
+    margin-top: -220px;
     /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
 }
 .thumbnail {
