@@ -4,9 +4,11 @@ import com.sweeth_clothes_store.dto.OrderDTO;
 import com.sweeth_clothes_store.dto.OrderDetailDTO;
 import com.sweeth_clothes_store.mapper.OrderDetailMapper;
 import com.sweeth_clothes_store.mapper.OrderMapper;
+import com.sweeth_clothes_store.model.Account;
 import com.sweeth_clothes_store.model.Order;
 import com.sweeth_clothes_store.model.OrderDetail;
 import com.sweeth_clothes_store.model.Product;
+import com.sweeth_clothes_store.repository.AccountRepository;
 import com.sweeth_clothes_store.repository.OrderDetailRepository;
 import com.sweeth_clothes_store.repository.OrderRepository;
 import com.sweeth_clothes_store.repository.ProductRepository;
@@ -34,6 +36,9 @@ public class OrderService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     public Page<OrderDTO> getAllOrders(Pageable pageable) {
         Page<Order> orderPage = orderRepository.findAll(pageable);
         return orderPage.map(OrderMapper::toOrderDTO);
@@ -60,6 +65,10 @@ public class OrderService {
             System.out.println(" null ");
             return null;
         }
+        System.out.println(order);
+//        Account account = accountRepository.findById(order.getAccount().getId())
+//                .orElseThrow(() -> new RuntimeException("Item not found with id: " + categoryDTO.getItemId()));
+//        category.setItem(item);
 
         Order savedOrder = orderRepository.save(order);
 

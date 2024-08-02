@@ -115,15 +115,15 @@
                         <h3>Chi tiết thanh toán</h3>
                         <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="full-name" name="full_name" placeholder="Họ và Tên">
+                                <input type="text" class="form-control" id="full-name" name="full_name" placeholder="Họ và Tên" value="{{userInfo.fullName}}">
                                 <span class="placeholder" data-placeholder="Full name"></span>
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="company" name="company" placeholder="Số Điện Thoại">
+                                <input type="text" class="form-control" id="company" name="company" placeholder="Số Điện Thoại" value="{{userInfo.phone}}">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{userInfo.email}}">
                             </div>
 
 
@@ -143,7 +143,7 @@
                             <!--                                <span class="placeholder" data-placeholder="Address line 02"></span>-->
                             <!--                            </div>-->
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="city" name="city" placeholder="Địa chỉ cụ thể">
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Địa chỉ cụ thể" value="{{userInfo.address}}">
                                 <span class="placeholder" data-placeholder="Town/City"></span>
                             </div>
                             <!--                            <div class="col-md-12 form-group p_star">-->
@@ -154,12 +154,12 @@
                             <!--                            </select>-->
                             <!--                            </div>-->
 
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <input type="checkbox" id="f-option2" name="selector">
-                                    <label for="f-option2">Tạo một tài khoản?</label>
-                                </div>
-                            </div>
+<!--                            <div class="col-md-12 form-group">-->
+<!--                                <div class="creat_account">-->
+<!--                                    <input type="checkbox" id="f-option2" name="selector">-->
+<!--                                    <label for="f-option2">Tạo một tài khoản?</label>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="col-md-12 form-group mb-0">
                                 <div class="creat_account">
                                     <h3>Chi tiết vận chuyển</h3>
