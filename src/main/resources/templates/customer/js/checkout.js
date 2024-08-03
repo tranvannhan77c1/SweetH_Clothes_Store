@@ -88,3 +88,13 @@ app.filter('floor', function() {
         return Math.floor(input * 100) / 100;
     };
 });
+// rút gọn tên sản phẩm 
+app.filter('truncate', function () {
+    return function (input, limit) {
+        if (input.length > limit) {
+            return input.substring(0, limit) + '...';
+        } else {
+            return input;
+        }
+    };
+});

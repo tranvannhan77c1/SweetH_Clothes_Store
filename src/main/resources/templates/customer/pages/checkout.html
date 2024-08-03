@@ -185,7 +185,7 @@
                                 <!-- phần code sản phẩm lên  -->
                                 <li ng-repeat="product in cart track by $index">
                                     <a ng-href="single-product.html?id={{ product.id }}">
-                                        <span class="product-name">{{product.name}} </span>
+                                        <span class="product-name" title="{{ product.name }}">{{ product.name | truncate:20 }} </span>
                                         <span class="product-size">{{product.size}}</span>
                                         <span class="product-quantity">x{{product.quantity}}</span>
                                         <span class="product-total">{{(product.price * product.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor}}</span>

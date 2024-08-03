@@ -3574,8 +3574,8 @@ a {
 
 .order_box h2 {
     border-bottom: 1px solid #dddddd;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
     color: #222;
     padding-bottom: 15px
 }
@@ -6115,11 +6115,23 @@ fieldset[disabled] .btn {
 }
 
 /* Style cho nút tìm kiếm */
-
-
 .form-row {
     margin-bottom: 10px;
 }
+/*show tên rút gọn*/
+.product-name {
+    position: relative;
+    display: inline-block;
+}
+.product-name[title] {
+    cursor: pointer;  
+}
+/* khoảng cách size và sl */
+.product-size{
+    margin-right: 13px;
+}
+
+
 
 
 
