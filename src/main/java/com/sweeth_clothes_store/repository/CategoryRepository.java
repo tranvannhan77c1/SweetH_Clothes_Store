@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
     // Các phương thức tùy chỉnh có thể được thêm vào đây nếu cần
+    boolean existsByName(String name);
+
+    boolean existsByNameAndIdNot(String name, Long excludeId);
 }

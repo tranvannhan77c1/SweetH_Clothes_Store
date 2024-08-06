@@ -25,6 +25,8 @@ public class CategoryController {
         return ResponseEntity.ok(categories);
     }
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Integer id) {
         CategoryDTO categoryDTO = categoryService.getCategoryById(id);
@@ -33,11 +35,6 @@ public class CategoryController {
         }
         return ResponseEntity.ok(categoryDTO);
     }
-
-//    @GetMapping("/all")
-//    public List<CategoryDTO> getAllCategories() {
-//        return categoryService.getAllCategories();
-//    }
 
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
@@ -58,5 +55,13 @@ public class CategoryController {
     public ResponseEntity<Void> deleteCategory(@PathVariable Integer id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/check-name")
+    public ResponseEntity<Boolean> checkCategoryName(
+            @RequestParam("name") String name,
+            @RequestParam(value = "excludeId", required = false) Long excludeId) {
+        boolean exists = categoryService.existsByName(name, excludeId);
+        return ResponseEntity.ok(exists);
     }
 }

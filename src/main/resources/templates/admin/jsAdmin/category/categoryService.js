@@ -59,4 +59,11 @@ angular.module('app')
                     throw error;
                 });
         };
+
+        this.checkCategoryName = function(name, excludeId) {
+            return $http.get(baseUrl + '/check-name', {
+                params: { name: name, excludeId: excludeId }
+            }).then(response => response.data);
+        };
+
     }]);

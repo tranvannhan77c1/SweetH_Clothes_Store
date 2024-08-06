@@ -20,7 +20,7 @@
 </head>
 
 <body>
-
+x
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -145,22 +145,23 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Thông Tin Chủng Loại</h4>
-                  <form class="forms-sample" ng-submit="createOrUpdateCategory()">
+                  <form class="forms-sample">
                     <div class="form-group">
                       <label for="name">Tên Chủng Loại</label>
                       <input type="text" class="form-control" id="name" ng-model="category.name" placeholder="Tên Chủng Loại">
                     </div>
                     <div class="form-group">
                       <label for="categorySelect">Thuộc Danh Mục</label>
-                      <select class="form-control form-control-lg" id="categorySelect" ng-model="" ng-options="item.id as item.name for item in items track by item.id">
+                      <select class="form-control form-control-lg" id="categorySelect" ng-model="category.itemId" ng-options="item.id as item.name for item in items">
                         <option value="">Chọn Danh Mục</option>
                       </select>
                     </div>
+                    <div ng-show="message" class="alert" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
                     <div>
-                      <button type="submit" class="btn btn-inverse-success mr-2">Thêm</button>
-                      <button type="button" class="btn btn-inverse-warning mr-2" ng-click="updateCategory()">Cập Nhật</button>
-                      <button type="button" class="btn btn-inverse-danger mr-2" ng-click="deleteCategory()">Xoá</button>
-                      <button type="button" class="btn btn-inverse-info mr-2 mt-2" ng-click="resetForm()">Làm Mới</button>
+                      <button type="button" class="btn btn-inverse-success mr-2" ng-click="createCategory()" ng-show="!isEditMode">Thêm</button>
+                      <button type="button" class="btn btn-inverse-warning mr-2" ng-click="updateCategory()" ng-show="isEditMode">Cập Nhật</button>
+                      <button type="button" class="btn btn-inverse-danger mr-2" ng-click="deleteCategory(category.id)" ng-show="isEditMode">Xoá</button>
+                      <button type="button" class="btn btn-inverse-info mr-2" ng-click="resetForm()">Làm Mới</button>
                     </div>
                   </form>
                 </div>
@@ -182,7 +183,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr ng-repeat="cat in categories">
+                      <tr ng-repeat="cat in categories" ng-class="{ 'table-success': cat.id === highlightedCategoryId }">
                         <td>{{ cat.name }}</td>
                         <td>{{ cat.itemName }}</td>
                         <td>{{ cat.productCount }}</td>
@@ -212,6 +213,78 @@
               </div>
             </div>
           </div>
+          <!--          <div class="row mb-0">-->
+<!--            <div class="col-md-4 grid-margin stretch-card mb-0">-->
+<!--              <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                  <h4 class="card-title">Thông Tin Chủng Loại</h4>-->
+<!--                  <form class="forms-sample" ng-submit="createOrUpdateCategory()">-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="name">Tên Chủng Loại</label>-->
+<!--                      <input type="text" class="form-control" id="name" ng-model="category.name" placeholder="Tên Chủng Loại">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="categorySelect">Thuộc Danh Mục</label>-->
+<!--                      <select class="form-control form-control-lg" id="categorySelect" ng-model="category.itemId" ng-options="item.id as item.name for item in items track by cat.id">-->
+<!--                        <option value="">Chọn Danh Mục</option>-->
+<!--                      </select>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                      <button type="submit" class="btn btn-inverse-success mr-2">Thêm</button>-->
+<!--                      <button type="button" class="btn btn-inverse-warning mr-2" ng-click="updateCategory()">Cập Nhật</button>-->
+<!--                      <button type="button" class="btn btn-inverse-danger mr-2" ng-click="deleteCategory()">Xoá</button>-->
+<!--                      <button type="button" class="btn btn-inverse-info mr-2 mt-2" ng-click="resetForm()">Làm Mới</button>-->
+<!--                    </div>-->
+<!--                  </form>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-lg-8 grid-margin stretch-card mb-0">-->
+<!--              <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                  <h4 class="card-title">Danh Sách Chủng Loại</h4>-->
+<!--                  <div class="table-responsive">-->
+<!--                    <table class="table table-hover table-bordered">-->
+<!--                      <thead>-->
+<!--                      <tr>-->
+<!--                        <th>Tên Chủng Loại</th>-->
+<!--                        <th>Thuộc Danh Mục</th>-->
+<!--                        <th>Số Sản Phẩm</th>-->
+<!--                        <th>Hành Động</th>-->
+<!--                      </tr>-->
+<!--                      </thead>-->
+<!--                      <tbody>-->
+<!--                      <tr ng-repeat="cat in categories">-->
+<!--                        <td>{{ cat.name }}</td>-->
+<!--                        <td>{{ cat.itemName }}</td>-->
+<!--                        <td>{{ cat.productCount }}</td>-->
+<!--                        <td>-->
+<!--                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="editCategory(cat.id)">Chỉnh Sửa</button>-->
+<!--                          <button type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteCategory(cat.id)">Xoá</button>-->
+<!--                        </td>-->
+<!--                      </tr>-->
+<!--                      </tbody>-->
+<!--                    </table>-->
+<!--                  </div>-->
+<!--                  <div class="mt-2">-->
+<!--                    <div class="btn-group" role="group" aria-label="Basic example">-->
+<!--                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0" ng-click="previousPage()">-->
+<!--                        <i class="mdi mdi-chevron-double-left"></i>-->
+<!--                      </button>-->
+<!--                      <button type="button" class="btn btn-outline-secondary" ng-repeat="page in paginationButtons"-->
+<!--                              ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">-->
+<!--                        {{ page + 1 }}-->
+<!--                      </button>-->
+<!--                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">-->
+<!--                        <i class="mdi mdi-chevron-double-right"></i>-->
+<!--                      </button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
 
         </div>
         <!-- content-wrapper ends -->

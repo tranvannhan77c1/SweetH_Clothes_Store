@@ -3,7 +3,9 @@ package com.sweeth_clothes_store.service;
 import com.sweeth_clothes_store.dto.CategoryDTO;
 import com.sweeth_clothes_store.mapper.CategoryMapper;
 import com.sweeth_clothes_store.model.Category;
+import com.sweeth_clothes_store.model.Item;
 import com.sweeth_clothes_store.repository.CategoryRepository;
+import com.sweeth_clothes_store.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,10 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ItemRepository itemRepository;
+
+
     public Page<CategoryDTO> getAllCategories(Pageable pageable) {
         Page<Category> categoryPage = categoryRepository.findAll(pageable);
         return categoryPage.map(CategoryMapper::toCategoryDTO);
@@ -30,16 +36,24 @@ public class CategoryService {
 
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         Category category = CategoryMapper.toCategory(categoryDTO);
+
+        // Lấy Item từ cơ sở dữ liệu theo itemId và set vào Category entity
+        Item item = itemRepository.findById(categoryDTO.getItemId())
+                .orElseThrow(() -> new RuntimeException("Item not found with id: " + categoryDTO.getItemId()));
+        category.setItem(item);
+
         category = categoryRepository.save(category);
         return CategoryMapper.toCategoryDTO(category);
     }
-
     public CategoryDTO updateCategory(Integer id, CategoryDTO categoryDTO) {
         if (!categoryRepository.existsById(id)) {
             return null;
         }
         Category category = CategoryMapper.toCategory(categoryDTO);
         category.setId(id);
+        Item item = itemRepository.findById(categoryDTO.getItemId())
+                .orElseThrow(() -> new RuntimeException("Item not found with id: " + categoryDTO.getItemId()));
+        category.setItem(item);
         category = categoryRepository.save(category);
         return CategoryMapper.toCategoryDTO(category);
     }
@@ -53,5 +67,13 @@ public class CategoryService {
         return categories.stream()
                 .map(CategoryMapper::toCategoryDTO)
                 .collect(Collectors.toList());
+    }
+
+    public boolean existsByName(String name, Long excludeId) {
+        if (excludeId == null) {
+            return categoryRepository.existsByName(name);
+        } else {
+            return categoryRepository.existsByNameAndIdNot(name, excludeId);
+        }
     }
 }

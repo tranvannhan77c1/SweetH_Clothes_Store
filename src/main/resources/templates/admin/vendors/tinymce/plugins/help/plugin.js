@@ -1306,7 +1306,7 @@ define(
           buttons: ButtonsRow.makeRow(),
           onPostRender: function () {
             var title = this.getEl('title');
-            title.innerHTML = '<img src="' + url + '/img/logo.png" alt="TinyMCE Logo" style="width: 200px">';
+            title.innerHTML = '<img src="' + url + '/img/logo.svg" alt="TinyMCE Logo" style="width: 200px">';
           }
         });
       };
