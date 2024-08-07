@@ -4,14 +4,8 @@ import com.sweeth_clothes_store.dto.OrderDTO;
 import com.sweeth_clothes_store.dto.OrderDetailDTO;
 import com.sweeth_clothes_store.mapper.OrderDetailMapper;
 import com.sweeth_clothes_store.mapper.OrderMapper;
-import com.sweeth_clothes_store.model.Account;
-import com.sweeth_clothes_store.model.Order;
-import com.sweeth_clothes_store.model.OrderDetail;
-import com.sweeth_clothes_store.model.Product;
-import com.sweeth_clothes_store.repository.AccountRepository;
-import com.sweeth_clothes_store.repository.OrderDetailRepository;
-import com.sweeth_clothes_store.repository.OrderRepository;
-import com.sweeth_clothes_store.repository.ProductRepository;
+import com.sweeth_clothes_store.model.*;
+import com.sweeth_clothes_store.repository.*;
 import com.sweeth_clothes_store.service.OrderService;
 import jakarta.transaction.Transactional;
 import org.hibernate.mapping.Map;
@@ -39,6 +33,9 @@ public class OrderService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private VoucherRepository voucherRepository;
+
     public Page<OrderDTO> getAllOrders(Pageable pageable) {
         Page<Order> orderPage = orderRepository.findAll(pageable);
         return orderPage.map(OrderMapper::toOrderDTO);
@@ -57,24 +54,42 @@ public class OrderService {
     }
 
     @Transactional
-    public Order createOrder(Order order, List<OrderDetailDTO> orderDetailDTOS) {
-        order.setOrderDate(LocalDateTime.now());
-        order.setStatus("ĐÃ THANH TOÁN");
+    public Order createOrder(OrderDTO orderDto) {
+        orderDto.setOrderDate(LocalDateTime.now());
+        orderDto.setStatus("ĐÃ THANH TOÁN");
 
-        if( orderDetailDTOS == null) {
-            System.out.println(" null ");
-            return null;
+        //map orderDto to order
+        Order order = OrderMapper.toOrder(orderDto);
+
+        //set account
+        Account acc = accountRepository.findById(orderDto.getAccountId()).isPresent() ?
+                accountRepository.findById(orderDto.getAccountId()).get() : null;
+        if(acc == null) {
+            throw new NullPointerException();
         }
-        System.out.println(order);
-//        Account account = accountRepository.findById(order.getAccount().getId())
-//                .orElseThrow(() -> new RuntimeException("Item not found with id: " + categoryDTO.getItemId()));
-//        category.setItem(item);
+        order.setAccount(acc);
 
+        //set voucher
+        Voucher vch = voucherRepository.findById(orderDto.getVoucherId()).isPresent() ?
+                voucherRepository.findById(orderDto.getVoucherId()).get() : null;
+        if(vch == null) {
+            throw new NullPointerException();
+        }
+        order.setVoucher(vch);
+
+        //save order to db
         Order savedOrder = orderRepository.save(order);
 
-        for (OrderDetailDTO oddto : orderDetailDTOS) {
+        for (OrderDetailDTO oddto : orderDto.getOrderDetails()) {
+            //map orderDetailDTO to orderDetail
             OrderDetail od = OrderDetailMapper.toOrderDetail(oddto);
-            Product prod = productRepository.findById(oddto.getProductId()).isPresent() ? productRepository.findById(oddto.getProductId()).get() : null;
+
+            //set product
+            Product prod = productRepository.findById(oddto.getProductId()).isPresent() ?
+                    productRepository.findById(oddto.getProductId()).get() : null;
+            if (prod == null) {
+                throw new NullPointerException();
+            }
             od.setProduct(prod);
             od.setOrder(savedOrder);
             orderDetailRepository.save(od);

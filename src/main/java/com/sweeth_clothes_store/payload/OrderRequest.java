@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.payload;
 
+import com.sweeth_clothes_store.dto.OrderDTO;
 import com.sweeth_clothes_store.dto.OrderDetailDTO;
 import com.sweeth_clothes_store.model.Order;
 import com.sweeth_clothes_store.model.OrderDetail;
@@ -13,7 +14,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderRequest {
-    private Order order;
-    private List<OrderDetailDTO> orderDetailDTOs;
-
+    private OrderDTO orderDTO;
 }

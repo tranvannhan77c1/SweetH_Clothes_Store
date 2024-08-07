@@ -41,7 +41,7 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
             orderDetail.push({
                 quantity: product.quantity,
                 price: product.price,
-                size: "test",
+                size: product.size,
                 productId: product.id
             })
         })
@@ -49,16 +49,15 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         var order = {
             totalAmount: order_totalAmount,
             status: null,
-            address: "test address",
+            address: $scope.userInfo.address,
             phone: $scope.userInfo.phone,
-            voucherId: null,
-            accountId: $scope.userInfo.id
+            voucherId: 1,
+            accountId: $scope.userInfo.id,
+            orderDetails: orderDetail
         }
 
         var orderRequest = {
-            order: order,
-            orderDetailDTOs: orderDetail
-
+            orderDTO: order,
         }
 
         console.log(orderRequest)

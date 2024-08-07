@@ -48,10 +48,10 @@ public class OrderMapper {
         // Để đơn giản, chúng ta không thiết lập các thực thể Voucher và Account ở đây.
         // Điều này thường yêu cầu truy xuất các thực thể liên quan từ cơ sở dữ liệu.
         
-        List<OrderDetail> orderDetails = dto.getOrderDetails().stream()
-                .map(OrderDetailMapper::toOrderDetail)
-                .collect(Collectors.toList());
-        order.setOrderDetails(orderDetails);
+//        List<OrderDetail> orderDetails = dto.getOrderDetails().stream()
+//                .map(OrderDetailMapper::toOrderDetail)
+//                .collect(Collectors.toList());
+//        order.setOrderDetails(orderDetails);
         
         return order;
     }
