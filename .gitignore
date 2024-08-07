@@ -38,3 +38,6 @@ build/
 # Ignore application.properties to prevent committing sensitive information
 application.properties
 .properties
+
+#ignore test template
+/src/main/resources/templates/customer/test
