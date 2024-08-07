@@ -78,12 +78,12 @@
     <!--================Checkout Area =================-->
     <section class="checkout_area section-margin--small">
         <div class="container">
-            <div class="returning_customer">
+            <div class="returning_customer" ng-if="!isLogin">
                 <div class="check_title">
                     <h2>Phản hồi khách hàng? <a href="#">Nhấn vào đây để đăng nhập</a></h2>
                 </div>
                 <p>Nếu bạn đã từng mua hàng với chúng tôi trước đây, vui lòng nhập thông tin chi tiết của bạn vào các ô bên dưới. Nếu bạn là khách hàng mới, vui lòng chuyển sang phần Thanh toán & Vận chuyển.</p>
-                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                <form class="row contact_form" action="#" method="post" novalidate="novalidate" >
                     <div class="col-md-6 form-group p_star">
                         <input type="text" class="form-control" placeholder="Tài khoản*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Tài khoản*'" id="name" name="name">
                         <!-- <span class="placeholder" data-placeholder="Username or Email"></span> -->
@@ -101,6 +101,7 @@
                         <a class="lost_pass" href="#">Quên mật khẩu?</a>
                     </div>
                 </form>
+
             </div>
             <div class="cupon_area">
                 <div class="check_title">
