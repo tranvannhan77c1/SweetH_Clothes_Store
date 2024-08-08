@@ -206,7 +206,7 @@
                             <ul class="list list_2">
                                 <li><a href="#">Tổng phụ <span>{{ calculateTotal().toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
                                 <li><a href="#">Vận Chuyển <span>50.000 ₫</span></a></li>
-                                <li><a href="#">Tổng cộng <span>{{ (calculateTotal() + 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
+                                <li><a href="#" ng-model="totalPrice">Tổng cộng <span>{{ (calculateTotal() + 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></a></li>
                             </ul>
                             <div class="payment_item">
                                 <div class="radion_btn">

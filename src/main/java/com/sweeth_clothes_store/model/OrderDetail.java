@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,8 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
+    @JsonIgnore
+    //  cai @JsonIgnore la de thuc hien lay thong tin thanh toan, co gi thi` lien he Hoang Luc
     private Order order;
 
     @ManyToOne

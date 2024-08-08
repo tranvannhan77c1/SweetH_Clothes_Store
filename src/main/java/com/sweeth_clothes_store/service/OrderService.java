@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,6 +45,11 @@ public class OrderService {
     public OrderDTO getOrderById(Integer id) {
         Order order = orderRepository.findById(id).orElse(null);
         return OrderMapper.toOrderDTO(order);
+    }
+
+    public List<Order> getOrdersByUserID(int userID) {
+        List<Order> order = orderRepository.findByAccount_id(userID);
+        return order;
     }
 
     public List<OrderDTO> getAllOrders() {

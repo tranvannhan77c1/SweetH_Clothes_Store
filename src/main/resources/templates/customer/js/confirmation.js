@@ -1,18 +1,21 @@
-var app = angular.module('checkoutApp', []);
+var app = angular.module('confirmationApp', []);
 
-app.controller('CheckoutController', ['$scope', '$http', function($scope, $http) {
-    $scope.products = [];
+app.controller('confirmationController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+    $scope.produc = [];
     $scope.cart = [];
     $scope.showSuccessAlert = false;
     $scope.userInfo = null;
 
     // Load giỏ hàng từ local storage khi trang được tải
     var storedCart = localStorage.getItem('cart');
+    if(!storedCart) {
+        return;
+    }
     if (storedCart) {
         $scope.cart = JSON.parse(storedCart);
     }
 
-    $scope.calculateTotal = function() {
+    $scope.calculateTotal = function () {
         return $scope.cart.reduce((total, item) => {
             return total + item.price * item.quantity;
         }, 0);
@@ -32,8 +35,17 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         $scope.userInfo = JSON.parse(storedUserInfo);
     }
 
+    function getQueryParams() {
+        var params = {};
+        var parts = $location.absUrl().split('?')[1].split('&');
+        for (var i = 0; i < parts.length; i++) {
+            var param = parts[i].split('=');
+            params[param[0]] = param[1];
+        }
+        return params;
+    }
 
-    $scope.payment = function() {
+    $scope.payment = function () {
         let order_totalAmount = 0;
         var orderDetail = [];
         $scope.cart.forEach(product => {
@@ -60,36 +72,39 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
             orderDTO: order,
         }
 
-        console.log(orderRequest)
+        $http.post('http://localhost:8080/api/v1/customer/orders/createOrder', orderRequest)
+            .then(function (response) {
+                // Handle success
+                console.log('Payment successful:', response.data);
 
+            })
+            .catch(function (error) {
+                // Handle error
+                console.error('Payment failed:', error);
+            })
+            .finally(function() {
+                document.getElementById('loading').style.display = 'block';
+                localStorage.removeItem('cart')
+            });
+    }
+    $scope.payment()
 
-
-        // $http.post('http://localhost:8080/api/v1/customer/orders/createOrder', orderRequest)
-        //     .then(function(response) {
-        //         // Handle success
-        //         console.log('Payment successful:', response.data);
-
-        //     })
-        //     .catch(function(error) {
-        //         // Handle error
-        //         console.error('Payment failed:', error);
-        //     });
-        $http.get('http://localhost:8080/api/v1/payment/vn-pay?amount=' + ($scope.calculateTotal() + 50000) + '&bankCode=NCB')
-        .then(function(response) {
-            // Handle success
-            // console.log('Payment successful:', response.data);
-            window.location.href = response.data.paymentUrl
+    var params = getQueryParams();
+    var vnp_ResponseCode = params['vnp_ResponseCode'];
+    $scope.orderInfo = null;
+    $http.get('http://localhost:8080/api/v1/payment/vn-pay-callback?userID=' + $scope.userInfo.id + '&vnp_ResponseCode=' + vnp_ResponseCode)
+        .then(function (response) {
+            $scope.orderInfo = response.data.orderInfo
         })
-        .catch(function(error) {
+        .catch(function (error) {
             // Handle error
             console.error('Payment failed:', error);
         });
-    }
 
 }]);
 
-app.filter('floor', function() {
-    return function(input) {
+app.filter('floor', function () {
+    return function (input) {
         if (isNaN(input)) {
             console.log("string")
             return input;

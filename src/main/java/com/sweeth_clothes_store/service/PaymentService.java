@@ -34,6 +34,7 @@ public class PaymentService {
         return PaymentDTO.VNPayResponse.builder()
                 .code("ok")
                 .message("success")
-                .paymentUrl(paymentUrl).build();
+                .paymentUrl(paymentUrl)
+                .orderInfo(null).build();
     }
 }
