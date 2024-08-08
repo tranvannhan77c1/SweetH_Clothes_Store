@@ -19,6 +19,7 @@ app.controller('ProfileController', ['$scope', '$http', '$window', function($sco
 
     $scope.logout = function() {
         localStorage.removeItem('jwtToken');
+        localStorage.removeItem('accountDetail')
         $scope.isLogin = false;
         // redirect to login page or reload the page
         window.location.href = '../index.html';
