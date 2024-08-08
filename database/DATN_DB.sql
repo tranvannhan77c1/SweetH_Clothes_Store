@@ -47,7 +47,7 @@ create table product_images(
 create table accounts(
     id int identity(1,1),
     username varchar(50) not null unique,
-    [password] varchar(50) not null,
+    [password] varchar(max) not null,
     email varchar(100) not null unique,
     full_name nvarchar(100),
     phone nvarchar(10) not null unique,
