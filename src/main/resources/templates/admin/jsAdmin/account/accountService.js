@@ -1,6 +1,6 @@
 angular.module('app')
     .service('AccountService', ['$http', function($http) {
-        var baseUrl = 'http://localhost:8080/api/v1/account';
+        var baseUrl = 'http://localhost:8080/api/accounts';
 
         this.getAllAccounts = function(page, size) {
             page = page || 0; // Trang mặc định là 0
@@ -17,7 +17,7 @@ angular.module('app')
         };
 
         this.getAccountById = function(id) {
-            return $http.get('http://localhost:8080/api/v1/account/' + id)
+            return $http.get(baseUrl + '/' + id)
                 .then(function(response) {
                     return response.data;
                 })
@@ -26,16 +26,48 @@ angular.module('app')
                     throw error;
                 });
         };
-        
-        // Hàm thêm nhân viên
-        this.addEmployee = function(account) {
-            return $http.post(baseUrl + '/signup', account)
+
+        this.createAccount = function(account) {
+            return $http.post(baseUrl, account)
                 .then(function(response) {
                     return response.data;
                 })
                 .catch(function(error) {
+                    console.error('Error adding account', error);
                     throw error;
                 });
         };
 
+        this.checkUsernameExists = function(username) {
+            return $http.get(baseUrl + '/check-username', {
+                params: { username: username }
+            }).then(function(response) {
+                return response.data;
+            }).catch(function(error) {
+                console.error('Error checking username', error);
+                throw error;
+            });
+        };
+
+        this.checkEmailExists = function(email) {
+            return $http.get(baseUrl + '/check-email', {
+                params: { email: email }
+            }).then(function(response) {
+                return response.data;
+            }).catch(function(error) {
+                console.error('Error checking email', error);
+                throw error;
+            });
+        };
+
+        this.checkPhoneExists = function(phone) {
+            return $http.get(baseUrl + '/check-phone', {
+                params: { phone: phone }
+            }).then(function(response) {
+                return response.data;
+            }).catch(function(error) {
+                console.error('Error checking phone', error);
+                throw error;
+            });
+        };
     }]);

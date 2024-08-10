@@ -1,84 +1,140 @@
 angular.module('app')
-    .controller('ItemController', ['$scope', '$timeout', 'ItemService', function($scope, $timeout, ItemService) {
+    .controller('ItemController', ['$scope', '$timeout', 'ItemService', function ($scope, $timeout, ItemService) {
 
-        $scope.currentPage = 0; // Trang hiện tại
-        $scope.pageSize = 8; // Kích thước mỗi trang
-        $scope.totalPages = 1; // Tổng số trang
-        $scope.items = []; // Mảng lưu trữ items
-        $scope.paginationButtons = []; // Mảng lưu trữ các nút phân trang hiển thị
-        $scope.item = {}; // Đối tượng item để lưu trữ dữ liệu form
-        $scope.isEditMode = false; // Biến xác định trạng thái chỉnh sửa
-        $scope.highlightedItemId = null; // ID của mục được đánh dấu
+        $scope.currentPage = 0;
+        $scope.pageSize = 8;
+        $scope.totalPages = 1;
+        $scope.items = [];
+        $scope.paginationButtons = [];
+        $scope.item = {};
+        $scope.isEditMode = false;
+        $scope.highlightedItemId = null;
+        $scope.message = '';
+        $scope.isSuccess = false;
 
-        $scope.getItems = function(page, size) {
-            ItemService.getAllItemsPage(page, size)
-                .then(function(data) {
+         function getItems(page, size) {
+            return ItemService.getAllItemsPage(page, size)
+                .then(function (data) {
                     $scope.items = data.content;
-                    console.log(data.content);
                     $scope.totalPages = data.totalPages;
                     initializePagination();
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.error('Error fetching items', error);
                 });
         };
 
-        $scope.viewItemDetails = function(id) {
+        $scope.editItem = function (id) {
             ItemService.getItemById(id)
-                .then(function(data) {
+                .then(function (data) {
                     $scope.item = data;
-                    $scope.isEditMode = true; // Bật chế độ chỉnh sửa khi xem chi tiết
+                    $scope.isEditMode = true;
+                    $scope.message = '';
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.error('Error fetching item', error);
                 });
         };
 
-        $scope.createItem = function() {
-            ItemService.createItem($scope.item)
-                .then(function(data) {
-                    $scope.item = data; // Giữ item vừa thêm trong form
-                    $scope.getItems($scope.currentPage, $scope.pageSize);
-                    $scope.highlightItem(data.id);
-                    $scope.isEditMode = false; // Tắt chế độ chỉnh sửa sau khi thêm
-                })
-                .catch(function(error) {
-                    console.error('Error creating item', error);
-                });
+        $scope.createItem = function () {
+            $scope.validateItem(function (isValid) {
+                if (isValid) {
+                    ItemService.createItem($scope.item)
+                        .then(function (data) {
+                            getItems($scope.currentPage, $scope.pageSize)
+                                .then(function () {
+                                $scope.goToPage($scope.totalPages - 1);
+                                $scope.highlightItem(data.id);
+                                $scope.editItem(data.id);
+                                handleSuccess('Thêm danh mục thành công!');
+                            });
+                        })
+                        .catch(function (error) {
+                            console.error('Error creating item', error);
+                        });
+                }
+            });
         };
 
-        $scope.updateItem = function() {
-            ItemService.updateItem($scope.item.id, $scope.item)
-                .then(function(data) {
-                    $scope.item = data; // Giữ item vừa cập nhật trong form
-                    $scope.getItems($scope.currentPage, $scope.pageSize);
-                    $scope.highlightItem(data.id);
-                })
-                .catch(function(error) {
-                    console.error('Error updating item', error);
-                });
+        $scope.updateItem = function () {
+            $scope.validateItem(function (isValid) {
+                if (isValid) {
+                    ItemService.updateItem($scope.item.id, $scope.item)
+                        .then(function (data) {
+                            $scope.item = data;
+                            getItems($scope.currentPage, $scope.pageSize);
+                            $scope.highlightItem(data.id);
+                            handleSuccess('Cập nhập danh mục thành công!');
+                        })
+                        .catch(function (error) {
+                            console.error('Error updating item', error);
+                        });
+                }
+            });
         };
 
-        $scope.deleteItem = function(id) {
+        $scope.deleteItem = function (id) {
             ItemService.deleteItem(id)
-                .then(function(data) {
-                    $scope.getItems($scope.currentPage, $scope.pageSize);
-                    $scope.item = {}; // Làm mới form sau khi xoá
-                    $scope.isEditMode = false; // Tắt chế độ chỉnh sửa sau khi xoá
+                .then(function (data) {
+                    getItems($scope.currentPage, $scope.pageSize);
+                    $scope.item = {};
+                    $scope.isEditMode = false;
+                    handleSuccess('Xoá danh mục thành công!');
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.error('Error deleting item', error);
                 });
         };
 
-        $scope.resetForm = function() {
+        $scope.resetForm = function () {
             $scope.item = {};
             $scope.isEditMode = false;
+            $scope.message = '';
         };
 
-        $scope.getItems($scope.currentPage, $scope.pageSize);
+        function handleSuccess(message) {
+            $scope.message = message;
+            $scope.isSuccess = true;
+        }
 
-        var initializePagination = function() {
+        function handleError(message) {
+            $scope.message = message;
+            $scope.isSuccess = false;
+        }
+
+        $scope.validateItem = function (callback) {
+            $scope.message = '';
+
+            if (!$scope.item.name || $scope.item.name.trim() === '') {
+                handleError('Tên danh mục không được bỏ trống.');
+                callback(false);
+                return;
+            }
+
+            ItemService.checkItemName($scope.item.name)
+                .then(function (exists) {
+                    if (exists) {
+                        handleError('Tên danh mục đã tồn tại.');
+                        callback(false);
+                    } else {
+                        callback(true);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error checking category name', error);
+                    handleError('Có lỗi xảy ra khi kiểm tra tên danh mục.');
+                    callback(false);
+                });
+        };
+
+        $scope.highlightItem = function (itemId) {
+            $scope.highlightedItemId = itemId;
+            $timeout(function () {
+                $scope.highlightedItemId = null;
+            }, 5000);
+        };
+
+        var initializePagination = function () {
             $scope.paginationButtons = [];
             var start = Math.max(0, $scope.currentPage - 1);
             var end = Math.min($scope.totalPages - 1, start + 2);
@@ -87,38 +143,32 @@ angular.module('app')
             }
         };
 
-        $scope.goToPage = function(page) {
+        $scope.goToPage = function (page) {
             if (page >= 0 && page < $scope.totalPages) {
                 $scope.currentPage = page;
-                $scope.getItems($scope.currentPage, $scope.pageSize);
+                getItems($scope.currentPage, $scope.pageSize);
             }
         };
 
-        $scope.nextPage = function() {
+        $scope.nextPage = function () {
             if ($scope.currentPage < $scope.totalPages - 1) {
                 $scope.currentPage++;
-                $scope.getItems($scope.currentPage, $scope.pageSize);
+                getItems($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage > 1) {
                     initializePagination();
                 }
             }
         };
 
-        $scope.previousPage = function() {
+        $scope.previousPage = function () {
             if ($scope.currentPage > 0) {
                 $scope.currentPage--;
-                $scope.getItems($scope.currentPage, $scope.pageSize);
+                getItems($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage < $scope.totalPages - 2) {
                     initializePagination();
                 }
             }
         };
 
-        // Hàm để đánh dấu mục được thêm hoặc cập nhật
-        $scope.highlightItem = function(itemId) {
-            $scope.highlightedItemId = itemId;
-            $timeout(function() {
-                $scope.highlightedItemId = null; // Bỏ đánh dấu sau 2 giây
-            }, 5000);
-        };
+        getItems($scope.currentPage, $scope.pageSize);
     }]);

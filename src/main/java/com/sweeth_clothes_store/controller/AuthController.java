@@ -52,7 +52,7 @@ public class AuthController {
 			if (accountDTO == null || accountDTO.getUsername() == null || accountDTO.getPassword() == null || accountDTO.getEmail() == null) {
 				return ResponseEntity.badRequest().body(null);
 			}
-			AccountDTO createdAccount = accountService.addAccount(accountDTO);
+			AccountDTO createdAccount = accountService.createAccount(accountDTO);
 			if (createdAccount == null) {
 				return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
 			} else {

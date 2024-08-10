@@ -53,4 +53,8 @@ public class ItemService {
                 .map(ItemMapper::toItemDTO)
                 .collect(Collectors.toList());
     }
+
+    public boolean existsByName(String name) {
+        return itemRepository.existsByName(name);
+    }
 }

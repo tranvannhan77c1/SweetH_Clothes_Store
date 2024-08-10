@@ -36,8 +36,6 @@ public class CategoryService {
 
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         Category category = CategoryMapper.toCategory(categoryDTO);
-
-        // Lấy Item từ cơ sở dữ liệu theo itemId và set vào Category entity
         Item item = itemRepository.findById(categoryDTO.getItemId())
                 .orElseThrow(() -> new RuntimeException("Item not found with id: " + categoryDTO.getItemId()));
         category.setItem(item);
