@@ -114,6 +114,12 @@ angular.module('app')
                 return;
             }
 
+            if (/\d/.test($scope.item.name)) {
+                handleError('Tên danh mục không được chứa số.');
+                callback(false);
+                return;
+            }
+
             ItemService.checkItemName($scope.item.name)
                 .then(function (exists) {
                     if (exists) {
