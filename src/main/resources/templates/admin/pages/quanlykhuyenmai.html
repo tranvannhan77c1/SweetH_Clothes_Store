@@ -36,7 +36,7 @@
         <ul class="navbar-nav mr-lg-2">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../images/faces/face5.jpg" alt="profile"/>
+              <img src="../images/avatar.jpg" alt="profile"/>
               <span class="nav-profile-name">Trần Văn Nhân</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -165,7 +165,7 @@
 <!--                    </div>-->
                     <div class="form-group">
                       <label for="createDate">Ngày Tạo</label>
-                      <input type="text" class="form-control" id="createDate" ng-model="voucher.createDate" ng-readonly="true"  placeholder="Ngày Tạo">
+                      <input type="text" class="form-control" id="createDate" ng-model="voucher.createDate | date:'HH:mm:ss-dd/MM/yyyy' " ng-readonly="true"  placeholder="Ngày Tạo">
                     </div>
                     <button type="submit" class="btn btn-inverse-success mr-2" ng-show="!isEditMode">Thêm</button>
                     <button type="submit" class="btn btn-inverse-warning mr-2" ng-show="isEditMode">Sửa</button>
@@ -175,7 +175,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-lg-8 grid-margin stretch-card mb-0">
               <div class="card">
                 <div class="card-body">
@@ -196,15 +195,15 @@
                       <tbody>
                       <tr ng-repeat="voucher in vouchers" ng-class="{ 'table-success': voucher.id === highlightedVoucherId }">
                         <td>
-                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="viewVoucherDetails(voucher.id)">Chỉnh Sửa</button>
+                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="editVoucher(voucher.id)">Chỉnh Sửa</button>
                           <button type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteVoucher(voucher.id)">Xoá</button>
                         </td>
                         <td>{{ voucher.code }}</td>
                         <td>{{ voucher.discountAmount }}đ</td>
                         <td>{{ voucher.condition }}đ</td>
-                        <td>{{ voucher.validFrom }}</td>
-                        <td>{{ voucher.validTo }}</td>
-                        <td>{{ voucher.createDate }}</td>
+                        <td>{{ voucher.validFrom | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
+                        <td>{{ voucher.validTo | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
+                        <td>{{ voucher.createDate | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
                       </tr>
                       </tbody>
                     </table>

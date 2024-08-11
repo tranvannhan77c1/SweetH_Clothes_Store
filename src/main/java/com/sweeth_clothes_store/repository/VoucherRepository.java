@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VoucherRepository extends JpaRepository<Voucher, Integer> {
-    // Các phương thức tùy chỉnh có thể được thêm vào đây nếu cần
+    boolean existsByCode(String code);
+
+    boolean existsByCodeAndIdNot(String name, Long excludeId);
 }

@@ -55,7 +55,8 @@ angular.module('app')
                                 .then(function () {
                                     $scope.goToPage($scope.totalPages - 1);
                                     $scope.highlightCategory(data.id);
-                                    $scope.editCategory(data.id);
+                                    $scope.category = data;
+                                    $scope.isEditMode = true;
                                     handleSuccess('Thêm chủng loại thành công!');
                                 });
                         })
@@ -74,7 +75,8 @@ angular.module('app')
                         .then(function (data) {
                             getCategories($scope.currentPage, $scope.pageSize);
                             $scope.highlightCategory(data.id);
-                            $scope.editCategory(data.id);
+                            $scope.category = data;
+                            $scope.isEditMode = true;
                             handleSuccess('Cập nhật chủng loại thành công!');
                         })
                         .catch(function (error) {

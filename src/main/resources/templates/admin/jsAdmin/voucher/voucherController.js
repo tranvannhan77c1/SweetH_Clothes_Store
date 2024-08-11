@@ -1,14 +1,15 @@
 angular.module('app')
     .controller('VoucherController', ['$scope', '$timeout', 'VoucherService', function($scope, $timeout, VoucherService) {
-
-        $scope.currentPage = 0; // Trang hiện tại
-        $scope.pageSize = 8; // Kích thước mỗi trang
-        $scope.totalPages = 1; // Tổng số trang
-        $scope.vouchers = []; // Mảng lưu trữ vouchers
-        $scope.paginationButtons = []; // Mảng lưu trữ các nút phân trang hiển thị
-        $scope.voucher = {}; // Đối tượng voucher để lưu trữ dữ liệu form
-        $scope.isEditMode = false; // Biến xác định trạng thái chỉnh sửa
-        $scope.highlightedVoucherId = null; // ID của mục được đánh dấu
+        $scope.currentPage = 0;
+        $scope.pageSize = 8;
+        $scope.totalPages = 1;
+        $scope.vouchers = [];
+        $scope.paginationButtons = [];
+        $scope.voucher = {};
+        $scope.isEditMode = false;
+        $scope.highlightedVoucherId = null;
+        $scope.message = '';
+        $scope.isSuccess = false;
 
         $scope.getVouchers = function(page, size) {
             VoucherService.getAllVouchersPage(page, size)
@@ -22,14 +23,28 @@ angular.module('app')
                 });
         };
 
+        $scope.editVoucher = function(id) {
+            VoucherService.getVoucherById(id)
+                .then(function(data) {
+                    $scope.voucher = data;
+                    $scope.voucher.validFrom = new Date(data.validFrom); // Chuyển đổi thành đối tượng Date
+                    $scope.voucher.validTo = new Date(data.validTo); // Chuyển đổi thành đối tượng Date
+                    $scope.isEditMode = true;
+                    $scope.message = '';
+                })
+                .catch(function(error) {
+                    console.error('Error fetching voucher', error);
+                });
+        };
+
         $scope.createVoucher = function() {
-            $scope.voucher.createDate = new Date(); // Tự động thêm ngày tạo
+            $scope.voucher.createDate = new Date();
             VoucherService.createVoucher($scope.voucher)
                 .then(function(data) {
-                    $scope.voucher = data; // Giữ voucher vừa thêm trong form
+                    $scope.voucher = data;
                     $scope.getVouchers($scope.currentPage, $scope.pageSize);
                     $scope.highlightVoucher(data.id);
-                    $scope.resetForm(); // Làm mới form sau khi thêm
+                    $scope.resetForm();
                 })
                 .catch(function(error) {
                     console.error('Error creating voucher', error);
@@ -39,26 +54,13 @@ angular.module('app')
         $scope.updateVoucher = function() {
             VoucherService.updateVoucher($scope.voucher.id, $scope.voucher)
                 .then(function(data) {
-                    $scope.voucher = data; // Giữ voucher vừa cập nhật trong form
+                    $scope.voucher = data;
                     $scope.getVouchers($scope.currentPage, $scope.pageSize);
                     $scope.highlightVoucher(data.id);
-                    $scope.resetForm(); // Làm mới form sau khi cập nhật
+                    $scope.resetForm();
                 })
                 .catch(function(error) {
                     console.error('Error updating voucher', error);
-                });
-        };
-
-        $scope.viewVoucherDetails = function(id) {
-            VoucherService.getVoucherById(id)
-                .then(function(data) {
-                    $scope.voucher = data;
-                    $scope.voucher.validFrom = new Date(data.validFrom); // Chuyển đổi thành đối tượng Date
-                    $scope.voucher.validTo = new Date(data.validTo); // Chuyển đổi thành đối tượng Date
-                    $scope.isEditMode = true; // Bật chế độ chỉnh sửa khi xem chi tiết
-                })
-                .catch(function(error) {
-                    console.error('Error fetching voucher', error);
                 });
         };
 
@@ -66,8 +68,8 @@ angular.module('app')
             VoucherService.deleteVoucher(id)
                 .then(function(data) {
                     $scope.getVouchers($scope.currentPage, $scope.pageSize);
-                    $scope.voucher = {}; // Làm mới form sau khi xoá
-                    $scope.isEditMode = false; // Tắt chế độ chỉnh sửa sau khi xoá
+                    $scope.voucher = {};
+                    $scope.isEditMode = false;
                 })
                 .catch(function(error) {
                     console.error('Error deleting voucher', error);
@@ -77,9 +79,27 @@ angular.module('app')
         $scope.resetForm = function() {
             $scope.voucher = {};
             $scope.isEditMode = false;
+            $scope.message = '';
         };
 
+        function handleSuccess(message) {
+            $scope.message = message;
+            $scope.isSuccess = true;
+        }
+
+        function handleError(message) {
+            $scope.message = message;
+            $scope.isSuccess = false;
+        }
+
         $scope.getVouchers($scope.currentPage, $scope.pageSize);
+
+        $scope.highlightVoucher = function(voucherId) {
+            $scope.highlightedVoucherId = voucherId;
+            $timeout(function() {
+                $scope.highlightedVoucherId = null;
+            }, 5000);
+        };
 
         var initializePagination = function() {
             $scope.paginationButtons = [];
@@ -115,13 +135,5 @@ angular.module('app')
                     initializePagination();
                 }
             }
-        };
-
-        // Hàm để đánh dấu mục được thêm hoặc cập nhật
-        $scope.highlightVoucher = function(voucherId) {
-            $scope.highlightedVoucherId = voucherId;
-            $timeout(function() {
-                $scope.highlightedVoucherId = null; // Bỏ đánh dấu sau 2 giây
-            }, 5000);
         };
     }]);

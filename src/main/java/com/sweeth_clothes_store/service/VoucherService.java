@@ -57,4 +57,12 @@ public class VoucherService {
                 .map(VoucherMapper::toVoucherDTO)
                 .collect(Collectors.toList());
     }
+
+    public boolean existsByCode(String code, Long excludeId) {
+        if (excludeId == null) {
+            return voucherRepository.existsByCode(code);
+        } else {
+            return voucherRepository.existsByCodeAndIdNot(code, excludeId);
+        }
+    }
 }

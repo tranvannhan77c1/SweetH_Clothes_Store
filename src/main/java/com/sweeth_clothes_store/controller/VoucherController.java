@@ -68,4 +68,12 @@ public class VoucherController {
         }
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/check-code")
+    public ResponseEntity<Boolean> checkVoucherCode(
+            @RequestParam("code") String code,
+            @RequestParam(value = "excludeId", required = false) Long excludeId) {
+        boolean exists = voucherService.existsByCode(code, excludeId);
+        return ResponseEntity.ok(exists);
+    }
 }
