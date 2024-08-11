@@ -148,9 +148,12 @@
                     <div class="form-group">
                       <label>ID</label>
                       <input type="text" class="form-control" ng-model="item.id" disabled>
+                    </div>
+                    <div class="form-group">
                       <label>Tên Danh Mục</label>
                       <input type="text" class="form-control" ng-model="item.name">
                     </div>
+                    <div ng-show="message" class="alert" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
                     <div>
                       <button type="submit" class="btn btn-inverse-success mr-2" ng-click="createItem()" ng-show="!isEditMode">Thêm</button>
                       <button type="button" class="btn btn-inverse-warning mr-2" ng-click="updateItem()" ng-show="isEditMode">Cập Nhập</button>
@@ -184,7 +187,7 @@
                         <td>{{ item.categoryCount }}</td>
                         <td>{{ item.productCount }}</td>
                         <td>
-                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="viewItemDetails(item.id)">Chỉnh Sửa</button>
+                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="editItem(item.id)">Chỉnh Sửa</button>
                           <button type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteItem(item.id)">Xoá</button>
                         </td>
                       </tr>

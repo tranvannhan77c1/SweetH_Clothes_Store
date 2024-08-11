@@ -27,6 +27,11 @@ public class ItemController {
         return ResponseEntity.ok(items);
     }
 
+    @GetMapping("/all")
+    public List<ItemDTO> getAllItems() {
+        return itemService.getAllItems();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ItemDTO> getItemById(@PathVariable Integer id) {
         ItemDTO itemDTO = itemService.getItemById(id);
@@ -34,11 +39,6 @@ public class ItemController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(itemDTO);
-    }
-
-    @GetMapping("/all")
-    public List<ItemDTO> getAllItems() {
-        return itemService.getAllItems();
     }
 
     @PostMapping
@@ -60,5 +60,12 @@ public class ItemController {
     public ResponseEntity<Void> deleteItem(@PathVariable Integer id) {
         itemService.deleteItem(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/check-name")
+    public ResponseEntity<Boolean> checkItemName(
+            @RequestParam("name") String name) {
+        boolean exists = itemService.existsByName(name);
+        return ResponseEntity.ok(exists);
     }
 }

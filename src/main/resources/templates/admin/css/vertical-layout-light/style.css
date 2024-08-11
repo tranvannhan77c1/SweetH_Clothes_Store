@@ -25940,5 +25940,11 @@ div.tagsinput span.tag a {
     display: none;
   }
 }
-
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
+
+/*customcss*/
+.error{
+  color: #ff000b;
+  font-size: 13px;
+  padding-top: 3px;
+}

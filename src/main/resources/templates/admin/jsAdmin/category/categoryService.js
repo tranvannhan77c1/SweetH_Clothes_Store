@@ -3,8 +3,8 @@ angular.module('app')
         var baseUrl = 'http://localhost:8080/api/categories';
 
         this.getAllCategories = function(page, size) {
-            page = page || 0; // Trang mặc định là 0
-            size = size || 8; // Kích thước mặc định là 8
+            page = page || 0;
+            size = size || 8;
 
             return $http.get(baseUrl, {
                 params: { page: page, size: size }

@@ -9,7 +9,6 @@
   <!-- base:css -->
   <link rel="stylesheet" href="../vendors/typicons/typicons.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="../css/custom.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css"/>
@@ -139,45 +138,46 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Thông Tin Tài Khoản</h4>
-                  <form class="forms-sample" ng-init="isEditMode = false">
+                  <form class="forms-sample">
                     <div class="form-group">
                       <label for="Username">Tên Đăng Nhập</label>
-                      <input type="text" class="form-control" id="Username" placeholder="Tên Đăng Nhập" ng-model="account.username" ng-disabled="!isEditMode">
-                      <div id="username_error" class="error"></div>
-                    </div>
-                    <div class="form-group">
-                      <label for="Email">Địa Chỉ Email</label>
-                      <input type="email" class="form-control" id="Email" placeholder="Địa Chỉ Email" ng-model="account.email" ng-disabled="!isEditMode">
-                      <div id="email_error" class="error"></div>
-                    </div>
-                    <div class="form-group">
-                      <label for="Fullname">Họ Và Tên</label>
-                      <input type="text" class="form-control" id="Fullname" placeholder="Họ Và Tên" ng-model="account.fullName" ng-disabled="!isEditMode">
-                      <div id="fullname_error" class="error"></div>
-                    </div>
-                    <div class="form-group">
-                      <label for="Phone">Số Điện Thoại</label>
-                      <input type="text" class="form-control" id="Phone" placeholder="Số Điện Thoại" ng-model="account.phone" ng-disabled="!isEditMode">
-                      <div id="phone_error" class="error"></div>
-                    </div>
-                    <div class="form-group">
-                      <label for="Address">Địa Chỉ</label>
-                      <input type="text" class="form-control" id="Address" placeholder="Địa Chỉ" ng-model="account.address" ng-disabled="!isEditMode">
-                      <div id="address_error" class="error"></div>
+                      <input type="text" class="form-control" id="Username" placeholder="Tên Đăng Nhập" ng-model="account.username" ng-disabled="!isAddMode" ng-change="checkUsername(account.username)">
+                      <div ng-if="usernameError" class="error">{{ usernameError }}</div>
                     </div>
                     <div class="form-group" ng-show="showPasswordInputs">
                       <label for="Password">Mật khẩu</label>
-                      <input type="password" class="form-control" id="Password" ng-model="account.password" placeholder="Mật khẩu">
-                      <div id="password_error" class="error"></div>
+                      <input type="password" class="form-control" id="Password" placeholder="Mật khẩu" ng-model="account.password" ng-change="checkPassword(account.password)">
+                      <div ng-if="passwordError" class="error">{{ passwordError }}</div>
                     </div>
                     <div class="form-group" ng-show="showPasswordInputs">
                       <label for="ConfirmPassword">Nhập lại mật khẩu</label>
-                      <input type="password" class="form-control" id="ConfirmPassword" ng-model="confirmPassword" placeholder="Nhập lại mật khẩu">
-                      <div id="confirm_password_error" class="error"></div>
+                      <input type="password" class="form-control" id="ConfirmPassword" placeholder="Nhập lại mật khẩu" ng-model="confirmPassword" ng-change="checkConfirmPassword(confirmPassword)">
+                      <div ng-if="confirmPasswordError" class="error">{{ confirmPasswordError }}</div>
                     </div>
-
-                    <button type="submit" class="btn btn-inverse-success mr-2" ng-click="addEmployee()">Thêm Nhân Viên</button>
-                    <button type="button" class="btn btn-inverse-info" ng-click="resetForm()">Hiện Form Thêm Nhân Viên</button>
+                    <div class="form-group">
+                      <label for="Email">Địa Chỉ Email</label>
+                      <input type="email" class="form-control" id="Email" placeholder="Địa Chỉ Email" ng-disabled="!isAddMode" ng-model="account.email" ng-change="checkEmail(account.email)">
+                      <div ng-if="emailError" class="error">{{ emailError }}</div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Fullname">Họ Và Tên</label>
+                      <input type="text" class="form-control" id="Fullname" placeholder="Họ Và Tên" ng-model="account.fullName" ng-disabled="!isAddMode" ng-change="checkFullName(account.fullName)">
+                      <div ng-if="fullnameError" class="error">{{ fullnameError }}</div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Phone">Số Điện Thoại</label>
+                      <input type="text" class="form-control" id="Phone" placeholder="Số Điện Thoại" ng-model="account.phone" ng-disabled="!isAddMode" ng-change="checkPhone(account.phone)">
+                      <div ng-if="phoneError" class="error">{{ phoneError }}</div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Address">Địa Chỉ</label>
+                      <input type="text" class="form-control" id="Address" placeholder="Địa Chỉ" ng-model="account.address" ng-disabled="!isAddMode" ng-change="checkAddress(account.address)">
+                      <div ng-if="addressError" class="error">{{ addressError }}</div>
+                    </div>
+                    <div ng-if="message" class="alert" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
+                    <div ng-if="addAccountSuccess" class="alert alert-success">Thêm nhân viên thành công!</div>
+                    <button ng-if="isAddMode" type="submit" class="btn btn-inverse-success mr-2" ng-click="createAccount()">Thêm Nhân Viên</button>
+                    <button type="button" class="btn mt-2" ng-class="{'btn-inverse-info': !isAddMode, 'btn-inverse-danger': isAddMode}" ng-click="toggleForm()">{{ isAddMode ? 'Ẩn Form Thêm Nhân Viên' : 'Hiện Form Thêm Nhân Viên' }}</button>
                   </form>
                 </div>
               </div>
@@ -196,13 +196,13 @@
                           <th>Địa Chỉ Email</th>
                           <th>Họ Và Tên</th>
                           <th>Số Điện Thoại</th>
-                          <th>Phân Quyền</th>
                           <th>Địa Chỉ</th>
+                          <th>Phân Quyền</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="account in accounts">
-                          <td><button type="button" class="btn btn-inverse-info btn-sm" ng-click="viewAccountDetails(account.id)">Xem Chi Tiết</button></td>
+                        <tr ng-repeat="account in accounts" ng-class="{ 'table-success': account.id === highlightedAccountId }">
+                          <td><button ng-disabled="isAddMode" type="button" class="btn btn-inverse-info btn-sm" ng-click="editAccount(account.id)">Xem Chi Tiết</button></td>
                           <td>{{ account.username }}</td>
                           <td>{{ account.email }}</td>
                           <td>{{ account.fullName }}</td>
@@ -253,20 +253,20 @@
   <!-- container-scroller -->
 
   <!-- base:js -->
-  <script src="../vendors/js/vendor.bundle.base.js"></script>
+<!--  <script src="../vendors/js/vendor.bundle.base.js"></script>-->
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="../vendors/chart.js/Chart.min.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/template.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
+<!--  <script src="../vendors/chart.js/Chart.min.js"></script>-->
+<!--  &lt;!&ndash; End plugin js for this page&ndash;&gt;-->
+<!--  &lt;!&ndash; inject:js &ndash;&gt;-->
+<!--  <script src="../js/off-canvas.js"></script>-->
+<!--  <script src="../js/hoverable-collapse.js"></script>-->
+<!--  <script src="../js/template.js"></script>-->
+<!--  <script src="../js/settings.js"></script>-->
+<!--  <script src="../js/todolist.js"></script>-->
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../js/angular/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="../jsAdmin/app.js"></script>
   <script src="../jsAdmin/account/accountService.js"></script>
   <script src="../jsAdmin/account/accountController.js"></script>

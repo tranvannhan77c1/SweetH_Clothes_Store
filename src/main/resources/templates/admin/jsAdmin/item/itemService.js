@@ -3,8 +3,8 @@ angular.module('app')
         var baseUrl = 'http://localhost:8080/api/items';
 
         this.getAllItemsPage = function(page, size) {
-            page = page || 0; // Trang mặc định là 0
-            size = size || 8; // Kích thước mặc định là 8
+            page = page || 0;
+            size = size || 8;
 
             return $http.get(baseUrl, {
                 params: { page: page, size: size }
@@ -68,5 +68,11 @@ angular.module('app')
                     console.error('Error deleting item', error);
                     throw error;
                 });
+        };
+
+        this.checkItemName = function(name, excludeId) {
+            return $http.get(baseUrl + '/check-name', {
+                params: { name: name }
+            }).then(response => response.data);
         };
     }]);
