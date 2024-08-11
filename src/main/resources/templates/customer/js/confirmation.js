@@ -8,7 +8,7 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
 
     // Load giỏ hàng từ local storage khi trang được tải
     var storedCart = localStorage.getItem('cart');
-    if(!storedCart) {
+    if (!storedCart) {
         return;
     }
     if (storedCart) {
@@ -82,24 +82,36 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
                 // Handle error
                 console.error('Payment failed:', error);
             })
-            .finally(function() {
+            .finally(function () {
                 document.getElementById('loading').style.display = 'block';
                 localStorage.removeItem('cart')
+
+                var params = getQueryParams();
+                var vnp_ResponseCode = params['vnp_ResponseCode'];
+                $scope.orderInfo = null;
+                $http.get('http://localhost:8080/api/v1/payment/vn-pay-callback?userID=' + $scope.userInfo.id + '&vnp_ResponseCode=' + vnp_ResponseCode)
+                    .then(function (response) {
+                        $scope.orderInfo = response.data.orderInfo
+                    })
+                    .catch(function (error) {
+                        // Handle error
+                        console.error('Payment failed:', error);
+                    });
             });
     }
     $scope.payment()
 
-    var params = getQueryParams();
-    var vnp_ResponseCode = params['vnp_ResponseCode'];
-    $scope.orderInfo = null;
-    $http.get('http://localhost:8080/api/v1/payment/vn-pay-callback?userID=' + $scope.userInfo.id + '&vnp_ResponseCode=' + vnp_ResponseCode)
-        .then(function (response) {
-            $scope.orderInfo = response.data.orderInfo
-        })
-        .catch(function (error) {
-            // Handle error
-            console.error('Payment failed:', error);
-        });
+    // var params = getQueryParams();
+    // var vnp_ResponseCode = params['vnp_ResponseCode'];
+    // $scope.orderInfo = null;
+    // $http.get('http://localhost:8080/api/v1/payment/vn-pay-callback?userID=' + $scope.userInfo.id + '&vnp_ResponseCode=' + vnp_ResponseCode)
+    //     .then(function (response) {
+    //         $scope.orderInfo = response.data.orderInfo
+    //     })
+    //     .catch(function (error) {
+    //         // Handle error
+    //         console.error('Payment failed:', error);
+    //     });
 
 }]);
 

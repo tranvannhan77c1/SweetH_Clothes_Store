@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body ng-controller="CheckoutController">
+<body ng-controller="CheckoutController" ng-style="bodyStyle">
     <!--================ Start Header Menu Area =================-->
-    <header class="header_area">
+    <h1 id="invalid_connection" ng-style="invalid_connectionStyle">INVALID CONNECT</h1>
+
+    <header class="header_area" ng-style="header_areaStyle">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
@@ -76,7 +78,7 @@
 
 
     <!--================Checkout Area =================-->
-    <section class="checkout_area section-margin--small">
+    <section class="checkout_area section-margin--small" ng-style="checkout_areaStyle">
         <div class="container">
             <div class="returning_customer" ng-if="!isLogin">
                 <div class="check_title">
@@ -247,7 +249,7 @@
 
 
     <!--================ Start footer Area  =================-->
-    <footer class="footer">
+    <footer class="footer" ng-style="footerStyle">
         <div class="footer-area">
             <div class="container">
                 <div class="row section_gap">

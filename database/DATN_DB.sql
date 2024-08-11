@@ -1186,7 +1186,8 @@ INSERT INTO accounts (username, [password], email, full_name, phone, [address], 
 ('user7', 'pass7', 'user7@example.com', 'User Seven', '1234567896', '129 Example St, City', 'customer'),
 ('user8', 'pass8', 'user8@example.com', 'User Eight', '1234567897', '130 Example St, City', 'customer'),
 ('user9', 'pass9', 'user9@example.com', 'User Nine', '1234567898', '131 Example St, City', 'customer'),
-('user10', 'pass10', 'user10@example.com', 'User Ten', '1234567899', '132 Example St, City', 'customer');
+('user10', 'pass10', 'user10@example.com', 'User Ten', '1234567899', '132 Example St, City', 'customer'),
+('nguyenhohoangluc', '$2a$10$va.7uNSrO5GneboBzLd1Oe0WVgWTyQi6C8KBe4ZLODLKGRDTLZawa', 'nguyenhohoangluc@gmail.com', 'Nguyễn Hồ Hoàng Lực', '0764309428', '22/19/3 Tan Hoa', 'Customer');
 
 -- Insert data into favorites
 INSERT INTO favorites (account_id, product_id) VALUES
@@ -1254,3 +1255,6 @@ INSERT INTO order_details (quantity, price, size, order_id, product_id) VALUES
 (10, 100.00, 'L', 10, 10);
 
 -- drop database SweetH_Clothes_Store
+select * from accounts
+select * from orders
+select * from order_details

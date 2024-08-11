@@ -8,9 +8,37 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
 
     // Load giỏ hàng từ local storage khi trang được tải
     var storedCart = localStorage.getItem('cart');
-    if (storedCart) {
+    if (storedCart === null || storedCart === undefined || storedCart === '') {
+        $scope.header_areaStyle = {
+            display: 'none'
+        }
+
+        $scope.checkout_areaStyle = {
+            display: 'none'
+        }
+
+        $scope.footerStyle = {
+            display: 'none'
+        }
+
+        $scope.bodyStyle = {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            margin: '0',
+            fontFamily: "'Poppins', sans-serif",
+            backgroundColor: '#f4f4f4'
+        };
+        
+        $scope.invalid_connectionStyle = {
+            fontSize: '80px',
+            color: '#333'
+        };
+    } else {
         $scope.cart = JSON.parse(storedCart);
     }
+
 
     $scope.calculateTotal = function() {
         return $scope.cart.reduce((total, item) => {
