@@ -19,7 +19,6 @@ angular.module('app')
         $scope.addressError = '';
         $scope.message = '';
         $scope.isSuccess = false;
-        $scope.addAccountSuccess = false;
 
         function getAccounts (page, size) {
             return AccountService.getAllAccounts(page, size)
@@ -68,8 +67,8 @@ angular.module('app')
                             $scope.goToPage($scope.totalPages - 1);
                             $scope.highlightAccountId(data.id);
                             $scope.toggleForm();
-                            $scope.editAccount(data.id);
-                            $scope.addAccountSuccess = true;
+                            $scope.account = data;
+                            handleSuccess('Thêm nhân viên thành công!');
                         });
                 })
                 .catch(function (error) {
@@ -88,8 +87,12 @@ angular.module('app')
             $scope.fullnameError = '';
             $scope.addressError = '';
             $scope.message = '';
-            $scope.addAccountSuccess = false;
         };
+
+        function handleSuccess(message) {
+            $scope.message = message;
+            $scope.isSuccess = true;
+        }
 
         function handleError(message) {
             $scope.message = message;
