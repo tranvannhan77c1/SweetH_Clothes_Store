@@ -82,6 +82,7 @@ angular.module('app')
                     handleSuccess('Xoá danh mục thành công!');
                 })
                 .catch(function (error) {
+                    handleError('Không thể xoá danh mục có chứa chủng loại.');
                     console.error('Error deleting item', error);
                 });
         };
