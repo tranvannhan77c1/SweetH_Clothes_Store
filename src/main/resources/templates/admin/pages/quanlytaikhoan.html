@@ -36,7 +36,7 @@
         <ul class="navbar-nav mr-lg-2">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../images/faces/face5.jpg" alt="profile"/>
+              <img src="../images/avatar.jpg" alt="profile"/>
               <span class="nav-profile-name">Trần Văn Nhân</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -174,9 +174,8 @@
                       <input type="text" class="form-control" id="Address" placeholder="Địa Chỉ" ng-model="account.address" ng-disabled="!isAddMode" ng-change="checkAddress(account.address)">
                       <div ng-if="addressError" class="error">{{ addressError }}</div>
                     </div>
-                    <div ng-if="message" class="alert" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
-                    <div ng-if="addAccountSuccess" class="alert alert-success">Thêm nhân viên thành công!</div>
-                    <button ng-if="isAddMode" type="submit" class="btn btn-inverse-success mr-2" ng-click="createAccount()">Thêm Nhân Viên</button>
+                    <div ng-if="message" class="alert mb-2" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
+                    <button ng-if="isAddMode" type="submit" class="btn btn-inverse-success mt-2" ng-click="createAccount()">Thêm Nhân Viên</button>
                     <button type="button" class="btn mt-2" ng-class="{'btn-inverse-info': !isAddMode, 'btn-inverse-danger': isAddMode}" ng-click="toggleForm()">{{ isAddMode ? 'Ẩn Form Thêm Nhân Viên' : 'Hiện Form Thêm Nhân Viên' }}</button>
                   </form>
                 </div>
@@ -253,20 +252,20 @@
   <!-- container-scroller -->
 
   <!-- base:js -->
-<!--  <script src="../vendors/js/vendor.bundle.base.js"></script>-->
+  <script src="../vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-<!--  <script src="../vendors/chart.js/Chart.min.js"></script>-->
+  <script src="../vendors/chart.js/Chart.min.js"></script>
 <!--  &lt;!&ndash; End plugin js for this page&ndash;&gt;-->
 <!--  &lt;!&ndash; inject:js &ndash;&gt;-->
-<!--  <script src="../js/off-canvas.js"></script>-->
-<!--  <script src="../js/hoverable-collapse.js"></script>-->
-<!--  <script src="../js/template.js"></script>-->
-<!--  <script src="../js/settings.js"></script>-->
-<!--  <script src="../js/todolist.js"></script>-->
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/hoverable-collapse.js"></script>
+  <script src="../js/template.js"></script>
+  <script src="../js/settings.js"></script>
+  <script src="../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="../js/angular/angular.min.js"></script>
   <script src="../jsAdmin/app.js"></script>
   <script src="../jsAdmin/account/accountService.js"></script>
   <script src="../jsAdmin/account/accountController.js"></script>

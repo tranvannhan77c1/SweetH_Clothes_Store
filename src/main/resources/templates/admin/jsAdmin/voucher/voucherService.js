@@ -70,4 +70,10 @@ angular.module('app')
                     throw error;
                 });
         };
+
+        this.checkVoucherCode = function(code, excludeId) {
+            return $http.get(baseUrl + '/check-code', {
+                params: { name: code, excludeId: excludeId }
+            }).then(response => response.data);
+        };
     }]);

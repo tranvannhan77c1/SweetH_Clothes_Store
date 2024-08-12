@@ -45,7 +45,8 @@ angular.module('app')
                                 .then(function () {
                                 $scope.goToPage($scope.totalPages - 1);
                                 $scope.highlightItem(data.id);
-                                $scope.editItem(data.id);
+                                $scope.item = data;
+                                $scope.isEditMode = true;
                                 handleSuccess('Thêm danh mục thành công!');
                             });
                         })
@@ -82,6 +83,7 @@ angular.module('app')
                     handleSuccess('Xoá danh mục thành công!');
                 })
                 .catch(function (error) {
+                    handleError('Không thể xoá danh mục có chứa chủng loại.');
                     console.error('Error deleting item', error);
                 });
         };
@@ -95,6 +97,7 @@ angular.module('app')
         function handleSuccess(message) {
             $scope.message = message;
             $scope.isSuccess = true;
+            console.log("Đã thiết lập thông báo thành công:", message); // Dòng debug
         }
 
         function handleError(message) {
@@ -107,6 +110,12 @@ angular.module('app')
 
             if (!$scope.item.name || $scope.item.name.trim() === '') {
                 handleError('Tên danh mục không được bỏ trống.');
+                callback(false);
+                return;
+            }
+
+            if (/\d/.test($scope.item.name)) {
+                handleError('Tên danh mục không được chứa số.');
                 callback(false);
                 return;
             }
