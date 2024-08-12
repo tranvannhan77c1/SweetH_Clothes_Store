@@ -268,34 +268,53 @@ app.controller('ProductController', ['$scope', '$http', function ($scope, $http)
         }
     };
 
+    $scope.selectedSize = null;
+    $scope.selectSize = function(size) {
+        console.log('Size selected:', size); // Log selected size
+        $scope.selectedSize = size;
+    };
     // Hàm thêm sản phẩm vào giỏ hàng và lưu vào local storage
-    $scope.addToCart = function (product, quantity, size) {
-        if (!size) {
-            // Hiển thị thông báo nếu chưa chọn kích thước
+    $scope.addToCart = function (product, quantity) {
+        // Kiểm tra nếu chưa chọn kích thước
+        if (!$scope.selectedSize) {
+            // Hiển thị thông báo yêu cầu chọn kích thước
             $scope.showSizeAlert = true;
 
+            // Ẩn thông báo sau 3 giây
             setTimeout(() => {
-                $scope.showSizeAlert = false; // Ẩn thông báo sau 3 giây
-                $scope.$apply();
+                $scope.showSizeAlert = false;
+                $scope.$apply(); // Cập nhật scope sau khi thay đổi
             }, 3000);
-            return;
+            return; // Kết thúc hàm nếu chưa chọn kích thước
         }
 
-        let existingProductAndSizeIndex = $scope.cart.findIndex(item => item.id === product.id && item.size === size);
+        // Tìm sản phẩm với kích thước đã chọn trong giỏ hàng
+        let existingProductAndSizeIndex = $scope.cart.findIndex(item =>
+            item.id === product.id && item.size === $scope.selectedSize
+        );
 
         if (existingProductAndSizeIndex !== -1) {
+            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng
             $scope.cart[existingProductAndSizeIndex].quantity += quantity;
         } else {
-            product.quantity = quantity;
-            product.size = size;
-            $scope.cart.push(product);
+            // Nếu sản phẩm chưa có, thêm sản phẩm mới vào giỏ hàng
+            let productToAdd = {
+                ...product, // Sao chép thông tin sản phẩm
+                quantity: quantity,
+                size: $scope.selectedSize
+            };
+            $scope.cart.push(productToAdd);
         }
 
+        // Lưu giỏ hàng vào localStorage
         localStorage.setItem('cart', JSON.stringify($scope.cart));
-        $scope.showSuccessMessage = true; // Hiển thị thông báo thành công
 
+        // Hiển thị thông báo thành công
+        $scope.showSuccessMessage = true;
+
+        // Ẩn thông báo thành công sau 3 giây
         setTimeout(() => {
-            $scope.showSuccessMessage = false; // Ẩn thông báo thành công sau 3 giây
+            $scope.showSuccessMessage = false;
             $scope.$apply();
         }, 3000);
     };

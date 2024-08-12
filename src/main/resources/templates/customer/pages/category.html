@@ -240,9 +240,7 @@
                                                                     <div class="row product_size">
                                                                         <p>Size: </p>
                                                                         <div class="size-buttons mt-4">
-                                                                            <button type="button" class="size-button" ng-click="selectedSize = 'M'" ng-class="{ 'selected': selectedSize === 'M' }">M</button>
-                                                                            <button type="button" class="size-button" ng-click="selectedSize = 'L'" ng-class="{ 'selected': selectedSize === 'L' }">L</button>
-                                                                            <button type="button" class="size-button" ng-click="selectedSize = 'XL'" ng-class="{ 'selected': selectedSize === 'XL' }">XL</button>
+                                                                            <button ng-repeat="size in selectedProduct.productSizes track by size" type="button" class="size-button" ng-click="selectSize(size)" ng-class="{ 'selected': selectedSize === size }">{{size}}</button>
                                                                         </div>
                                                                     </div>
                                                                     <div class="product_count">

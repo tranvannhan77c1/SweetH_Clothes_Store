@@ -217,10 +217,8 @@
                                                                 <p>{{ selectedProduct.description }}</p>
                                                                 <div class="row product_size">
                                                                     <p>Size: </p>
-                                                                    <div class="size-buttons mt-4">
-                                                                        <button type="button" class="size-button" ng-click="selectedSize = 'M'" ng-class="{ 'selected': selectedSize === 'M' }">M</button>
-                                                                        <button type="button" class="size-button" ng-click="selectedSize = 'L'" ng-class="{ 'selected': selectedSize === 'L' }">L</button>
-                                                                        <button type="button" class="size-button" ng-click="selectedSize = 'XL'" ng-class="{ 'selected': selectedSize === 'XL' }">XL</button>
+                                                                    <div class="size-buttons mt-4" >
+                                                                        <button ng-repeat="size in selectedProduct.productSizes track by size" type="button" class="size-button" ng-click="selectSize(size)" ng-class="{ 'selected': selectedSize === size }">{{size}}</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product_count">
@@ -278,10 +276,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5">
-                        <div class="offer__content text-center">
-                            <h3>Up To 50% Off</h3>
-                            <h4>Sale Summer</h4>
-                            <p>Mùa hè thật năng động</p>
+                        <div  class="offer__content text-center">
+                            <h3 style="color: #8B1A1A !important;">Up To 50% Off</h3>
+                            <h4 style="color: #8B1A1A !important;">Sale Summer</h4>
+                            <p style="color: #8B1A1A !important;">Mùa hè thật năng động</p>
                             <a class="button button--active mt-3 mt-xl-4" href="pages/category.html">Mua Ngay</a>
                         </div>
                     </div>
@@ -614,9 +612,8 @@
     <script src="vendors/angular/angular.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/category.js"></script>
-    <script src="js/func.js"></script>
-    <script src="../js/singleProduct.js"></script>
+    <!-- <script src="js/category.js"></script>
+    <script src="../js/singleProduct.js"></script> -->
 </body>
 
 </html>
