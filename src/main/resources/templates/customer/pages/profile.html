@@ -155,20 +155,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr ng-repeat="order in userOrders">
+                                            <td>{{order.id}}</td>
+                                            <td>{{order.orderDate}}</td>
+                                            <td>{{order.totalAmount}}</td>
+                                            <td>Ship/VNPay</td>
+                                            <td><button class="btn btn-primary" style=" border-radius: 20px;">Xem Chi Tiết</button></td>
+                                        </tr>
+                                        <!-- <tr>
                                             <td>60235</td>
                                             <td>Oct 03, 2017</td>
                                             <td>USD 2210</td>
                                             <td>Thanh toán khi nhận hàng</td>
                                             <td><button class="btn btn-primary" style=" border-radius: 20px;">Xem Chi Tiết</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>60235</td>
-                                            <td>Oct 03, 2017</td>
-                                            <td>USD 2210</td>
-                                            <td>Thanh toán khi nhận hàng</td>
-                                            <td><button class="btn btn-primary" style=" border-radius: 20px;">Xem Chi Tiết</button></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

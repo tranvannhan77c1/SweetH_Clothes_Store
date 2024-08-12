@@ -17,6 +17,32 @@ app.controller('ProfileController', ['$scope', '$http', '$window', function($sco
         $scope.userInfo = JSON.parse(storedUserInfo);
     }
 
+    $scope.userOrders = [];
+    $scope.fetchOrder = function() {
+        // Get the token and remove double quotes
+        const token = loginToken.replace(/"/g, '').trim();
+    
+        $http({
+            method: 'GET',
+            url: "http://localhost:8080/api/v1/customer/orders/userOrder",
+            params: { userID: $scope.userInfo.id },
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(function(response) {
+            // Success callback
+            $scope.userOrders = response.data; // Assign response data
+        })
+        .catch(function(error) {
+            // Error callback
+            console.error('Error fetching orders:', error);
+            $scope.userOrders = null;
+        });
+    };
+
+    $scope.fetchOrder();
+
     $scope.logout = function() {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem('accountDetail')

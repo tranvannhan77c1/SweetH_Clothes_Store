@@ -51,6 +51,7 @@ public class SecurityConfig {
         	authorizeHttpRequests.requestMatchers("/api/v1/admin/**",
 					"/api/v1/product/admin/**"
 			).hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("USER", "ADMIN");
 //        	authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("USER", "ADMIN");
 //        	authorizeHttpRequests.requestMatchers("/api/v1/product/public/**",
 //					"/api/v1/auth/**"
@@ -99,7 +100,8 @@ public class SecurityConfig {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("*")
-						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+						.allowedHeaders("*");
 			}
 		};
 	}

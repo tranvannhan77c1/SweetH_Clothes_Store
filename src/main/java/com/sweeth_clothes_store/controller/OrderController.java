@@ -43,6 +43,11 @@ public class OrderController {
         return ResponseEntity.ok(orderDTO);
     }
 
+    @GetMapping("/userOrder")
+    public ResponseEntity<List<Order>> getOrderByUserId(@RequestParam int userID) {
+        return new ResponseEntity<>(orderService.getOrdersByUserID(userID), HttpStatus.OK);
+    }
+
 //    @GetMapping
 //    public List<OrderDTO> getAllOrders() {
 //        return orderService.getAllOrders();
