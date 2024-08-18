@@ -20,5 +20,6 @@ public class OrderDTO {
     private String phone;
     private Integer voucherId;
     private Integer accountId;
+    private String fullNameAccount;
     private List<OrderDetailDTO> orderDetails;
 }

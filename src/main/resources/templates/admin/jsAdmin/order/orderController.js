@@ -1,11 +1,11 @@
 angular.module('app')
     .controller('OrderController', ['$scope', 'OrderService', function($scope, OrderService) {
 
-        $scope.currentPage = 0; // Trang hiện tại
-        $scope.pageSize = 8; // Kích thước mỗi trang
-        $scope.totalPages = 1; // Tổng số trang
-        $scope.orders = []; // Mảng lưu trữ đơn hàng
-        $scope.paginationButtons = []; // Mảng lưu trữ các nút phân trang hiển thị
+        $scope.currentPage = 0;
+        $scope.pageSize = 8;
+        $scope.totalPages = 1;
+        $scope.orders = [];
+        $scope.paginationButtons = [];
 
         var initializePagination = function() {
             $scope.paginationButtons = [];
@@ -57,13 +57,12 @@ angular.module('app')
             }
         };
 
-        // Hàm lấy chi tiết đơn hàng
         $scope.getOrderDetails = function(orderId) {
             OrderService.getOrderDetails(orderId)
                 .then(function(orderDetails) {
                     $scope.orderDetails = orderDetails;
                     console.log(orderDetails)
-                    $('#orderDetailModal').modal('show'); // Hiển thị modal
+                    $('#orderDetailModal').modal('show');
                 })
                 .catch(function(error) {
                     console.error('Error fetching order details', error);

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/customer/orders")
+@RequestMapping("/api/orders")
 public class OrderController {
 
     @Autowired
@@ -48,10 +48,10 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getOrdersByUserID(userID), HttpStatus.OK);
     }
 
-//    @GetMapping
-//    public List<OrderDTO> getAllOrders() {
-//        return orderService.getAllOrders();
-//    }
+    @GetMapping("/all")
+    public List<OrderDTO> getAllOrders() {
+        return orderService.getAllOrders();
+    }
 
     @PostMapping("/createOrder")
     public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {

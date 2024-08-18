@@ -23,7 +23,7 @@ public class OrderMapper {
         dto.setPhone(order.getPhone());
         dto.setVoucherId(order.getVoucher() != null ? order.getVoucher().getId() : null);
         dto.setAccountId(order.getAccount() != null ? order.getAccount().getId() : null);
-        
+        dto.setFullNameAccount(order.getAccount() != null ? order.getAccount().getFullName() : null);
         List<OrderDetailDTO> orderDetailDTOs = order.getOrderDetails().stream()
                 .map(OrderDetailMapper::toOrderDetailDTO)
                 .collect(Collectors.toList());

@@ -85,4 +85,6 @@ public class ProductController {
 		Pageable pageable = PageRequest.of(page, limit);
 		return new ResponseEntity<Page<ProductDTO>>(productService.getProductsByPriceRange(minPrice, maxPrice, pageable), HttpStatus.OK);
 	}
+
+
 }
