@@ -8687,8 +8687,10 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /*--font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
+  /*--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;*/
+  --font-family-sans-serif: "Be Vietnam Pro";
+  --font-family-monospace: "Be Vietnam Pro", monospace;
 }
 
 *,
@@ -8710,7 +8712,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
+  font-family: 'Be Vietnam Pro', sans-serif !important;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -18730,76 +18733,202 @@ input:focus {
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-ExtraBold.eot");
-  src: url("../../fonts/Poppins/Poppins-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-ExtraBold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-ExtraBold.woff") format("woff"), url("../../fonts/Poppins/Poppins-ExtraBold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-Medium.eot");
-  src: url("../../fonts/Poppins/Poppins-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Medium.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Medium.woff") format("woff"), url("../../fonts/Poppins/Poppins-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-Black.eot");
-  src: url("../../fonts/Poppins/Poppins-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Black.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Black.woff") format("woff"), url("../../fonts/Poppins/Poppins-Black.ttf") format("truetype");
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-Thin.eot");
-  src: url("../../fonts/Poppins/Poppins-Thin.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Thin.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Thin.woff") format("woff"), url("../../fonts/Poppins/Poppins-Thin.ttf") format("truetype");
-  font-weight: 100;
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-Regular.eot");
-  src: url("../../fonts/Poppins/Poppins-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Regular.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Regular.woff") format("woff"), url("../../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
-  font-weight: normal;
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-ExtraLight.eot");
-  src: url("../../fonts/Poppins/Poppins-ExtraLight.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-ExtraLight.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-ExtraLight.woff") format("woff"), url("../../fonts/Poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-SemiBold.eot");
-  src: url("../../fonts/Poppins/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-SemiBold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-SemiBold.woff") format("woff"), url("../../fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-Bold.eot");
-  src: url("../../fonts/Poppins/Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Bold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Bold.woff") format("woff"), url("../../fonts/Poppins/Poppins-Bold.ttf") format("truetype");
-  font-weight: bold;
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-Thin.ttf") format("truetype");
+  font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url("../../fonts/Poppins/Poppins-Light.eot");
-  src: url("../../fonts/Poppins/Poppins-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Light.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Light.woff") format("woff"), url("../../fonts/Poppins/Poppins-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
+  font-family: 'BeVietnamPro';
+  src: url("../../fonts/Be_Vietnam_Pro/BeVietnamPro-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
 }
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-ExtraBold.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-ExtraBold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-ExtraBold.woff") format("woff"), url("../../fonts/Poppins/Poppins-ExtraBold.ttf") format("truetype");*/
+/*  font-weight: 800;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-Medium.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Medium.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Medium.woff") format("woff"), url("../../fonts/Poppins/Poppins-Medium.ttf") format("truetype");*/
+/*  font-weight: 500;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-Black.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Black.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Black.woff") format("woff"), url("../../fonts/Poppins/Poppins-Black.ttf") format("truetype");*/
+/*  font-weight: 900;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-Thin.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-Thin.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Thin.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Thin.woff") format("woff"), url("../../fonts/Poppins/Poppins-Thin.ttf") format("truetype");*/
+/*  font-weight: 100;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-Regular.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Regular.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Regular.woff") format("woff"), url("../../fonts/Poppins/Poppins-Regular.ttf") format("truetype");*/
+/*  font-weight: normal;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-ExtraLight.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-ExtraLight.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-ExtraLight.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-ExtraLight.woff") format("woff"), url("../../fonts/Poppins/Poppins-ExtraLight.ttf") format("truetype");*/
+/*  font-weight: 200;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-SemiBold.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-SemiBold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-SemiBold.woff") format("woff"), url("../../fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");*/
+/*  font-weight: 600;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-Bold.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Bold.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Bold.woff") format("woff"), url("../../fonts/Poppins/Poppins-Bold.ttf") format("truetype");*/
+/*  font-weight: bold;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: 'Poppins';*/
+/*  src: url("../../fonts/Poppins/Poppins-Light.eot");*/
+/*  src: url("../../fonts/Poppins/Poppins-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Poppins/Poppins-Light.woff2") format("woff2"), url("../../fonts/Poppins/Poppins-Light.woff") format("woff"), url("../../fonts/Poppins/Poppins-Light.ttf") format("truetype");*/
+/*  font-weight: 300;*/
+/*  font-style: normal;*/
+/*}*/
 
 .bg-twitter {
   background: #2caae1;
@@ -18876,7 +19005,8 @@ input:focus {
 /* Typography */
 body {
   font-size: 1rem;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: initial;
   line-height: normal;
   -webkit-font-smoothing: antialiased;
@@ -19130,7 +19260,8 @@ pre {
 code {
   padding: 5px;
   color: #dc3545;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 300;
   font-size: 0.875rem;
   border-radius: 4px;
@@ -19202,7 +19333,8 @@ code {
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   font-size: calc(0.875rem - 0.05rem);
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 400;
 }
 
@@ -24126,7 +24258,8 @@ div.tagsinput span.tag a {
 .sidebar {
   min-height: calc(100vh - 4.625rem);
   background: #ffffff;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: normal;
   padding: 0;
   width: 236px;
@@ -25656,7 +25789,8 @@ div.tagsinput span.tag a {
 .settings-panel .settings-heading {
   padding: 16px 0 13px 35px;
   font-size: 0.875rem;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 500;
   line-height: 1;
   color: rgba(0, 0, 0, 0.9);
@@ -25847,7 +25981,8 @@ div.tagsinput span.tag a {
 }
 
 .settings-panel .events p {
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 400;
 }
 
@@ -25944,7 +26079,121 @@ div.tagsinput span.tag a {
 
 /*customcss*/
 .error{
-  color: #ff000b;
+  color: #ff0000;
   font-size: 13px;
   padding-top: 3px;
+}
+
+.success{
+  color: #00cc00;
+  font-size: 13px;
+  padding-top: 3px;
+}
+/*fontBeVietNam*/
+.be-vietnam-pro-thin {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.be-vietnam-pro-extralight {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.be-vietnam-pro-light {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.be-vietnam-pro-regular {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.be-vietnam-pro-medium {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.be-vietnam-pro-semibold {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.be-vietnam-pro-bold {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.be-vietnam-pro-extrabold {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.be-vietnam-pro-black {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.be-vietnam-pro-thin-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.be-vietnam-pro-extralight-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.be-vietnam-pro-light-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.be-vietnam-pro-regular-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.be-vietnam-pro-medium-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.be-vietnam-pro-semibold-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.be-vietnam-pro-bold-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.be-vietnam-pro-extrabold-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.be-vietnam-pro-black-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 900;
+  font-style: italic;
 }

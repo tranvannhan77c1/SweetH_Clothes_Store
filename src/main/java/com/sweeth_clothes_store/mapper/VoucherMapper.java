@@ -3,6 +3,8 @@ package com.sweeth_clothes_store.mapper;
 import com.sweeth_clothes_store.dto.VoucherDTO;
 import com.sweeth_clothes_store.model.Voucher;
 
+import java.time.LocalDateTime;
+
 public class VoucherMapper {
     public static VoucherDTO toVoucherDTO(Voucher voucher) {
         if (voucher == null) {

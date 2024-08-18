@@ -2,241 +2,253 @@
 <html lang="en" ng-app="app">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sweet-H Admin | Quản Lý Đánh Giá</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="../vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css" />
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../images/favicon.png" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sweet-H Admin | Quản Lý Đánh Giá</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css"/>
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../images/favicon.png"/>
 </head>
 
 <body>
 
-  <div class="container-scroller">
+<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="navbar-brand-wrapper d-flex justify-content-center">
-        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="../index.html"><img src="../images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="../images/logo-mini.svg"
-              alt="logo" /></a>
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="typcn typcn-th-menu"></span>
-          </button>
-        </div>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../images/avatar.jpg" alt="profile" />
-              <span class="nav-profile-name">Trần Văn Nhân</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-
-              <a class="dropdown-item">
-                <i class="typcn typcn-eject text-primary"></i>
-                Đăng Xuất
-              </a>
+        <div class="navbar-brand-wrapper d-flex justify-content-center">
+            <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                <a class="navbar-brand brand-logo" href="../index.html"><img src="../images/logo.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="../images/logo-mini.svg"
+                                                                                  alt="logo"/></a>
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="typcn typcn-th-menu"></span>
+                </button>
             </div>
-          </li>
-        </ul>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
+                        <img src="../images/avatar.jpg" alt="profile"/>
+                        <span class="nav-profile-name">Trần Văn Nhân</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
 
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
-          <span class="typcn typcn-th-menu"></span>
-        </button>
-      </div>
+                        <a class="dropdown-item">
+                            <i class="typcn typcn-eject text-primary"></i>
+                            Đăng Xuất
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="typcn typcn-th-menu"></span>
+            </button>
+        </div>
     </nav>
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="typcn typcn-cog-outline"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close typcn typcn-times"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
-          </div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme">
-            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
-          </div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">
-              <i class="typcn typcn-device-desktop menu-icon"></i>
-              <span class="menu-title">Bảng Điều Khiển</span>
-              <!-- <div class="badge badge-danger">new</div> -->
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlydanhmuc.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Danh Mục</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlychungloai.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Chủng Loại</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlysanpham.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Sản Phẩm</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlytaikhoan.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Tài Khoản</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlydonhang.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Đơn Hàng</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlykhuyenmai.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Khuyến Mãi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlydanhgia.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Đánh Giá</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel" ng-controller="FeedbackController">
-        <div class="content-wrapper mb-0 pb-0">
-          <div class="row mb-0">
-            <div class="col-lg-12 grid-margin stretch-card mb-0">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Danh Sách Đánh Giá</h4>
-                  <div class="table-responsive">
-                    <table class="table table-hover table-bordered text-center">
-                      <thead>
-                      <tr>
-                        <th>Số Sao</th>
-                        <th>Nội Dung Đánh Giá</th>
-                        <th>Ngày Tạo</th>
-                        <th>Trạng Thái</th>
-                        <th>Đánh Giá Sản Phẩm</th>
-                        <th>Người Tạo Đánh Giá</th>
-                        <th>Hành Động</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr ng-repeat="feedback in feedbacks">
-                        <td>{{ feedback.rate }}</td>
-                        <td>{{ feedback.content }}</td>
-                        <td>{{ feedback.createDate | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
-                        <td><label class="badge" ng-class="{'badge-danger': !feedback.status, 'badge-success': feedback.status}">{{ feedback.status ? 'Đang Hiển Thị' : 'Đã Ẩn' }}</label></td>
-                        <td>{{ feedback.productName }}</td>
-                        <td>{{ feedback.accountName }}</td>
-                        <td>
-                          <button type="button" class="btn btn-sm" ng-class="{'btn-inverse-success': !feedback.status, 'btn-inverse-danger': feedback.status}" ng-click="toggleStatus(feedback)">
-                            {{ feedback.status ? 'Ẩn Đánh Giá' : 'Hiện Đánh Giá' }}
-                          </button>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="mt-2">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0" ng-click="previousPage()">
-                        <i class="mdi mdi-chevron-double-left"></i>
-                      </button>
-                      <button type="button" class="btn btn-outline-secondary" ng-repeat="page in paginationButtons"
-                              ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">
-                        {{ page + 1 }}
-                      </button>
-                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">
-                        <i class="mdi mdi-chevron-double-right"></i>
-                      </button>
-                    </div>
-                  </div>
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+            <div id="settings-trigger"><i class="typcn typcn-cog-outline"></i></div>
+            <div id="theme-settings" class="settings-panel">
+                <i class="settings-close typcn typcn-times"></i>
+                <p class="settings-heading">SIDEBAR SKINS</p>
+                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                    Light
                 </div>
-              </div>
+                <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Dark
+                </div>
+                <p class="settings-heading mt-2">HEADER SKINS</p>
+                <div class="color-tiles mx-0 px-4">
+                    <div class="tiles success"></div>
+                    <div class="tiles warning"></div>
+                    <div class="tiles danger"></div>
+                    <div class="tiles info"></div>
+                    <div class="tiles dark"></div>
+                    <div class="tiles default"></div>
+                </div>
             </div>
-          </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer mt-0">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
-                    href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrapdash</a>. All
-                  rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Free <a
-                    href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrap dashboard</a>
-                  templates from Bootstrapdash.com</span>
-              </div>
-            </div>
-          </div>
-        </footer>
+
         <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                        <i class="typcn typcn-device-desktop menu-icon"></i>
+                        <span class="menu-title">Bảng Điều Khiển</span>
+                        <!-- <div class="badge badge-danger">new</div> -->
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlydanhmuc.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Danh Mục</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlychungloai.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Chủng Loại</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlysanpham.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Sản Phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlytaikhoan.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Tài Khoản</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlydonhang.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Đơn Hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlykhuyenmai.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Khuyến Mãi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlydanhgia.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Đánh Giá</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel" ng-controller="FeedbackController">
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Danh Sách Đánh Giá</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered text-center">
+                                <thead>
+                                <tr>
+                                    <th>Số Sao</th>
+                                    <th>Nội Dung Đánh Giá</th>
+                                    <th>Ngày Tạo</th>
+                                    <th class="font-weight-bold bg-inverse-warning" style="font-size: large">Trạng
+                                        Thái
+                                    </th>
+                                    <th>Đánh Giá Sản Phẩm</th>
+                                    <th>Người Tạo Đánh Giá</th>
+                                    <th>Hành Động</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="feedback in feedbacks">
+                                    <td>{{ feedback.rate }}</td>
+                                    <td>{{ feedback.content }}</td>
+                                    <td>{{ feedback.createDate | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
+                                    <td class="bg-inverse-warning"><label style="font-size: 14px"
+                                                                          class="badge badge-pill w-100 font-weight-bold"
+                                                                          ng-class="{'badge-danger': !feedback.status, 'badge-success': feedback.status}">{{ feedback.status ? 'Đang Hiển Thị' : 'Đã Ẩn'
+                                        }}</label></td>
+                                    <td>{{ feedback.productName }}</td>
+                                    <td>{{ feedback.accountName }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm"
+                                                ng-class="{'btn-inverse-success': !feedback.status, 'btn-inverse-danger': feedback.status}"
+                                                ng-click="toggleStatus(feedback)">
+                                            {{ feedback.status ? 'Ẩn Đánh Giá' : 'Hiện Đánh Giá' }}
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-2">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0"
+                                        ng-click="previousPage()">
+                                    <i class="mdi mdi-chevron-double-left"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                        ng-repeat="page in paginationButtons"
+                                        ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">
+                                    {{ page + 1 }}
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                        ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">
+                                    <i class="mdi mdi-chevron-double-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer mt-0">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
+                        href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrapdash</a>. All
+                  rights reserved.</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Free <a
+                                    href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrap dashboard</a>
+                  templates from Bootstrapdash.com</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+</div>
+<!-- container-scroller -->
 
-  <!-- base:js -->
-  <script src="../vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="../vendors/chart.js/Chart.min.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/template.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="../js/angular/angular.min.js"></script>
-  <script src="../jsAdmin/app.js"></script>
-  <script src="../jsAdmin/feedback/feedbackService.js"></script>
-  <script src="../jsAdmin/feedback/feedbackController.js"></script>
-  <!-- End custom js for this page-->
+<!-- base:js -->
+<script src="../vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<script src="../vendors/chart.js/Chart.min.js"></script>
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="../js/off-canvas.js"></script>
+<script src="../js/hoverable-collapse.js"></script>
+<script src="../js/template.js"></script>
+<script src="../js/settings.js"></script>
+<script src="../js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../js/angular/angular.min.js"></script>
+<script src="../jsAdmin/app.js"></script>
+<script src="../jsAdmin/feedback/feedbackService.js"></script>
+<script src="../jsAdmin/feedback/feedbackController.js"></script>
+<!-- End custom js for this page-->
 </body>
 
 </html>

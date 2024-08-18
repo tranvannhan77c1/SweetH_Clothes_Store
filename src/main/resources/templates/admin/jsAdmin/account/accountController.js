@@ -20,7 +20,7 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
-        function getAccounts (page, size) {
+        function getAccounts(page, size) {
             return AccountService.getAllAccounts(page, size)
                 .then(function (data) {
                     $scope.accounts = data.content;
@@ -32,6 +32,8 @@ angular.module('app')
                 });
         };
 
+        getAccounts($scope.currentPage, $scope.pageSize);
+
         $scope.editAccount = function (id) {
             AccountService.getAccountById(id)
                 .then(function (data) {
@@ -42,8 +44,6 @@ angular.module('app')
                     console.error('Error fetching account', error);
                 });
         };
-
-        getAccounts($scope.currentPage, $scope.pageSize);
 
         $scope.createAccount = function () {
             $scope.checkUsername($scope.account.username);
@@ -63,7 +63,7 @@ angular.module('app')
             AccountService.createAccount($scope.account)
                 .then(function (data) {
                     getAccounts($scope.currentPage, $scope.pageSize)
-                        . then(function () {
+                        .then(function () {
                             $scope.goToPage($scope.totalPages - 1);
                             $scope.highlightAccountId(data.id);
                             $scope.toggleForm();
@@ -105,23 +105,23 @@ angular.module('app')
             $scope.resetForm();
         };
 
-        $scope.checkUsername = function(username) {
+        $scope.checkUsername = function (username) {
             if (!username) {
                 $scope.usernameError = 'Tên đăng nhập không được bỏ trống.';
             } else if (username.length < 6) {
                 $scope.usernameError = 'Tên đăng nhập phải lớn hơn 6 kí tự.';
             } else {
                 AccountService.checkUsernameExists(username)
-                    .then(function(exists) {
+                    .then(function (exists) {
                         $scope.usernameError = exists ? 'Tên đăng nhập đã tồn tại.' : '';
                     })
-                    .catch(function(error) {
+                    .catch(function (error) {
                         console.error('Error checking username', error);
                     });
             }
         };
 
-        $scope.checkPassword = function(password) {
+        $scope.checkPassword = function (password) {
             if (!password) {
                 $scope.passwordError = 'Mật khẩu không được bỏ trống.';
             } else if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
@@ -131,8 +131,7 @@ angular.module('app')
             }
         };
 
-        $scope.checkEmail = function(email) {
-            // Xử lý trường hợp email là undefined hoặc null
+        $scope.checkEmail = function (email) {
             email = email || '';
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -142,16 +141,16 @@ angular.module('app')
                 $scope.emailError = 'Định dạng email không hợp lệ.';
             } else {
                 AccountService.checkEmailExists(email)
-                    .then(function(exists) {
+                    .then(function (exists) {
                         $scope.emailError = exists ? 'Email đã tồn tại.' : '';
                     })
-                    .catch(function(error) {
+                    .catch(function (error) {
                         console.error('Error checking email', error);
                     });
             }
         };
 
-        $scope.checkPhone = function(phone) {
+        $scope.checkPhone = function (phone) {
             if (!phone) {
                 $scope.phoneError = 'Số điện thoại không được bỏ trống.';
             } else {
@@ -160,17 +159,17 @@ angular.module('app')
                     $scope.phoneError = 'Số điện thoại không hợp lệ.';
                 } else {
                     AccountService.checkPhoneExists(phone)
-                        .then(function(exists) {
+                        .then(function (exists) {
                             $scope.phoneError = exists ? 'Số điện thoại đã tồn tại.' : '';
                         })
-                        .catch(function(error) {
+                        .catch(function (error) {
                             console.error('Error checking phone', error);
                         });
                 }
             }
         };
 
-        $scope.checkConfirmPassword = function(confirmPassword) {
+        $scope.checkConfirmPassword = function (confirmPassword) {
             if (!confirmPassword) {
                 $scope.confirmPasswordError = 'Nhập lại mật khẩu không được bỏ trống.';
             } else if ($scope.account.password !== confirmPassword) {
@@ -180,7 +179,7 @@ angular.module('app')
             }
         };
 
-        $scope.checkFullName = function(fullName) {
+        $scope.checkFullName = function (fullName) {
             if (!fullName) {
                 $scope.fullnameError = 'Họ và tên không được bỏ trống.';
             } else {
@@ -188,7 +187,7 @@ angular.module('app')
             }
         };
 
-        $scope.checkAddress = function(address) {
+        $scope.checkAddress = function (address) {
             if (!address) {
                 $scope.addressError = 'Địa chỉ không được bỏ trống.';
             } else {

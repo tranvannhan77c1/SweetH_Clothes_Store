@@ -12,7 +12,7 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
-         function getItems(page, size) {
+        function getItems(page, size) {
             return ItemService.getAllItemsPage(page, size)
                 .then(function (data) {
                     $scope.items = data.content;
@@ -43,12 +43,12 @@ angular.module('app')
                         .then(function (data) {
                             getItems($scope.currentPage, $scope.pageSize)
                                 .then(function () {
-                                $scope.goToPage($scope.totalPages - 1);
-                                $scope.highlightItem(data.id);
-                                $scope.item = data;
-                                $scope.isEditMode = true;
-                                handleSuccess('Thêm danh mục thành công!');
-                            });
+                                    $scope.goToPage($scope.totalPages - 1);
+                                    $scope.highlightItem(data.id);
+                                    $scope.item = data;
+                                    $scope.isEditMode = true;
+                                    handleSuccess('Thêm danh mục thành công!');
+                                });
                         })
                         .catch(function (error) {
                             console.error('Error creating item', error);

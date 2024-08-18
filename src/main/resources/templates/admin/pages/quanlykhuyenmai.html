@@ -9,6 +9,9 @@
   <!-- base:css -->
   <link rel="stylesheet" href="../vendors/typicons/typicons.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css"/>
@@ -132,43 +135,47 @@
       </nav>
       <!-- partial -->
       <div class="main-panel" ng-controller="VoucherController">
-        <div class="content-wrapper mb-0 pb-0">
-          <div class="row mb-0">
+        <div class="content-wrapper">
+          <div class="row">
             <div class="col-md-4 grid-margin stretch-card mb-0">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Thông Tin Mã Khuyến Mãi</h4>
-                  <form class="forms-sample" ng-submit="isEditMode ? updateVoucher() : createVoucher()">
+                  <form class="forms-sample">
                     <div class="form-group">
                       <label for="code">Mã Khuyến Mãi</label>
-                      <input type="text" class="form-control" id="code" ng-model="voucher.code" placeholder="Mã Khuyến Mãi" required>
+                      <input type="text" class="form-control" id="code" ng-model="voucher.code" ng-change="checkCode(voucher.code)" placeholder="Mã Khuyến Mãi">
+                      <div ng-if="codenofi" ng-class="{'success': isCodeSuccess, 'error': !isCodeSuccess}">
+                        {{ codenofi }}
+                      </div>
                     </div>
                     <div class="form-group">
                       <label for="discountAmount">Số Tiền Khuyến Mãi</label>
-                      <input type="number" class="form-control" id="discountAmount" ng-model="voucher.discountAmount" placeholder="Số Tiền Khuyến Mãi" required>
+                      <input type="number" class="form-control" id="discountAmount" ng-model="voucher.discountAmount" ng-change="checkDiscountAmount(voucher.discountAmount)" placeholder="Số Tiền Khuyến Mãi">
+                      <div ng-if="discountAmountnofi" class="error">{{ discountAmountnofi }}</div>
                     </div>
                     <div class="form-group">
                       <label for="condition">Điều Kiện</label>
-                      <input type="number" class="form-control" id="condition" ng-model="voucher.condition" placeholder="Điều Kiện" required>
+                      <input type="number" class="form-control" id="condition" ng-model="voucher.condition" ng-change="checkCondition(voucher.condition)" placeholder="Điều Kiện">
+                      <div ng-if="conditionnofi" class="error">{{ conditionnofi }}</div>
                     </div>
                     <div class="form-group">
                       <label for="validFrom">Áp Dụng Từ</label>
-                      <input type="datetime-local" class="form-control" id="validFrom" ng-model="voucher.validFrom" placeholder="Áp Dụng Từ" required>
+                      <input type="datetime-local" class="form-control" id="validFrom" ng-model="voucher.validFrom" ng-change="checkValidFrom(voucher.validFrom)">
+                      <div ng-if="validFromnofi" class="error">{{ validFromnofi }}</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'mb-3': message}">
                       <label for="validTo">Áp Dụng Đến</label>
-                      <input type="datetime-local" class="form-control" id="validTo" ng-model="voucher.validTo" placeholder="Áp Dụng Đến" required>
+                      <input type="datetime-local" class="form-control" id="validTo" ng-model="voucher.validTo" ng-change="checkValidTo(voucher.validTo)">
+                      <div ng-if="validTonofi" class="error">{{ validTonofi }}</div>
                     </div>
-<!--                    <div class="form-group">-->
-<!--                      <label for="createDate">Ngày Tạo</label>-->
-<!--                      <input type="datetime-local" class="form-control" id="createDate" ng-model="voucher.createDate" placeholder="Ngày T" required>-->
-<!--                    </div>-->
-                    <div class="form-group">
+                    <div ng-if="isEditMode" class="form-group" ng-class="{'mb-3': message}">
                       <label for="createDate">Ngày Tạo</label>
-                      <input type="text" class="form-control" id="createDate" ng-model="voucher.createDate | date:'HH:mm:ss-dd/MM/yyyy' " ng-readonly="true"  placeholder="Ngày Tạo">
+                      <input type="datetime-local" class="form-control" id="createDate" ng-model="voucher.createDate" disabled>
                     </div>
-                    <button type="submit" class="btn btn-inverse-success mr-2" ng-show="!isEditMode">Thêm</button>
-                    <button type="submit" class="btn btn-inverse-warning mr-2" ng-show="isEditMode">Sửa</button>
+                    <div ng-if="message" class="alert mt-0" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
+                    <button type="submit" class="btn btn-inverse-success mr-2" ng-click="createVoucher()" ng-show="!isEditMode">Thêm</button>
+                    <button type="submit" class="btn btn-inverse-warning mr-2" ng-click="updateVoucher()" ng-show="isEditMode">Cập Nhập</button>
                     <button type="button" class="btn btn-inverse-danger mr-2" ng-show="isEditMode" ng-click="deleteVoucher(voucher.id)">Xoá</button>
                     <button type="button" class="btn btn-inverse-info mr-2" ng-click="resetForm()">Làm Mới</button>
                   </form>

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Data
@@ -37,9 +38,13 @@ public class Voucher {
     private LocalDateTime validTo;
 
     @Column(name = "create_date", nullable = false)
-    private LocalDateTime createDate;
+    private LocalDateTime createDate = LocalDateTime.now();
 
     @JsonIgnore
     @OneToMany(mappedBy = "voucher")
     private List<Order> orders;
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate.truncatedTo(ChronoUnit.MINUTES);
+    }
 }
