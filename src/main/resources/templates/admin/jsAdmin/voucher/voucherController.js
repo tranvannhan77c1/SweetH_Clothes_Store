@@ -86,10 +86,12 @@ angular.module('app')
             $scope.checkValidTo($scope.voucher.validTo);
 
             if ($scope.codenofi != 'Mã khuyến mãi hợp lệ.'){
-                if ($scope.codenofi || $scope.discountAmountnofi || $scope.conditionnofi || $scope.validFromnofi || $scope.validTonofi) {
-                    handleError('Vui lòng sửa lỗi trước khi cập nhập khuyến mãi!');
-                    return;
-                }
+                    if ($scope.codenofi || $scope.discountAmountnofi || $scope.conditionnofi || $scope.validFromnofi || $scope.validTonofi) {
+                        if(!$scope.isCodeSuccess){
+                            handleError('Vui lòng sửa lỗi trước khi cập nhập khuyến mãi!');
+                            return;
+                        }
+                    }
             }
 
             VoucherService.updateVoucher($scope.voucher.id, $scope.voucher)
@@ -174,13 +176,17 @@ angular.module('app')
                 $scope.discountAmountnofi = 'Số tiền khuyến mãi không được bỏ trống.';
             } else if (discountAmount <= 0) {
                 $scope.discountAmountnofi = 'Số tiền khuyến mãi không được nhỏ hơn 0.';
+            } else if (discountAmount > 99999999.99) {
+                $scope.discountAmountnofi = 'Số tiền khuyến mãi không được vượt quá 99.999.999.';
             } else {
                 $scope.discountAmountnofi = '';
             }
+
             if (!$scope.discountAmountnofi && $scope.voucher.condition) {
                 $scope.checkCondition($scope.voucher.condition);
             }
         };
+
 
         $scope.checkCondition = function (condition) {
             if (!condition) {
@@ -189,10 +195,13 @@ angular.module('app')
                 $scope.conditionnofi = 'Điều kiện khuyến mãi không được nhỏ hơn 0.';
             } else if ($scope.voucher.discountAmount && condition < $scope.voucher.discountAmount) {
                 $scope.conditionnofi = 'Điều kiện không được nhỏ hơn số tiền khuyến mãi.';
+            } else if (condition > 99999999.99) {
+                $scope.conditionnofi = 'Điều kiện khuyến mãi không được vượt quá 99.999.999.';
             } else {
                 $scope.conditionnofi = '';
             }
         };
+
 
         $scope.checkValidFrom = function (validFrom) {
             let now = new Date();

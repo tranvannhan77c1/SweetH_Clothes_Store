@@ -32,7 +32,6 @@ public class VoucherMapper {
         voucher.setCondition(dto.getCondition());
         voucher.setValidFrom(dto.getValidFrom());
         voucher.setValidTo(dto.getValidTo());
-        voucher.setCreateDate(dto.getCreateDate());
         return voucher;
     }
 }
