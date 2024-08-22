@@ -77,10 +77,11 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
 
         var order = {
             totalAmount: order_totalAmount,
-            status: "CHƯA THANH TOÁN",
+            status: "Đang Xử Lý",
             address: $scope.userInfo.address,
             phone: $scope.userInfo.phone,
             voucherId: 1,
+            payment: "VNPay",
             accountId: $scope.userInfo.id,
             orderDetails: orderDetail
         }
