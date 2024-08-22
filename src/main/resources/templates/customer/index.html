@@ -211,18 +211,17 @@
                                                                 <h3>{{ selectedProduct.name }}</h3>
                                                                 <h2>{{ selectedProduct.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h2>
                                                                 <ul class="list">
-                                                                    <li><a class="active" href="#"><span>Category</span> : {{ selectedProduct.category.name }}</a></li>
-                                                                    <li><a href="#"><span>Availability</span> : {{ selectedProduct.quantity }}</a></li>
+                                                                    <li><a class="active" href="#"><span>Sản Phẩm</span> : {{ selectedProduct.category.name }}</a></li>
                                                                 </ul>
                                                                 <p>{{ selectedProduct.description }}</p>
                                                                 <div class="row product_size">
-                                                                    <p>Size: </p>
+                                                                    <p>Kích Thước: </p>
                                                                     <div class="size-buttons mt-4" >
                                                                         <button ng-repeat="size in selectedProduct.productSizes track by size" type="button" class="size-button" ng-click="selectSize(size)" ng-class="{ 'selected': selectedSize === size }">{{size}}</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product_count">
-                                                                    <label for="qty">Quantity:</label>
+                                                                    <label for="qty">Số Lượng:</label>
                                                                     <button ng-click="increaseModalQuantity()" class="increase1 items-count" type="button">
                                                                         <i class="fas fa-angle-up"></i>
                                                                     </button>
@@ -277,9 +276,9 @@
                 <div class="row">
                     <div class="col-xl-5">
                         <div  class="offer__content text-center">
-                            <h3 style="color: #8B1A1A !important;">Up To 50% Off</h3>
-                            <h4 style="color: #8B1A1A !important;">Sale Summer</h4>
-                            <p style="color: #8B1A1A !important;">Mùa hè thật năng động</p>
+                            <h3 style="color: #ffffff !important; text-shadow: #8B1A1A 3px 1px; font-weight: bold">Up To 50% Off</h3>
+                            <h4 style="color: #ffffff !important; text-shadow: #8B1A1A 3px 1px; font-weight: bold">Sale Summer</h4>
+                            <p style="color: #ffffff !important; text-shadow: #8B1A1A 3px 1px; font-weight: bold">Mùa hè thật năng động</p>
                             <a class="button button--active mt-3 mt-xl-4" href="pages/category.html">Mua Ngay</a>
                         </div>
                     </div>

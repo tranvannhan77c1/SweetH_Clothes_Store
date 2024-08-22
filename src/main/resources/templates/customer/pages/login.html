@@ -73,6 +73,10 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner">
                         <h3>Đăng Nhập </h3>
+                        <div class="col-md-12 form-group" ng-if="errorMessage">
+                            <span class="text-danger error-message">{{ errorMessage }}</span>
+                        </div>
+
                         <form class="row login_form" ng-submit="login()" id="contactForm" method="post">
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="username" name="username" ng-model="username" placeholder="Tài khoản" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tài khoản'" required>
@@ -87,11 +91,12 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <button type="submit" value="submit" class="button button-login w-100">Đăng
-									Nhập</button>
+                                <button type="submit" value="submit" class="button button-login1 w-100">Đăng Nhập</button>
                                 <a href="#">Quên Mật Khẩu?</a>
                             </div>
+
                         </form>
+
                     </div>
                 </div>
             </div>
