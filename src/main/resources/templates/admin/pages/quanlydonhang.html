@@ -159,6 +159,7 @@
                           <th>Số Điện Thoại</th>
                           <th>Tổng Tiền</th>
                           <th>Trạng Thái</th>
+                          <th>Phương Thức Thanh Toán</th>
                           <th>Hành Động</th>
                         </tr>
                       </thead>
@@ -178,6 +179,7 @@
                                           'badge-danger': order.status === 'Cancelled'
                                       }">{{ order.status }}</label>
                           </td>
+                          <td>{{ order.payment }}</td>
                           <td>
                             <button type="button" class="btn btn-inverse-info btn-sm"
                               ng-click="getOrderDetails(order.id)">Xem Chi Tiết</button>

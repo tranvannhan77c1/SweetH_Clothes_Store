@@ -12,8 +12,8 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
-        function getItems(page, size) {
-            return ItemService.getAllItemsPage(page, size)
+        function getItemsPage(page, size) {
+            return ItemService.getItemsPage(page, size)
                 .then(function (data) {
                     $scope.items = data.content;
                     $scope.totalPages = data.totalPages;
@@ -41,7 +41,7 @@ angular.module('app')
                 if (isValid) {
                     ItemService.createItem($scope.item)
                         .then(function (data) {
-                            getItems($scope.currentPage, $scope.pageSize)
+                            getItemsPage($scope.currentPage, $scope.pageSize)
                                 .then(function () {
                                     $scope.goToPage($scope.totalPages - 1);
                                     $scope.highlightItem(data.id);
@@ -63,7 +63,7 @@ angular.module('app')
                     ItemService.updateItem($scope.item.id, $scope.item)
                         .then(function (data) {
                             $scope.item = data;
-                            getItems($scope.currentPage, $scope.pageSize);
+                            getItemsPage($scope.currentPage, $scope.pageSize);
                             $scope.highlightItem(data.id);
                             handleSuccess('Cập nhập danh mục thành công!');
                         })
@@ -77,7 +77,7 @@ angular.module('app')
         $scope.deleteItem = function (id) {
             ItemService.deleteItem(id)
                 .then(function (data) {
-                    getItems($scope.currentPage, $scope.pageSize);
+                    getItemsPage($scope.currentPage, $scope.pageSize);
                     $scope.item = {};
                     $scope.isEditMode = false;
                     handleSuccess('Xoá danh mục thành công!');
@@ -97,7 +97,6 @@ angular.module('app')
         function handleSuccess(message) {
             $scope.message = message;
             $scope.isSuccess = true;
-            console.log("Đã thiết lập thông báo thành công:", message); // Dòng debug
         }
 
         function handleError(message) {
@@ -120,7 +119,7 @@ angular.module('app')
                 return;
             }
 
-            ItemService.checkItemName($scope.item.name)
+            ItemService.checkName($scope.item.name)
                 .then(function (exists) {
                     if (exists) {
                         handleError('Tên danh mục đã tồn tại.');
@@ -155,14 +154,14 @@ angular.module('app')
         $scope.goToPage = function (page) {
             if (page >= 0 && page < $scope.totalPages) {
                 $scope.currentPage = page;
-                getItems($scope.currentPage, $scope.pageSize);
+                getItemsPage($scope.currentPage, $scope.pageSize);
             }
         };
 
         $scope.nextPage = function () {
             if ($scope.currentPage < $scope.totalPages - 1) {
                 $scope.currentPage++;
-                getItems($scope.currentPage, $scope.pageSize);
+                getItemsPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage > 1) {
                     initializePagination();
                 }
@@ -172,12 +171,12 @@ angular.module('app')
         $scope.previousPage = function () {
             if ($scope.currentPage > 0) {
                 $scope.currentPage--;
-                getItems($scope.currentPage, $scope.pageSize);
+                getItemsPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage < $scope.totalPages - 2) {
                     initializePagination();
                 }
             }
         };
 
-        getItems($scope.currentPage, $scope.pageSize);
+        getItemsPage($scope.currentPage, $scope.pageSize);
     }]);

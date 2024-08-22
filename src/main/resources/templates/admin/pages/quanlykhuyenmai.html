@@ -176,7 +176,7 @@
                     <div ng-if="message" class="alert mt-0" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
                     <button type="submit" class="btn btn-inverse-success mr-2" ng-click="createVoucher()" ng-show="!isEditMode">Thêm</button>
                     <button type="submit" class="btn btn-inverse-warning mr-2" ng-click="updateVoucher()" ng-show="isEditMode">Cập Nhập</button>
-                    <button type="button" class="btn btn-inverse-danger mr-2" ng-show="isEditMode" ng-click="deleteVoucher(voucher.id)">Xoá</button>
+                    <button type="button" class="btn btn-inverse-danger mr-2"  ng-click="deleteVoucher(voucher.id)" ng-show="isEditMode">Xoá</button>
                     <button type="button" class="btn btn-inverse-info mr-2" ng-click="resetForm()">Làm Mới</button>
                   </form>
                 </div>
@@ -233,94 +233,6 @@
               </div>
             </div>
           </div>
-          <!--          <div class="row mb-0">-->
-<!--            <div class="col-md-4 grid-margin stretch-card mb-0">-->
-<!--              <div class="card">-->
-<!--                <div class="card-body">-->
-<!--                  <h4 class="card-title">Thông Tin Mã Khuyến Mãi</h4>-->
-<!--                  <form class="forms-sample">-->
-<!--                    <div class="form-group">-->
-<!--                      <label for="Username">Mã Khuyến Mãi</label>-->
-<!--                      <input type="text" class="form-control" id="Username" placeholder="Mã Khuyến Mãi">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                      <label for="Email">Số Tiền Khuyến Mãi</label>-->
-<!--                      <input type="email" class="form-control" id="Email" placeholder="Số Tiền Khuyến Mãi">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                      <label for="Fullname">Điều Kiện</label>-->
-<!--                      <input type="text" class="form-control" id="Fullname" placeholder="Điều Kiện">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                      <label for="Phone">Áp Dụng Từ</label>-->
-<!--                      <input type="text" class="form-control" id="Phone" placeholder="Áp Dụng Từ">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                      <label for="Address">Áp Dụng Đến</label>-->
-<!--                      <input type="text" class="form-control" id="Address" placeholder="Áp Dụng Đến">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                      <label for="Address">Ngày Tạo</label>-->
-<!--                      <input type="text" class="form-control" id="Address" placeholder="Áp Dụng Đến">-->
-<!--                    </div>-->
-<!--                    <button type="submit" class="btn btn-inverse-success mr-2">Thêm</button>-->
-<!--                    <button type="submit" class="btn btn-inverse-warning mr-2">Sửa</button>-->
-<!--                    <button type="submit" class="btn btn-inverse-danger mr-2">Xoá</button>-->
-<!--                    <button type="submit" class="btn btn-inverse-info mt-2">Làm Mới</button>-->
-<!--                  </form>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-
-<!--            <div class="col-lg-8 grid-margin stretch-card mb-0">-->
-<!--              <div class="card">-->
-<!--                <div class="card-body">-->
-<!--                  <h4 class="card-title">Danh Sách Khuyến Mãi</h4>-->
-<!--                  <div class="table-responsive">-->
-<!--                    <table class="table table-hover table-bordered">-->
-<!--                      <thead>-->
-<!--                        <tr>-->
-<!--                          <th>Mã KM</th>-->
-<!--                          <th>Số Tiền KM</th>-->
-<!--                          <th>Điều Kiện</th>-->
-<!--                          <th>Áp Dụng Từ</th>-->
-<!--                          <th>Áp Dụng Đến</th>-->
-<!--                          <th>Ngày Tạo</th>-->
-<!--                          <th>Hành Động</th>-->
-<!--                        </tr>-->
-<!--                      </thead>-->
-<!--                      <tbody>-->
-<!--                        <tr>-->
-<!--                          <td>KM001</td>-->
-<!--                          <td>50.000đ</td>-->
-<!--                          <td>300.000đ</td>-->
-<!--                          <td>20:00PM-30/05/2024</td>-->
-<!--                          <td>20:00PM-02/06/2024</td>-->
-<!--                          <td>20:00PM-29/05/2024</td>-->
-<!--                          <td><button type="button" class="btn btn-inverse-info btn-sm">Chỉnh Sửa</button></td>-->
-<!--                        </tr>-->
-<!--                      </tbody>-->
-<!--                    </table>-->
-<!--                  </div>-->
-<!--                  <div class="mt-2">-->
-<!--                    <div class="btn-group" role="group" aria-label="Basic example">-->
-<!--                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === 0" ng-click="previousPage()">-->
-<!--                        <i class="mdi mdi-chevron-double-left"></i>-->
-<!--                      </button>-->
-<!--                      <button type="button" class="btn btn-outline-secondary" ng-repeat="page in paginationButtons"-->
-<!--                              ng-class="{ 'btn-primary': page === currentPage }" ng-click="goToPage(page)">-->
-<!--                        {{ page + 1 }}-->
-<!--                      </button>-->
-<!--                      <button type="button" class="btn btn-outline-secondary" ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">-->
-<!--                        <i class="mdi mdi-chevron-double-right"></i>-->
-<!--                      </button>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->

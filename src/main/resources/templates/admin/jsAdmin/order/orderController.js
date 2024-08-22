@@ -6,18 +6,10 @@ angular.module('app')
         $scope.totalPages = 1;
         $scope.orders = [];
         $scope.paginationButtons = [];
+        $scope.orderDetails = [];
 
-        var initializePagination = function() {
-            $scope.paginationButtons = [];
-            var start = Math.max(0, $scope.currentPage - 1);
-            var end = Math.min($scope.totalPages - 1, start + 2);
-            for (var i = start; i <= end; i++) {
-                $scope.paginationButtons.push(i);
-            }
-        };
-
-        $scope.getOrders = function(page, size) {
-            OrderService.getAllOrders(page, size)
+        $scope.getOrdersPage = function(page, size) {
+            OrderService.getOrdersPage(page, size)
                 .then(function(data) {
                     $scope.orders = data.content;
                     $scope.totalPages = data.totalPages;
@@ -28,19 +20,28 @@ angular.module('app')
                 });
         };
 
-        $scope.getOrders($scope.currentPage, $scope.pageSize);
+        $scope.getOrdersPage($scope.currentPage, $scope.pageSize);
+
+        var initializePagination = function() {
+            $scope.paginationButtons = [];
+            var start = Math.max(0, $scope.currentPage - 1);
+            var end = Math.min($scope.totalPages - 1, start + 2);
+            for (var i = start; i <= end; i++) {
+                $scope.paginationButtons.push(i);
+            }
+        };
 
         $scope.goToPage = function(page) {
             if (page >= 0 && page < $scope.totalPages) {
                 $scope.currentPage = page;
-                $scope.getOrders($scope.currentPage, $scope.pageSize);
+                $scope.getOrdersPage($scope.currentPage, $scope.pageSize);
             }
         };
 
         $scope.nextPage = function() {
             if ($scope.currentPage < $scope.totalPages - 1) {
                 $scope.currentPage++;
-                $scope.getOrders($scope.currentPage, $scope.pageSize);
+                $scope.getOrdersPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage > 1) {
                     initializePagination();
                 }
@@ -50,7 +51,7 @@ angular.module('app')
         $scope.previousPage = function() {
             if ($scope.currentPage > 0) {
                 $scope.currentPage--;
-                $scope.getOrders($scope.currentPage, $scope.pageSize);
+                $scope.getOrdersPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage < $scope.totalPages - 2) {
                     initializePagination();
                 }
@@ -61,7 +62,6 @@ angular.module('app')
             OrderService.getOrderDetails(orderId)
                 .then(function(orderDetails) {
                     $scope.orderDetails = orderDetails;
-                    console.log(orderDetails)
                     $('#orderDetailModal').modal('show');
                 })
                 .catch(function(error) {

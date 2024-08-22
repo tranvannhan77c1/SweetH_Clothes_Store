@@ -19,6 +19,7 @@ public class OrderMapper {
         dto.setOrderDate(order.getOrderDate());
         dto.setTotalAmount(order.getTotalAmount());
         dto.setStatus(order.getStatus());
+        dto.setPayment(order.getPayment());
         dto.setAddress(order.getAddress());
         dto.setPhone(order.getPhone());
         dto.setVoucherId(order.getVoucher() != null ? order.getVoucher().getId() : null);
@@ -42,6 +43,7 @@ public class OrderMapper {
         order.setOrderDate(dto.getOrderDate());
         order.setTotalAmount(dto.getTotalAmount());
         order.setStatus(dto.getStatus());
+        order.setPayment(dto.getPayment());
         order.setAddress(dto.getAddress());
         order.setPhone(dto.getPhone());
         

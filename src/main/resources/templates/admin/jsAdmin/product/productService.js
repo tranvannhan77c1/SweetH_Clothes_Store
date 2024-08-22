@@ -1,8 +1,8 @@
 angular.module('app')
-    .service('ItemService', ['$http', function($http) {
-        var baseUrl = 'http://localhost:8080/api/items';
+    .service('ProductService', ['$http', function($http) {
+        var baseUrl = 'http://localhost:8080/api/products';
 
-        this.getItemsPage = function(page, size) {
+        this.getProductsPage = function(page, size) {
             page = page || 0;
             size = size || 8;
 
@@ -11,68 +11,63 @@ angular.module('app')
             }).then(function(response) {
                 return response.data;
             }).catch(function(error) {
-                console.error('Error fetching items', error);
+                console.error('Error fetching products', error);
                 throw error;
             });
         };
 
-        this.getAllItems = function() {
-            return $http.get(baseUrl + '/all', {
-            }).then(function(response) {
-                return response.data;
-            }).catch(function(error) {
-                console.error('Error fetching items', error);
-                throw error;
-            });
+        this.getAllProducts = function() {
+            return $http.get(baseUrl + '/all')
+                .then(function(response) {
+                    return response.data;
+                })
+                .catch(function(error) {
+                    console.error('Error fetching products', error);
+                    throw error;
+                });
         };
 
-        this.getItemById = function(id) {
+        this.getProductById = function(id) {
             return $http.get(baseUrl + '/' + id)
                 .then(function(response) {
                     return response.data;
                 })
                 .catch(function(error) {
-                    console.error('Error fetching item', error);
+                    console.error('Error fetching product', error);
                     throw error;
                 });
         };
 
-        this.createItem = function(item) {
-            return $http.post(baseUrl, item)
+        this.createProduct = function(product) {
+            return $http.post(baseUrl, product)
                 .then(function(response) {
                     return response.data;
                 })
                 .catch(function(error) {
-                    console.error('Error creating item', error);
+                    console.error('Error creating product', error);
                     throw error;
                 });
         };
 
-        this.updateItem = function(id, item) {
-            return $http.put(baseUrl + '/' + id, item)
+        this.updateProduct = function(id, product) {
+            return $http.put(baseUrl + '/' + id, product)
                 .then(function(response) {
                     return response.data;
                 })
                 .catch(function(error) {
-                    console.error('Error updating item', error);
+                    console.error('Error updating product', error);
                     throw error;
                 });
         };
 
-        this.deleteItem = function(id) {
+        this.deleteProduct = function(id) {
             return $http.delete(baseUrl + '/' + id)
                 .then(function(response) {
                     return response.data;
                 })
                 .catch(function(error) {
-                    console.error('Error deleting item', error);
+                    console.error('Error deleting product', error);
                     throw error;
                 });
-        };
-
-        this.checkName = function(name, excludeId) {
-            return $http.get(baseUrl + '/check-name', {
-                params: { name: name }
-            }).then(response => response.data);
         };
     }]);

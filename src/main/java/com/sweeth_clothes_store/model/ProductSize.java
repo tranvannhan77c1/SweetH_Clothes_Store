@@ -16,7 +16,7 @@ public class ProductSize {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "size", nullable = false)
+    @Column(name = "size", nullable = false, length = 10)
     private String size;
 
     @Column(name = "quantity", nullable = false)

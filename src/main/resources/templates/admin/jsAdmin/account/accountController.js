@@ -20,8 +20,8 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
-        function getAccounts(page, size) {
-            return AccountService.getAllAccounts(page, size)
+        function getAccountsPage(page, size) {
+            return AccountService.getAccountsPage(page, size)
                 .then(function (data) {
                     $scope.accounts = data.content;
                     $scope.totalPages = data.totalPages;
@@ -32,7 +32,7 @@ angular.module('app')
                 });
         };
 
-        getAccounts($scope.currentPage, $scope.pageSize);
+        getAccountsPage($scope.currentPage, $scope.pageSize);
 
         $scope.editAccount = function (id) {
             AccountService.getAccountById(id)
@@ -62,7 +62,7 @@ angular.module('app')
             $scope.account.role = "Employee";
             AccountService.createAccount($scope.account)
                 .then(function (data) {
-                    getAccounts($scope.currentPage, $scope.pageSize)
+                    getAccountsPage($scope.currentPage, $scope.pageSize)
                         .then(function () {
                             $scope.goToPage($scope.totalPages - 1);
                             $scope.highlightAccountId(data.id);
@@ -214,14 +214,14 @@ angular.module('app')
         $scope.goToPage = function (page) {
             if (page >= 0 && page < $scope.totalPages) {
                 $scope.currentPage = page;
-                getAccounts($scope.currentPage, $scope.pageSize);
+                getAccountsPage($scope.currentPage, $scope.pageSize);
             }
         };
 
         $scope.nextPage = function () {
             if ($scope.currentPage < $scope.totalPages - 1) {
                 $scope.currentPage++;
-                getAccounts($scope.currentPage, $scope.pageSize);
+                getAccountsPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage > 1) {
                     initializePagination();
                 }
@@ -231,7 +231,7 @@ angular.module('app')
         $scope.previousPage = function () {
             if ($scope.currentPage > 0) {
                 $scope.currentPage--;
-                getAccounts($scope.currentPage, $scope.pageSize);
+                getAccountsPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage < $scope.totalPages - 2) {
                     initializePagination();
                 }

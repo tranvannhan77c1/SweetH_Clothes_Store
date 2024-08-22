@@ -1,616 +1,716 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sweet-H Admin | Quản Lý Sản Phẩm</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="../vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css" />
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../images/favicon.png" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sweet-H Admin | Quản Lý Sản Phẩm</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css"/>
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../images/favicon.png"/>
 </head>
 
 <body>
 
-  <div class="container-scroller">
+<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="navbar-brand-wrapper d-flex justify-content-center">
-        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="../index.html"><img src="../images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="../images/logo-mini.svg"
-              alt="logo" /></a>
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="typcn typcn-th-menu"></span>
-          </button>
-        </div>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../images/avatar.jpg" alt="profile" />
-              <span class="nav-profile-name">Trần Văn Nhân</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-
-              <a class="dropdown-item">
-                <i class="typcn typcn-eject text-primary"></i>
-                Đăng Xuất
-              </a>
+        <div class="navbar-brand-wrapper d-flex justify-content-center">
+            <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                <a class="navbar-brand brand-logo" href="../index.html"><img src="../images/logo.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="../index.html"><img src="../images/logo-mini.svg"
+                                                                                  alt="logo"/></a>
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="typcn typcn-th-menu"></span>
+                </button>
             </div>
-          </li>
-        </ul>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
+                        <img src="../images/avatar.jpg" alt="profile"/>
+                        <span class="nav-profile-name">Trần Văn Nhân</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
 
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
-          <span class="typcn typcn-th-menu"></span>
-        </button>
-      </div>
+                        <a class="dropdown-item">
+                            <i class="typcn typcn-eject text-primary"></i>
+                            Đăng Xuất
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="typcn typcn-th-menu"></span>
+            </button>
+        </div>
     </nav>
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="typcn typcn-cog-outline"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close typcn typcn-times"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
-          </div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme">
-            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
-          </div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">
-              <i class="typcn typcn-device-desktop menu-icon"></i>
-              <span class="menu-title">Bảng Điều Khiển</span>
-              <!-- <div class="badge badge-danger">new</div> -->
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlydanhmuc.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Danh Mục</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlychungloai.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Chủng Loại</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlysanpham.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Sản Phẩm</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlytaikhoan.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Tài Khoản</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlydonhang.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Đơn Hàng</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlykhuyenmai.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Khuyến Mãi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quanlydanhgia.html">
-              <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Quản Lý Đánh Giá</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card mb-0">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <h4 class="card-title mt-3">Danh Sách Sản Phẩm</h4>
-                    </div>
-                    <div class="col-lg-6 d-flex justify-content-end align-items-end">
-                      <button type="button" class="btn btn-inverse-success mb-3" data-toggle="modal"
-                        data-target="#addProductModal">Thêm Sản
-                        Phẩm</button>
-                    </div>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Ảnh Chính</th>
-                          <th>Tên SP</th>
-                          <th>Giá</th>
-                          <th>Số Lượng</th>
-                          <th>Thương Hiệu</th>
-                          <th>Nguồn Gốc</th>
-                          <th>Màu Sắc</th>
-                          <th>Chất Liệu</th>
-                          <th>Mô Tả</th>
-                          <th>Hành Động</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><img style="width: 90px; height: auto; border-radius: 0px;"
-                              src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                          </td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>120.000đ</td>
-                          <td>120</td>
-                          <td>Vegercy</td>
-                          <td>Việt Nam</td>
-                          <td>Đỏ</td>
-                          <td>Cotton 100%</td>
-                          <td>Hông có gì để mô tả cả</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm" data-toggle="modal"
-                              data-target="#productDetailModal">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td><img style="width: 90px; height: auto; border-radius: 0px;"
-                              src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                          </td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>120.000đ</td>
-                          <td>120</td>
-                          <td>Vegercy</td>
-                          <td>Việt Nam</td>
-                          <td>Đỏ</td>
-                          <td>Cotton 100%</td>
-                          <td>Hông có gì để mô tả cả</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm" data-toggle="modal"
-                              data-target="#productDetailModal">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td><img style="width: 90px; height: auto; border-radius: 0px;"
-                              src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                          </td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>120.000đ</td>
-                          <td>120</td>
-                          <td>Vegercy</td>
-                          <td>Việt Nam</td>
-                          <td>Đỏ</td>
-                          <td>Cotton 100%</td>
-                          <td>Hông có gì để mô tả cả</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm" data-toggle="modal"
-                              data-target="#productDetailModal">Chỉnh Sửa</button></td>
-                        </tr>
-                        <tr>
-                          <td><img style="width: 90px; height: auto; border-radius: 0px;"
-                              src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                          </td>
-                          <td>Áo Polo Bình Định</td>
-                          <td>120.000đ</td>
-                          <td>120</td>
-                          <td>Vegercy</td>
-                          <td>Việt Nam</td>
-                          <td>Đỏ</td>
-                          <td>Cotton 100%</td>
-                          <td>Hông có gì để mô tả cả</td>
-                          <td><button type="button" class="btn btn-inverse-info btn-sm" data-toggle="modal"
-                              data-target="#productDetailModal">Chỉnh Sửa</button></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="mt-2">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-secondary">1</button>
-                      <button type="button" class="btn btn-outline-secondary">2</button>
-                      <button type="button" class="btn btn-outline-secondary">3</button>
-                      <button type="button" class="btn btn-outline-secondary">4</button>
-                      <button type="button" class="btn btn-outline-secondary"><i
-                          class="mdi mdi mdi-arrow-right"></i></button>
-                    </div>
-                  </div>
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+            <div id="settings-trigger"><i class="typcn typcn-cog-outline"></i></div>
+            <div id="theme-settings" class="settings-panel">
+                <i class="settings-close typcn typcn-times"></i>
+                <p class="settings-heading">SIDEBAR SKINS</p>
+                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                    Light
                 </div>
-              </div>
+                <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Dark
+                </div>
+                <p class="settings-heading mt-2">HEADER SKINS</p>
+                <div class="color-tiles mx-0 px-4">
+                    <div class="tiles success"></div>
+                    <div class="tiles warning"></div>
+                    <div class="tiles danger"></div>
+                    <div class="tiles info"></div>
+                    <div class="tiles dark"></div>
+                    <div class="tiles default"></div>
+                </div>
             </div>
-          </div>
-
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
-                    href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrapdash</a>. All
-                  rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Free <a
-                    href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrap dashboard</a>
-                  templates from Bootstrapdash.com</span>
-              </div>
-            </div>
-          </div>
-        </footer>
+
         <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                        <i class="typcn typcn-device-desktop menu-icon"></i>
+                        <span class="menu-title">Bảng Điều Khiển</span>
+                        <!-- <div class="badge badge-danger">new</div> -->
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlydanhmuc.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Danh Mục</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlychungloai.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Chủng Loại</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlysanpham.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Sản Phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlytaikhoan.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Tài Khoản</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlydonhang.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Đơn Hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlykhuyenmai.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Khuyến Mãi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quanlydanhgia.html">
+                        <i class="typcn typcn-document-text menu-icon"></i>
+                        <span class="menu-title">Quản Lý Đánh Giá</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel" ng-controller="ProductController">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card mb-0">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="card-title mt-3">Danh Sách Sản Phẩm</h4>
+                                    </div>
+                                    <div class="col-lg-6 d-flex justify-content-end align-items-end">
+                                        <button type="button" class="btn btn-inverse-success mb-3" data-toggle="modal"
+                                                data-target="#addProductModal">Thêm Sản
+                                            Phẩm
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Hành Động</th>
+                                            <th>Ảnh Chính</th>
+                                            <th>Tên SP</th>
+                                            <th>Giá</th>
+                                            <th>Số Lượng</th>
+                                            <th>Thương Hiệu</th>
+                                            <th>Nguồn Gốc</th>
+                                            <th>Màu Sắc</th>
+                                            <th>Chất Liệu</th>
+                                            <th>Mô Tả</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="product in products">
+                                            <td>
+                                                <button type="button" class="btn btn-inverse-info btn-sm"
+                                                        data-toggle="modal"
+                                                        data-target="#productDetailModal" ng-click="editProduct(product.id)">Chỉnh Sửa
+                                                </button>
+                                            </td>
+                                            <td><img style="width: 90px; height: auto; border-radius: 0px;"
+                                                     ng-src="{{ product.thumbnailImage }}"></td>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.price }}</td>
+                                            <td>{{ product.quantity }}</td>
+                                            <td>{{ product.brand }}</td>
+                                            <td>{{ product.madeIn }}</td>
+                                            <td>{{ product.color }}</td>
+                                            <td>{{ product.material }}</td>
+                                            <td>{{ product.description}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                                ng-disabled="currentPage === 0" ng-click="previousPage()">
+                                            <i class="mdi mdi-chevron-double-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                                ng-repeat="page in paginationButtons"
+                                                ng-class="{ 'btn-primary': page === currentPage }"
+                                                ng-click="goToPage(page)">
+                                            {{ page + 1 }}
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                                ng-disabled="currentPage === totalPages - 1" ng-click="nextPage()">
+                                            <i class="mdi mdi-chevron-double-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
+                        href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrapdash</a>. All
+                  rights reserved.</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Free <a
+                                    href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrap dashboard</a>
+                  templates from Bootstrapdash.com</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Add product this page-->
+            <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog"
+                 aria-labelledby="addProductModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addProductModalLabel">
+                                {{isEditMode ? 'Chỉnh Sửa Sản Phẩm' : 'Thêm Sản Phẩm'}}</h5>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                                    class="mdi mdi-close-box"></i></button>
+                        </div>
+                        <form class="forms-sample">
+                            <div class="row">
+                                <div class="col-md-6 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="productItem">Danh Mục Sản Phẩm</label>
+                                                <select id="productItem" ng-model="product.itemId" class="form-control"
+                                                        ng-options="item.id as item.name for item in items"
+                                                        ng-change="onItemChange(product.itemId)">
+                                                    <option value="">Chọn Danh Mục</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productCategory">Chủng Loại Sản Phẩm</label>
+                                                <select id="productCategory" ng-model="product.categoryId"
+                                                        class="form-control"
+                                                        ng-options="category.id as category.name for category in categories">
+                                                    <option value="">Chọn Chủng Loại</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" ng-if="!isEditMode">
+                                                <label>Hình Chính</label>
+                                                <input type="file" name="img[]" class="file-upload-default">
+                                                <div class="input-group col-xs-12">
+                                                    <input type="text" class="form-control file-upload-info" disabled
+                                                           placeholder="Tải lên Hình Ảnh">
+                                                    <span class="input-group-append">
+                                                            <button class="file-upload-browse btn btn-primary" type="button" disabled>Tải lên</button>
+                                                    </span>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="productThumbnailImage" class="col-sm-3 col-form-label">Đường
+                                                        dẫn ảnh chính</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="productThumbnailImage"
+                                                               ng-model="product.thumbnailImage" type="text"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh chính">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" ng-if="isEditMode">
+                                                <label >Hình Chính</label>
+                                                <img style="width: 110px; height: auto; border-radius: 0px;"
+                                                     ng-src="{{ product.thumbnailImage }}">
+                                                <div class="form-group row">
+                                                    <label for="productThumbnailImage" class="col-sm-3 col-form-label">Đường
+                                                        dẫn ảnh chính</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="productThumbnailImage"
+                                                               ng-model="product.thumbnailImage" type="text"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh chính">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productName">Tên Sản Phẩm</label>
+                                                <input id="productName" ng-model="product.name" type="text"
+                                                       class="form-control"
+                                                       placeholder="Tên Sản Phẩm">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productPrice">Giá Sản Phẩm</label>
+                                                <input id="productPrice" ng-model="product.price" type="number"
+                                                       class="form-control"
+                                                       placeholder="Giá Sản Phẩm">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productQuantity">Số Lượng Sản Phẩm</label>
+                                                <input id="productQuantity" ng-model="product.quantity" type="number"
+                                                       class="form-control"
+                                                       placeholder="Số Lượng Sản Phẩm">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productBrand">Thương Hiệu Sản Phẩm</label>
+                                                <input id="productBrand" ng-model="product.brand" type="text"
+                                                       class="form-control"
+                                                       placeholder="Thương Hiệu Sản Phẩm">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="productMadeIn">Nguồn Gốc Sản Phẩm</label>
+                                                <input id="productMadeIn" ng-model="product.madeIn" type="text"
+                                                       class="form-control"
+                                                       placeholder="Nguồn Gốc Sản Phẩm">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productColor">Màu Sản Phẩm</label>
+                                                <input id="productColor" ng-model="product.color" type="text"
+                                                       class="form-control"
+                                                       placeholder="Màu Sản Phẩm">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productMaterial">Chất Liệu Sản Phẩm</label>
+                                                <input id="productMaterial" ng-model="product.material" type="text"
+                                                       class="form-control"
+                                                       placeholder="Chất Liệu Sản Phẩm">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productDescription">Mô Tả Sản Phẩm</label>
+                                                <input id="productDescription" ng-model="product.description"
+                                                       type="text" class="form-control"
+                                                       placeholder="Mô Tả Sản Phẩm">
+                                            </div>
+                                            <div class="form-group" ng-if="!isEditMode">
+                                                <label>Các Kích Thước Sản Phẩm</label>
+
+                                                <!-- Nhóm kích thước cho QUẦN ÁO -->
+                                                <div class="form-group row" ng-show="showSizeGroup.sizes">
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">S</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.S.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.S.checked"
+                                                               ng-model="sizeQuantities.S.quantity">
+                                                    </div>
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">M</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.M.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.M.checked"
+                                                               ng-model="sizeQuantities.M.quantity">
+                                                    </div>
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">L</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.L.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.L.checked"
+                                                               ng-model="sizeQuantities.L.quantity">
+                                                    </div>
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">XL</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.XL.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.XL.checked"
+                                                               ng-model="sizeQuantities.XL.quantity">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Nhóm kích thước cho GIÀY -->
+                                                <div class="form-group row" ng-show="showSizeGroup.shoes">
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">36</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.size36.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.size36.checked"
+                                                               ng-model="sizeQuantities.size36.quantity">
+                                                    </div>
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">37</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.size37.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.size37.checked"
+                                                               ng-model="sizeQuantities.size37.quantity">
+                                                    </div>
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">38</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.size38.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.size38.checked"
+                                                               ng-model="sizeQuantities.size38.quantity">
+                                                    </div>
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">39</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.size39.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.size39.checked"
+                                                               ng-model="sizeQuantities.size39.quantity">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Nhóm kích thước cho BỘ SƯU TẬP, PHỤ KIỆN, TÚI -->
+                                                <div class="form-group row" ng-show="showSizeGroup.freesize">
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <!-- Điều chỉnh khoảng cách giữa label và checkbox -->
+                                                            <label class="">FreeSize</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;"
+                                                                   ng-model="sizeQuantities.Freesize.checked">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities.Freesize.checked"
+                                                               ng-model="sizeQuantities.Freesize.quantity">
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div>-->
+<!--                                                <div ng-show="showSizeGroup.sizes">-->
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.S.checked"> Size S</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.S.quantity" ng-show="sizeQuantities.S.checked">-->
+
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.M.checked"> Size M</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.M.quantity" ng-show="sizeQuantities.M.checked">-->
+
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.L.checked"> Size L</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.L.quantity" ng-show="sizeQuantities.L.checked">-->
+
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.XL.checked"> Size XL</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.XL.quantity" ng-show="sizeQuantities.XL.checked">-->
+<!--                                                </div>-->
+
+<!--                                                <div ng-show="showSizeGroup.shoes">-->
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size36.checked"> Size 36</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.size36.quantity" ng-show="sizeQuantities.size36.checked">-->
+
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size37.checked"> Size 37</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.size37.quantity" ng-show="sizeQuantities.size37.checked">-->
+
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size38.checked"> Size 38</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.size38.quantity" ng-show="sizeQuantities.size38.checked">-->
+
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size39.checked"> Size 39</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.size39.quantity" ng-show="sizeQuantities.size39.checked">-->
+<!--                                                </div>-->
+
+<!--                                                <div ng-show="showSizeGroup.freesize">-->
+<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.Freesize.checked"> Freesize</label>-->
+<!--                                                    <input type="text" ng-model="sizeQuantities.Freesize.quantity" ng-show="sizeQuantities.Freesize.checked">-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                            <div class="form-group" ng-if="isEditMode">
+                                                <label>Các Kích Thước Sản Phẩm</label>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3 text-center" ng-repeat="size in product.productSizes">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label class="">{{ size.size }}</label>
+                                                        </div>
+                                                        <div class="p-3" style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   ng-model="sizeQuantities[size.size].checked"
+                                                                   ng-true-value="'true'" ng-false-value="'false'"
+                                                                    ng-checked="sizeQuantities[size.size].checked"
+                                                            >
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               placeholder="Số Lượng"
+                                                               style="margin: 0 auto;"
+                                                               ng-show="sizeQuantities[size.size].checked"
+                                                               ng-model="sizeQuantities[size.size].quantity">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" ng-if="!isEditMode">
+                                                <label>Hình Ảnh Khác Của Sản Phẩm</label>
+                                                <input type="file" name="img[]" class="file-upload-default">
+                                                <div class="input-group col-xs-12">
+                                                    <input type="text" class="form-control file-upload-info" disabled
+                                                           placeholder="Tải lên Hình Ảnh">
+                                                    <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Tải lên</button>
+                      </span>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn 1</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 1">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn 2</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 2">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn 3</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 3">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" ng-if="isEditMode">
+                                                <div><label >Hình Ảnh Khác Của Sản Phẩm</label></div>
+                                                <div class="row">
+                                                    <div class="d-flex">
+                                                        <div ng-repeat="productImage in product.productImages">
+                                                            <img style="width: 90px; height: auto; border-radius: 0px;"
+                                                                 ng-src="{{ productImage.imageUrl }}" class="mr-2">
+
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-3">
+                                                            <button class="btn btn-inverse-info">Chỉnh Sửa</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="productImage in product.productImages">
+                                                    <div class="row">
+                                                        <label class="col-sm-3 col-form-label">Đường dẫn {{$index + 1}}</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" ng-model="productImage.imageUrl" class="form-control form-control-sm"
+                                                                   placeholder="Đường dẫn ảnh {{$index + 1}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-inverse-success mr-2"
+                                                        ng-click="createProduct()" ng-if="!isEditMode">Thêm
+                                                </button>
+                                                <button type="submit" class="btn btn-inverse-warning mr-2"
+                                                        ng-click="updateProduct()" ng-if="isEditMode">Cập Nhập
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-danger mr-2"
+                                                        ng-click="deleteProduct(product.id)" ng-if="isEditMode">Xoá
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info mr-2"
+                                                        ng-click="resetForm()" ng-if="!isEditMode">Làm Mới
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End add product for this page-->
+
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+</div>
+<!-- container-scroller -->
 
-  <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="productDetailModalLabel">Thông Sản Phẩm</h5>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close-box"></i></button>
-        </div>
-        <form class="forms-sample">
-          <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="">Hình Chính</label>
-                    <img style="width: 110px; height: auto; border-radius: 0px;"
-                      src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Link</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                        </div>
-                      </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Tên Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Tên Sản Phẩm"
-                      value="Áo Polo Bình Định">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Giá Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Giá Sản Phẩm" value="120.000đ">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Số Lượng Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Số Lượng Sản Phẩm" value="120">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Thương Hiệu Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Thương Hiệu Sản Phẩm"
-                      value="Vegercy">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Nguồn Gốc Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Nguồn Gốc Sản Phẩm" value="Việt Nam">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Màu Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Màu Sản Phẩm" value="Đỏ">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="name">Chất Liệu Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Chất Liệu Sản Phẩm"
-                      value="Cotton 100%">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Mô Tả Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Mô Tả Sản Phẩm"
-                      value="Hông có gì để mô tả cả">
-                  </div>
-                  <div class="form-group">
-                    <label>Danh Mục Sản Phẩm</label>
-                    <select class="form-control">
-                      <option>Áo</option>
-                      <option>Quần</option>
-                      <option>Váy</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Chủng Loại Sản Phẩm</label>
-                    <select class="form-control">
-                      <option>Áo Polo</option>
-                      <option>Áo Thun</option>
-                      <option>Áo Cadigan</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Các Kích Thước Sản Phẩm</label>
-                    <div class="form-group row">
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-2">S</span>
-                        <input type="checkbox" class="form-check-input mb-2" checked>
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng"  value="10">
-                      </div>
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-2">M</span>
-                        <input type="checkbox" class="form-check-input mb-2">
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng">
-                      </div>
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-1">L</span>
-                        <input type="checkbox" class="form-check-input mb-2" checked>
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng" value="10">
-                      </div>
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-2">XL</span>
-                        <input type="checkbox" class="form-check-input mb-2">
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div><label for="name">Hình Ảnh Khác Của Sản Phẩm</label></div>
-                    <div class="row">
-                      <div class="d-flex">
-                        <div>
-                          <img style="width: 90px; height: auto; border-radius: 0px;"
-                            src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                          <img style="width: 90px; height: auto; border-radius: 0px;"
-                            src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                          <img style="width: 90px; height: auto; border-radius: 0px;"
-                            src="https://img.ltwebstatic.com/images3_pi/2024/05/10/e9/171531295154d594d8aad0b797e57704147911df0f_thumbnail_900x.webp">
-                        </div>
-                        <div class="d-flex align-items-center ml-3">
-                          <button class="btn btn-inverse-info">Chỉnh Sửa</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Link 1</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Link 2</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Link 3</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <button type="submit" class="btn btn-inverse-warning mr-2">Cập Nhập</button>
-                    <button type="submit" class="btn btn-inverse-danger mr-2">Xoá</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
-  <!-- Add product this page-->
-  <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addProductModalLabel">Thêm Sản Phẩm</h5>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close-box"></i></button>
-        </div>
-        <form class="forms-sample">
-          <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label>Danh Mục Sản Phẩm</label>
-                    <select class="form-control">
-                      <option>Áo</option>
-                      <option>Quần</option>
-                      <option>Váy</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Chủng Loại Sản Phẩm</label>
-                    <select class="form-control">
-                      <option>Áo Polo</option>
-                      <option>Áo Thun</option>
-                      <option>Áo Cadigan</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Hình Chính</label>
-                    <input type="file" name="img[]" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                      <input type="text" class="form-control file-upload-info" disabled placeholder="Tải lên Hình Ảnh">
-                      <span class="input-group-append">
-                        <button class="file-upload-browse btn btn-primary" type="button">Tải lên</button>
-                      </span>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Link</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Tên Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Tên Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Giá Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Giá Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Số Lượng Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Số Lượng Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Thương Hiệu Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Thương Hiệu Sản Phẩm">
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="name">Nguồn Gốc Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Nguồn Gốc Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Màu Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Màu Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Chất Liệu Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Chất Liệu Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Mô Tả Sản Phẩm</label>
-                    <input type="text" class="form-control" id="name" placeholder="Mô Tả Sản Phẩm">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Các Kích Thước Sản Phẩm</label>
-                    <div class="form-group row">
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-2">S</span>
-                        <input type="checkbox" class="form-check-input mb-2">
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng">
-                      </div>
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-2">M</span>
-                        <input type="checkbox" class="form-check-input mb-2 ">
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng">
-                      </div>
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-1">L</span>
-                        <input type="checkbox" class="form-check-input mb-2 ">
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng">
-                      </div>
-                      <div class="col-sm-3 d-flex flex-column align-items-center">
-                        <span for="" class="pl-2">XL</span>
-                        <input type="checkbox" class="form-check-input mb-2">
-                        <input type="text" class="form-control form-control-sm" placeholder="Số Lượng">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Hình Ảnh Khác Của Sản Phẩm</label>
-                    <input type="file" name="img[]" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                      <input type="text" class="form-control file-upload-info" disabled placeholder="Tải lên Hình Ảnh">
-                      <span class="input-group-append">
-                        <button class="file-upload-browse btn btn-primary" type="button">Tải lên</button>
-                      </span>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Link 1</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Link 2</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Link 3</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" placeholder="URL Image">
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <button type="submit" class="btn btn-success mr-2">Thêm Sản Phẩm</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- End add product for this page-->
-
-  <!-- base:js -->
-  <script src="../vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="../vendors/typeahead.js/typeahead.bundle.min.js"></script>
-  <script src="../vendors/select2/select2.min.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/template.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script>
+<!-- base:js -->
+<script src="../vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<script src="../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+<script src="../vendors/select2/select2.min.js"></script>
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="../js/off-canvas.js"></script>
+<script src="../js/hoverable-collapse.js"></script>
+<script src="../js/template.js"></script>
+<script src="../js/settings.js"></script>
+<script src="../js/todolist.js"></script>
+<script src="../js/file-upload.js"></script>
+<script src="../js/typeahead.js"></script>
+<script src="../js/select2.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<!--  <script>-->
+<!--    // $(document).ready(function () {-->
+<!--    //   $('#productDetailModal').modal('show');-->
+<!--    // });-->
+<!--  </script>-->
+<script>
     // $(document).ready(function () {
-    //   $('#productDetailModal').modal('show');
+    //     $('#addProductModal').modal('show');
     // });
-    // $(document).ready(function () {
-    //   $('#addProductModal').modal('show');
-    // });
-  </script>
-  <script src="../js/file-upload.js"></script>
-  <script src="../js/typeahead.js"></script>
-  <script src="../js/select2.js"></script>
-  <!-- End custom js for this page-->
+</script>
+<script src="../js/angular/angular.min.js"></script>
+<script src="../jsAdmin/app.js"></script>
+<script src="../jsAdmin/item/itemService.js"></script>
+<script src="../jsAdmin/category/categoryService.js"></script>
+<script src="../jsAdmin/product/productService.js"></script>
+<script src="../jsAdmin/product/productController.js"></script>
+<!-- End custom js for this page-->
 </body>
 
 </html>

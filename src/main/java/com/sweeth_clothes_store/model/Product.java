@@ -20,10 +20,10 @@ public class Product {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "thumbnail_image")
+    @Column(name = "thumbnail_image", nullable = false)
     private String thumbnailImage;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", unique = true, nullable = false, length = 255)
     private String name;
 
     @Column(name = "price", nullable = false)
@@ -32,16 +32,16 @@ public class Product {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false, length = 255)
     private String brand;
 
-    @Column(name = "made_in")
+    @Column(name = "made_in", nullable = false, length = 255)
     private String madeIn;
 
-    @Column(name = "color")
+    @Column(name = "color", nullable = false, length = 255)
     private String color;
 
-    @Column(name = "material")
+    @Column(name = "material", nullable = false, length = 255)
     private String material;
 
     @Column(name = "description", nullable = false)

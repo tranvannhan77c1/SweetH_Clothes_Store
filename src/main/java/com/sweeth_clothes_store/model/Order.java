@@ -32,6 +32,9 @@ public class Order {
     @Column(name = "status", nullable = false, length = 100)
     private String status;
 
+    @Column(name = "payment", nullable = false, length = 100)
+    private String payment;
+
     @Column(name = "address", nullable = false, length = 500)
     private String address;
 

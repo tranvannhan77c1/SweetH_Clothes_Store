@@ -19,25 +19,25 @@ public class Account {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "username", unique = true, nullable = false)
+    @Column(name = "username", unique = true, nullable = false, length = 50)
     private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email", unique = true, nullable = false)
+    @Column(name = "email", unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", length = 100)
     private String fullName;
 
-    @Column(name = "phone", unique = true , nullable = false)
+    @Column(name = "phone", unique = true , nullable = false, length = 10)
     private String phone;
 
-    @Column(name = "address")
+    @Column(name = "address", length = 500)
     private String address;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role", nullable = false, length = 20)
     private String role = "Customer"; // Giá trị mặc định
 
 	@JsonIgnore

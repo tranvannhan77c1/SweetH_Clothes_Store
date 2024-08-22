@@ -7,11 +7,10 @@ angular.module('app')
     $scope.feedbacks = [];
     $scope.paginationButtons = [];
 
-    $scope.getFeedbacks = function(page, size) {
-        FeedbackService.getAllFeedbacksPage(page, size)
+    $scope.getFeedbacksPage = function(page, size) {
+        FeedbackService.getFeedbacksPage(page, size)
             .then(function(data) {
                 $scope.feedbacks = data.content;
-                console.log(data.content);
                 $scope.totalPages = data.totalPages;
                 initializePagination();
             })
@@ -43,14 +42,14 @@ angular.module('app')
     $scope.goToPage = function(page) {
         if (page >= 0 && page < $scope.totalPages) {
             $scope.currentPage = page;
-            $scope.getFeedbacks($scope.currentPage, $scope.pageSize);
+            $scope.getFeedbacksPage($scope.currentPage, $scope.pageSize);
         }
     };
 
     $scope.nextPage = function() {
         if ($scope.currentPage < $scope.totalPages - 1) {
             $scope.currentPage++;
-            $scope.getFeedbacks($scope.currentPage, $scope.pageSize);
+            $scope.getFeedbacksPage($scope.currentPage, $scope.pageSize);
             if ($scope.currentPage > 1) {
                 initializePagination();
             }
@@ -60,12 +59,12 @@ angular.module('app')
     $scope.previousPage = function() {
         if ($scope.currentPage > 0) {
             $scope.currentPage--;
-            $scope.getFeedbacks($scope.currentPage, $scope.pageSize);
+            $scope.getFeedbacksPage($scope.currentPage, $scope.pageSize);
             if ($scope.currentPage < $scope.totalPages - 2) {
                 initializePagination();
             }
         }
     };
 
-    $scope.getFeedbacks($scope.currentPage, $scope.pageSize);
+    $scope.getFeedbacksPage($scope.currentPage, $scope.pageSize);
 }]);

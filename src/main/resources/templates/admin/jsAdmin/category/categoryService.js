@@ -2,9 +2,9 @@ angular.module('app')
     .service('CategoryService', ['$http', function($http) {
         var baseUrl = 'http://localhost:8080/api/categories';
 
-        this.getAllCategories = function(page, size) {
+        this.getCategoriesPage = function(page, size) {
             page = page || 0;
-            size = size || 8;
+            size = size || 5;
 
             return $http.get(baseUrl, {
                 params: { page: page, size: size }
@@ -60,10 +60,21 @@ angular.module('app')
                 });
         };
 
-        this.checkCategoryName = function(name, excludeId) {
+        this.checkName = function(name, excludeId) {
             return $http.get(baseUrl + '/check-name', {
                 params: { name: name, excludeId: excludeId }
             }).then(response => response.data);
+        };
+
+        this.getCategoriesByItemId = function(itemId) {
+            return $http.get(baseUrl + '/by-item/' + itemId)
+                .then(function(response) {
+                    return response.data;
+                })
+                .catch(function(error) {
+                    console.error('Error fetching categories', error);
+                    throw error;
+                });
         };
 
     }]);

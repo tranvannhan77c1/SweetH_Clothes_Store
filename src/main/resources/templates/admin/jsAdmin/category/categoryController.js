@@ -12,8 +12,8 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
-        function getCategories(page, size) {
-            return CategoryService.getAllCategories(page, size)
+        function getCategoriesPage(page, size) {
+            return CategoryService.getCategoriesPage(page, size)
                 .then(function (data) {
                     $scope.categories = data.content;
                     $scope.totalPages = data.totalPages;
@@ -51,7 +51,7 @@ angular.module('app')
                 if (isValid) {
                     CategoryService.createCategory($scope.category)
                         .then(function (data) {
-                            getCategories($scope.currentPage, $scope.pageSize)
+                            getCategoriesPage($scope.currentPage, $scope.pageSize)
                                 .then(function () {
                                     $scope.goToPage($scope.totalPages - 1);
                                     $scope.highlightCategory(data.id);
@@ -73,7 +73,7 @@ angular.module('app')
                 if (isValid) {
                     CategoryService.updateCategory($scope.category.id, $scope.category)
                         .then(function (data) {
-                            getCategories($scope.currentPage, $scope.pageSize);
+                            getCategoriesPage($scope.currentPage, $scope.pageSize);
                             $scope.highlightCategory(data.id);
                             $scope.category = data;
                             $scope.isEditMode = true;
@@ -90,7 +90,7 @@ angular.module('app')
         $scope.deleteCategory = function (id) {
             CategoryService.deleteCategory(id)
                 .then(function () {
-                    getCategories($scope.currentPage, $scope.pageSize);
+                    getCategoriesPage($scope.currentPage, $scope.pageSize);
                     $scope.resetForm();
                     handleSuccess('Xoá chủng loại thành công!');
                 })
@@ -101,7 +101,7 @@ angular.module('app')
         };
 
         function loadData() {
-            getCategories($scope.currentPage, $scope.pageSize);
+            getCategoriesPage($scope.currentPage, $scope.pageSize);
             getItems();
         }
 
@@ -136,7 +136,7 @@ angular.module('app')
                 return;
             }
 
-            CategoryService.checkCategoryName($scope.category.name, $scope.category.id)
+            CategoryService.checkName($scope.category.name, $scope.category.id)
                 .then(function (exists) {
                     if (exists) {
                         handleError('Tên chủng loại đã tồn tại.');
@@ -171,14 +171,14 @@ angular.module('app')
         $scope.goToPage = function (page) {
             if (page >= 0 && page < $scope.totalPages) {
                 $scope.currentPage = page;
-                getCategories($scope.currentPage, $scope.pageSize);
+                getCategoriesPage($scope.currentPage, $scope.pageSize);
             }
         };
 
         $scope.nextPage = function () {
             if ($scope.currentPage < $scope.totalPages - 1) {
                 $scope.currentPage++;
-                getCategories($scope.currentPage, $scope.pageSize);
+                getCategoriesPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage > 1) {
                     initializePagination();
                 }
@@ -188,7 +188,7 @@ angular.module('app')
         $scope.previousPage = function () {
             if ($scope.currentPage > 0) {
                 $scope.currentPage--;
-                getCategories($scope.currentPage, $scope.pageSize);
+                getCategoriesPage($scope.currentPage, $scope.pageSize);
                 if ($scope.currentPage < $scope.totalPages - 2) {
                     initializePagination();
                 }

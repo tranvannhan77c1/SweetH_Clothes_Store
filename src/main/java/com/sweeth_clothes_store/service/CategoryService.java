@@ -39,7 +39,6 @@ public class CategoryService {
         Item item = itemRepository.findById(categoryDTO.getItemId())
                 .orElseThrow(() -> new RuntimeException("Item not found with id: " + categoryDTO.getItemId()));
         category.setItem(item);
-
         category = categoryRepository.save(category);
         return CategoryMapper.toCategoryDTO(category);
     }
@@ -62,6 +61,13 @@ public class CategoryService {
 
     public List<CategoryDTO> getAllCategories() {
         List<Category> categories = categoryRepository.findAll();
+        return categories.stream()
+                .map(CategoryMapper::toCategoryDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<CategoryDTO> getCategoriesByItemId(Integer itemId) {
+        List<Category> categories = categoryRepository.findByItemId(itemId);
         return categories.stream()
                 .map(CategoryMapper::toCategoryDTO)
                 .collect(Collectors.toList());

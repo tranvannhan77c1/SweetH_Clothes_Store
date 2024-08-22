@@ -9,4 +9,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     boolean existsByName(String name);
 
     boolean existsByNameAndIdNot(String name, Long excludeId);
+
+
 }

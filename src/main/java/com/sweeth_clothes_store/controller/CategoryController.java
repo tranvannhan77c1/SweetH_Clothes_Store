@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController {
@@ -61,5 +63,11 @@ public class CategoryController {
             @RequestParam(value = "excludeId", required = false) Long excludeId) {
         boolean exists = categoryService.existsByName(name, excludeId);
         return ResponseEntity.ok(exists);
+    }
+
+    @GetMapping("/by-item/{itemId}")
+    public ResponseEntity<List<CategoryDTO>> getCategoriesByItemId(@PathVariable Integer itemId) {
+        List<CategoryDTO> categories = categoryService.getCategoriesByItemId(itemId);
+        return ResponseEntity.ok(categories);
     }
 }

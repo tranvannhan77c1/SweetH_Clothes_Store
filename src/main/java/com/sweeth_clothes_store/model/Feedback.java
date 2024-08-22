@@ -23,7 +23,7 @@ public class Feedback {
 	@Column(name = "rate", nullable = false)
 	private Integer rate;
 
-	@Column(name = "content", nullable = false)
+	@Column(name = "content", nullable = false, length = 300)
 	private String content;
 
 	@Column(name = "create_date", nullable = false)
@@ -31,7 +31,7 @@ public class Feedback {
 	private Date createDate;
 
 	@Column(name = "status")
-	private boolean status;
+	private boolean status = true;
 
 	@ManyToOne
 	@JoinColumn(name = "account_id", nullable = false)

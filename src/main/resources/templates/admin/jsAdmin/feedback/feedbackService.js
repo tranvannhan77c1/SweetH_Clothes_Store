@@ -2,7 +2,7 @@ angular.module('app')
     .service('FeedbackService', ['$http', function($http) {
         var baseUrl = 'http://localhost:8080/api/feedbacks';
 
-        this.getAllFeedbacksPage = function(page, size) {
+        this.getFeedbacksPage = function(page, size) {
             page = page || 0;
             size = size || 8;
             return $http.get(baseUrl, {

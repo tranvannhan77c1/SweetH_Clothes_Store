@@ -16,6 +16,7 @@ public class OrderDTO {
     private LocalDateTime orderDate;
     private BigDecimal totalAmount;
     private String status;
+    private String payment;
     private String address;
     private String phone;
     private Integer voucherId;

@@ -2,7 +2,7 @@ angular.module('app')
     .service('AccountService', ['$http', function($http) {
         var baseUrl = 'http://localhost:8080/api/accounts';
 
-        this.getAllAccounts = function(page, size) {
+        this.getAccountsPage = function(page, size) {
             page = page || 0; // Trang mặc định là 0
             size = size || 8; // Kích thước mặc định là 8
 
