@@ -5,6 +5,8 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
     $scope.cart = [];
     $scope.showSuccessAlert = false;
     $scope.userInfo = null;
+    $scope.paymentMethod = 'cod';
+
 
     // Load giỏ hàng từ local storage khi trang được tải
     var storedCart = localStorage.getItem('cart');
@@ -60,6 +62,48 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         $scope.userInfo = JSON.parse(storedUserInfo);
     }
 
+    $scope.paymentCod = function() {
+        let order_totalAmount = 0;
+        var orderDetail = [];
+        $scope.cart.forEach(product => {
+            order_totalAmount += product.price * product.quantity;
+            orderDetail.push({
+                quantity: product.quantity,
+                price: product.price,
+                size: product.size,
+                productId: product.id
+            })
+        })
+
+        var order = {
+            totalAmount: order_totalAmount,
+            status: "CHƯA THANH TOÁN",
+            address: $scope.userInfo.address,
+            phone: $scope.userInfo.phone,
+            voucherId: 1,
+            accountId: $scope.userInfo.id,
+            orderDetails: orderDetail
+        }
+
+        var orderRequest = {
+            orderDTO: order
+        }
+
+        console.log(orderRequest);
+
+        $http.post('http://localhost:8080/api/orders/createOrder', orderRequest)
+            .then(function(response) {
+                // Handle success
+                console.log('Payment successful:', response.data);
+                window.location.href = '../pages/confirmation.html'
+
+            })
+            .catch(function(error) {
+                // Handle error
+                console.error('Payment failed:', error);
+            });
+    }
+
 
     $scope.payment = function() {
         let order_totalAmount = 0;
@@ -76,7 +120,7 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
 
         var order = {
             totalAmount: order_totalAmount,
-            status: null,
+            status: "ĐÃ THANH TOÁN",
             address: $scope.userInfo.address,
             phone: $scope.userInfo.phone,
             voucherId: 1,

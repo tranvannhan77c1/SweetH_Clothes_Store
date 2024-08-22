@@ -212,32 +212,34 @@
                             </ul>
                             <div class="payment_item">
                                 <div class="radion_btn">
-                                    <input type="radio" id="f-option5" name="selector">
-                                    <label for="f-option5">Thanh toàn khi nhận hàng</label>
+                                    <input type="radio" id="f-option5" name="selector" ng-model="paymentMethod" value="cod" checked>
+                                    <label for="f-option5">Thanh toán khi nhận hàng</label>
                                     <div class="check"></div>
                                 </div>
                                 <p>Vui lòng thanh toán cho shipper khi nhận hàng</p>
                             </div>
-                            <div class="payment_item active">
+                            <div class="payment_item">
                                 <div class="radion_btn">
-                                    <input type="radio" id="f-option6" name="selector">
-                                    <label for="f-option6">Ví VNPAY </label>
+                                    <input type="radio" id="f-option6" name="selector" ng-model="paymentMethod" value="vnpay">
+                                    <label for="f-option6">Ví VNPAY</label>
                                     <img src="../img/product/card.jpg" alt="">
                                     <div class="check"></div>
                                 </div>
-                                <p>Thanh toán qua ví điện tử VNPAY
-                                </p>
+                                <p>Thanh toán qua ví điện tử VNPAY</p>
                             </div>
                             <div class="creat_account">
-                                <input type="checkbox" id="f-option4" name="selector">
+                                <input type="checkbox" id="f-option4" name="termsAccepted" ng-model="termsAccepted">
                                 <label for="f-option4">Tôi đã đọc và chấp nhận </label>
                                 <a href="#">Điều khoản và điều kiện*</a>
                             </div>
                             <div class="text-center">
-                                <form ng-submit="payment()" method="post">
-                                    <button class="button button-paypal" type="submit">Tiếp tục với VNPAY</button>
+                                <form ng-submit="paymentMethod === 'vnpay' ? payment() : paymentCod()" method="post">
+                                    <button class="button button-paypal" type="submit">
+                                        {{ paymentMethod === 'vnpay' ? 'Tiếp tục với VNPAY' : 'Tiếp tục' }}
+                                    </button>
                                 </form>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

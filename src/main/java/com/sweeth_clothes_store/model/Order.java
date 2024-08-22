@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import org.springframework.http.HttpStatusCode;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;

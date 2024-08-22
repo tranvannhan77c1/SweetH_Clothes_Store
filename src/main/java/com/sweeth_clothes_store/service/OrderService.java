@@ -62,7 +62,7 @@ public class OrderService {
     @Transactional
     public Order createOrder(OrderDTO orderDto) {
         orderDto.setOrderDate(LocalDateTime.now());
-        orderDto.setStatus("ĐÃ THANH TOÁN");
+//        orderDto.setStatus("ĐÃ THANH TOÁN");
 
         //map orderDto to order
         Order order = OrderMapper.toOrder(orderDto);

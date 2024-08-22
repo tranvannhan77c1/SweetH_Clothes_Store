@@ -72,7 +72,7 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
             orderDTO: order,
         }
 
-        $http.post('http://localhost:8080/api/v1/customer/orders/createOrder', orderRequest)
+        $http.post('http://localhost:8080/api/orders/createOrder', orderRequest)
             .then(function (response) {
                 // Handle success
                 console.log('Payment successful:', response.data);
@@ -99,7 +99,35 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
                     });
             });
     }
-    $scope.payment()
+
+    try {
+        var params = getQueryParams();
+        if (params) {
+            $scope.payment()
+        }
+    } catch (e) {
+        console.log("cod")
+        document.getElementById('loading').style.display = 'block';
+        // localStorage.removeItem('cart')
+
+        $scope.orderInfo = null;
+        $http.get('http://localhost:8080/api/orders/UserOrder?userID=' + $scope.userInfo.id)
+            .then(function (response) {
+                $scope.orderInfo = response.data
+                console.log($scope.orderInfo)
+            })
+            .catch(function (error) {
+                // Handle error
+                console.error('Payment failed:', error);
+            });
+    }
+
+    // if(params) {
+    //     $scope.payment()
+    // } else {
+
+    // }
+
 
     // var params = getQueryParams();
     // var vnp_ResponseCode = params['vnp_ResponseCode'];
