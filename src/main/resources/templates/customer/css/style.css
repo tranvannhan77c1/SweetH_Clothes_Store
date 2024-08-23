@@ -1435,7 +1435,7 @@ a {
     /*CSS new*/
     border-color: #8B1A1A;
     background: transparent;
-    color: #222;
+    color: #8B1A1A;
 
 }
 
@@ -3958,7 +3958,7 @@ a {
 
 .login_box_area .login_box_img .button:hover {
     background: #c5322d !important;
-    color: #fff !important;
+    color:#8B1A1A !important;
     border-color: #c5322d !important
 }
 
@@ -6130,6 +6130,68 @@ fieldset[disabled] .btn {
 .product-size{
     margin-right: 13px;
 }
+.order-detail-modal .modal-dialog {
+    max-width: 80%; /* Tăng chiều rộng của modal */
+    margin: 30px auto; /* Căn giữa modal */
+    margin-top: 100px;
+}
+
+.order-detail-modal .modal-content {
+    border-radius: 10px; /* Bo tròn các góc */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ */
+    padding: 30px; /* Tăng padding */
+    min-height: 500px;
+    /* Tăng chiều cao tối thiểu */
+}
+
+.order-detail-modal .modal-body {
+    padding: 30px; /* Tăng padding trong nội dung modal */
+    max-height: 400px; /* Giới hạn chiều cao nội dung, thêm cuộn nếu cần */
+    overflow-y: auto;
+    margin-top: -50px/* Thêm thanh cuộn nếu nội dung vượt quá chiều cao */
+}
+
+.order-detail-modal .table {
+    margin-top: 20px; /* Đẩy bảng xuống dưới để tạo khoảng cách */
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Tạo khoảng cách giữa các hàng */
+}
+
+.order-detail-modal .btn-secondary {
+    background-color: #8B1A1A;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 990px;
+}
+
+.order-detail-modal .btn-secondary:hover {
+    border: 2px solid #8B1A1A; /* Thêm viền màu #8B1A1A */
+    background-color: white; /* Màu nền chuyển thành trắng */
+    color: #8B1A1A; /* Màu chữ chuyển thành #8B1A1A */
+}
+.order-detail-modal .order-total {
+    flex-grow: 1;
+    text-align: right; /* Đổi thành căn phải */
+    font-weight: bold;
+    margin-right: -200px;
+    display: flex;
+    justify-content: flex-end; /* Canh nội dung về bên phải */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+}
+/* Thêm vào file CSS của bạn hoặc trong thẻ <style> trong HTML */
+.error-message {
+    font-weight: bold; /* In đậm */
+    color: #8B1A1A;
+    /* Màu đỏ (hoặc màu bạn chọn) */
+}
+
+
+
+
 
 
 

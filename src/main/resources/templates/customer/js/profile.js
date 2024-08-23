@@ -1,9 +1,14 @@
 var app = angular.module('profileApp', []);
 
-app.controller('ProfileController', ['$scope', '$http', '$window', function($scope, $http) {
+app.controller('ProfileController', ['$scope', '$http', function($scope, $http) {
     $scope.cart = [];
     $scope.userInfo = null;
-    
+    $scope.selectedOrder = null;
+    $scope.passwordData = {
+        oldPassword: '',
+        newPassword: '',
+        confirmNewPassword: ''
+    };
     // Load giỏ hàng từ local storage khi trang được tải
     var storedCart = localStorage.getItem('cart');
     if (storedCart) {
@@ -21,34 +26,46 @@ app.controller('ProfileController', ['$scope', '$http', '$window', function($sco
     $scope.fetchOrder = function() {
         // Get the token and remove double quotes
         const token = loginToken.replace(/"/g, '').trim();
-    
+
         $http({
             method: 'GET',
-            url: "http://localhost:8080/api/v1/customer/orders/userOrder",
+            url: "http://localhost:8080/api/orders/userOrder",
             params: { userID: $scope.userInfo.id },
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         })
-        .then(function(response) {
-            // Success callback
-            $scope.userOrders = response.data; // Assign response data
-        })
-        .catch(function(error) {
-            // Error callback
-            console.error('Error fetching orders:', error);
-            $scope.userOrders = null;
-        });
+            .then(function(response) {
+                // Success callback
+                $scope.userOrders = response.data; // Assign response data
+            })
+            .catch(function(error) {
+                // Error callback
+                console.error('Error fetching orders:', error);
+                $scope.userOrders = null;
+            });
     };
 
     $scope.fetchOrder();
+    $scope.viewOrderDetail = function(order) {
+        $scope.selectedOrder = order;
+        $('#orderDetailModal').modal('show');
+    };
 
     $scope.logout = function() {
         localStorage.removeItem('jwtToken');
-        localStorage.removeItem('accountDetail')
+        localStorage.removeItem('accountDetail');
         $scope.isLogin = false;
         // redirect to login page or reload the page
         window.location.href = '../index.html';
     };
-    
+
+    $scope.checkPasswordMatch = function() {
+        // Kiểm tra xem mật khẩu xác nhận có khớp với mật khẩu mới không
+        if ($scope.passwordData.confirmNewPassword !== $scope.passwordData.newPassword) {
+            $scope.passwordForm.confirmNewPassword.$setValidity('match', false);
+        } else {
+            $scope.passwordForm.confirmNewPassword.$setValidity('match', true);
+        }
+    };
 }]);
