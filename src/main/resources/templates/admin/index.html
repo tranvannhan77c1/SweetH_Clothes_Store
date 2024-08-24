@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
   <!-- Required meta tags -->
@@ -48,7 +48,7 @@
             </div>
           </li>
         </ul>
-        
+
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="typcn typcn-th-menu"></span>
         </button>
@@ -131,80 +131,38 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <div class="main-panel" ng-controller="StatisticsController">
         <div class="content-wrapper">
 
           <div class="row">
-            <div class="col-xl-6 grid-margin stretch-card flex-column">
-                <h5 class="mb-2 text-titlecase mb-4">Thống kê theo ngày</h5>
-              <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                      <div class="d-flex justify-content-between align-items-center mb-2">
-                        <p class="mb-0 text-muted">Doanh Thu</p>
-                        <p class="mb-0 text-muted">+1.37%</p>
+              <div class="col-xl-6 grid-margin stretch-card flex-column">
+                  <h5 class="mb-2 text-titlecase mb-4">Thống kê theo ngày</h5>
+                  <div class="row h-100">
+                      <div class="col-md-12 stretch-card">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="d-flex justify-content-between align-items-start flex-wrap">
+                                      <div>
+                                          <p class="mb-3">Đơn Hàng</p>
+                                          <h3>{{dailyOrdersCount}}</h3>
+                                      </div>
+                                      <div>
+                                          <p class="mb-3">Sản Phẩm Bán Được</p>
+                                          <h3>{{dailyProductsSoldCount}}</h3>
+                                      </div>
+                                      <div>
+                                          <p class="mb-3">Doanh Thu</p>
+                                          <h3>{{dailyRevenue}}</h3>
+                                      </div>
+                                  </div>
+                                  <div class="w-50">
+                                      <input type="date" class="form-control" ng-model="dailyDate" ng-change="getDailyStatistics(dailyDate)">
+                                  </div>
+                              </div>
+                          </div>
                       </div>
-                      <h4>1352</h4>
-                      <canvas id="transactions-chart" class="mt-auto" height="65"></canvas>
-                    </div>
                   </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                      <div class="d-flex justify-content-between align-items-center mb-2">
-                        <div>
-                          <p class="mb-2 text-muted">Sản Phẩm</p>
-                          <h6 class="mb-0">563</h6>
-                        </div>
-                        <div>
-                          <p class="mb-2 text-muted">Đơn Hàng</p>
-                          <h6 class="mb-0">720</h6>
-                        </div>
-                        <div>
-                          <p class="mb-2 text-muted">Tổng Doanh Thu</p>
-                          <h6 class="mb-0">5900</h6>
-                        </div>
-                      </div>
-                      <canvas id="sales-chart-a" class="mt-auto" height="65"></canvas>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <!-- <div class="row h-100">
-                <div class="col-md-6 stretch-card grid-margin grid-margin-md-0">
-                  <div class="card">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                      <p class="text-muted">Sales Analytics</p>
-                      <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h3 class="mb-">27632</h3>
-                        <h3 class="mb-">78%</h3>
-                      </div>
-                      <canvas id="sales-chart-b" class="mt-auto" height="38"></canvas>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row h-100">
-                        <div class="col-6 d-flex flex-column justify-content-between">
-                          <p class="text-muted">CPU</p>
-                          <h4>55%</h4>
-                          <canvas id="cpu-chart" class="mt-auto"></canvas>
-                        </div>
-                        <div class="col-6 d-flex flex-column justify-content-between">
-                          <p class="text-muted">Memory</p>
-                          <h4>123,65</h4>
-                          <canvas id="memory-chart" class="mt-auto"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            </div>
             <div class="col-xl-6 grid-margin stretch-card flex-column">
               <h5 class="mb-2 text-titlecase mb-4">Thống kê theo tháng</h5>
               <div class="row h-100">
@@ -213,12 +171,21 @@
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-start flex-wrap">
                         <div>
-                          <p class="mb-3">Doanh Thu</p>
-                          <h3>67842</h3>
+                          <p class="mb-3">Đơn Hàng</p>
+                          <h3>{{monthlyOrdersCount}}</h3>
                         </div>
-                        <div id="income-chart-legend" class="d-flex flex-wrap mt-1 mt-md-0"></div>
+                        <div>
+                          <p class="mb-3">Sản Phẩm Bán Được</p>
+                          <h3>{{monthlyProductsSoldCount}}</h3>
+                        </div>
+                        <div>
+                          <p class="mb-3">Doanh Thu</p>
+                          <h3>{{monthlyRevenue}}</h3>
+                        </div>
                       </div>
-                      <canvas id="income-chart"></canvas>
+                      <div class="w-50">
+                        <input type="month" class="form-control" ng-model="monthlyMonth" ng-change="getMonthlyStatistics(monthlyMonth)">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -374,9 +341,9 @@
                   <div class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
                     <div>
                       <p class="mb-2 text-md-center text-lg-left">Tổng Tài Khoản</p>
-                      <h1 class="mb-0">8742</h1>
+                      <h1 class="mb-0">{{totalAccounts}}</h1>
                     </div>
-                    <i class="typcn typcn-briefcase icon-xl text-secondary"></i>
+                    <i class="typcn typcn-group icon-xl text-secondary"></i>
                   </div>
                   <canvas id="expense-chart" height="80"></canvas>
                 </div>
@@ -388,9 +355,9 @@
                   <div class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
                     <div>
                       <p class="mb-2 text-md-center text-lg-left">Tổng Đơn Hàng</p>
-                      <h1 class="mb-0">47,840</h1>
+                      <h1 class="mb-0">{{totalOrders}}</h1>
                     </div>
-                    <i class="typcn typcn-chart-pie icon-xl text-secondary"></i>
+                    <i class="typcn typcn-clipboard icon-xl text-secondary"></i>
                   </div>
                   <canvas id="budget-chart" height="80"></canvas>
                 </div>
@@ -402,100 +369,15 @@
                   <div class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
                     <div>
                       <p class="mb-2 text-md-center text-lg-left">Tổng Doanh Thu</p>
-                      <h1 class="mb-0">$7,243</h1>
+                      <h1 class="mb-0">${{totalRevenue}}</h1>
                     </div>
-                    <i class="typcn typcn-clipboard icon-xl text-secondary"></i>
+                    <i class="typcn typcn-database icon-xl text-secondary"></i>
                   </div>
                   <canvas id="balance-chart" height="80"></canvas>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="row">
-            <h3 class="mb-0 ml-3 mb-2">Đơn Hàng Cần Xử Lý</h3>
-            <div class="col-md-12">
-              <div class="card">
-                <div class="table-responsive pt-3">
-                  <table class="table table-striped project-orders-table">
-                    <thead>
-                      <tr>
-                        <th class="ml-5">Mã ĐH</th>
-                        <th>Khách Hàng</th>
-                        <th>Số Điện Thoại</th>
-                        <th>Thời Gian Đặt Hàng</th>
-                        <th>Tổng Tiền</th>
-                        <th>Trạng Thái</th>
-                        <th>Hành Động</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>#D1</td>
-                        <td>Trần Văn Nhân</td>
-                        <td>0376758600</td>
-                        <td>03:09PM 25-05-2024</td>
-                        <td>$5235</td>
-                        <td>Đang Xử Lý</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Cập Nhập
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Xoá
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D2</td>
-                        <td>Trần Văn Nhân</td>
-                        <td>0376758600</td>
-                        <td>03:09PM 25-05-2024</td>
-                        <td>$5235</td>
-                        <td>Đang Xử Lý</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Cập Nhập
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Xoá
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr><tr>
-                        <td>#D3</td>
-                        <td>Trần Văn Nhân</td>
-                        <td>0376758600</td>
-                        <td>03:09PM 25-05-2024</td>
-                        <td>$5235</td>
-                        <td>Đang Xử Lý</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Cập Nhập
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Xoá
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -503,11 +385,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Free <a href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrap dashboard</a> templates from Bootstrapdash.com</span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Được chỉnh sửa bởi <a href="" class="text-muted" target="_blank">Sweet-H</a> © 2024.</span>
                     </div>
-                </div>    
-            </div>        
+                </div>
+            </div>
         </footer>
         <!-- partial -->
       </div>
@@ -532,6 +413,10 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
+  <script src="js/angular/angular.min.js"></script>
+  <script src="jsAdmin/app.js"></script>
+  <script src="jsAdmin/statistics/statisticsService.js"></script>
+  <script src="jsAdmin/statistics/statisticsController.js"></script>
   <!-- End custom js for this page-->
 </body>
 

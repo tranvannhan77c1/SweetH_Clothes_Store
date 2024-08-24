@@ -26197,3 +26197,23 @@ div.tagsinput span.tag a {
   font-weight: 900;
   font-style: italic;
 }
+
+/*.size-group {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.size-label {*/
+/*  margin-bottom: -25px;*/
+/*}*/
+
+/*.size-checkbox {*/
+/*  padding: 1rem;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.form-control-sm {*/
+/*  margin: 0 auto;*/
+/*}*/
