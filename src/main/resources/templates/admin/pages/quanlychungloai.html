@@ -178,6 +178,7 @@
                     <table class="table table-hover table-bordered">
                       <thead>
                       <tr>
+                        <th>ID</th>
                         <th>Tên Chủng Loại</th>
                         <th>Thuộc Danh Mục</th>
                         <th>Số Sản Phẩm</th>
@@ -186,6 +187,7 @@
                       </thead>
                       <tbody>
                       <tr ng-repeat="cat in categories" ng-class="{ 'table-success': cat.id === highlightedCategoryId }">
+                        <td>{{ cat.id }}</td>
                         <td>{{ cat.name }}</td>
                         <td>{{ cat.itemName }}</td>
                         <td>{{ cat.productCount }}</td>

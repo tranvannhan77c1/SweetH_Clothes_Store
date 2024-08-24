@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="col-lg-6 d-flex justify-content-end align-items-end">
                                         <button type="button" class="btn btn-inverse-success mb-3" data-toggle="modal"
-                                                data-target="#addProductModal">Thêm Sản
+                                                data-target="#addProductModal" ng-click="resetForm()">Thêm Sản
                                             Phẩm
                                         </button>
                                     </div>
@@ -182,7 +182,8 @@
                                             <td>
                                                 <button type="button" class="btn btn-inverse-info btn-sm"
                                                         data-toggle="modal"
-                                                        data-target="#productDetailModal" ng-click="editProduct(product.id)">Chỉnh Sửa
+                                                        data-target="#productDetailModal"
+                                                        ng-click="editProduct(product.id)">Chỉnh Sửa
                                                 </button>
                                             </td>
                                             <td><img style="width: 90px; height: auto; border-radius: 0px;"
@@ -247,11 +248,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addProductModalLabel">
-                                {{isEditMode ? 'Chỉnh Sửa Sản Phẩm' : 'Thêm Sản Phẩm'}}</h5>
+                                {{isEditMode ? 'Chỉnh Sửa Sản Phẩm' : 'Thêm Sản Phẩm'}} ---- ID Sản Phẩm {{product.id}}</h5>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                     class="mdi mdi-close-box"></i></button>
                         </div>
-                        <form class="forms-sample">
+                        <form name="productForm" class="forms-sample" novalidate>
                             <div class="row">
                                 <div class="col-md-6 grid-margin stretch-card">
                                     <div class="card">
@@ -260,7 +261,7 @@
                                                 <label for="productItem">Danh Mục Sản Phẩm</label>
                                                 <select id="productItem" ng-model="product.itemId" class="form-control"
                                                         ng-options="item.id as item.name for item in items"
-                                                        ng-change="onItemChange(product.itemId)">
+                                                        ng-change="onItemChange(product.itemId)" required>
                                                     <option value="">Chọn Danh Mục</option>
                                                 </select>
                                             </div>
@@ -268,19 +269,23 @@
                                                 <label for="productCategory">Chủng Loại Sản Phẩm</label>
                                                 <select id="productCategory" ng-model="product.categoryId"
                                                         class="form-control"
-                                                        ng-options="category.id as category.name for category in categories">
+                                                        ng-options="category.id as category.name for category in categories"
+                                                        required>
                                                     <option value="">Chọn Chủng Loại</option>
                                                 </select>
                                             </div>
                                             <div class="form-group" ng-if="!isEditMode">
                                                 <label>Hình Chính</label>
-                                                <input type="file" name="img[]" class="file-upload-default">
+                                                <input type="file" name="img[]" class="file-upload-default" ngf-select
+                                                       ng-model="product.thumbnailImageFile" ngf-max-size="2MB">
                                                 <div class="input-group col-xs-12">
                                                     <input type="text" class="form-control file-upload-info" disabled
-                                                           placeholder="Tải lên Hình Ảnh">
+                                                           placeholder="Tải lên Hình Ảnh"
+                                                           ng-model="product.thumbnailImagePath">
                                                     <span class="input-group-append">
-                                                            <button class="file-upload-browse btn btn-primary" type="button" disabled>Tải lên</button>
-                                                    </span>
+                                                <button class="file-upload-browse btn btn-primary"
+                                                        type="button" ng-click="uploadImage()">Tải lên</button>
+                                            </span>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="productThumbnailImage" class="col-sm-3 col-form-label">Đường
@@ -294,7 +299,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group" ng-if="isEditMode">
-                                                <label >Hình Chính</label>
+                                                <label>Hình Chính</label>
                                                 <img style="width: 110px; height: auto; border-radius: 0px;"
                                                      ng-src="{{ product.thumbnailImage }}">
                                                 <div class="form-group row">
@@ -312,19 +317,19 @@
                                                 <label for="productName">Tên Sản Phẩm</label>
                                                 <input id="productName" ng-model="product.name" type="text"
                                                        class="form-control"
-                                                       placeholder="Tên Sản Phẩm">
+                                                       placeholder="Tên Sản Phẩm" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productPrice">Giá Sản Phẩm</label>
                                                 <input id="productPrice" ng-model="product.price" type="number"
                                                        class="form-control"
-                                                       placeholder="Giá Sản Phẩm">
+                                                       placeholder="Giá Sản Phẩm" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productQuantity">Số Lượng Sản Phẩm</label>
                                                 <input id="productQuantity" ng-model="product.quantity" type="number"
                                                        class="form-control"
-                                                       placeholder="Số Lượng Sản Phẩm">
+                                                       placeholder="Số Lượng Sản Phẩm" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productBrand">Thương Hiệu Sản Phẩm</label>
@@ -362,240 +367,62 @@
                                                        type="text" class="form-control"
                                                        placeholder="Mô Tả Sản Phẩm">
                                             </div>
-                                            <div class="form-group" ng-if="!isEditMode">
-                                                <label>Các Kích Thước Sản Phẩm</label>
-
-                                                <!-- Nhóm kích thước cho QUẦN ÁO -->
-                                                <div class="form-group row" ng-show="showSizeGroup.sizes">
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">S</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.S.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.S.checked"
-                                                               ng-model="sizeQuantities.S.quantity">
-                                                    </div>
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">M</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.M.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.M.checked"
-                                                               ng-model="sizeQuantities.M.quantity">
-                                                    </div>
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">L</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.L.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.L.checked"
-                                                               ng-model="sizeQuantities.L.quantity">
-                                                    </div>
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">XL</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.XL.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.XL.checked"
-                                                               ng-model="sizeQuantities.XL.quantity">
-                                                    </div>
-                                                </div>
-
-                                                <!-- Nhóm kích thước cho GIÀY -->
-                                                <div class="form-group row" ng-show="showSizeGroup.shoes">
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">36</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.size36.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.size36.checked"
-                                                               ng-model="sizeQuantities.size36.quantity">
-                                                    </div>
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">37</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.size37.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.size37.checked"
-                                                               ng-model="sizeQuantities.size37.quantity">
-                                                    </div>
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">38</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.size38.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.size38.checked"
-                                                               ng-model="sizeQuantities.size38.quantity">
-                                                    </div>
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">39</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.size39.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.size39.checked"
-                                                               ng-model="sizeQuantities.size39.quantity">
-                                                    </div>
-                                                </div>
-
-                                                <!-- Nhóm kích thước cho BỘ SƯU TẬP, PHỤ KIỆN, TÚI -->
-                                                <div class="form-group row" ng-show="showSizeGroup.freesize">
-                                                    <div class="col-sm-3 text-center"
-                                                         style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <!-- Điều chỉnh khoảng cách giữa label và checkbox -->
-                                                            <label class="">FreeSize</label>
-                                                        </div>
-                                                        <div class="p-3"
-                                                             style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;"
-                                                                   ng-model="sizeQuantities.Freesize.checked">
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities.Freesize.checked"
-                                                               ng-model="sizeQuantities.Freesize.quantity">
-                                                    </div>
-                                                </div>
-                                            </div>
 <!--                                            <div>-->
-<!--                                                <div ng-show="showSizeGroup.sizes">-->
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.S.checked"> Size S</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.S.quantity" ng-show="sizeQuantities.S.checked">-->
-
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.M.checked"> Size M</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.M.quantity" ng-show="sizeQuantities.M.checked">-->
-
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.L.checked"> Size L</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.L.quantity" ng-show="sizeQuantities.L.checked">-->
-
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.XL.checked"> Size XL</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.XL.quantity" ng-show="sizeQuantities.XL.checked">-->
-<!--                                                </div>-->
-
-<!--                                                <div ng-show="showSizeGroup.shoes">-->
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size36.checked"> Size 36</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.size36.quantity" ng-show="sizeQuantities.size36.checked">-->
-
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size37.checked"> Size 37</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.size37.quantity" ng-show="sizeQuantities.size37.checked">-->
-
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size38.checked"> Size 38</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.size38.quantity" ng-show="sizeQuantities.size38.checked">-->
-
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.size39.checked"> Size 39</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.size39.quantity" ng-show="sizeQuantities.size39.checked">-->
-<!--                                                </div>-->
-
-<!--                                                <div ng-show="showSizeGroup.freesize">-->
-<!--                                                    <label><input type="checkbox" ng-model="sizeQuantities.Freesize.checked"> Freesize</label>-->
-<!--                                                    <input type="text" ng-model="sizeQuantities.Freesize.quantity" ng-show="sizeQuantities.Freesize.checked">-->
+<!--                                                <label>Các Kích Thước Sản Phẩm</label>-->
+<!--                                                <div ng-repeat="(group, sizes) in sizeGroups" class="form-group row"-->
+<!--                                                     ng-show="showSizeGroup[group]">-->
+<!--                                                    <div class="col-sm-3 text-center" ng-repeat="size in sizes"-->
+<!--                                                         style="display: flex; flex-direction: column; align-items: center;">-->
+<!--                                                        <div style="margin-bottom: -25px;">-->
+<!--                                                            <label>Size {{ size }}</label>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="p-3"-->
+<!--                                                             style="display: flex; justify-content: center;">-->
+<!--                                                            <input type="checkbox"-->
+<!--                                                                   ng-model="sizeQuantities[size].checked"-->
+<!--                                                                   class="form-check-input" style="margin: 0;">-->
+<!--                                                        </div>-->
+<!--                                                        <input type="number" ng-model="sizeQuantities[size].quantity"-->
+<!--                                                               ng-show="sizeQuantities[size].checked"-->
+<!--                                                               class="form-control form-control-sm"-->
+<!--                                                               placeholder="Số Lượng" style="margin: 0 auto;">-->
+<!--                                                    </div>-->
 <!--                                                </div>-->
 <!--                                            </div>-->
-                                            <div class="form-group" ng-if="isEditMode">
+
+                                            <div>
                                                 <label>Các Kích Thước Sản Phẩm</label>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-3 text-center" ng-repeat="size in product.productSizes">
-                                                        <div style="margin-bottom: -25px;">
-                                                            <label class="">{{ size.size }}</label>
-                                                        </div>
-                                                        <div class="p-3" style="display: flex; justify-content: center;">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                   ng-model="sizeQuantities[size.size].checked"
-                                                                   ng-true-value="'true'" ng-false-value="'false'"
-                                                                    ng-checked="sizeQuantities[size.size].checked"
-                                                            >
-                                                        </div>
-                                                        <input type="number" class="form-control form-control-sm"
-                                                               placeholder="Số Lượng"
-                                                               style="margin: 0 auto;"
-                                                               ng-show="sizeQuantities[size.size].checked"
-                                                               ng-model="sizeQuantities[size.size].quantity">
-                                                    </div>
+                                                <div ng-if="product.itemId == 4"> <!-- Nếu là Giày -->
+                                                    <label ng-repeat="size in shoeSizes">
+                                                        <input type="checkbox" ng-model="size.selected"> {{size.size}}
+                                                        <input type="number" ng-model="size.quantity" placeholder="Số lượng sản phẩm">
+                                                    </label>
+                                                </div>
+                                                <div ng-if="product.itemId == 1"> <!-- Nếu là Quần Áo -->
+                                                    <label ng-repeat="size in clothingSizes">
+                                                        <input type="checkbox" ng-model="size.selected"> {{size.size}}
+                                                        <input type="number" ng-model="size.quantity" placeholder="Số lượng sản phẩm">
+                                                    </label>
+                                                </div>
+                                                <div ng-if="product.itemId == 2 || product.itemId == 3 || product.itemId == 5"> <!-- Nếu là Phụ Kiện, Túi, Bộ Sưu Tập -->
+                                                    <label>
+                                                        <input type="checkbox" ng-model="freeSize.selected"> Freesize
+                                                        <input type="number" ng-model="freeSize.quantity" placeholder="Số lượng sản phẩm">
+                                                    </label>
                                                 </div>
                                             </div>
+
                                             <div class="form-group" ng-if="!isEditMode">
                                                 <label>Hình Ảnh Khác Của Sản Phẩm</label>
-                                                <input type="file" name="img[]" class="file-upload-default">
+                                                <input type="file" name="img[]" class="file-upload-default" ngf-select
+                                                       ng-model="product.otherImages" multiple>
                                                 <div class="input-group col-xs-12">
                                                     <input type="text" class="form-control file-upload-info" disabled
                                                            placeholder="Tải lên Hình Ảnh">
                                                     <span class="input-group-append">
-                        <button class="file-upload-browse btn btn-primary" type="button">Tải lên</button>
-                      </span>
+                                                <button class="file-upload-browse btn btn-primary" type="button"
+                                                        ng-click="uploadOtherImages()">Tải lên</button>
+                                            </span>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label">Đường dẫn 1</label>
@@ -620,13 +447,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group" ng-if="isEditMode">
-                                                <div><label >Hình Ảnh Khác Của Sản Phẩm</label></div>
+                                                <div><label>Hình Ảnh Khác Của Sản Phẩm</label></div>
                                                 <div class="row">
                                                     <div class="d-flex">
                                                         <div ng-repeat="productImage in product.productImages">
                                                             <img style="width: 90px; height: auto; border-radius: 0px;"
                                                                  ng-src="{{ productImage.imageUrl }}" class="mr-2">
-
                                                         </div>
                                                         <div class="d-flex align-items-center ml-3">
                                                             <button class="btn btn-inverse-info">Chỉnh Sửa</button>
@@ -635,9 +461,11 @@
                                                 </div>
                                                 <div ng-repeat="productImage in product.productImages">
                                                     <div class="row">
-                                                        <label class="col-sm-3 col-form-label">Đường dẫn {{$index + 1}}</label>
+                                                        <label class="col-sm-3 col-form-label">Đường dẫn
+                                                            {{$index + 1}}</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" ng-model="productImage.imageUrl" class="form-control form-control-sm"
+                                                            <input type="text" ng-model="productImage.imageUrl"
+                                                                   class="form-control form-control-sm"
                                                                    placeholder="Đường dẫn ảnh {{$index + 1}}">
                                                         </div>
                                                     </div>

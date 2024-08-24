@@ -1,7 +1,7 @@
 angular.module('app')
     .controller('ProductController', ['$scope', '$timeout', 'ProductService', 'CategoryService', 'ItemService', function ($scope, $timeout, ProductService, CategoryService, ItemService) {
 
-        $scope.pageSize = 4;
+        $scope.pageSize = 294;
         $scope.paginationButtons = [];
         $scope.totalPages = 1;
         $scope.currentPage = 0;
@@ -10,13 +10,22 @@ angular.module('app')
         $scope.products = [];
         $scope.product = {};
         $scope.isEditMode = false;
-        $scope.showSizeGroup = {
-            sizes: false,
-            shoes: false,
-            freesize: false
-        };
 
-        $scope.sizeQuantities = {};
+        $scope.clothingSizes = [
+            { size: 'S', selected: false, quantity: 0 },
+            { size: 'M', selected: false, quantity: 0 },
+            { size: 'L', selected: false, quantity: 0 },
+            { size: 'XL', selected: false, quantity: 0 }
+        ];
+
+        $scope.shoeSizes = [
+            { size: '36', selected: false, quantity: 0 },
+            { size: '37', selected: false, quantity: 0 },
+            { size: '38', selected: false, quantity: 0 },
+            { size: '39', selected: false, quantity: 0 }
+        ];
+
+        $scope.freeSize = { selected: false, quantity: 0 };
 
         function getProductsPage(page, size) {
             return ProductService.getProductsPage(page, size)
@@ -40,27 +49,7 @@ angular.module('app')
                 });
         }
 
-        $scope.initializeSizeQuantities = function(productSizes) {
-            $scope.sizeQuantities = {
-                S: { checked: false, quantity: '' },
-                M: { checked: false, quantity: '' },
-                L: { checked: false, quantity: '' },
-                XL: { checked: false, quantity: '' },
-                size36: { checked: false, quantity: '' },
-                size37: { checked: false, quantity: '' },
-                size38: { checked: false, quantity: '' },
-                size39: { checked: false, quantity: '' },
-                Freesize: { checked: false, quantity: '' }
-            };
-            productSizes.forEach(function(size) {
-                if ($scope.sizeQuantities[size.size]) {
-                    $scope.sizeQuantities[size.size].checked = true;
-                    console.log($scope.sizeQuantities[size.size].checked = true);
-                    $scope.sizeQuantities[size.size].quantity = size.quantity;
-                }
-                console.log(size)
-            });
-        };
+
         $scope.onItemChange = function(itemId) {
             if (itemId) {
                 CategoryService.getCategoriesByItemId(itemId)
@@ -70,36 +59,18 @@ angular.module('app')
                     .catch(function (error) {
                         console.error('Error fetching categories', error);
                     });
+
+                // Cập nhật các size dựa trên itemId
+                if (itemId == 1) {
+                    $scope.productSizes = $scope.clothingSizes;
+                } else if (itemId == 2 || itemId == 3 || itemId == 5) {
+                    $scope.productSizes = [$scope.freeSize];
+                } else if (itemId == 4) {
+                    $scope.productSizes = $scope.shoeSizes;
+                }
             } else {
                 $scope.categories = [];
-            }
-
-            switch (itemId) {
-                case 1: // QUẦN ÁO
-                    $scope.showSizeGroup.sizes = true;
-                    $scope.showSizeGroup.freesize = false;
-                    $scope.showSizeGroup.shoes = false;
-                    break;
-                case 2: // PHỤ KIỆN
-                    $scope.showSizeGroup.freesize = true;
-                    $scope.showSizeGroup.shoes = false;
-                    $scope.showSizeGroup.sizes = false;
-                    break;
-                case 3: // TÚI
-                    $scope.showSizeGroup.freesize = true;
-                    $scope.showSizeGroup.shoes = false;
-                    $scope.showSizeGroup.sizes = false;
-                    break;
-                case 4: // GIÀY
-                    $scope.showSizeGroup.shoes = true;
-                    $scope.showSizeGroup.freesize = false;
-                    $scope.showSizeGroup.sizes = false;
-                    break;
-                case 5: // BỘ SƯU TẬP
-                    $scope.showSizeGroup.freesize = true;
-                    $scope.showSizeGroup.shoes = false;
-                    $scope.showSizeGroup.sizes = false;
-                    break;
+                $scope.productSizes = [];
             }
         };
 
@@ -112,11 +83,20 @@ angular.module('app')
             ProductService.getProductById(id)
                 .then(function (data) {
                     $scope.product = data;
-                    $scope.initializeSizeQuantities($scope.product.productSizes);
                     $scope.isEditMode = true;
-                    $(document).ready(function () {
-                        $('#addProductModal').modal('show');
-                    });
+                    $('#addProductModal').modal('show');
+                    $scope.onItemChange($scope.product.itemId);
+                    console.log($scope.product);
+                    // Cập nhật trạng thái size
+                    if ($scope.product.productSizes) {
+                        $scope.productSizes.forEach(size => {
+                            let productSize = $scope.product.productSizes.find(ps => ps.size == size.size);
+                            if (productSize) {
+                                size.selected = true;
+                                size.quantity = productSize.quantity;
+                            }
+                        });
+                    }
                 })
                 .catch(function (error) {
                     console.error('Error fetching product', error);
@@ -124,20 +104,17 @@ angular.module('app')
         };
 
         $scope.createProduct = function () {
-            console.log($scope.product)
             ProductService.createProduct($scope.product)
                 .then(function (data) {
                     getProductsPage($scope.currentPage, $scope.pageSize)
                         .then(function () {
                             $scope.goToPage($scope.totalPages - 1);
                             $scope.product = data;
-                            console.log($scope.product)
                         });
                 })
                 .catch(function (error) {
                     console.error('Error creating product', error);
                 });
-
         };
 
         $scope.updateProduct = function () {
@@ -149,17 +126,21 @@ angular.module('app')
                 .catch(function (error) {
                     console.error('Error updating product', error);
                 });
-
         };
 
         $scope.deleteProduct = function (id) {
             ProductService.deleteProduct(id)
-                .then(function (data) {
+                .then(function () {
                     getProductsPage($scope.currentPage, $scope.pageSize);
                 })
                 .catch(function (error) {
                     console.error('Error deleting product', error);
                 });
+        };
+
+        $scope.resetForm = function (){
+            $scope.product = {};
+            $scope.isEditMode = false;
         };
 
         var initializePagination = function () {

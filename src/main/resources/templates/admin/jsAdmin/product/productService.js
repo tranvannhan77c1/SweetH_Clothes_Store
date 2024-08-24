@@ -4,7 +4,7 @@ angular.module('app')
 
         this.getProductsPage = function(page, size) {
             page = page || 0;
-            size = size || 8;
+            size = size || 4;
 
             return $http.get(baseUrl, {
                 params: { page: page, size: size }
