@@ -79,6 +79,25 @@ angular.module('app')
             getAllItems();
         }
 
+        let currentId = 1;
+        if($scope.product.id != null){
+            currentId = $scope.product.id;
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentId > 1) {
+                currentId--;
+                $scope.editProduct(currentId);
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentId < 294) {
+                currentId++;
+                $scope.editProduct(currentId);
+            }
+        });
+
         $scope.editProduct = function (id) {
             ProductService.getProductById(id)
                 .then(function (data) {
@@ -101,7 +120,7 @@ angular.module('app')
                 .catch(function (error) {
                     console.error('Error fetching product', error);
                 });
-        };
+        }
 
         $scope.createProduct = function () {
             ProductService.createProduct($scope.product)
