@@ -32,7 +32,7 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
             fontFamily: "'Poppins', sans-serif",
             backgroundColor: '#f4f4f4'
         };
-        
+
         $scope.invalid_connectionStyle = {
             fontSize: '80px',
             color: '#333'
@@ -41,6 +41,13 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         $scope.cart = JSON.parse(storedCart);
     }
 
+    $scope.submitForm = function() {
+        if ($scope.paymentMethod === 'cod') {
+            $scope.paymentCod();
+        } else {
+            $scope.payment();
+        }
+    };
 
     $scope.calculateTotal = function() {
         return $scope.cart.reduce((total, item) => {
@@ -149,15 +156,15 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         //         console.error('Payment failed:', error);
         //     });
         $http.get('http://localhost:8080/api/v1/payment/vn-pay?amount=' + ($scope.calculateTotal() + 50000) + '&bankCode=NCB')
-        .then(function(response) {
-            // Handle success
-            // console.log('Payment successful:', response.data);
-            window.location.href = response.data.paymentUrl
-        })
-        .catch(function(error) {
-            // Handle error
-            console.error('Payment failed:', error);
-        });
+            .then(function(response) {
+                // Handle success
+                // console.log('Payment successful:', response.data);
+                window.location.href = response.data.paymentUrl
+            })
+            .catch(function(error) {
+                // Handle error
+                console.error('Payment failed:', error);
+            });
     }
 
 }]);
@@ -172,8 +179,8 @@ app.filter('floor', function() {
     };
 });
 // rút gọn tên sản phẩm 
-app.filter('truncate', function () {
-    return function (input, limit) {
+app.filter('truncate', function() {
+    return function(input, limit) {
         if (input.length > limit) {
             return input.substring(0, limit) + '...';
         } else {

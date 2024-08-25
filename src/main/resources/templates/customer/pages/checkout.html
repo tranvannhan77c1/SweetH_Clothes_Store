@@ -85,7 +85,7 @@
                     <h2>Phản hồi khách hàng? <a href="#">Nhấn vào đây để đăng nhập</a></h2>
                 </div>
                 <p>Nếu bạn đã từng mua hàng với chúng tôi trước đây, vui lòng nhập thông tin chi tiết của bạn vào các ô bên dưới. Nếu bạn là khách hàng mới, vui lòng chuyển sang phần Thanh toán & Vận chuyển.</p>
-                <form class="row contact_form" action="#" method="post" novalidate="novalidate" >
+                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                     <div class="col-md-6 form-group p_star">
                         <input type="text" class="form-control" placeholder="Tài khoản*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Tài khoản*'" id="name" name="name">
                         <!-- <span class="placeholder" data-placeholder="Username or Email"></span> -->
@@ -116,53 +116,27 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <h3>Chi tiết thanh toán</h3>
-                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                        <form class="row contact_form" name="checkoutForm" ng-submit="checkoutForm.$valid && submitForm()" novalidate>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="full-name" name="full_name" placeholder="Họ và Tên" value="{{userInfo.fullName}}">
-                                <span class="placeholder" data-placeholder="Full name"></span>
+                                <input type="text" class="form-control" id="full-name" name="full_name" placeholder="Họ và Tên" ng-model="userInfo.fullName" required>
+                                <span class="text-danger" ng-show="checkoutForm.full_name.$touched && checkoutForm.full_name.$invalid">Vui lòng nhập Họ và Tên.</span>
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="company" name="company" placeholder="Số Điện Thoại" value="{{userInfo.phone}}">
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Số Điện Thoại" ng-model="userInfo.phone" ng-pattern="/^[0-9]{10}$/" required>
+                                <span class="text-danger" ng-show="checkoutForm.phone.$touched && checkoutForm.phone.$invalid">Vui lòng nhập số điện thoại hợp lệ (10 chữ số).</span>
                             </div>
+
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{userInfo.email}}">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="userInfo.email" required>
+                                <span class="text-danger" ng-show="checkoutForm.email.$touched && checkoutForm.email.$invalid">Vui lòng nhập email hợp lệ.</span>
                             </div>
 
-
-                            <!--                            <div class="col-md-12 form-group p_star">-->
-                            <!--                                <select class="country_select">-->
-                            <!--                                <option value="1">Country</option>-->
-                            <!--                                <option value="2">Country</option>-->
-                            <!--                                <option value="4">Country</option>-->
-                            <!--                            </select>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-md-12 form-group p_star">-->
-                            <!--                                <input type="text" class="form-control" id="add1" name="add1">-->
-                            <!--                                <span class="placeholder" data-placeholder="Address line 01"></span>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-md-12 form-group p_star">-->
-                            <!--                                <input type="text" class="form-control" id="add2" name="add2">-->
-                            <!--                                <span class="placeholder" data-placeholder="Address line 02"></span>-->
-                            <!--                            </div>-->
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="city" name="city" placeholder="Địa chỉ cụ thể" value="{{userInfo.address}}">
-                                <span class="placeholder" data-placeholder="Town/City"></span>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Địa chỉ cụ thể" ng-model="userInfo.address" required>
+                                <span class="text-danger" ng-show="checkoutForm.city.$touched && checkoutForm.city.$invalid">Vui lòng nhập Địa chỉ cụ thể.</span>
                             </div>
-                            <!--                            <div class="col-md-12 form-group p_star">-->
-                            <!--                                <select class="country_select">-->
-                            <!--                                <option value="1">District</option>-->
-                            <!--                                <option value="2">District</option>-->
-                            <!--                                <option value="4">District</option>-->
-                            <!--                            </select>-->
-                            <!--                            </div>-->
 
-<!--                            <div class="col-md-12 form-group">-->
-<!--                                <div class="creat_account">-->
-<!--                                    <input type="checkbox" id="f-option2" name="selector">-->
-<!--                                    <label for="f-option2">Tạo một tài khoản?</label>-->
-<!--                                </div>-->
-<!--                            </div>-->
                             <div class="col-md-12 form-group mb-0">
                                 <div class="creat_account">
                                     <h3>Chi tiết vận chuyển</h3>
@@ -171,7 +145,12 @@
                                 </div>
                                 <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
                             </div>
+
+                            <div class="col-md-12 form-group">
+                                <button type="submit" class="button button-login1 w-100" ng-disabled="checkoutForm.$invalid">Đặt hàng</button>
+                            </div>
                         </form>
+
                     </div>
                     <div class="col-lg-5">
                         <div class="order_box">
@@ -239,7 +218,7 @@
                                     </button>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

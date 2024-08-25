@@ -91,7 +91,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Tổng Cộng: {{orderInfo.totalAmount}}</td>
+                                <td>Tổng Cộng: {{orderInfo.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"})}}</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -172,7 +172,7 @@
                                     <h5>x {{orderDetails.quantity}}</h5>
                                 </td>
                                 <td>
-                                    <p>{{orderDetails.price}}</p>
+                                    <p>{{orderDetails.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"})}}</p>
                                 </td>
                             </tr>
                             <!-- <tr>
@@ -205,7 +205,7 @@
                                     <h5></h5>
                                 </td>
                                 <td>
-                                    <p>{{orderInfo.totalAmount - 50000}}</p>
+                                    <p>{{orderInfo.totalAmount - 50000.toLocaleString("vi-VN", {style:"currency", currency:"VND"})}}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -227,7 +227,7 @@
                                     <h5></h5>
                                 </td>
                                 <td>
-                                    <h4>{{orderInfo.totalAmount}}</h4>
+                                    <h4>{{orderInfo.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"})}}</h4>
                                 </td>
                             </tr>
                         </tbody>
