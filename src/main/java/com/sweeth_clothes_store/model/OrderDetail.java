@@ -30,7 +30,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    //@JsonIgnore
+    @JsonIgnore
     //  cai @JsonIgnore la de thuc hien lay thong tin thanh toan, co gi thi` lien he Hoang Luc
     private Order order;
 

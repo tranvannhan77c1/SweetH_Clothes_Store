@@ -49,7 +49,7 @@ public class Order {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @JsonIgnore
+//    @JsonIgnore
 //    comment cai @JsonIgnore la de thuc hien lay thong tin thanh toan, co gi thi` lien he Hoang Luc
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;

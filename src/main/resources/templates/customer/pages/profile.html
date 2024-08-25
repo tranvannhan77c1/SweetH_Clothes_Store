@@ -172,8 +172,8 @@
                                             <td>{{order.id}}</td>
                                             <td>{{order.orderDate}}</td>
                                             <td>{{order.totalAmount}}</td>
-                                            <td>Ship/VNPay</td>
-                                            <td>....</td>
+                                            <td>{{order.payment}}</td>
+                                            <td>{{order.status}}</td>
                                             <td>
                                                 <button class="btn btn-primary" style=" border-radius: 20px;" ng-click="viewOrderDetail(order)">
                                                     Xem Chi Tiết
@@ -220,23 +220,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in selectedOrder.items track by $index">
+                        <tr ng-repeat="item in selectedOrder.orderDetails">
                             <td class="fixed-width">
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img class="cart-item__thumbnail" ng-src="{{ item.thumbnailImage }}" alt="{{ item.name }}">
+                                        <img class="cart-item__thumbnail" ng-src="{{ item.product.thumbnailImage }}" alt="{{ item.name }}">
                                     </div>
                                     <div class="media-body">
-                                        <p>{{ item.name }}</p>
+                                        <p>{{ item.product.name }}</p>
                                     </div>
                             </td>
                             <td class="fixed-width">
-                                <h5>{{ item.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
+                                <h5 style="color: #777 !important">{{ (item.price - 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
                             </td>
                             <td class="fixed-width">{{item.size}}</td>
                             <td class="fixed-width">{{item.quantity}}</td>
                             <td class="fixed-width">
-                                <h5>{{ (item.price * item.quantity).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
+                                <h5 style="color: #777 !important">{{ (item.price * item.quantity - 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
                             </td>
                         </tr>
                         </tbody>
@@ -246,7 +246,7 @@
                     <!-- Phần tổng tiền đơn hàng -->
                     <div class="order-total">
                         <h5 style="color: #333 !important; font-weight: bold !important; font-size: 24px !important;">
-                            Tổng Đơn Hàng: {{ selectedOrder.total.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}
+                            Tổng Đơn Hàng: {{ selectedOrder.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}
                         </h5>
                     </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>

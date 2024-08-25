@@ -49,6 +49,7 @@ app.controller('ProfileController', ['$scope', '$http', function($scope, $http) 
     $scope.fetchOrder();
     $scope.viewOrderDetail = function(order) {
         $scope.selectedOrder = order;
+        console.log($scope.selectedOrder)
         $('#orderDetailModal').modal('show');
     };
 
