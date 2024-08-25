@@ -60,10 +60,11 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
 
         var order = {
             totalAmount: order_totalAmount,
-            status: null,
+            status: "ĐÃ THANH TOÁN",
             address: $scope.userInfo.address,
             phone: $scope.userInfo.phone,
             voucherId: 1,
+            payment: "VNPAY",
             accountId: $scope.userInfo.id,
             orderDetails: orderDetail
         }

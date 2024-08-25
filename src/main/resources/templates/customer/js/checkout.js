@@ -81,7 +81,7 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
             address: $scope.userInfo.address,
             phone: $scope.userInfo.phone,
             voucherId: 1,
-            payment: "VNPay",
+            payment: "COD",
             accountId: $scope.userInfo.id,
             orderDetails: orderDetail
         }
@@ -125,6 +125,7 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
             address: $scope.userInfo.address,
             phone: $scope.userInfo.phone,
             voucherId: 1,
+            payment: "VNPAY",
             accountId: $scope.userInfo.id,
             orderDetails: orderDetail
         }
