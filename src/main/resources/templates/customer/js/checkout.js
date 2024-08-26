@@ -167,7 +167,12 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         //         // Handle error
         //         console.error('Payment failed:', error);
         //     });
-        $http.get('http://localhost:8080/api/v1/payment/vn-pay?amount=' + ($scope.calculateTotal() + 50000) + '&bankCode=NCB')
+        $http.get('http://localhost:8080/api/v1/payment/vn-pay?amount=' + ($scope.calculateTotal() + 50000) + '&bankCode=NCB', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + loginToken.replace(/"/g, '').trim()  // Replace with your actual JWT token variable
+            }
+        })
             .then(function(response) {
                 // Handle success
                 // console.log('Payment successful:', response.data);

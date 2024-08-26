@@ -78,7 +78,12 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
             orderDTO: order,
         }
 
-        $http.post('http://localhost:8080/api/orders/createOrder', orderRequest)
+        $http.post('http://localhost:8080/api/orders/createOrder', orderRequest, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + loginToken.replace(/"/g, '').trim()  // Replace with your actual JWT token variable
+            }
+        })
             .then(function (response) {
                 // Handle success
                 console.log('Payment successful:', response.data);
@@ -95,7 +100,12 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
                 var params = getQueryParams();
                 var vnp_ResponseCode = params['vnp_ResponseCode'];
                 $scope.orderInfo = null;
-                $http.get('http://localhost:8080/api/v1/payment/vn-pay-callback?userID=' + $scope.userInfo.id + '&vnp_ResponseCode=' + vnp_ResponseCode)
+                $http.get('http://localhost:8080/api/v1/payment/vn-pay-callback?userID=' + $scope.userInfo.id + '&vnp_ResponseCode=' + vnp_ResponseCode, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + loginToken.replace(/"/g, '').trim()  // Replace with your actual JWT token variable
+                    }
+                })
                     .then(function (response) {
                         $scope.orderInfo = response.data.orderInfo
                     })
