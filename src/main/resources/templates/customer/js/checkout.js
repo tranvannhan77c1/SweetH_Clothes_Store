@@ -40,8 +40,16 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
     } else {
         $scope.cart = JSON.parse(storedCart);
     }
-
+    
     $scope.submitForm = function() {
+        var order_User_Info = {
+            fullName: $scope.userInfo.fullName,
+            phone: $scope.userInfo.phone,
+            email: $scope.userInfo.email,
+            address: $scope.userInfo.address
+        }
+
+        localStorage.setItem('order_User_Info', JSON.stringify(order_User_Info));
         if ($scope.paymentMethod === 'cod') {
             $scope.paymentCod();
         } else {
