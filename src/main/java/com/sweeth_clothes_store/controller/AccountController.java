@@ -57,6 +57,21 @@ public class AccountController {
         return ResponseEntity.ok(updatedAccount);
     }
 
+    @PutMapping("/{id}/change-password")
+    public ResponseEntity<?> changePassword(
+            @PathVariable Integer id,
+            @RequestParam String oldPassword,
+            @RequestParam String newPassword) {
+
+        boolean isPasswordChanged = accountService.changePassword(id, oldPassword, newPassword);
+
+        if (isPasswordChanged) {
+            return ResponseEntity.ok("Password changed successfully.");
+        } else {
+            return ResponseEntity.badRequest().body("Old password is incorrect.");
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAccount(@PathVariable Integer id) {
         accountService.deleteAccount(id);

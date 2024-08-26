@@ -65,6 +65,17 @@ public class AccountService {
         return AccountMapper.toAccountDTO(account);
     }
 
+    public boolean changePassword(Integer id, String oldPassword, String newPassword) {
+        Optional<Account> account = accountRepository.findById(id);
+        if(passwordEncoder.matches(oldPassword, account.get().getPassword())) {
+            account.get().setPassword(passwordEncoder.encode(newPassword));
+            accountRepository.save(account.get());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void deleteAccount(Integer id) {
         accountRepository.deleteById(id);
     }

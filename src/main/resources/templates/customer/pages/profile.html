@@ -81,7 +81,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <h3>Thông tin tài khoản</h3>
-                            <form class="row contact_form" name="profileForm" ng-submit="updateUserInfo(profileForm.$valid)" novalidate>
+                            <form class="row contact_form" name="profileForm" ng-submit="profileForm.$valid && updateAccount()" novalidate>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="last" name="name" placeholder="Họ Tên" ng-model="userInfo.fullName" required>
                                     <span class="text-danger" ng-show="profileForm.name.$touched && profileForm.name.$error.required">
@@ -121,7 +121,7 @@
                         </div>
                         <div class="col-lg-6 forgotpass">
                             <h3 class="mt-3">Đổi Mật Khẩu</h3>
-                            <form class="row contact_form" name="passwordForm" ng-submit="changePassword(passwordForm.$valid)" novalidate>
+                            <form class="row contact_form" name="passwordForm" ng-submit="passwordForm.$valid && changePassword()" novalidate>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Mật khẩu cũ" ng-model="passwordData.oldPassword" required>
                                     <span class="text-danger" ng-show="passwordForm.oldPassword.$touched && passwordForm.oldPassword.$error.required">

@@ -22,6 +22,65 @@ app.controller('ProfileController', ['$scope', '$http', function($scope, $http) 
         $scope.userInfo = JSON.parse(storedUserInfo);
     }
 
+    $scope.changePassword = function() {
+        const token = loginToken.replace(/"/g, '').trim();
+
+        $http({
+                method: 'PUT',
+                url: "http://localhost:8080/api/accounts/" + $scope.userInfo.id + "/change-password",
+                params: { oldPassword: $scope.passwordData.oldPassword , newPassword: $scope.passwordData.newPassword},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            })
+            .then(function(response) {
+                // Success callback
+                // localStorage.setItem('accountDetail', JSON.stringify(response.data))
+                location.reload();
+                console.log("Update successs") // Assign response data
+            })
+            .catch(function(error) {
+                // Error callback
+                console.error('Error fetching orders:', error);
+                $scope.userOrders = null;
+            });
+    }
+
+    $scope.updateAccount = function() {
+        var user_Info = {
+            username: $scope.userInfo.username,
+            email: $scope.userInfo.email,
+            fullName: $scope.userInfo.fullName,
+            phone: $scope.userInfo.phone,
+            address: $scope.userInfo.address,
+            role: $scope.userInfo.role,
+        }
+        // Get the token and remove double quotes
+        const token = loginToken.replace(/"/g, '').trim();
+
+        $http({
+                method: 'PUT',
+                url: "http://localhost:8080/api/accounts/" + $scope.userInfo.id,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                data: user_Info 
+            })
+            .then(function(response) {
+                // Success callback
+                localStorage.setItem('accountDetail', JSON.stringify(response.data))
+                location.reload();
+                console.log("Update successs") // Assign response data
+            })
+            .catch(function(error) {
+                // Error callback
+                console.error('Error fetching orders:', error);
+                $scope.userOrders = null;
+            });
+    }
+
     $scope.userOrders = [];
     $scope.fetchOrder = function() {
         // Get the token and remove double quotes

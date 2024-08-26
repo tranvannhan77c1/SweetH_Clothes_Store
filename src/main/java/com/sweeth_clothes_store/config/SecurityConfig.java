@@ -36,7 +36,7 @@ public class SecurityConfig {
 		
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(AbstractHttpConfigurer::disable);
+		http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());
 
 		http
         .authorizeHttpRequests(authorizeHttpRequests -> {
@@ -47,16 +47,17 @@ public class SecurityConfig {
             		"/vendors/**",
 					"/api/v1/customer/orders/createOrder"
 			).permitAll();
-
+			authorizeHttpRequests.requestMatchers("/api/v1/product/public/**").permitAll();
+			authorizeHttpRequests.requestMatchers("/api/v1/auth/login").permitAll();
+			authorizeHttpRequests.requestMatchers("/api/v1/auth/signup").permitAll();
 			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("CUSTOMER", "ADMIN");
 			authorizeHttpRequests.requestMatchers("/api/categories/**").hasRole("ADMIN");
 			authorizeHttpRequests.requestMatchers("/api/items/**").hasRole("ADMIN");
 			authorizeHttpRequests.requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "CUSTOMER");
 			authorizeHttpRequests.requestMatchers("/api/v1/payment/**").hasAnyRole("ADMIN", "CUSTOMER");
-        	authorizeHttpRequests.requestMatchers("/api/v1/product/public/**",
-					"/api/v1/auth/**"
-			).permitAll();
-//			authorizeHttpRequests.anyRequest().authenticated();
+			authorizeHttpRequests.requestMatchers("/api/accounts/update/**").hasAnyRole("ADMIN", "CUSTOMER");
+
+			authorizeHttpRequests.anyRequest().permitAll();
         }  
         )
 				.authenticationProvider(authenticationProvider())
