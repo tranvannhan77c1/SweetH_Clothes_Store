@@ -5487,6 +5487,8 @@ h4.total-amount {
 .modal-header {
     background-color: #8B1A1A;
     color: #fff;
+    position: relative;
+    z-index: 1051;
 }
 
 .modal-title {
