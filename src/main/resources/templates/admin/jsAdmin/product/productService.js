@@ -70,4 +70,15 @@ angular.module('app')
                     throw error;
                 });
         };
+
+        this.checkProductName = function(name, excludeId) {
+            return $http.get(baseUrl + '/check-name', {
+                params: { name: name, excludeId: excludeId }
+            }).then(function(response) {
+                return response.data;
+            }).catch(function(error) {
+                console.error('Error checking voucher code', error);
+                throw error;
+            });
+        };
     }]);

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -59,15 +60,21 @@ public class Product {
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<Feedback> feedbacks;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-	private List<ProductImage> productImages;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductImage> productImages = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private List<ProductSize> productSizes;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductSize> productSizes = new ArrayList<>();
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<OrderDetail> orderDetails;
 }
+
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+//	private List<ProductImage> productImages;
+//
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+//    private List<ProductSize> productSizes;

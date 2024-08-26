@@ -6,7 +6,9 @@ import com.sweeth_clothes_store.model.Product;
 import com.sweeth_clothes_store.repository.CategoryRepository;
 import com.sweeth_clothes_store.util.ResourceNotFoundException;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
+
 
 public class ProductAdminMapper {
 
@@ -26,22 +28,23 @@ public class ProductAdminMapper {
         dto.setMaterial(product.getMaterial());
         dto.setDescription(product.getDescription());
 
-        // Lấy Category ID từ Product và set vào DTO
         dto.setCategoryId(product.getCategory().getId());
         dto.setItemId(product.getCategory().getItem().getId());
 
-        // Chuyển đổi danh sách ProductImages và ProductSizes
-        dto.setProductImages(product.getProductImages().stream()
-                .map(ProductImageMapper::toProductImageDTO)
-                .collect(Collectors.toList()));
-        dto.setProductSizes(product.getProductSizes().stream()
-                .map(ProductSizeMapper::toProductSizeDTO)
-                .collect(Collectors.toList()));
+        dto.setProductImages(product.getProductImages() != null ?
+                product.getProductImages().stream()
+                        .map(ProductImageMapper::toProductImageDTO)
+                        .collect(Collectors.toList()) : new ArrayList<>());
+
+        dto.setProductSizes(product.getProductSizes() != null ?
+                product.getProductSizes().stream()
+                        .map(ProductSizeMapper::toProductSizeDTO)
+                        .collect(Collectors.toList()) : new ArrayList<>());
 
         return dto;
     }
 
-    public static Product toProduct(ProductAdminDTO dto, CategoryRepository categoryRepository) {
+    public static Product toProduct(ProductAdminDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -57,19 +60,7 @@ public class ProductAdminMapper {
         product.setMaterial(dto.getMaterial());
         product.setDescription(dto.getDescription());
 
-        // Lấy Category từ cơ sở dữ liệu bằng cách sử dụng categoryId từ DTO
-        Category category = categoryRepository.findById(dto.getCategoryId())
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + dto.getCategoryId()));
-        product.setCategory(category);
-
-        // Chuyển đổi danh sách ProductImages và ProductSizes từ DTO sang Product
-//        product.setProductImages(dto.getProductImages().stream()
-//                .map(ProductImageMapper::toProductImage)
-//                .collect(Collectors.toList()));
-//        product.setProductSizes(dto.getProductSizes().stream()
-//                .map(ProductSizeMapper::toProductSize)
-//                .collect(Collectors.toList()));
-
         return product;
     }
 }
+

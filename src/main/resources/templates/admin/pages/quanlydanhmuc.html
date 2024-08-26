@@ -149,10 +149,6 @@
                   <h4 class="card-title">Thông Tin Danh Mục</h4>
                   <form class="forms-sample">
                     <div class="form-group">
-                      <label>ID</label>
-                      <input type="text" class="form-control" ng-model="item.id" disabled>
-                    </div>
-                    <div class="form-group">
                       <label>Tên Danh Mục</label>
                       <input type="text" class="form-control" ng-model="item.name">
                     </div>
@@ -176,7 +172,6 @@
                     <table class="table table-hover table-bordered">
                       <thead>
                       <tr>
-                        <th>ID</th>
                         <th>Tên Danh Mục</th>
                         <th>Số Chủng Loại</th>
                         <th>Số Sản Phẩm</th>
@@ -185,7 +180,6 @@
                       </thead>
                       <tbody>
                       <tr ng-repeat="item in items" ng-class="{ 'table-success': item.id === highlightedItemId }">
-                        <td>{{ item.id }}</td>
                         <td>{{item.name}}</td>
                         <td>{{ item.categoryCount }}</td>
                         <td>{{ item.productCount }}</td>

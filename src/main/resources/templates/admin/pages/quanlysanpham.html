@@ -165,7 +165,6 @@
                                     <table class="table table-hover table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Hành Động</th>
                                             <th>Ảnh Chính</th>
                                             <th>Tên SP</th>
@@ -179,8 +178,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="product in products">
-                                            <td>{{ product.id }}</td>
+                                        <tr ng-repeat="product in products"
+                                            ng-class="{ 'table-success': product.id === highlightedProductId }">
                                             <td>
                                                 <button type="button" class="btn btn-inverse-info btn-sm"
                                                         data-toggle="modal"
@@ -232,7 +231,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Được chỉnh sửa bởi <a href="" class="text-muted" target="_blank">Sweet-H</a> © 2024.</span>
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Được chỉnh sửa bởi <a
+                                    href="" class="text-muted" target="_blank">Sweet-H</a> © 2024.</span>
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addProductModalLabel">
-                                {{isEditMode ? 'Chỉnh Sửa Sản Phẩm' : 'Thêm Sản Phẩm'}} ---- ID Sản Phẩm {{product.id}}</h5>
+                                {{isEditMode ? 'Chỉnh Sửa Sản Phẩm' : 'Thêm Sản Phẩm'}}</h5>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                     class="mdi mdi-close-box"></i></button>
                         </div>
@@ -256,20 +256,25 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="productItem">Danh Mục Sản Phẩm</label>
-                                                <select id="productItem" ng-model="product.itemId" class="form-control"
+                                                <select id="productItem" ng-model="product.itemId"
                                                         ng-options="item.id as item.name for item in items"
-                                                        ng-change="onItemChange(product.itemId)" required>
+                                                        ng-change="onItemChange(product.itemId); checkItem(product.itemId)"
+                                                        class="form-control"
+                                                        required>
                                                     <option value="">Chọn Danh Mục</option>
                                                 </select>
+                                                <div ng-if="itemnofi" class="error">{{ itemnofi }}</div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productCategory">Chủng Loại Sản Phẩm</label>
                                                 <select id="productCategory" ng-model="product.categoryId"
-                                                        class="form-control"
                                                         ng-options="category.id as category.name for category in categories"
+                                                        ng-change="checkCategory(product.categoryId)"
+                                                        class="form-control"
                                                         required>
                                                     <option value="">Chọn Chủng Loại</option>
                                                 </select>
+                                                <div ng-if="categorynofi" class="error">{{ categorynofi }}</div>
                                             </div>
                                             <div class="form-group" ng-if="!isEditMode">
                                                 <label>Hình Chính</label>
@@ -289,9 +294,13 @@
                                                         dẫn ảnh chính</label>
                                                     <div class="col-sm-9">
                                                         <input id="productThumbnailImage"
-                                                               ng-model="product.thumbnailImage" type="text"
-                                                               class="form-control form-control-sm"
+                                                               ng-model="product.thumbnailImage"
+                                                               ng-change="checkThumbnailImage(product.thumbnailImage)"
+                                                               type="text" class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh chính">
+                                                        <div ng-if="thumbnailImagenofi" class="error">
+                                                            {{ thumbnailImagenofi }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -304,35 +313,50 @@
                                                         dẫn ảnh chính</label>
                                                     <div class="col-sm-9">
                                                         <input id="productThumbnailImage"
-                                                               ng-model="product.thumbnailImage" type="text"
-                                                               class="form-control form-control-sm"
+                                                               ng-model="product.thumbnailImage"
+                                                               ng-change="checkThumbnailImage(product.thumbnailImage)"
+                                                               type="text" class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh chính">
+                                                        <div ng-if="thumbnailImagenofi" class="error">
+                                                            {{ thumbnailImagenofi }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productName">Tên Sản Phẩm</label>
-                                                <input id="productName" ng-model="product.name" type="text"
-                                                       class="form-control"
+                                                <input id="productName" ng-model="product.name"
+                                                       ng-change="checkName(product.name)"
+                                                       type="text" class="form-control"
                                                        placeholder="Tên Sản Phẩm" required>
+                                                <div ng-if="namenofi"
+                                                     ng-class="{'success': isNameSuccess, 'error': !isNameSuccess}">
+                                                    {{ namenofi }}
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productPrice">Giá Sản Phẩm</label>
-                                                <input id="productPrice" ng-model="product.price" type="number"
-                                                       class="form-control"
+                                                <input id="productPrice" ng-model="product.price"
+                                                       ng-change="checkPrice(product.price)"
+                                                       type="number" class="form-control"
                                                        placeholder="Giá Sản Phẩm" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="productQuantity">Số Lượng Sản Phẩm</label>
-                                                <input id="productQuantity" ng-model="product.quantity" type="number"
-                                                       class="form-control"
-                                                       placeholder="Số Lượng Sản Phẩm" required>
+                                                <div ng-if="pricenofi" class="error">{{ pricenofi }}</div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productBrand">Thương Hiệu Sản Phẩm</label>
-                                                <input id="productBrand" ng-model="product.brand" type="text"
-                                                       class="form-control"
+                                                <input id="productBrand" ng-model="product.brand"
+                                                       ng-change="checkBrand(product.brand)"
+                                                       type="text" class="form-control"
                                                        placeholder="Thương Hiệu Sản Phẩm">
+                                                <div ng-if="brandnofi" class="error">{{ brandnofi }}</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="productMadeIn">Nguồn Gốc Sản Phẩm</label>
+                                                <input id="productMadeIn" ng-model="product.madeIn"
+                                                       ng-change="checkMadeIn(product.madeIn)"
+                                                       type="text" class="form-control"
+                                                       placeholder="Nguồn Gốc Sản Phẩm">
+                                                <div ng-if="madeInnofi" class="error">{{ madeInnofi }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -340,108 +364,126 @@
                                 <div class="col-md-6 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="productMadeIn">Nguồn Gốc Sản Phẩm</label>
-                                                <input id="productMadeIn" ng-model="product.madeIn" type="text"
-                                                       class="form-control"
-                                                       placeholder="Nguồn Gốc Sản Phẩm">
-                                            </div>
+
                                             <div class="form-group">
                                                 <label for="productColor">Màu Sản Phẩm</label>
-                                                <input id="productColor" ng-model="product.color" type="text"
-                                                       class="form-control"
+                                                <input id="productColor" ng-model="product.color"
+                                                       ng-change="checkColor(product.color)"
+                                                       type="text" class="form-control"
                                                        placeholder="Màu Sản Phẩm">
+                                                <div ng-if="colornofi" class="error">{{ colornofi }}</div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productMaterial">Chất Liệu Sản Phẩm</label>
-                                                <input id="productMaterial" ng-model="product.material" type="text"
-                                                       class="form-control"
+                                                <input id="productMaterial" ng-model="product.material"
+                                                       ng-change="checkMaterial(product.material)"
+                                                       type="text" class="form-control"
                                                        placeholder="Chất Liệu Sản Phẩm">
+                                                <div ng-if="materialnofi" class="error">{{ materialnofi }}</div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="productDescription">Mô Tả Sản Phẩm</label>
                                                 <input id="productDescription" ng-model="product.description"
+                                                       ng-change="checkDescription(product.description)"
                                                        type="text" class="form-control"
                                                        placeholder="Mô Tả Sản Phẩm">
+                                                <div ng-if="descriptionnofi" class="error">{{ descriptionnofi }}</div>
                                             </div>
-<!--                                            <div>-->
-<!--                                                <label>Các Kích Thước Sản Phẩm</label>-->
-<!--                                                <div ng-repeat="(group, sizes) in sizeGroups" class="form-group row"-->
-<!--                                                     ng-show="showSizeGroup[group]">-->
-<!--                                                    <div class="col-sm-3 text-center" ng-repeat="size in sizes"-->
-<!--                                                         style="display: flex; flex-direction: column; align-items: center;">-->
-<!--                                                        <div style="margin-bottom: -25px;">-->
-<!--                                                            <label>Size {{ size }}</label>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="p-3"-->
-<!--                                                             style="display: flex; justify-content: center;">-->
-<!--                                                            <input type="checkbox"-->
-<!--                                                                   ng-model="sizeQuantities[size].checked"-->
-<!--                                                                   class="form-check-input" style="margin: 0;">-->
-<!--                                                        </div>-->
-<!--                                                        <input type="number" ng-model="sizeQuantities[size].quantity"-->
-<!--                                                               ng-show="sizeQuantities[size].checked"-->
-<!--                                                               class="form-control form-control-sm"-->
-<!--                                                               placeholder="Số Lượng" style="margin: 0 auto;">-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
+                                            <div class="form-group">
+                                                <label>Các Kích Thước Và Số Lượng Sản Phẩm</label>
 
-                                            <div>
-                                                <label>Các Kích Thước Sản Phẩm</label>
-                                                <div ng-if="product.itemId == 4"> <!-- Nếu là Giày -->
-                                                    <label ng-repeat="size in shoeSizes">
-                                                        <input type="checkbox" ng-model="size.selected"> {{size.size}}
-                                                        <input type="number" ng-model="size.quantity" placeholder="Số lượng sản phẩm">
-                                                    </label>
+                                                <!-- Nếu là Giày -->
+                                                <div ng-if="product.itemId == 4" class="form-group row">
+                                                    <div class="col-sm-3 text-center" ng-repeat="size in shoeSizes"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label>{{ size.size }}</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;" ng-model="size.selected"
+                                                                   ng-change="size.selected ? size.quantity = size.quantity || 1 : size.quantity = 0; checkProductSizes()">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               style="margin: 0 auto;" ng-model="size.quantity"
+                                                               ng-if="size.selected" placeholder="Số lượng sản phẩm"
+                                                               ng-change="checkProductSizeQuantity(size)">
+                                                    </div>
                                                 </div>
-                                                <div ng-if="product.itemId == 1"> <!-- Nếu là Quần Áo -->
-                                                    <label ng-repeat="size in clothingSizes">
-                                                        <input type="checkbox" ng-model="size.selected"> {{size.size}}
-                                                        <input type="number" ng-model="size.quantity" placeholder="Số lượng sản phẩm">
-                                                    </label>
+
+                                                <!-- Nếu là Quần Áo -->
+                                                <div ng-if="product.itemId == 1" class="form-group row">
+                                                    <div class="col-sm-3 text-center" ng-repeat="size in clothingSizes"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label>{{ size.size }}</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;" ng-model="size.selected"
+                                                                   ng-change="size.selected ? size.quantity = size.quantity || 1 : size.quantity = 0; checkProductSizes()">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               style="margin: 0 auto;" ng-model="size.quantity"
+                                                               ng-if="size.selected" placeholder="Số lượng sản phẩm"
+                                                               ng-change="checkProductSizeQuantity(size)">
+                                                    </div>
                                                 </div>
-                                                <div ng-if="product.itemId == 2 || product.itemId == 3 || product.itemId == 5"> <!-- Nếu là Phụ Kiện, Túi, Bộ Sưu Tập -->
-                                                    <label>
-                                                        <input type="checkbox" ng-model="freeSize.selected"> Freesize
-                                                        <input type="number" ng-model="freeSize.quantity" placeholder="Số lượng sản phẩm">
-                                                    </label>
+
+                                                <!-- Nếu là Phụ Kiện, Túi, Bộ Sưu Tập -->
+                                                <div ng-if="product.itemId == 2 || product.itemId == 3" class="form-group row">
+                                                    <div class="col-sm-3 text-center"
+                                                         style="display: flex; flex-direction: column; align-items: center;">
+                                                        <div style="margin-bottom: -25px;">
+                                                            <label>Freesize</label>
+                                                        </div>
+                                                        <div class="p-3"
+                                                             style="display: flex; justify-content: center;">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   style="margin: 0;" ng-model="freeSize.selected"
+                                                                   ng-change="freeSize.selected ? freeSize.quantity = freeSize.quantity || 1 : size.quantity = 0; checkProductSizes()">
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                               style="margin: 0 auto;" ng-model="freeSize.quantity"
+                                                               ng-if="freeSize.selected" placeholder="Số lượng sản phẩm"
+                                                               ng-change="checkProductSizeQuantity(freeSize)">
+                                                    </div>
                                                 </div>
+                                                <div ng-if="sizenofi" class="error">{{ sizenofi }}</div>
                                             </div>
 
                                             <div class="form-group" ng-if="!isEditMode">
                                                 <label>Hình Ảnh Khác Của Sản Phẩm</label>
-                                                <input type="file" name="img[]" class="file-upload-default" ngf-select
-                                                       ng-model="product.otherImages" multiple>
-                                                <div class="input-group col-xs-12">
-                                                    <input type="text" class="form-control file-upload-info" disabled
-                                                           placeholder="Tải lên Hình Ảnh">
-                                                    <span class="input-group-append">
-                                                <button class="file-upload-browse btn btn-primary" type="button"
-                                                        ng-click="uploadOtherImages()">Tải lên</button>
-                                            </span>
-                                                </div>
                                                 <div class="row">
-                                                    <label class="col-sm-3 col-form-label">Đường dẫn 1</label>
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn ảnh 1</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm"
-                                                               placeholder="Đường dẫn ảnh 1">
+                                                        <input type="text" ng-model="product.otherImages[0]"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 1"
+                                                               ng-change="checkProductImages(product.otherImages)">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <label class="col-sm-3 col-form-label">Đường dẫn 2</label>
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn ảnh 2</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm"
-                                                               placeholder="Đường dẫn ảnh 2">
+                                                        <input type="text" ng-model="product.otherImages[1]"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 2"
+                                                               ng-change="checkProductImages(product.otherImages)">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <label class="col-sm-3 col-form-label">Đường dẫn 3</label>
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn ảnh 3</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm"
-                                                               placeholder="Đường dẫn ảnh 3">
+                                                        <input type="text" ng-model="product.otherImages[2]"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 3"
+                                                               ng-change="checkProductImages(product.otherImages)">
                                                     </div>
                                                 </div>
+                                                <div ng-if="imagesnofi" class="error">{{ imagesnofi }}</div>
                                             </div>
                                             <div class="form-group" ng-if="isEditMode">
                                                 <div><label>Hình Ảnh Khác Của Sản Phẩm</label></div>
@@ -451,41 +493,55 @@
                                                             <img style="width: 90px; height: auto; border-radius: 0px;"
                                                                  ng-src="{{ productImage.imageUrl }}" class="mr-2">
                                                         </div>
-                                                        <div class="d-flex align-items-center ml-3">
-                                                            <button class="btn btn-inverse-info">Chỉnh Sửa</button>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div ng-repeat="productImage in product.productImages">
-                                                    <div class="row">
-                                                        <label class="col-sm-3 col-form-label">Đường dẫn
-                                                            {{$index + 1}}</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" ng-model="productImage.imageUrl"
-                                                                   class="form-control form-control-sm"
-                                                                   placeholder="Đường dẫn ảnh {{$index + 1}}">
-                                                        </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn ảnh 1</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" ng-model="product.otherImages[0]"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 1"
+                                                               ng-change="checkProductImages(product.otherImages)">
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn ảnh 2</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" ng-model="product.otherImages[1]"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 2"
+                                                               ng-change="checkProductImages(product.otherImages)">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3 col-form-label">Đường dẫn ảnh 3</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" ng-model="product.otherImages[2]"
+                                                               class="form-control form-control-sm"
+                                                               placeholder="Đường dẫn ảnh 3"
+                                                               ng-change="checkProductImages(product.otherImages)">
+                                                    </div>
+                                                </div>
+                                                <div ng-if="imagesnofi" class="error">{{ imagesnofi }}</div>
+                                            </div>
+                                            <div ng-if="message" class="alert mt-0"
+                                                 ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
+                                                {{ message }}
                                             </div>
                                             <div>
-                                                <button id="prevBtn" class="btn btn-inverse-warning mr-2">Pre</button>
-                                                <button id="nextBtn" class="btn btn-inverse-warning mr-2">Next</button>
+                                                <button type="submit" class="btn btn-inverse-success mr-2"
+                                                        ng-click="createProduct()" ng-if="!isEditMode">Thêm
+                                                </button>
+                                                <button type="submit" class="btn btn-inverse-warning mr-2"
+                                                        ng-click="updateProduct()" ng-if="isEditMode">Cập Nhập
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-danger mr-2"
+                                                        ng-click="deleteProduct(product.id)" ng-if="isEditMode">Xoá
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info mr-2"
+                                                        ng-click="resetForm()" ng-if="!isEditMode">Làm Mới
+                                                </button>
                                             </div>
-<!--                                            <div>-->
-<!--                                                <button type="submit" class="btn btn-inverse-success mr-2"-->
-<!--                                                        ng-click="createProduct()" ng-if="!isEditMode">Thêm-->
-<!--                                                </button>-->
-<!--                                                <button type="submit" class="btn btn-inverse-warning mr-2"-->
-<!--                                                        ng-click="updateProduct()" ng-if="isEditMode">Cập Nhập-->
-<!--                                                </button>-->
-<!--                                                <button type="button" class="btn btn-inverse-danger mr-2"-->
-<!--                                                        ng-click="deleteProduct(product.id)" ng-if="isEditMode">Xoá-->
-<!--                                                </button>-->
-<!--                                                <button type="button" class="btn btn-inverse-info mr-2"-->
-<!--                                                        ng-click="resetForm()" ng-if="!isEditMode">Làm Mới-->
-<!--                                                </button>-->
-<!--                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -543,3 +599,63 @@
 </body>
 
 </html>
+
+
+<!--                                            <div>-->
+<!--                                                <label>Các Kích Thước Sản Phẩm</label>-->
+<!--                                                <div ng-repeat="(group, sizes) in sizeGroups" class="form-group row"-->
+<!--                                                     ng-show="showSizeGroup[group]">-->
+<!--                                                    <div class="col-sm-3 text-center" ng-repeat="size in sizes"-->
+<!--                                                         style="display: flex; flex-direction: column; align-items: center;">-->
+<!--                                                        <div style="margin-bottom: -25px;">-->
+<!--                                                            <label>Size {{ size }}</label>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="p-3"-->
+<!--                                                             style="display: flex; justify-content: center;">-->
+<!--                                                            <input type="checkbox"-->
+<!--                                                                   ng-model="sizeQuantities[size].checked"-->
+<!--                                                                   class="form-check-input" style="margin: 0;">-->
+<!--                                                        </div>-->
+<!--                                                        <input type="number" ng-model="sizeQuantities[size].quantity"-->
+<!--                                                               ng-show="sizeQuantities[size].checked"-->
+<!--                                                               class="form-control form-control-sm"-->
+<!--                                                               placeholder="Số Lượng" style="margin: 0 auto;">-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+
+<!--                                            Giao diện xấu-->
+
+<!--                                            <div>-->
+<!--                                                <label>Các Kích Thước Và Số Lượng Sản Phẩm</label>-->
+
+<!--                                                &lt;!&ndash; Nếu là Giày &ndash;&gt;-->
+<!--                                                <div ng-if="product.itemId == 4">-->
+<!--                                                    <label ng-repeat="size in shoeSizes">-->
+<!--                                                        <input type="checkbox" ng-model="size.selected" ng-change="size.selected ? size.quantity = size.quantity || 1 : size.quantity = 0; checkProductSizes()">-->
+<!--                                                        {{size.size}}-->
+<!--                                                        <input type="number" ng-model="size.quantity" ng-if="size.selected" placeholder="Số lượng sản phẩm" ng-change="checkProductSizeQuantity(size)">-->
+<!--                                                    </label>-->
+<!--                                                </div>-->
+
+<!--                                                &lt;!&ndash; Nếu là Quần Áo &ndash;&gt;-->
+<!--                                                <div ng-if="product.itemId == 1">-->
+<!--                                                    <label ng-repeat="size in clothingSizes">-->
+<!--                                                        <input type="checkbox" ng-model="size.selected" ng-change="size.selected ? size.quantity = size.quantity || 1 : size.quantity = 0; checkProductSizes()">-->
+<!--                                                        {{size.size}}-->
+<!--                                                        <input type="number" ng-model="size.quantity" ng-if="size.selected" placeholder="Số lượng sản phẩm" ng-change="checkProductSizeQuantity(size)">-->
+<!--                                                    </label>-->
+<!--                                                </div>-->
+
+<!--                                                &lt;!&ndash; Nếu là Phụ Kiện, Túi, Bộ Sưu Tập &ndash;&gt;-->
+<!--                                                <div ng-if="product.itemId == 2 || product.itemId == 3">-->
+<!--                                                    <label>-->
+<!--                                                        <input type="checkbox" ng-model="freeSize.selected" ng-change="freeSize.selected ? freeSize.quantity = 1 : freeSize.quantity = 0; checkProductSizeQuantity(freeSize)">-->
+<!--                                                        Freesize-->
+<!--                                                        <input type="number" ng-model="freeSize.quantity" ng-if="freeSize.selected" placeholder="Số lượng sản phẩm" ng-change="checkProductSizeQuantity(freeSize)">-->
+<!--                                                    </label>-->
+<!--                                                </div>-->
+<!--                                                <div ng-if="sizenofi" class="error">{{ sizenofi }}</div>-->
+<!--                                            </div>-->
+<!--                                            Giao diện xấu-->

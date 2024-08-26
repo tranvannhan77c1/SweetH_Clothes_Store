@@ -22,9 +22,10 @@ public class ProductAdminController {
     @Autowired
     private ProductAdminService productService;
 
+
     @GetMapping
     public ResponseEntity<Page<ProductAdminDTO>> getAllProducts(
-            @PageableDefault(page = 0, size = 4, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+            @PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         Page<ProductAdminDTO> products = productService.getAllProducts(pageable);
         return ResponseEntity.ok(products);
     }
@@ -51,12 +52,7 @@ public class ProductAdminController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProductAdminDTO> updateProduct(@PathVariable Integer id, @RequestBody ProductAdminDTO productDTO) {
-        ProductAdminDTO updatedProduct;
-        try {
-            updatedProduct = productService.updateProduct(id, productDTO);
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        ProductAdminDTO updatedProduct = productService.updateProduct(id, productDTO);
         return ResponseEntity.ok(updatedProduct);
     }
 
@@ -68,6 +64,14 @@ public class ProductAdminController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/check-name")
+    public ResponseEntity<Boolean> checkProductName(
+            @RequestParam("name") String name,
+            @RequestParam(value = "excludeId", required = false) Long excludeId) {
+        boolean exists = productService.existsByName(name, excludeId);
+        return ResponseEntity.ok(exists);
     }
 }
 
