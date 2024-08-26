@@ -1,77 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sweet-H Admin | Đăng Nhập</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="../vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../images/favicon.png" />
-</head> 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sweet-H Admin | Đăng Nhập</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../images/favicon.png"/>
+</head>
 
 <body>
-  <div class="container-scroller">
+<div class="container-scroller" ng-controller="loginlogoutController">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0">
-        <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <!-- <img src="../images/" alt="logo"> -->
-                <h1>Sweet-H</h1>
-              </div>
-              <h4>Xin chào! Hãy bắt đầu quản lý ngay</h4>
-              <h6 class="font-weight-light">Đăng nhập để tiếp tục.</h6>
-              <form class="pt-3">
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="Tên đăng nhập">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <!-- <img src="../images/" alt="logo"> -->
+                            <h1>Sweet-H</h1>
+                        </div>
+                        <h4>Xin chào! Hãy bắt đầu quản lý ngay</h4>
+                        <h6 class="font-weight-light">Đăng nhập để tiếp tục.</h6>
+                        <form class="pt-3" ng-submit="login()">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" placeholder="Tên đăng nhập"
+                                       ng-model="username">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-lg" placeholder="Mật khẩu"
+                                       ng-model="password">
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit"
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                                    ĐĂNG NHẬP
+                                </button>
+                            </div>
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <label class="form-check-label text-muted">
+                                        <input type="checkbox" class="form-check-input">
+                                        Giữ tôi đăng nhập
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Hiển thị thông báo lỗi nếu có -->
+                            <div ng-if="errorMessage" class="text-danger mt-3">
+                                {{ errorMessage }}
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
-                </div>
-                <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">ĐĂNG NHẬP</a>
-                </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Giữ tôi đăng nhập
-                    </label>
-                  </div>
-                </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- content-wrapper ends -->
+        <!-- content-wrapper ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- base:js -->
-  <script src="../vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- inject:js -->
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/template.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
-  <!-- endinject -->
+</div>
+<!-- container-scroller -->
+<!-- base:js -->
+<script src="../vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../js/off-canvas.js"></script>
+<script src="../js/hoverable-collapse.js"></script>
+<script src="../js/template.js"></script>
+<script src="../js/settings.js"></script>
+<script src="../js/todolist.js"></script>
+<!-- endinject -->
+<script src="../js/angular/angular.min.js"></script>
+<script src="../jsAdmin/app.js"></script>
+<script src="../jsAdmin/loginlogout.js"></script>
 </body>
 
 </html>

@@ -13,6 +13,8 @@ angular.module('app')
         $scope.totalOrders = 0;
         $scope.totalRevenue = 0;
 
+        $scope.userInfo = null;
+
         function formatDateToISO(date) {
             var d = new Date(date);
             var day = d.getDate();
@@ -103,5 +105,20 @@ angular.module('app')
         $scope.monthlyMonth = new Date();
 
         $scope.getTotalStatistics();
+
+        $scope.logout = function() {
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('accountDetail');
+            $scope.isLogin = false;
+            // redirect to login page or reload the page
+            window.location.href = 'pages/login.html';
+        };
+
+        var storedUserInfo = localStorage.getItem('accountDetail');
+        if (storedUserInfo) {
+            $scope.userInfo = JSON.parse(storedUserInfo);
+        }
+        console.log($scope.userInfo);
+
     }]);
 
