@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     color: #777;
     /*font-family: "Roboto", sans-serif;*/
     /*Thay font mới*/
-    font-family: inherit;
+    font-family: "Be Vietnam Pro", sans-serif;
     /*Thay font mới*/
     font-size: 15px;
     font-weight: 400;
@@ -50,7 +50,7 @@ h6 {
     /*font-family: "Oswald", sans-serif;*/
     /*color: #222;*/
     /*CSS new*/
-    font-family: inherit;
+    font-family: "Be Vietnam Pro", sans-serif;
     color: white;
     line-height: 1.1
 }
@@ -209,7 +209,7 @@ a {
 }
 
 .header_area .navbar .nav .nav-item:hover .nav-link {
-    color: black;
+    color: #8B1A1A;
 }
 
 .header_area .navbar .nav .nav-item.submenu {
@@ -445,7 +445,7 @@ a {
     line-height: 40px;
     font-size: 14px;
     font-weight: 600;
-    font-family: "Oswald", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     background: transparent;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
@@ -809,13 +809,13 @@ a {
 
 .hero-banner__content h4 {
     font-size: 30px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     color: #555555;
     margin-bottom: 12px
 }
 
 .hero-banner__content h1 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     font-size: 25px;
     text-transform: uppercase;
     font-weight: 700;
@@ -1268,7 +1268,7 @@ a {
     border-radius: 30px;
     color: #222;
     font-weight: 500;
-    padding: 12px 50px;
+    padding: 10px;
     background: #8B1A1A;
     color: #fff;
     transition: all .4s ease;
@@ -2724,7 +2724,7 @@ a {
 }
 
 .sidebar-categories .head {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     line-height: 50px;
     /*CSS old*/
     /*background: #384aeb;*/
@@ -2782,7 +2782,7 @@ a {
 }
 
 .sidebar-filter .top-filter-head {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     line-height: 50px;
     /*CSS old*/
     /*background: #384aeb;*/
@@ -3048,7 +3048,7 @@ a {
 }
 
 .single-search-product .desc .title {
-    font-family: 'Oswald', sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     color: #222;
     margin-bottom: 0;
     display: inline-block
@@ -3169,7 +3169,7 @@ a {
 .order_details_table .table thead tr th {
     border-bottom: 1px solid #ddd;
     font-size: 16px;
-    font-family: "Oswald", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     font-weight: normal;
     color: #222
 }
@@ -3190,7 +3190,7 @@ a {
 }
 
 .order_details_table .table tbody tr td h5 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     color: #222;
     margin-bottom: 0px;
     font-size: 15px;
@@ -3199,7 +3199,7 @@ a {
 }
 
 .order_details_table .table tbody tr td h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     text-transform: uppercase;
     margin-bottom: 0px;
     color: #222;
@@ -3278,7 +3278,7 @@ a {
 .check_title h2 {
     font-size: 15px;
     font-weight: normal;
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     background: #f1f6f7;
     line-height: 40px !important;
     padding-left: 30px;
@@ -3538,7 +3538,7 @@ a {
 }
 
 .order_box .list li a h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     font-size: 15px;
     margin-top: 15px
 }
@@ -4101,7 +4101,7 @@ a {
     border-top: 0px;
     font-size: 16px;
     font-weight: 500;
-    font-family: "Oswald", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     color: #222;
     border-bottom: 0px !important
 }
@@ -4140,7 +4140,7 @@ a {
 .cart_inner .table tbody tr td h5 {
     font-size: 15px;
     color: #222;
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     margin-bottom: 0px
 }
 
@@ -4423,11 +4423,15 @@ a {
     background: #f1f6f7;
     border: 1px solid #eeeeee;
     border-radius: 30px;
-    padding: 0px 44px;
+    padding: 10px 20px;
     display: inline-block;
     color: #222;
     text-transform: capitalize;
     font-weight: 500
+}
+
+.gray_btn:hover {
+    color: #8B1A1A;
 }
 
 .product_image_area {
@@ -4480,7 +4484,7 @@ a {
 }
 
 .s_product_text h2 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     font-size: 24px;
     font-weight: 700;
     /*CSS old*/
@@ -4720,7 +4724,7 @@ a {
 }
 
 .product_description_area .tab-content .total_rate .box_total h6 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     margin-bottom: 0px;
     font-size: 14px;
     color: #555555;
@@ -4970,7 +4974,7 @@ a {
     /*color: #7b838a;*/
     /*CSS new*/
     color: white;
-    font-family: "Roboto", sans-serif
+    font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .tp_widgets .list li a:hover {
@@ -4995,7 +4999,7 @@ a {
     font-size: 18px;
     line-height: 24px;
     font-weight: 500;
-    font-family: "Oswald", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
     text-transform: capitalize;
     color: #fff;
     margin-bottom: 28px
@@ -5211,7 +5215,7 @@ h4.total-amount {
 .row.product_size {
     display: flex;
     align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
 }
 
 
@@ -5482,7 +5486,8 @@ h4.total-amount {
 }
 
 .modal-content {
-    border-radius: 0;
+    border-radius: 5px;
+    border: none;
 }
 
 .modal-header {
@@ -6291,17 +6296,17 @@ fieldset[disabled] .btn {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    margin-left: 990px;
+    margin-left: 1750px;
+    box-sizing: border-box!important ; /* Đảm bảo rằng viền không thay đổi kích thước của nút */
 }
 
 .order-detail-modal .btn-secondary:hover {
-    border: 2px solid #8B1A1A;
-    /* Thêm viền màu #8B1A1A */
-    background-color: white;
-    /* Màu nền chuyển thành trắng */
-    color: #8B1A1A;
-    /* Màu chữ chuyển thành #8B1A1A */
+    border: 2px solid #8B1A1A; /* Thêm viền màu #8B1A1A */
+    background-color: white; /* Màu nền chuyển thành trắng */
+    color: #8B1A1A; /* Màu chữ chuyển thành #8B1A1A */
+    box-sizing: border-box !important; /* Giữ nguyên kích thước của nút */
 }
+
 
 .order-detail-modal .order-total {
     flex-grow: 1;
@@ -6325,4 +6330,22 @@ fieldset[disabled] .btn {
     /* In đậm */
     color: #8B1A1A;
     /* Màu đỏ (hoặc màu bạn chọn) */
+}
+
+.icon_btn {
+    border-radius: 50%;
+}
+
+.icon_btn:hover {
+    background-color: white; /* Màu nền khi hover */
+    color: white; /* Màu biểu tượng khi hover */
+}
+
+.icon_btn i {
+    color: white; /* Thay đổi màu của biểu tượng khi hover */
+}
+
+.icon_btn:hover i {
+    font-weight: bold;
+    font-size: 1.5em;
 }

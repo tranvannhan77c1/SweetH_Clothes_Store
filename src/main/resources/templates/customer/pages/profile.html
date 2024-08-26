@@ -35,7 +35,7 @@
                   </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="category.html">Cửa Hàng</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
@@ -174,13 +174,13 @@
                                             <td>{{order.payment}}</td>
                                             <td>{{order.status}}</td>
                                             <td>
-                                                <button class="btn btn-primary" style="border-radius: 20px;" ng-click="viewOrderDetail(order)">
+                                                <button class="btn btn-primary btn-sm" style="border-radius: 20px;" ng-click="viewOrderDetail(order)">
                                                     Xem Chi Tiết
                                                 </button>
                                             </td>
                                             <td>
                                                 <!-- Nút Hủy Đơn sẽ bị khóa nếu trạng thái là "ĐÃ THANH TOÁN" hoặc "Cancelled" -->
-                                                <button class="btn btn-primary" style="border-radius: 20px;" ng-disabled="order.status === 'ĐÃ THANH TOÁN' || order.status === 'Cancelled'">
+                                                <button class="btn btn-primary btn-sm" style="border-radius: 20px;" ng-disabled="order.status === 'ĐÃ THANH TOÁN' || order.status === 'Cancelled'">
                                                     Hủy Đơn
                                                 </button>
                                             </td>
@@ -244,7 +244,7 @@
                         <h5 style="color: #333 !important; font-weight: bold !important; font-size: 24px !important;">
                             Tổng Đơn Hàng: {{ selectedOrder.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}
                         </h5>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn-secondary" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>

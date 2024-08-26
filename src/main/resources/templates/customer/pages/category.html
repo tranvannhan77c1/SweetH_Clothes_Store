@@ -105,7 +105,7 @@
                                     <!-- về mặc định -->
                                     <li class="filter-list">
                                         <input class="pixel-radio" type="radio" id="all_color" name="color" ng-click="filterProductsByColor(color)">
-                                        <label for="all_color">All Color</label>
+                                        <label for="all_color">Tất cả màu</label>
                                     </li>
                                     <!-- tạo danh sách màu -->
                                     <li ng-repeat="color in visibleColors" class="filter-list">
@@ -233,7 +233,7 @@
                                                                     <h3>{{ selectedProduct.name }}</h3>
                                                                     <h2>{{ selectedProduct.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h2>
                                                                     <ul class="list">
-                                                                        <li><a class="active" href="#"><span>Sản Phẩm</span> : {{ selectedProduct.category.name }}</a></li>
+                                                                        <li><a class="active" href="#"><span>Chủng Loại</span> : {{ selectedProduct.category.name }}</a></li>
 
                                                                     </ul>
                                                                     <p>{{ selectedProduct.description }}</p>

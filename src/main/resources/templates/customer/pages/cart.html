@@ -37,7 +37,7 @@
                     </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../index.html">Trang Chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="category.html">Cửa Hàng</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
                         </ul>
@@ -128,15 +128,21 @@
                                     <h4 class="total-amount">Tổng Tiền:<span class="total-label"> {{ calculateTotal().toLocaleString("vi-VN", {style:"currency", currency:"VND"}) | floor }}</span></h4>
                                 </td>
                                 <td class="fixed-width">
-                                    <a class="buttonremovecart" href="#" ng-click="clearCart()">Xóa Giỏ Hàng</a>
+                                    <a class="buttonremovecart" style="font-size: 16px;" href="" ng-click="clearCart()">Xóa Giỏ Hàng</a>
                                 </td>
 
                                 <td>
 
                                 </td>
-                               <td>  <div class="checkout_btn_inner d-flex justify-content-end align-items-center">
+                               <td><div class="checkout_btn_inner d-flex justify-content-end align-items-center">
                                    <a class="gray_btn mr-2" href="category.html">Tiếp tục mua sắm</a>
-                                   <a class="primary-btn" href="checkout.html">Thanh Toán</a>
+                                   <a class="primary-btn" style="
+                                   height: 65px; 
+                                   font-size: large; 
+                                   display: flex; 
+                                   justify-content: center; 
+                                   align-items: center;
+                                   text-align: center;"  href="checkout.html">Thanh Toán</a>
                                </div></td>
 
                             </tr>
