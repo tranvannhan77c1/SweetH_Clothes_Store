@@ -95,7 +95,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Phương thức thanh toán: ship/vnpay</td>
+                                <td>Phương thức thanh toán: {{orderInfo.payment}}</td>
                                 <td> </td>
                             </tr>
                         </table>
@@ -129,19 +129,19 @@
                         <h3 class="billing-title" style="color: black !important;">Người Nhận:</h3>
                         <table class="order-rable">
                             <tr>
-                                <td>Họ Tên: </td>
+                                <td>Họ Tên: {{order_User_Info.fullName}}</td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>SĐT: </td>
+                                <td>SĐT: {{order_User_Info.phone}}</td>
                                 <td> </td>
                             </tr>
                             <tr>
-                                <td>Email:</td>
+                                <td>Email: {{order_User_Info.email}}</td>
                                 <td> </td>
                             </tr>
                             <tr>
-                                <td>Địa Chỉ: </td>
+                                <td>Địa Chỉ: {{order_User_Info.address}}</td>
                                 <td></td>
                             </tr>
                         </table>

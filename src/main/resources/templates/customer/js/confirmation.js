@@ -35,6 +35,11 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
         $scope.userInfo = JSON.parse(storedUserInfo);
     }
 
+    var storedOrder_User_Info = localStorage.getItem('order_User_Info');
+    if (storedOrder_User_Info) {
+        $scope.order_User_Info = JSON.parse(storedOrder_User_Info);
+    }
+
     function getQueryParams() {
         var params = {};
         var parts = $location.absUrl().split('?')[1].split('&');
