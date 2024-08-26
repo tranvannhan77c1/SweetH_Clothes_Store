@@ -5,7 +5,7 @@ import com.sweeth_clothes_store.model.Product;
 import com.sweeth_clothes_store.model.ProductImage;
 
 public class ProductImageMapper {
-    
+
     public static ProductImageDTO toProductImageDTO(ProductImage productImage) {
         if (productImage == null) {
             return null;

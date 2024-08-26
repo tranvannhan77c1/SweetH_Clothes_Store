@@ -27,4 +27,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     // Tìm sp theo khoảng giá(min,max)
     @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice")
     Page<Product> findByPriceBetween(@Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice, Pageable pageable);
+
+    boolean existsByName(String name);
+
+    boolean existsByNameAndIdNot(String name, Long excludeId);
 }

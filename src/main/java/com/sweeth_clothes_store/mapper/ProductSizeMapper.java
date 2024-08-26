@@ -1,11 +1,10 @@
 package com.sweeth_clothes_store.mapper;
 
 import com.sweeth_clothes_store.dto.ProductSizeDTO;
-import com.sweeth_clothes_store.model.Product;
 import com.sweeth_clothes_store.model.ProductSize;
 
 public class ProductSizeMapper {
-    
+
     public static ProductSizeDTO toProductSizeDTO(ProductSize productSize) {
         if (productSize == null) {
             return null;
