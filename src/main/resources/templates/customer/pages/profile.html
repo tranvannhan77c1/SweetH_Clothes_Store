@@ -76,7 +76,7 @@
     <section class="checkout_area section-margin--small">
         <div class="container">
             <div class="returning_customer">
-                <button type="submit" value="submit" ng-click="logout()" class="btn button" style="margin-left: 920px" >Đăng Xuất</button>
+                <button type="submit" value="submit" ng-click="logout()" class="btn button" style="margin-left: 920px">Đăng Xuất</button>
                 <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-6">
@@ -89,8 +89,7 @@
         </span>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại" ng-model="userInfo.phone"
-                                           ng-pattern="/^\d{10}$/" required>
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại" ng-model="userInfo.phone" ng-pattern="/^\d{10}$/" required>
                                     <span class="text-danger" ng-show="profileForm.number.$touched && profileForm.number.$error.required">
         Vui lòng nhập Số Điện Thoại.
     </span>
@@ -170,7 +169,7 @@
                                     <tbody>
                                         <tr ng-repeat="order in userOrders">
                                             <td>{{order.id}}</td>
-                                            <td>{{order.orderDate}}</td>
+                                            <td>{{order.orderDate | customDateFormat}}</td>
                                             <td>{{order.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</td>
                                             <td>{{order.payment}}</td>
                                             <td>{{order.status}}</td>
@@ -208,140 +207,140 @@
                 <div class="modal-body">
                     <table class="table text-center">
                         <thead>
-                        <tr class="fixed-width">
-                            <th scope="col">Sản Phẩm</th>
-                            <th scope="col">Giá</th>
-                            <th scope="col">Kích Thước</th>
-                            <th scope="col">Số Lượng</th>
-                            <th scope="col">Tổng</th>
-                        </tr>
+                            <tr class="fixed-width">
+                                <th scope="col">Sản Phẩm</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Kích Thước</th>
+                                <th scope="col">Số Lượng</th>
+                                <th scope="col">Tổng</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in selectedOrder.orderDetails">
-                            <td class="fixed-width">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img class="cart-item__thumbnail" ng-src="{{ item.product.thumbnailImage }}" alt="{{ item.name }}">
-                                    </div>
-                                    <div class="media-body">
-                                        <p>{{ item.product.name }}</p>
-                                    </div>
-                            </td>
-                            <td class="fixed-width">
-                                <h5 style="color: #777 !important">{{ (item.price - 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
-                            </td>
-                            <td class="fixed-width">{{item.size}}</td>
-                            <td class="fixed-width">{{item.quantity}}</td>
-                            <td class="fixed-width">
-                                <h5 style="color: #777 !important">{{ (item.price * item.quantity - 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
-                            </td>
-                        </tr>
+                            <tr ng-repeat="item in selectedOrder.orderDetails">
+                                <td class="fixed-width">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img class="cart-item__thumbnail" ng-src="{{ item.product.thumbnailImage }}" alt="{{ item.name }}">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>{{ item.product.name }}</p>
+                                        </div>
+                                </td>
+                                <td class="fixed-width">
+                                    <h5 style="color: #777 !important">{{ (item.price - 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
+                                </td>
+                                <td class="fixed-width">{{item.size}}</td>
+                                <td class="fixed-width">{{item.quantity}}</td>
+                                <td class="fixed-width">
+                                    <h5 style="color: #777 !important">{{ (item.price * item.quantity - 50000).toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h5>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                </div>
-                <div class="modal-footer">
-                    <!-- Phần tổng tiền đơn hàng -->
-                    <div class="order-total">
-                        <h5 style="color: #333 !important; font-weight: bold !important; font-size: 24px !important;">
-                            Tổng Đơn Hàng: {{ selectedOrder.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}
-                        </h5>
                     </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <div class="modal-footer">
+                        <!-- Phần tổng tiền đơn hàng -->
+                        <div class="order-total">
+                            <h5 style="color: #333 !important; font-weight: bold !important; font-size: 24px !important;">
+                                Tổng Đơn Hàng: {{ selectedOrder.totalAmount.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}
+                            </h5>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    <!--================End Checkout Area =================-->
+        <!--================End Checkout Area =================-->
 
 
 
-    <!--================ Start footer Area  =================-->
-    <footer class="footer">
-        <div class="footer-area">
-            <div class="container">
-                <div class="row section_gap">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title large_title">Nhiệm vụ</h4>
-                            <p>
-                                Hãy gieo hạt giống màu xanh mà gia súc có cánh ở đó. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển chúng tôi vào đất liền, tập hợp những thứ sống động của chúng tôi vào đất liền qua nhiều năm
-                            </p>
-                            <p>
-                                Gieo hạt giống xanh nơi gia súc có cánh ở. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển sâu.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-                        <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Truy cập nhanh</h4>
-                            <ul class="list">
-                                <li><a href="..//index.html">Trang Chủ</a></li>
-                                <li><a href="category.html">Cửa Hàng</a></li>
-                                <li><a href="cart.html">Giỏ Hàng</a></li>
-                                <li><a href="contact.html">Liên Hệ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="single-footer-widget instafeed">
-                            <h4 class="footer_title">Phòng trưng bày</h4>
-                            <ul class="list instafeed d-flex flex-wrap">
-                                <li><img src="../img/gallery/r1.jpg" alt=""></li>
-                                <li><img src="../img/gallery/r2.jpg" alt=""></li>
-                                <li><img src="../img/gallery/r3.jpg" alt=""></li>
-                                <li><img src="../img/gallery/r5.jpg" alt=""></li>
-                                <li><img src="../img/gallery/r7.jpg" alt=""></li>
-                                <li><img src="../img/gallery/r8.jpg" alt=""></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Liên hệ chúng tôi</h4>
-                            <div class="ml-40">
-                                <p class="sm-head">
-                                    <span class="fa fa-location-arrow"></span> Sweet H Store
-                                </p>
-                                <p>CV Phần mềm quang trung, quận 12, TP. Hồ Chí Minh</p>
-
-                                <p class="sm-head">
-                                    <span class="fa fa-phone"></span> Phone Number
+        <!--================ Start footer Area  =================-->
+        <footer class="footer">
+            <div class="footer-area">
+                <div class="container">
+                    <div class="row section_gap">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                                <h4 class="footer_title large_title">Nhiệm vụ</h4>
+                                <p>
+                                    Hãy gieo hạt giống màu xanh mà gia súc có cánh ở đó. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển chúng tôi vào đất liền, tập hợp những thứ sống động của chúng tôi vào đất liền qua nhiều năm
                                 </p>
                                 <p>
-                                    0372668219 <br> 0373407353
+                                    Gieo hạt giống xanh nơi gia súc có cánh ở. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển sâu.
                                 </p>
+                            </div>
+                        </div>
+                        <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                                <h4 class="footer_title">Truy cập nhanh</h4>
+                                <ul class="list">
+                                    <li><a href="..//index.html">Trang Chủ</a></li>
+                                    <li><a href="category.html">Cửa Hàng</a></li>
+                                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                                    <li><a href="contact.html">Liên Hệ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="single-footer-widget instafeed">
+                                <h4 class="footer_title">Phòng trưng bày</h4>
+                                <ul class="list instafeed d-flex flex-wrap">
+                                    <li><img src="../img/gallery/r1.jpg" alt=""></li>
+                                    <li><img src="../img/gallery/r2.jpg" alt=""></li>
+                                    <li><img src="../img/gallery/r3.jpg" alt=""></li>
+                                    <li><img src="../img/gallery/r5.jpg" alt=""></li>
+                                    <li><img src="../img/gallery/r7.jpg" alt=""></li>
+                                    <li><img src="../img/gallery/r8.jpg" alt=""></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                                <h4 class="footer_title">Liên hệ chúng tôi</h4>
+                                <div class="ml-40">
+                                    <p class="sm-head">
+                                        <span class="fa fa-location-arrow"></span> Sweet H Store
+                                    </p>
+                                    <p>CV Phần mềm quang trung, quận 12, TP. Hồ Chí Minh</p>
 
-                                <p class="sm-head">
-                                    <span class="fa fa-envelope"></span> Email
-                                </p>
-                                <p>
-                                    sweethstore@gmail.com
-                                </p>
+                                    <p class="sm-head">
+                                        <span class="fa fa-phone"></span> Phone Number
+                                    </p>
+                                    <p>
+                                        0372668219 <br> 0373407353
+                                    </p>
+
+                                    <p class="sm-head">
+                                        <span class="fa fa-envelope"></span> Email
+                                    </p>
+                                    <p>
+                                        sweethstore@gmail.com
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </footer>
-    <!--================ End footer Area  =================-->
+        </footer>
+        <!--================ End footer Area  =================-->
 
-    <script src="../vendors/angular/angular.min.js"></script>
-    <script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
-    <script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../vendors/skrollr.min.js"></script>
-    <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
-    <script src="../vendors/jquery.ajaxchimp.min.js"></script>
-    <script src="../vendors/mail-script.js"></script>
-    <script src="../js/index.js"></script>
-    <script src="../js/category.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/profile.js"></script>
+        <script src="../vendors/angular/angular.min.js"></script>
+        <script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
+        <script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="../vendors/skrollr.min.js"></script>
+        <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
+        <script src="../vendors/jquery.ajaxchimp.min.js"></script>
+        <script src="../vendors/mail-script.js"></script>
+        <script src="../js/index.js"></script>
+        <script src="../js/category.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/profile.js"></script>
 
 </body>
 

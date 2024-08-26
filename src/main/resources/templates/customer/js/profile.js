@@ -28,13 +28,13 @@ app.controller('ProfileController', ['$scope', '$http', function($scope, $http) 
         const token = loginToken.replace(/"/g, '').trim();
 
         $http({
-            method: 'GET',
-            url: "http://localhost:8080/api/orders/userOrder",
-            params: { userID: $scope.userInfo.id },
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        })
+                method: 'GET',
+                url: "http://localhost:8080/api/orders/userOrder",
+                params: { userID: $scope.userInfo.id },
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            })
             .then(function(response) {
                 // Success callback
                 $scope.userOrders = response.data; // Assign response data
@@ -70,3 +70,22 @@ app.controller('ProfileController', ['$scope', '$http', function($scope, $http) 
         }
     };
 }]);
+
+app.filter('customDateFormat', function() {
+    return function(input) {
+        if (!input) return '';
+
+        // Create a Date object from the input string
+        const date = new Date(input);
+
+        // Extract the components of the date
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear();
+
+        // Format the date as 'HH:mm DD/MM/YYYY'
+        return `${hours}:${minutes} ${day}/${month}/${year}`;
+    };
+});
