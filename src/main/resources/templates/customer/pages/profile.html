@@ -174,20 +174,17 @@
                                             <td>{{order.payment}}</td>
                                             <td>{{order.status}}</td>
                                             <td>
-                                                <button class="btn btn-primary" style=" border-radius: 20px;" ng-click="viewOrderDetail(order)">
+                                                <button class="btn btn-primary" style="border-radius: 20px;" ng-click="viewOrderDetail(order)">
                                                     Xem Chi Tiết
                                                 </button>
                                             </td>
-
-                                            <td><button class="btn btn-primary" style=" border-radius: 20px;">Hủy Đơn</button></td>
+                                            <td>
+                                                <!-- Nút Hủy Đơn sẽ bị khóa nếu trạng thái là "ĐÃ THANH TOÁN" hoặc "Cancelled" -->
+                                                <button class="btn btn-primary" style="border-radius: 20px;" ng-disabled="order.status === 'ĐÃ THANH TOÁN' || order.status === 'Cancelled'">
+                                                    Hủy Đơn
+                                                </button>
+                                            </td>
                                         </tr>
-                                        <!-- <tr>
-                                            <td>60235</td>
-                                            <td>Oct 03, 2017</td>
-                                            <td>USD 2210</td>
-                                            <td>Thanh toán khi nhận hàng</td>
-                                            <td><button class="btn btn-primary" style=" border-radius: 20px;">Xem Chi Tiết</button></td>
-                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
