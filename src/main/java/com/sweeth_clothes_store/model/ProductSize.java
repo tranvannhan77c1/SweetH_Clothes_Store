@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class ProductSize {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;

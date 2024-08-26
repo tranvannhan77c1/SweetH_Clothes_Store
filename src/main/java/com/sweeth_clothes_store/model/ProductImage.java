@@ -1,5 +1,6 @@
 package com.sweeth_clothes_store.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class ProductImage {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;

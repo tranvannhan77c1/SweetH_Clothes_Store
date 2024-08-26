@@ -152,27 +152,37 @@
                     <table class="table table-hover table-bordered">
                       <thead>
                         <tr>
+                          <th>Hành Động</th>
                           <th>Mã ĐH</th>
                           <th>Ngày Đặt Hàng</th>
                           <th>Địa Chỉ</th>
                           <th>Tên Người Đặt</th>
                           <th>Số Điện Thoại</th>
                           <th>Tổng Tiền</th>
-                          <th>Trạng Thái</th>
-                          <th>Phương Thức Thanh Toán</th>
-                          <th>Hành Động</th>
+                          <th class="font-weight-bold bg-inverse-primary">Trạng Thái</th>
+                          <th>PTTT</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr ng-repeat="order in orders">
+                          <td>
+                            <div>
+                              <button type="button" class="btn btn-inverse-info btn-sm"
+                                      ng-click="getOrderDetails(order.id)">Xem Chi Tiết</button>
+                            </div>
+                            <div class="mt-1">
+                              <button type="button" class="btn btn-inverse-primary btn-sm"
+                                      ng-click="getOrderDetails(order.id)">Cập Nhập Trạng Thái</button>
+                            </div>
+                          </td>
                           <td>{{ order.id }}</td>
-                          <td>{{ order.orderDate }}</td>
+                          <td>{{ order.orderDate | date:'HH:mm:ss-dd/MM/yyyy' }}</td>
                           <td>{{ order.address }}</td>
                           <td>{{ order.fullNameAccount }}</td>
                           <td>{{ order.phone }}</td>
                           <td>{{ order.totalAmount }}</td>
-                          <td>
-                            <label class="badge" ng-class="{
+                          <td class="bg-inverse-primary">
+                            <label class="badge font-weight-bold" ng-class="{
                                           'badge-warning': order.status === 'Processing',
                                           'badge-info': order.status === 'Shipped',
                                           'badge-success': order.status === 'Delivered',
@@ -180,10 +190,6 @@
                                       }">{{ order.status }}</label>
                           </td>
                           <td>{{ order.payment }}</td>
-                          <td>
-                            <button type="button" class="btn btn-inverse-info btn-sm"
-                              ng-click="getOrderDetails(order.id)">Xem Chi Tiết</button>
-                          </td>
                         </tr>
                       </tbody>
                     </table>
