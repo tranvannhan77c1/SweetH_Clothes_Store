@@ -35,8 +35,8 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="index.html">Trang Chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pages/category.html">Cửa Hàng</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pages/contact.html">Liên Hệ</a></li>
+                            <li class="nav-item "><a class="nav-link" href="pages/category.html">Cửa Hàng</a></li>
+                            <li class="nav-item "><a class="nav-link" href="pages/contact.html">Liên Hệ</a></li>
                         </ul>
                         <ul class="nav-shop">
                             <!-- User Dropdown -->
@@ -176,7 +176,7 @@
                             <div class="card-body">
                                 <p>{{ product.category.name }}</p>
                                 <h4 class="card-product__title"><a ng-href="./pages/single-product.html?id={{ product.id }}">{{ product.name }}</a></h4>
-                                <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }} <span class="original-price">500,000đ</span></p>
+                                <p class="card-product__price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }} </p>
                             </div>
                         </div>
 

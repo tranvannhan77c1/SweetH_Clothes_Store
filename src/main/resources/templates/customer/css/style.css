@@ -203,12 +203,13 @@ a {
     display: none
 }
 
-.header_area .navbar .nav .nav-item:hover .nav-link,
 .header_area .navbar .nav .nav-item.active .nav-link {
-    /*CSS old*/
-    /*color: #384aeb*/
-    /*CSS new*/
-    color: #8B1A1A
+    color: #8B1A1A;
+    font-weight: bold;
+}
+
+.header_area .navbar .nav .nav-item:hover .nav-link {
+    color: black;
 }
 
 .header_area .navbar .nav .nav-item.submenu {
