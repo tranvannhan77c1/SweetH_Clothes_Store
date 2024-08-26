@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
-
 body {
     color: #777;
     /*font-family: "Roboto", sans-serif;*/
@@ -24,7 +23,6 @@ a:hover {
 
 button {
     cursor: pointer;
-
 }
 
 button:focus {
@@ -33,11 +31,19 @@ button:focus {
 }
 
 h1,
+
 /*h2,*/
+
+
 /*CSS old*/
+
 h3,
+
 /*h4,*/
+
+
 /*CSS old*/
+
 h5,
 h6 {
     /*CSS old*/
@@ -48,13 +54,19 @@ h6 {
     color: white;
     line-height: 1.1
 }
+
+
 /*CSS new*/
-h2{
+
+h2 {
     color: black;
 }
-h4{
-     color: black;
- }
+
+h4 {
+    color: black;
+}
+
+
 /*CSS new*/
 
 h1,
@@ -76,7 +88,6 @@ h3,
 }
 
 @media (min-width: 600px) {
-
     h3,
     .h3 {
         font-size: 36px
@@ -120,7 +131,6 @@ a {
     .section-margin {
         margin: 120px 0
     }
-
     .section-margin.calc-60px {
         margin: 120px 0 70px 0
     }
@@ -489,11 +499,9 @@ a {
     .header_area .navbar .nav .nav-item {
         margin-right: 28px
     }
-
     .home_banner_area .banner_inner {
         padding: 100px 0px
     }
-
     .header_area .navbar .tickets_btn {
         margin-left: 40px
     }
@@ -508,31 +516,25 @@ a {
         margin-top: 27px;
         margin-bottom: 23px
     }
-
     .header_area .navbar {
         background: #ffffff
     }
-
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
         opacity: 1
     }
-
     .navbar-toggler[aria-expanded="true"] span:nth-child(2) {
         opacity: 0
     }
-
     .navbar-toggler[aria-expanded="true"] span:first-child {
         transform: rotate(-45deg);
         position: relative;
         top: 7.5px
     }
-
     .navbar-toggler[aria-expanded="true"] span:last-child {
         transform: rotate(45deg);
         bottom: 6px;
         position: relative
     }
-
     .navbar-toggler span {
         display: block;
         width: 25px;
@@ -546,26 +548,21 @@ a {
         transition: all 400ms linear;
         cursor: pointer
     }
-
     .navbar .container {
         padding-left: 15px;
         padding-right: 15px
     }
-
     .nav {
         padding: 0px 0px
     }
-
     .header_area+section,
     .header_area+row,
     .header_area+div {
         margin-top: 117px
     }
-
     .header_top .nav {
         padding: 0px
     }
-
     .header_area .navbar .nav .nav-item .nav-link {
         line-height: 30px;
         margin-right: 0px;
@@ -573,81 +570,63 @@ a {
         border-bottom: 1px solid #ededed33;
         border-radius: 0px
     }
-
     .header_area .navbar .nav-shop {
         padding-bottom: 40px
     }
-
     .header_area .navbar .search {
         margin-left: 0px
     }
-
     .header_area .navbar-collapse {
         max-height: 340px;
         overflow-y: scroll
     }
-
     .header_area .navbar .nav .nav-item.submenu ul .nav-item .nav-link {
         padding: 0px 15px
     }
-
     .header_area .navbar .nav .nav-item {
         margin-right: 0px
     }
-
     .header_area+section,
     .header_area+row,
     .header_area+div {
         margin-top: 0px;
         padding-top: 71px
     }
-
     .header_area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
         line-height: 40px
     }
-
     .categories_post img {
         width: 100%
     }
-
     .categories_post {
         max-width: 360px;
         margin: 0 auto
     }
-
     .blog_categorie_area .col-lg-4 {
         margin-top: 30px
     }
-
     .blog_area {
         padding-bottom: 80px
     }
-
     .single-post-area .blog_right_sidebar {
         margin-top: 30px
     }
-
     .contact_info {
         margin-bottom: 50px
     }
-
     .home_banner_area .donation_inner {
         margin-bottom: -30px
     }
-
     .home_banner_area .dontation_item {
         max-width: 350px;
         margin: auto
     }
-
     .footer-area .col-sm-6 {
         margin-bottom: 30px
     }
-
     .header_area .navbar .tickets_btn {
         margin-left: 0px
     }
-
     .home_banner_area {
         min-height: 700px
     }
@@ -657,43 +636,34 @@ a {
     .home_banner_area {
         min-height: 500px
     }
-
     .home_banner_area .banner_inner {
         min-height: 500px
     }
-
     .home_banner_area .banner_inner .banner_content {
         margin-top: 0px
     }
-
     .blog_banner .banner_inner .blog_b_text h2 {
         font-size: 40px;
         line-height: 50px
     }
-
     .blog_info.text-right {
         text-align: left !important;
         margin-bottom: 10px
     }
-
     .home_banner_area .banner_inner .banner_content h3 {
         font-size: 30px
     }
-
     .home_banner_area .banner_inner .banner_content p br {
         display: none
     }
-
     .home_banner_area .banner_inner .banner_content h3 span {
         line-height: 45px;
         padding-bottom: 0px;
         padding-top: 0px
     }
-
     .footer-bottom {
         text-align: center
     }
-
     .footer-bottom .footer-social {
         text-align: center;
         margin-top: 15px
@@ -704,61 +674,48 @@ a {
     .top_menu {
         display: none
     }
-
     .header_area+section,
     .header_area+row,
     .header_area+div {
         margin-top: 0px;
         padding-top: 71px
     }
-
     .home_banner_area .banner_inner .banner_content h2 {
         font-size: 40px;
         line-height: 44px
     }
-
     .home_banner_area {
         min-height: 500px
     }
-
     .home_banner_area .banner_inner {
         min-height: 500px
     }
-
     .blog_banner .banner_inner .blog_b_text {
         margin-top: 0px
     }
-
     .home_banner_area .banner_inner .banner_content img {
         display: none
     }
-
     .home_banner_area .banner_inner .banner_content h5 {
         margin-top: 0px
     }
-
     .sample-text-area {
         padding: 70px 0 70px 0
     }
-
     .generic-blockquote {
         padding: 30px 15px 30px 30px
     }
-
     .blog_details h2 {
         font-size: 20px;
         line-height: 30px
     }
-
     .blog_banner .banner_inner .blog_b_text h2 {
         font-size: 28px;
         line-height: 38px
     }
-
     .footer-area {
         padding: 70px 0px
     }
-
     .single-footer-widget .sub-btn {
         right: 0px
     }
@@ -768,19 +725,15 @@ a {
     .header_area .navbar-collapse {
         max-height: 250px
     }
-
     .home_banner_area .banner_inner .banner_content {
         margin-top: 0px
     }
-
     .home_banner_area .banner_inner .banner_content h3 {
         font-size: 24px
     }
-
     .banner_area .banner_inner .banner_content h2 {
         font-size: 32px
     }
-
     .comments-area .thumb {
         margin-right: 10px
     }
@@ -1300,7 +1253,6 @@ a {
     background: #8B1A1A;
     color: #fff;
     transition: all .4s ease;
-
 }
 
 .buttonremovecart:hover {
@@ -1308,6 +1260,7 @@ a {
     background: transparent;
     color: #222;
 }
+
 .buttonremovecart {
     display: inline-block;
     border: 1px solid #8B1A1A;
@@ -1320,6 +1273,7 @@ a {
     transition: all .4s ease;
     margin-right: 100px;
 }
+
 @media (max-width: 767px) {
     .button {
         padding: 8px 25px !important
@@ -1415,7 +1369,7 @@ a {
     color: #fff
 }
 
-.button-contactForm{
+.button-contactForm {
     /*CSS old*/
     /*border: 1px solid #384aeb !important;*/
     /*CSS new*/
@@ -1436,7 +1390,6 @@ a {
     border-color: #8B1A1A;
     background: transparent;
     color: #8B1A1A;
-
 }
 
 .button-register {
@@ -2441,11 +2394,9 @@ a {
     .comments-area .comment-list .single-comment h5 {
         font-size: 12px
     }
-
     .comments-area .comment-list .single-comment .date {
         font-size: 11px
     }
-
     .comments-area .comment-list .single-comment .comment {
         font-size: 10px
     }
@@ -2892,7 +2843,6 @@ a {
         top: 50%;
         left: 50%
     }
-
     100% {
         transform: translate(-50%, -50%) scale(3);
         opacity: 0;
@@ -2910,7 +2860,6 @@ a {
         top: 50%;
         left: 50%
     }
-
     100% {
         transform: translate(-50%, -50%) scale(3);
         opacity: 0;
@@ -2928,7 +2877,6 @@ a {
         top: 50%;
         left: 50%
     }
-
     100% {
         transform: translate(-50%, -50%) scale(3);
         opacity: 0;
@@ -3461,7 +3409,6 @@ a {
     background: #8B1A1A;
     border-color: #8B1A1A;
     color: #fff;
-
 }
 
 .billing_details h3 {
@@ -3958,7 +3905,7 @@ a {
 
 .login_box_area .login_box_img .button:hover {
     background: #c5322d !important;
-    color:#8B1A1A !important;
+    color: #8B1A1A !important;
     border-color: #c5322d !important
 }
 
@@ -4132,7 +4079,6 @@ a {
     .instagram_image {
         margin-bottom: 70px !important
     }
-
     .instagram_image a {
         flex: 0 0 50%;
         max-width: 50%
@@ -4330,7 +4276,6 @@ a {
     text-transform: capitalize;
     font-weight: 500;
     color: #fff;
-
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text .gray_btn {
@@ -4986,7 +4931,6 @@ a {
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-
     .single-footer-widget .instafeed li:nth-child(4),
     .single-footer-widget .instafeed li:nth-child(5),
     .single-footer-widget .instafeed li:nth-child(6) {
@@ -5102,6 +5046,8 @@ a {
         padding-bottom: 115px !important
     }
 }
+
+
 /*Động vào code CSS vui lòng cmt lại và không động vào layout mặc định của templates*/
 
 .search-form {
@@ -5196,7 +5142,6 @@ h4.total-amount {
     font-size: 24px;
     color: #333;
     font-weight: bold;
-
     /* Thêm khoảng cách phía trên */
 }
 
@@ -5325,77 +5270,196 @@ h4.total-amount {
 
 /* CSS để trang trí menu dropdown */
 
+
 /*.nav-item {*/
+
+
 /*    list-style-type: none;*/
+
+
 /*    !* Bỏ đi kiểu danh sách mặc định *!*/
+
+
 /*    padding: 0;*/
+
+
 /*    !* Bỏ padding để căn chỉnh với biểu tượng *!*/
+
+
 /*}*/
+
 
 /*.nav-link {*/
+
+
 /*    display: block;*/
+
+
 /*    padding: 0.5rem 1rem;*/
+
+
 /*    !* Điều chỉnh padding tùy theo nhu cầu *!*/
+
+
 /*    color: #212529;*/
+
+
 /*    !* Màu chữ *!*/
+
+
 /*    text-decoration: none;*/
+
+
 /*    !* Bỏ gạch chân *!*/
+
+
 /*    transition: background-color 0.3s;*/
+
+
 /*    !* Hiệu ứng chuyển đổi màu nền mượt *!*/
+
+
 /*}*/
+
 
 /*.nav-link:hover {*/
+
+
 /*    !*background-color: #f8f9fa;*!*/
+
+
 /*    !* Màu nền khi di chuột qua *!*/
+
+
 /*    color: #8B1A1A;*/
+
+
 /*    !* Màu chữ khi di chuột qua *!*/
+
+
 /*}*/
+
 
 /*.dropdown-menu {*/
+
+
 /*    min-width: 180px;*/
+
+
 /*    !* Điều chỉnh chiều rộng tùy theo nhu cầu *!*/
+
+
 /*    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);*/
+
+
 /*    !* Tạo bóng cho dropdown *!*/
+
+
 /*    border: 1px solid rgba(0, 0, 0, 0.15);*/
+
+
 /*    !* Viền dropdown *!*/
+
+
 /*    background-color: #ffffff;*/
+
+
 /*    !* Màu nền dropdown *!*/
+
+
 /*    left: -50px;*/
+
+
 /*    !* Di chuyển dropdown về bên trái 10px *!*/
+
+
 /*}*/
 
+
 /*.dropdown-menu .nav-item {*/
+
+
 /*    margin: 0;*/
+
+
 /*    !* Bỏ margin của các mục danh sách *!*/
+
+
 /*}*/
+
 
 /*.dropdown-menu .nav-link {*/
+
+
 /*    display: block;*/
+
+
 /*    padding: 0.5rem 1rem;*/
+
+
 /*    !* Điều chỉnh padding tùy theo nhu cầu *!*/
+
+
 /*    color: #212529;*/
+
+
 /*    !* Màu chữ *!*/
+
+
 /*    text-decoration: none;*/
+
+
 /*    !* Bỏ gạch chân *!*/
+
+
 /*    transition: background-color 0.3s;*/
+
+
 /*    !* Hiệu ứng chuyển đổi màu nền mượt *!*/
+
+
 /*}*/
+
 
 /*.dropdown-menu .nav-link:hover {*/
+
+
 /*    background-color: #f8f9fa;*/
+
+
 /*    !* Màu nền khi di chuột qua *!*/
+
+
 /*    color: #8B1A1A;*/
+
+
 /*    !* Màu chữ khi di chuột qua *!*/
+
+
 /*}*/
+
 
 /*.dropdown-menu-end {*/
+
+
 /*    right: 0;*/
+
+
 /*    !* Đặt dropdown menu bên phải *!*/
+
+
 /*}*/
 
+
 /*.dropdown-menu .nav-item {*/
+
+
 /*    text-align: left;*/
+
+
 /*    !* Căn chỉnh chữ trái *!*/
+
+
 /*}*/
 
 .single-prd-item {
@@ -5522,13 +5586,10 @@ h4.total-amount {
     /* Khoảng cách với phần trước đó */
 }
 
-
-
 #successModal .input-text.qty {
     width: 50px;
     /* Chiều rộng */
     text-align: center;
-
     /* Căn giữa văn bản */
     border: 1px solid #8B1A1A;
     /* Viền */
@@ -5542,9 +5603,11 @@ h4.total-amount {
 #successModal .product_count {
     display: flex;
     align-items: center;
-    margin-top: -10px; /* Khoảng cách với phần trước đó */
- margin-left: -15px;
+    margin-top: -10px;
+    /* Khoảng cách với phần trước đó */
+    margin-left: -15px;
 }
+
 #successModal .increase1 {
     position: relative;
     left: 21px;
@@ -5555,9 +5618,9 @@ h4.total-amount {
 #successModal .reduced2 {
     position: relative;
     left: -49px;
-    top: 7px;/* Điều chỉnh giá trị này để di chuyển nút theo ý muốn */
+    top: 7px;
+    /* Điều chỉnh giá trị này để di chuyển nút theo ý muốn */
 }
-
 
 #successModal .button.primary-btn {
     padding: 10px 20px;
@@ -5645,6 +5708,7 @@ h4.total-amount {
     margin-top: -50px;
     /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
 }
+
 .thumbnail-container1 {
     display: flex;
     justify-content: center;
@@ -5654,6 +5718,7 @@ h4.total-amount {
     margin-top: -220px;
     /* Khoảng cách giữa ảnh chính và dãy ảnh nhỏ */
 }
+
 .thumbnail {
     width: 60px;
     /* Kích thước của thumbnail */
@@ -5667,29 +5732,45 @@ h4.total-amount {
     transform: scale(1.1);
     /* Phóng to thumbnail khi di chuột */
 }
+
 .thumbnail1 {
-    width: 100px; /* Chiều rộng của ảnh thumbnail */
-    height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */
-    cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
-    transition: transform 0.2s ease-in-out; /* Hiệu ứng chuyển động khi hover */
+    width: 100px;
+    /* Chiều rộng của ảnh thumbnail */
+    height: auto;
+    /* Tự động điều chỉnh chiều cao theo tỷ lệ */
+    cursor: pointer;
+    /* Thay đổi con trỏ chuột khi hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Đổ bóng nhẹ */
+    transition: transform 0.2s ease-in-out;
+    /* Hiệu ứng chuyển động khi hover */
 }
 
 .thumbnail1:hover {
-    transform: scale(1.1); /* Tăng kích thước ảnh khi hover */
+    transform: scale(1.1);
+    /* Tăng kích thước ảnh khi hover */
 }
 
-.icon-up, .icon-down {
-    font-size: 24px; /* Kích thước của biểu tượng */
-    color: #333; /* Màu sắc của biểu tượng */
-    margin-bottom: 10px; /* Khoảng cách giữa biểu tượng và ảnh */
-    cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
-    transition: color 0.2s ease-in-out; /* Hiệu ứng chuyển động khi hover */
+.icon-up,
+.icon-down {
+    font-size: 24px;
+    /* Kích thước của biểu tượng */
+    color: #333;
+    /* Màu sắc của biểu tượng */
+    margin-bottom: 10px;
+    /* Khoảng cách giữa biểu tượng và ảnh */
+    cursor: pointer;
+    /* Thay đổi con trỏ chuột khi hover */
+    transition: color 0.2s ease-in-out;
+    /* Hiệu ứng chuyển động khi hover */
 }
 
-.icon-up:hover, .icon-down:hover {
-    color: #8B1A1A; /* Đổi màu khi hover */
+.icon-up:hover,
+.icon-down:hover {
+    color: #8B1A1A;
+    /* Đổi màu khi hover */
 }
+
 .btn-outline-custom {
     border: none;
     color: #8B1A1A;
@@ -6052,18 +6133,28 @@ fieldset[disabled] .btn {
     height: auto;
     /* Đảm bảo tỷ lệ khung hình được giữ */
 }
+
 .total-label {
-    color: #8B1A1A; /* Màu chữ cho "Tổng Tiền" */
-}
-/* Cập nhật màu nền của nút */
-.btn.btn-primary {
-    background-color: #8B1A1A; /* Màu nền */
-    border-color: #8B1A1A; /* Màu viền */
+    color: #8B1A1A;
+    /* Màu chữ cho "Tổng Tiền" */
 }
 
+
+/* Cập nhật màu nền của nút */
+
+.btn.btn-primary {
+    background-color: #8B1A1A;
+    /* Màu nền */
+    border-color: #8B1A1A;
+    /* Màu viền */
+}
+
+
 /* Thay đổi màu nền của nút khi di chuột qua */
+
 .btn.btn-primary:hover {
-    background-color: white; /* Màu nền khi hover (tối hơn một chút) */
+    background-color: white;
+    /* Màu nền khi hover (tối hơn một chút) */
     border-color: #8B1A1A;
     color: #8B1A1A/* Màu viền khi hover */
 }
@@ -6071,20 +6162,30 @@ fieldset[disabled] .btn {
 .img-profile {
     width: 30px;
     height: 30px;
-    border-radius: 50%; /* Bo tròn ảnh thành hình tròn */
-    object-fit: cover;/* Đảm bảo ảnh không bị biến dạng */
+    border-radius: 50%;
+    /* Bo tròn ảnh thành hình tròn */
+    object-fit: cover;
+    /* Đảm bảo ảnh không bị biến dạng */
     margin-bottom: 10px;
 }
+
 .forgotpass {
-    margin-top: 44px; /* Điều chỉnh giá trị theo nhu cầu */
+    margin-top: 44px;
+    /* Điều chỉnh giá trị theo nhu cầu */
 }
-.sorting{
-    margin-left: 350px;   
+
+.sorting {
+    margin-left: 350px;
 }
+
 .price-select {
-    width: 200px; /* Tăng chiều dài của select box */
+    width: 200px;
+    /* Tăng chiều dài của select box */
 }
+
+
 /* Style cho khối tìm kiếm theo khoảng giá */
+
 .price-filter {
     display: flex;
     flex-direction: column;
@@ -6096,14 +6197,18 @@ fieldset[disabled] .btn {
     background-color: #f1f6f7;
 }
 
+
 /* Style cho các label */
+
 .price-filter label {
     font-size: 14px;
     margin-bottom: 5px;
     color: #333;
 }
 
+
 /* Style cho các input */
+
 .price-filter input[type="number"] {
     width: 100%;
     padding: 10px;
@@ -6114,47 +6219,66 @@ fieldset[disabled] .btn {
     box-sizing: border-box;
 }
 
+
 /* Style cho nút tìm kiếm */
+
 .form-row {
     margin-bottom: 10px;
 }
+
+
 /*show tên rút gọn*/
+
 .product-name {
     position: relative;
     display: inline-block;
 }
+
 .product-name[title] {
-    cursor: pointer;  
+    cursor: pointer;
 }
+
+
 /* khoảng cách size và sl */
-.product-size{
+
+.product-size {
     margin-right: 13px;
 }
+
 .order-detail-modal .modal-dialog {
-    max-width: 80%; /* Tăng chiều rộng của modal */
-    margin: 30px auto; /* Căn giữa modal */
+    max-width: 80%;
+    /* Tăng chiều rộng của modal */
+    margin: 30px auto;
+    /* Căn giữa modal */
     margin-top: 100px;
 }
 
 .order-detail-modal .modal-content {
-    border-radius: 10px; /* Bo tròn các góc */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ */
-    padding: 30px; /* Tăng padding */
+    border-radius: 10px;
+    /* Bo tròn các góc */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Thêm bóng đổ */
+    padding: 30px;
+    /* Tăng padding */
     min-height: 500px;
     /* Tăng chiều cao tối thiểu */
 }
 
 .order-detail-modal .modal-body {
-    padding: 30px; /* Tăng padding trong nội dung modal */
-    max-height: 400px; /* Giới hạn chiều cao nội dung, thêm cuộn nếu cần */
+    padding: 30px;
+    /* Tăng padding trong nội dung modal */
+    max-height: 400px;
+    /* Giới hạn chiều cao nội dung, thêm cuộn nếu cần */
     overflow-y: auto;
     margin-top: -50px/* Thêm thanh cuộn nếu nội dung vượt quá chiều cao */
 }
 
 .order-detail-modal .table {
-    margin-top: 20px; /* Đẩy bảng xuống dưới để tạo khoảng cách */
+    margin-top: 20px;
+    /* Đẩy bảng xuống dưới để tạo khoảng cách */
     border-collapse: separate;
-    border-spacing: 0 10px; /* Tạo khoảng cách giữa các hàng */
+    border-spacing: 0 10px;
+    /* Tạo khoảng cách giữa các hàng */
 }
 
 .order-detail-modal .btn-secondary {
@@ -6168,33 +6292,34 @@ fieldset[disabled] .btn {
 }
 
 .order-detail-modal .btn-secondary:hover {
-    border: 2px solid #8B1A1A; /* Thêm viền màu #8B1A1A */
-    background-color: white; /* Màu nền chuyển thành trắng */
-    color: #8B1A1A; /* Màu chữ chuyển thành #8B1A1A */
+    border: 2px solid #8B1A1A;
+    /* Thêm viền màu #8B1A1A */
+    background-color: white;
+    /* Màu nền chuyển thành trắng */
+    color: #8B1A1A;
+    /* Màu chữ chuyển thành #8B1A1A */
 }
+
 .order-detail-modal .order-total {
     flex-grow: 1;
-    text-align: right; /* Đổi thành căn phải */
+    text-align: center;
+    /* Đổi thành căn phải */
     font-weight: bold;
-    margin-right: -200px;
-    display: flex;
-    justify-content: flex-end; /* Canh nội dung về bên phải */
-    align-items: center; /* Canh giữa theo chiều dọc */
-    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+    margin-right: 50%;
+    display: block;
+    /* Canh nội dung về bên phải */
+    align-items: center;
+    /* Canh giữa theo chiều dọc */
+    white-space: nowrap;
+    /* Ngăn chữ bị xuống dòng */
 }
+
+
 /* Thêm vào file CSS của bạn hoặc trong thẻ <style> trong HTML */
+
 .error-message {
-    font-weight: bold; /* In đậm */
+    font-weight: bold;
+    /* In đậm */
     color: #8B1A1A;
     /* Màu đỏ (hoặc màu bạn chọn) */
 }
-
-
-
-
-
-
-
-
-
-

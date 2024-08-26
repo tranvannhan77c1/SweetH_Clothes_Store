@@ -125,32 +125,32 @@
                             <p>Khoảng giá</p>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" ng-model="minPrice" placeholder="Từ"  class="form-control" currency-input>
+                                    <input type="text" ng-model="minPrice" placeholder="Từ" class="form-control" currency-input>
                                 </div>
                                 <div class="col">
                                     <input type="text" ng-model="maxPrice" placeholder="Đến" class="form-control" currency-input>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" ng-click="filterByPrice()"  >Áp Dụng</button>
+                            <button class="btn btn-primary" ng-click="filterByPrice()">Áp Dụng</button>
                         </div>
 
 
                         <!--                        <div class="common-filter">-->
-<!--                            <div class="head">Giá</div>-->
-<!--                            <div class="price-range-area">-->
-<!--                                <div id="price-range"></div>-->
-<!--                                <div class="value-wrapper d-flex">-->
-<!--                                    <div class="price">Giá:</div>-->
+                        <!--                            <div class="head">Giá</div>-->
+                        <!--                            <div class="price-range-area">-->
+                        <!--                                <div id="price-range"></div>-->
+                        <!--                                <div class="value-wrapper d-flex">-->
+                        <!--                                    <div class="price">Giá:</div>-->
 
-<!--                                    <div id="lower-value"></div>-->
+                        <!--                                    <div id="lower-value"></div>-->
 
-<!--                                    <div class="to">Đến</div>-->
+                        <!--                                    <div class="to">Đến</div>-->
 
-<!--                                    <div id="upper-value"></div>-->
-<!--                                </div>-->
+                        <!--                                    <div id="upper-value"></div>-->
+                        <!--                                </div>-->
 
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-7">
@@ -231,7 +231,7 @@
                                                             <div class="col-lg-5 offset-lg-1">
                                                                 <div class="s_product_text">
                                                                     <h3>{{ selectedProduct.name }}</h3>
-                                                                    <h2>{{ selectedProduct.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"})  }}</h2>
+                                                                    <h2>{{ selectedProduct.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</h2>
                                                                     <ul class="list">
                                                                         <li><a class="active" href="#"><span>Sản Phẩm</span> : {{ selectedProduct.category.name }}</a></li>
 
@@ -309,31 +309,6 @@
     <!-- ================ category section end ================= -->
 
     <!-- ================ top product area start ================= -->
-    <section class="related-product-area">
-        <div class="container">
-            <div class="section-intro pb-60px">
-                <h2>Sản Phẩm <span class="section-intro__style"> Top</span></h2>
-                <p>Mặt hàng phổ biến trên thị trường</p>
-            </div>
-            <div class="row mt-30">
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0" ng-repeat="product in products">
-                    <div class="single-search-product-wrapper">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img class="card-img" ng-src="{{ product.thumbnailImage }}" alt="{{ product.name }}"></a>
-                            <div class="desc">
-                                <a href="#" class="title" ng-href="single-product.html?id={{ product.id }}">{{ product.name }}</a>
-                                <div class="price">{{ product.price.toLocaleString("vi-VN", {style:"currency", currency:"VND"}) }}</div>
-                                <!-- Thêm các nút cho modal -->
-                                <div class="btn-group">
-                                    <button class="btn btn-primary" ng-click="showSuccessModal(product)">Xem Chi Tiết</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ================ top product area end ================= -->
 
