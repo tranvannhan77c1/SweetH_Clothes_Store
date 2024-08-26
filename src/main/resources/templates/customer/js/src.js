@@ -27,7 +27,7 @@ window.onload=function() {
                         fullName: input_fullname.value || "",
                         phone: input_phone.value || "",
                         address: input_address.value || "",
-                        role: "Customer"
+                        role: "CUSTOMER"
                     }
     
                     const data = JSON.stringify(user);

@@ -1,9 +1,14 @@
 package com.sweeth_clothes_store.util;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -37,12 +42,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
                 // Lấy id user từ chuỗi jwt
                 String userName = tokenProvider.getUserNameFromJWT(jwt);
+                String roles = tokenProvider.getRolesFromJWT(jwt);
                 // Lấy thông tin người dùng từ username
-                UserDetails userDetails = accountDetailsService.loadUserByUsername(userName);
-                if(userDetails != null) {
+                UserDetails accountDetails = accountDetailsService.loadUserByUsername(userName);
+                if(accountDetails != null) {
                     // Nếu người dùng hợp lệ, set thông tin cho Seturity Context
+                    List<SimpleGrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(roles));
                     UsernamePasswordAuthenticationToken
-                            authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                            authentication = new UsernamePasswordAuthenticationToken(accountDetails, null, accountDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                     SecurityContextHolder.getContext().setAuthentication(authentication);

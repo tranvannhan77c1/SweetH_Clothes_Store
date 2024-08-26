@@ -48,17 +48,17 @@ public class SecurityConfig {
 					"/api/v1/customer/orders/createOrder"
 			).permitAll();
 
-        	authorizeHttpRequests.requestMatchers("/api/v1/admin/**",
-					"/api/v1/product/admin/**"
-			).hasRole("ADMIN");
-			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("USER", "ADMIN");
-//        	authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("USER", "ADMIN");
-//        	authorizeHttpRequests.requestMatchers("/api/v1/product/public/**",
-//					"/api/v1/auth/**"
-//			).permitAll();
-			authorizeHttpRequests.anyRequest().permitAll();
+			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("CUSTOMER", "ADMIN");
+			authorizeHttpRequests.requestMatchers("/api/categories/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers("/api/items/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "CUSTOMER");
+        	authorizeHttpRequests.requestMatchers("/api/v1/product/public/**",
+					"/api/v1/auth/**"
+			).permitAll();
+//			authorizeHttpRequests.anyRequest().authenticated();
         }  
         )
+				.authenticationProvider(authenticationProvider())
         .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 
 //        .formLogin(formLogin ->

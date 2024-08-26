@@ -3,6 +3,7 @@ package com.sweeth_clothes_store.model;
 import java.util.Collection;
 import java.util.Collections;
 
+import com.sweeth_clothes_store.dto.AccountDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,28 +12,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class AccountDetail implements UserDetails{
 	private static final long serialVersionUID = 1L;
-	Account account;
+	private AccountDTO accountDTO;
+
+	public AccountDetail(AccountDTO accountDTO) {
+		this.accountDTO = accountDTO;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+		return Collections.singleton(new SimpleGrantedAuthority("ROLE_"  + accountDTO.getRole().toUpperCase()));
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return account.getPassword();
+		return accountDTO.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return account.getUsername();
+		return accountDTO.getUsername();
 	}
 
 	@Override

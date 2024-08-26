@@ -1,7 +1,9 @@
 package com.sweeth_clothes_store.util;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.sweeth_clothes_store.model.AccountDetail;
@@ -26,9 +28,14 @@ public class JwtTokenProvider {
     public String generateToken(AccountDetail accountDetail) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
+        String role = accountDetail.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse(null);
         // Tạo chuỗi json web token từ id của user.
         return Jwts.builder()
-                   .setSubject(accountDetail.getAccount().getUsername())
+                   .setSubject(accountDetail.getAccountDTO().getUsername())
+                    .claim("roles", role)
                    .setIssuedAt(now)
                    .setExpiration(expiryDate)
                    .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
@@ -43,6 +50,15 @@ public class JwtTokenProvider {
                             .getBody();
 
         return String.valueOf(claims.getSubject());
+    }
+
+    public String getRolesFromJWT(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(JWT_SECRET)
+                .parseClaimsJws(token)
+                .getBody();
+
+        return String.valueOf(claims.get("roles",  String.class));
     }
     
     public boolean validateToken(String authToken) {

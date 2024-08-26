@@ -117,7 +117,13 @@ app.controller('confirmationController', ['$scope', '$http', '$location', functi
         // localStorage.removeItem('cart')
 
         $scope.orderInfo = null;
-        $http.get('http://localhost:8080/api/orders/UserOrder?userID=' + $scope.userInfo.id)
+        const token = loginToken.replace(/"/g, '').trim();
+        $http.get('http://localhost:8080/api/orders/UserOrder?userID=' + $scope.userInfo.id, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + loginToken.replace(/"/g, '').trim()  // Replace with your actual JWT token variable
+            }
+        })
             .then(function (response) {
                 $scope.orderInfo = response.data
                 console.log($scope.orderInfo)

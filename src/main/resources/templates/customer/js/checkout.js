@@ -106,18 +106,22 @@ app.controller('CheckoutController', ['$scope', '$http', function($scope, $http)
         }
 
         console.log(orderRequest);
-
-        $http.post('http://localhost:8080/api/orders/createOrder', orderRequest)
-            .then(function(response) {
-                // Handle success
-                console.log('Payment successful:', response.data);
-                window.location.href = '../pages/confirmation.html'
-
-            })
-            .catch(function(error) {
-                // Handle error
-                console.error('Payment failed:', error);
-            });
+        const token = loginToken.replace(/"/g, '').trim();
+        $http.post('http://localhost:8080/api/orders/createOrder', orderRequest, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + loginToken.replace(/"/g, '').trim()  // Replace with your actual JWT token variable
+            }
+        })
+        .then(function(response) {
+            // Handle success
+            console.log('Payment successful:', response.data);
+            window.location.href = '../pages/confirmation.html';
+        })
+        .catch(function(error) {
+            // Handle error
+            console.error('Payment failed:', error);
+        });
     }
 
 

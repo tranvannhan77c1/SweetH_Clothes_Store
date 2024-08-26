@@ -42,7 +42,7 @@ public class AuthController {
 		
 		AccountDetail accountDetail = (AccountDetail) authentication.getPrincipal();
         String jwt = tokenProvider.generateToken(accountDetail);
-        Account account = accountDetail.getAccount();
+        AccountDTO account = accountDetail.getAccountDTO();
         return new LoginResponse(jwt, account);
 	}
 
