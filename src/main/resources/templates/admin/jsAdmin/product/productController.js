@@ -43,6 +43,12 @@ angular.module('app')
         $scope.isNameSuccess = false;
         $scope.nameEdit = '';
 
+        $scope.accountInfo = null;
+        var storedAccountInfo = localStorage.getItem('accountDetail');
+        if (storedAccountInfo) {
+            $scope.accountInfo = JSON.parse(storedAccountInfo);
+        }
+
         function getProductsPage(page, size) {
             return ProductService.getProductsPage(page, size)
                 .then(function (data) {

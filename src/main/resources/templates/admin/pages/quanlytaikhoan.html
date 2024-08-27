@@ -81,7 +81,7 @@
                     </div>
                     <div ng-if="message" class="alert mb-2" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
                     <button ng-if="isAddMode" type="submit" class="btn btn-inverse-success mt-2" ng-click="createAccount()">Thêm Nhân Viên</button>
-                    <button type="button" class="btn mt-2" ng-class="{'btn-inverse-info': !isAddMode, 'btn-inverse-danger': isAddMode}" ng-click="toggleForm()">{{ isAddMode ? 'Ẩn Form Thêm Nhân Viên' : 'Hiện Form Thêm Nhân Viên' }}</button>
+                    <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn mt-2" ng-class="{'btn-inverse-info': !isAddMode, 'btn-inverse-danger': isAddMode}" ng-click="toggleForm()">{{ isAddMode ? 'Ẩn Form Thêm Nhân Viên' : 'Hiện Form Thêm Nhân Viên' }}</button>
                   </form>
                 </div>
               </div>

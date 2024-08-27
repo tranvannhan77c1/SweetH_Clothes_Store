@@ -12,6 +12,12 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
+        $scope.accountInfo = null;
+        var storedAccountInfo = localStorage.getItem('accountDetail');
+        if (storedAccountInfo) {
+            $scope.accountInfo = JSON.parse(storedAccountInfo);
+        }
+
         function getCategoriesPage(page, size) {
             return CategoryService.getCategoriesPage(page, size)
                 .then(function (data) {

@@ -20,6 +20,13 @@ angular.module('app')
         $scope.message = '';
         $scope.isSuccess = false;
 
+        $scope.accountInfo = null;
+        var storedAccountInfo = localStorage.getItem('accountDetail');
+        if (storedAccountInfo) {
+            $scope.accountInfo = JSON.parse(storedAccountInfo);
+        }
+
+
         function getAccountsPage(page, size) {
             return AccountService.getAccountsPage(page, size)
                 .then(function (data) {
@@ -59,7 +66,7 @@ angular.module('app')
                 return;
             }
 
-            $scope.account.role = "Employee";
+            $scope.account.role = "STAFF";
             AccountService.createAccount($scope.account)
                 .then(function (data) {
                     getAccountsPage($scope.currentPage, $scope.pageSize)

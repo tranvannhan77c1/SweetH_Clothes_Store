@@ -2,7 +2,21 @@ angular.module('app').controller('loginlogoutController', ['$scope', '$http', fu
     $scope.username = '';
     $scope.password = '';
     $scope.errorMessage = '';
-    $scope.message = 'Đăng xuất thành công.';
+    $scope.menuItems = [
+        { link: 'quanlydanhmuc.html', label: { 'ADMIN': 'Quản Lý Danh Mục', 'STAFF': 'Xem DS Danh Mục' } },
+        { link: 'quanlychungloai.html', label: { 'ADMIN': 'Quản Lý Chủng Loại', 'STAFF': 'Xem DS Chủng Loại' } },
+        { link: 'quanlysanpham.html', label: { 'ADMIN': 'Quản Lý Sản Phẩm', 'STAFF': 'Xem DS Sản Phẩm' } },
+        { link: 'quanlytaikhoan.html', label: { 'ADMIN': 'Quản Lý Tài Khoản', 'STAFF': 'Xem DS Tài Khoản' } },
+        { link: 'quanlydonhang.html', label: { 'ADMIN': 'Quản Lý Đơn Hàng', 'STAFF': 'Quản Lý Đơn Hàng' } },
+        { link: 'quanlykhuyenmai.html', label: { 'ADMIN': 'Quản Lý Khuyến Mãi', 'STAFF': 'Xem DS Khuyến Mãi' } },
+        { link: 'quanlydanhgia.html', label: { 'ADMIN': 'Quản Lý Đánh Giá', 'STAFF': 'Xem DS Đánh Giá' } },
+    ];
+
+    $scope.accountInfo = null;
+    var storedAccountInfo = localStorage.getItem('accountDetail');
+    if (storedAccountInfo) {
+        $scope.accountInfo = JSON.parse(storedAccountInfo);
+    }
 
     $scope.login = function () {
         var loginData = {
@@ -20,7 +34,7 @@ angular.module('app').controller('loginlogoutController', ['$scope', '$http', fu
                 localStorage.setItem('jwtToken', JSON.stringify(token));
                 var accountDetail = response.data.account;
                 localStorage.setItem('accountDetail', JSON.stringify(accountDetail));
-                if (accountDetail.role == "Customer"){
+                if (accountDetail.role == "CUSTOMER"){
                     $scope.errorMessage = 'Bạn không có quyền truy cập.';
                 }else {
                     window.location.href = '../index.html';

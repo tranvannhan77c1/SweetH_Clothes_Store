@@ -3,6 +3,7 @@ package com.sweeth_clothes_store.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -36,7 +37,7 @@ public class SecurityConfig {
 		
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(AbstractHttpConfigurer::disable);
+		http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());
 
 		http
         .authorizeHttpRequests(authorizeHttpRequests -> {
@@ -47,12 +48,59 @@ public class SecurityConfig {
             		"/vendors/**",
 					"/api/v1/customer/orders/createOrder"
 			).permitAll();
-
+			//LỰC
+			authorizeHttpRequests.requestMatchers("/api/v1/product/public/**").permitAll();
+			authorizeHttpRequests.requestMatchers("/api/v1/auth/login").permitAll();
+			authorizeHttpRequests.requestMatchers("/api/v1/auth/signup").permitAll();
 			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("CUSTOMER", "ADMIN");
-			authorizeHttpRequests.requestMatchers("/api/categories/**").hasRole("ADMIN");
-			authorizeHttpRequests.requestMatchers("/api/items/**").hasRole("ADMIN");
 			authorizeHttpRequests.requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "CUSTOMER");
 			authorizeHttpRequests.requestMatchers("/api/v1/payment/**").hasAnyRole("ADMIN", "CUSTOMER");
+			authorizeHttpRequests.requestMatchers("/api/accounts/update/**").hasAnyRole("ADMIN", "CUSTOMER");
+			//LỰC
+
+			//NHÂN
+			// ADMIN STAFF có thể GET từ /api/statistics/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/statistics/**").hasAnyRole("ADMIN", "STAFF");
+
+			// Chỉ STAFF mới có thể GET từ /api/items/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/items/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/items/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/items/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/items/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/items/**").hasRole("ADMIN");
+
+			// Chỉ STAFF mới có thể GET từ /api/categories/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/categories/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/categories/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN");
+
+			// Chỉ STAFF mới có thể GET từ /api/products/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/products/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/products/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN");
+
+			// Chỉ STAFF mới có thể GET từ /api/accounts/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/accounts/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ ADMIN mới có thể thực hiện POST từ /api/accounts/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/accounts/**").hasRole("ADMIN");
+
+			// Chỉ STAFF mới có thể GET từ /api/vouchers/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/vouchers/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/vouchers/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/vouchers/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/vouchers/**").hasRole("ADMIN");
+			authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/vouchers/**").hasRole("ADMIN");
+
+			authorizeHttpRequests.requestMatchers("/api/feedbacks/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ STAFF mới có thể GET từ /api/feedbacks/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/feedbacks/**").hasAnyRole("ADMIN", "STAFF");
+			// Chỉ ADMIN mới có thể thực hiện PUT từ /api/feedbacks/**
+			authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/feedbacks/**").hasRole("ADMIN");
+			//NHÂN
         	authorizeHttpRequests.requestMatchers("/api/v1/product/public/**",
 					"/api/v1/auth/**"
 			).permitAll();

@@ -47,14 +47,15 @@
                                 <form class="forms-sample">
                                     <div class="form-group">
                                         <label for="name">Tên Chủng Loại</label>
-                                        <input type="text" class="form-control" id="name" ng-model="category.name"
+                                        <input type="text" class="form-control" id="name" ng-model="category.name" ng-disabled="accountInfo.role === 'STAFF'"
                                                placeholder="Tên Chủng Loại">
                                     </div>
                                     <div class="form-group">
                                         <label for="categorySelect">Thuộc Danh Mục</label>
                                         <select class="form-control form-control-lg" id="categorySelect"
                                                 ng-model="category.itemId"
-                                                ng-options="item.id as item.name for item in items">
+                                                ng-options="item.id as item.name for item in items"
+                                                ng-disabled="accountInfo.role === 'STAFF'">
                                             <option value="">Chọn Danh Mục</option>
                                         </select>
                                     </div>
@@ -62,7 +63,7 @@
                                          ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message
                                         }}
                                     </div>
-                                    <div>
+                                    <div ng-if="accountInfo.role === 'ADMIN'">
                                         <button type="button" class="btn btn-inverse-success mr-2"
                                                 ng-click="createCategory()" ng-show="!isEditMode">Thêm
                                         </button>
@@ -102,10 +103,13 @@
                                             <td>{{ cat.itemName }}</td>
                                             <td>{{ cat.productCount }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-inverse-info btn-sm"
+                                                <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-info btn-sm"
                                                         ng-click="editCategory(cat.id)">Chỉnh Sửa
                                                 </button>
-                                                <button type="button" class="btn btn-inverse-danger btn-sm"
+                                                <button ng-if="accountInfo.role === 'STAFF'" type="button" class="btn btn-inverse-info btn-sm"
+                                                        ng-click="editCategory(cat.id)">Xem Chi Tiết
+                                                </button>
+                                                <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-danger btn-sm"
                                                         ng-click="deleteCategory(cat.id)">Xoá
                                                 </button>
                                             </td>
@@ -171,3 +175,47 @@
 </body>
 
 </html>
+
+//NHÂN
+					// ADMIN STAFF có thể GET từ /api/statistics/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/statistics/**").hasAnyRole("ADMIN", "STAFF");
+
+					// Chỉ STAFF mới có thể GET từ /api/items/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/items/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/items/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/items/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/items/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/items/**").hasRole("ADMIN");
+
+					// Chỉ STAFF mới có thể GET từ /api/categories/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/categories/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/categories/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN");
+
+					// Chỉ STAFF mới có thể GET từ /api/products/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/products/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/products/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN");
+
+					// Chỉ STAFF mới có thể GET từ /api/accounts/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/accounts/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ ADMIN mới có thể thực hiện POST từ /api/accounts/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/accounts/**").hasRole("ADMIN");
+
+					// Chỉ STAFF mới có thể GET từ /api/vouchers/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/vouchers/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ ADMIN mới có thể thực hiện POST, PUT, DELETE từ /api/vouchers/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/vouchers/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/vouchers/**").hasRole("ADMIN");
+					authorizeHttpRequests.requestMatchers(HttpMethod.DELETE, "/api/vouchers/**").hasRole("ADMIN");
+
+					authorizeHttpRequests.requestMatchers("/api/feedbacks/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ STAFF mới có thể GET từ /api/feedbacks/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/feedbacks/**").hasAnyRole("ADMIN", "STAFF");
+					// Chỉ ADMIN mới có thể thực hiện PUT từ /api/feedbacks/**
+					authorizeHttpRequests.requestMatchers(HttpMethod.PUT, "/api/feedbacks/**").hasRole("ADMIN");
+//			NHÂN

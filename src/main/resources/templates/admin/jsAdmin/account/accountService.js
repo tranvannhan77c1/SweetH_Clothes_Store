@@ -2,12 +2,23 @@ angular.module('app')
     .service('AccountService', ['$http', function($http) {
         var baseUrl = 'http://localhost:8080/api/accounts';
 
+        var loginToken = localStorage.getItem('jwtToken');
+
+        // Thêm header với token vào tất cả các yêu cầu HTTP
+        var config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + loginToken.replace(/"/g, '').trim()
+            }
+        };
+
         this.getAccountsPage = function(page, size) {
             page = page || 0; // Trang mặc định là 0
             size = size || 8; // Kích thước mặc định là 8
 
             return $http.get(baseUrl, {
-                params: { page: page, size: size }
+                params: { page: page, size: size },
+                headers: config.headers
             }).then(function(response) {
                 return response.data;
             }).catch(function(error) {
@@ -17,7 +28,7 @@ angular.module('app')
         };
 
         this.getAccountById = function(id) {
-            return $http.get(baseUrl + '/' + id)
+            return $http.get(baseUrl + '/' + id, config)
                 .then(function(response) {
                     return response.data;
                 })
@@ -28,7 +39,7 @@ angular.module('app')
         };
 
         this.createAccount = function(account) {
-            return $http.post(baseUrl, account)
+            return $http.post(baseUrl, account, config)
                 .then(function(response) {
                     return response.data;
                 })
@@ -40,7 +51,8 @@ angular.module('app')
 
         this.checkUsernameExists = function(username) {
             return $http.get(baseUrl + '/check-username', {
-                params: { username: username }
+                params: { username: username },
+                headers: config.headers
             }).then(function(response) {
                 return response.data;
             }).catch(function(error) {
@@ -51,7 +63,8 @@ angular.module('app')
 
         this.checkEmailExists = function(email) {
             return $http.get(baseUrl + '/check-email', {
-                params: { email: email }
+                params: { email: email },
+                headers: config.headers
             }).then(function(response) {
                 return response.data;
             }).catch(function(error) {
@@ -62,7 +75,8 @@ angular.module('app')
 
         this.checkPhoneExists = function(phone) {
             return $http.get(baseUrl + '/check-phone', {
-                params: { phone: phone }
+                params: { phone: phone },
+                headers: config.headers
             }).then(function(response) {
                 return response.data;
             }).catch(function(error) {

@@ -49,7 +49,7 @@
                                         <h4 class="card-title mt-3">Danh Sách Sản Phẩm</h4>
                                     </div>
                                     <div class="col-lg-6 d-flex justify-content-end align-items-end">
-                                        <button type="button" class="btn btn-inverse-success mb-3" data-toggle="modal"
+                                        <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-success mb-3" data-toggle="modal"
                                                 data-target="#addProductModal" ng-click="resetForm()">Thêm Sản
                                             Phẩm
                                         </button>
@@ -75,10 +75,15 @@
                                         <tr ng-repeat="product in products"
                                             ng-class="{ 'table-success': product.id === highlightedProductId }">
                                             <td>
-                                                <button type="button" class="btn btn-inverse-info btn-sm"
+                                                <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-info btn-sm"
                                                         data-toggle="modal"
                                                         data-target="#productDetailModal"
                                                         ng-click="editProduct(product.id)">Chỉnh Sửa
+                                                </button>
+                                                <button ng-if="accountInfo.role === 'STAFF'" type="button" class="btn btn-inverse-info btn-sm"
+                                                        data-toggle="modal"
+                                                        data-target="#productDetailModal"
+                                                        ng-click="editProduct(product.id)">Xem Chi Tiết
                                                 </button>
                                             </td>
                                             <td><img style="width: 90px; height: auto; border-radius: 0px;"
@@ -131,8 +136,9 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addProductModalLabel">
+                            <h5 ng-if="accountInfo.role === 'ADMIN'" class="modal-title" id="addProductModalLabel">
                                 {{isEditMode ? 'Chỉnh Sửa Sản Phẩm' : 'Thêm Sản Phẩm'}}</h5>
+                            <h5 ng-if="accountInfo.role === 'STAFF'" class="modal-title" id="addProductModalLabel">Xem Chi Tiết Sản Phẩm</h5>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                     class="mdi mdi-close-box"></i></button>
                         </div>
@@ -146,6 +152,7 @@
                                                 <select id="productItem" ng-model="product.itemId"
                                                         ng-options="item.id as item.name for item in items"
                                                         ng-change="onItemChange(product.itemId); checkItem(product.itemId)"
+                                                        ng-disabled="accountInfo.role === 'STAFF'"
                                                         class="form-control"
                                                         required>
                                                     <option value="">Chọn Danh Mục</option>
@@ -158,6 +165,7 @@
                                                         ng-options="category.id as category.name for category in categories"
                                                         ng-change="checkCategory(product.categoryId)"
                                                         class="form-control"
+                                                        ng-disabled="accountInfo.role === 'STAFF'"
                                                         required>
                                                     <option value="">Chọn Chủng Loại</option>
                                                 </select>
@@ -183,6 +191,7 @@
                                                         <input id="productThumbnailImage"
                                                                ng-model="product.thumbnailImage"
                                                                ng-change="checkThumbnailImage(product.thumbnailImage)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'"
                                                                type="text" class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh chính">
                                                         <div ng-if="thumbnailImagenofi" class="error">
@@ -202,6 +211,7 @@
                                                         <input id="productThumbnailImage"
                                                                ng-model="product.thumbnailImage"
                                                                ng-change="checkThumbnailImage(product.thumbnailImage)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'"
                                                                type="text" class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh chính">
                                                         <div ng-if="thumbnailImagenofi" class="error">
@@ -214,6 +224,7 @@
                                                 <label for="productName">Tên Sản Phẩm</label>
                                                 <input id="productName" ng-model="product.name"
                                                        ng-change="checkName(product.name)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="text" class="form-control"
                                                        placeholder="Tên Sản Phẩm" required>
                                                 <div ng-if="namenofi"
@@ -225,6 +236,7 @@
                                                 <label for="productPrice">Giá Sản Phẩm</label>
                                                 <input id="productPrice" ng-model="product.price"
                                                        ng-change="checkPrice(product.price)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="number" class="form-control"
                                                        placeholder="Giá Sản Phẩm" required>
                                                 <div ng-if="pricenofi" class="error">{{ pricenofi }}</div>
@@ -233,6 +245,7 @@
                                                 <label for="productBrand">Thương Hiệu Sản Phẩm</label>
                                                 <input id="productBrand" ng-model="product.brand"
                                                        ng-change="checkBrand(product.brand)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="text" class="form-control"
                                                        placeholder="Thương Hiệu Sản Phẩm">
                                                 <div ng-if="brandnofi" class="error">{{ brandnofi }}</div>
@@ -241,6 +254,7 @@
                                                 <label for="productMadeIn">Nguồn Gốc Sản Phẩm</label>
                                                 <input id="productMadeIn" ng-model="product.madeIn"
                                                        ng-change="checkMadeIn(product.madeIn)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="text" class="form-control"
                                                        placeholder="Nguồn Gốc Sản Phẩm">
                                                 <div ng-if="madeInnofi" class="error">{{ madeInnofi }}</div>
@@ -256,6 +270,7 @@
                                                 <label for="productColor">Màu Sản Phẩm</label>
                                                 <input id="productColor" ng-model="product.color"
                                                        ng-change="checkColor(product.color)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="text" class="form-control"
                                                        placeholder="Màu Sản Phẩm">
                                                 <div ng-if="colornofi" class="error">{{ colornofi }}</div>
@@ -264,6 +279,7 @@
                                                 <label for="productMaterial">Chất Liệu Sản Phẩm</label>
                                                 <input id="productMaterial" ng-model="product.material"
                                                        ng-change="checkMaterial(product.material)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="text" class="form-control"
                                                        placeholder="Chất Liệu Sản Phẩm">
                                                 <div ng-if="materialnofi" class="error">{{ materialnofi }}</div>
@@ -272,6 +288,7 @@
                                                 <label for="productDescription">Mô Tả Sản Phẩm</label>
                                                 <input id="productDescription" ng-model="product.description"
                                                        ng-change="checkDescription(product.description)"
+                                                       ng-disabled="accountInfo.role === 'STAFF'"
                                                        type="text" class="form-control"
                                                        placeholder="Mô Tả Sản Phẩm">
                                                 <div ng-if="descriptionnofi" class="error">{{ descriptionnofi }}</div>
@@ -289,13 +306,14 @@
                                                         <div class="p-3"
                                                              style="display: flex; justify-content: center;">
                                                             <input type="checkbox" class="form-check-input"
-                                                                   style="margin: 0;" ng-model="size.selected"
+                                                                   style="margin: 0;" ng-model="size.selected" ng-disabled="accountInfo.role === 'STAFF'"
                                                                    ng-change="size.selected ? size.quantity = size.quantity || 1 : size.quantity = 0; checkProductSizes()">
                                                         </div>
                                                         <input type="number" class="form-control form-control-sm"
                                                                style="margin: 0 auto;" ng-model="size.quantity"
                                                                ng-if="size.selected" placeholder="Số lượng sản phẩm"
-                                                               ng-change="checkProductSizeQuantity(size)">
+                                                               ng-change="checkProductSizeQuantity(size)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
 
@@ -310,12 +328,14 @@
                                                              style="display: flex; justify-content: center;">
                                                             <input type="checkbox" class="form-check-input"
                                                                    style="margin: 0;" ng-model="size.selected"
+                                                                   ng-disabled="accountInfo.role === 'STAFF'"
                                                                    ng-change="size.selected ? size.quantity = size.quantity || 1 : size.quantity = 0; checkProductSizes()">
                                                         </div>
                                                         <input type="number" class="form-control form-control-sm"
                                                                style="margin: 0 auto;" ng-model="size.quantity"
                                                                ng-if="size.selected" placeholder="Số lượng sản phẩm"
-                                                               ng-change="checkProductSizeQuantity(size)">
+                                                               ng-change="checkProductSizeQuantity(size)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
 
@@ -330,12 +350,14 @@
                                                              style="display: flex; justify-content: center;">
                                                             <input type="checkbox" class="form-check-input"
                                                                    style="margin: 0;" ng-model="freeSize.selected"
+                                                                   ng-disabled="accountInfo.role === 'STAFF'"
                                                                    ng-change="freeSize.selected ? freeSize.quantity = freeSize.quantity || 1 : size.quantity = 0; checkProductSizes()">
                                                         </div>
                                                         <input type="number" class="form-control form-control-sm"
                                                                style="margin: 0 auto;" ng-model="freeSize.quantity"
                                                                ng-if="freeSize.selected" placeholder="Số lượng sản phẩm"
-                                                               ng-change="checkProductSizeQuantity(freeSize)">
+                                                               ng-change="checkProductSizeQuantity(freeSize)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div ng-if="sizenofi" class="error">{{ sizenofi }}</div>
@@ -349,7 +371,8 @@
                                                         <input type="text" ng-model="product.otherImages[0]"
                                                                class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh 1"
-                                                               ng-change="checkProductImages(product.otherImages)">
+                                                               ng-change="checkProductImages(product.otherImages)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -358,7 +381,8 @@
                                                         <input type="text" ng-model="product.otherImages[1]"
                                                                class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh 2"
-                                                               ng-change="checkProductImages(product.otherImages)">
+                                                               ng-change="checkProductImages(product.otherImages)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -367,7 +391,8 @@
                                                         <input type="text" ng-model="product.otherImages[2]"
                                                                class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh 3"
-                                                               ng-change="checkProductImages(product.otherImages)">
+                                                               ng-change="checkProductImages(product.otherImages)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div ng-if="imagesnofi" class="error">{{ imagesnofi }}</div>
@@ -388,7 +413,8 @@
                                                         <input type="text" ng-model="product.otherImages[0]"
                                                                class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh 1"
-                                                               ng-change="checkProductImages(product.otherImages)">
+                                                               ng-change="checkProductImages(product.otherImages)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -397,7 +423,8 @@
                                                         <input type="text" ng-model="product.otherImages[1]"
                                                                class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh 2"
-                                                               ng-change="checkProductImages(product.otherImages)">
+                                                               ng-change="checkProductImages(product.otherImages)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -406,7 +433,8 @@
                                                         <input type="text" ng-model="product.otherImages[2]"
                                                                class="form-control form-control-sm"
                                                                placeholder="Đường dẫn ảnh 3"
-                                                               ng-change="checkProductImages(product.otherImages)">
+                                                               ng-change="checkProductImages(product.otherImages)"
+                                                               ng-disabled="accountInfo.role === 'STAFF'">
                                                     </div>
                                                 </div>
                                                 <div ng-if="imagesnofi" class="error">{{ imagesnofi }}</div>
@@ -415,7 +443,7 @@
                                                  ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
                                                 {{ message }}
                                             </div>
-                                            <div>
+                                            <div ng-if="accountInfo.role === 'ADMIN'">
                                                 <button type="submit" class="btn btn-inverse-success mr-2"
                                                         ng-click="createProduct()" ng-if="!isEditMode">Thêm
                                                 </button>

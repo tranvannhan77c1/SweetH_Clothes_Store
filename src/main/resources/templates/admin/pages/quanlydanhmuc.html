@@ -47,10 +47,10 @@
                   <form class="forms-sample">
                     <div class="form-group">
                       <label>Tên Danh Mục</label>
-                      <input type="text" class="form-control" ng-model="item.name">
+                      <input type="text" class="form-control" ng-model="item.name" ng-disabled="accountInfo.role === 'STAFF'">
                     </div>
                     <div ng-show="message" class="alert" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
-                    <div>
+                    <div ng-if="accountInfo.role === 'ADMIN'">
                       <button type="submit" class="btn btn-inverse-success mr-2" ng-click="createItem()" ng-show="!isEditMode">Thêm</button>
                       <button type="button" class="btn btn-inverse-warning mr-2" ng-click="updateItem()" ng-show="isEditMode">Cập Nhập</button>
                       <button type="button" class="btn btn-inverse-danger mr-2" ng-click="deleteItem(item.id)" ng-show="isEditMode">Xoá</button>
@@ -81,8 +81,9 @@
                         <td>{{ item.categoryCount }}</td>
                         <td>{{ item.productCount }}</td>
                         <td>
-                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="editItem(item.id)">Chỉnh Sửa</button>
-                          <button type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteItem(item.id)">Xoá</button>
+                          <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-info btn-sm" ng-click="editItem(item.id)">Chỉnh Sửa</button>
+                          <button ng-if="accountInfo.role === 'STAFF'" type="button" class="btn btn-inverse-info btn-sm" ng-click="editItem(item.id)">Xem Chi Tiết</button>
+                          <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteItem(item.id)">Xoá</button>
                         </td>
                       </tr>
                       </tbody>

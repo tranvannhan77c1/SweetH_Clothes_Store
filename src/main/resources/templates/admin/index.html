@@ -83,49 +83,90 @@
             <a class="nav-link" href="index.html">
               <i class="typcn typcn-device-desktop menu-icon"></i>
               <span class="menu-title">Bảng Điều Khiển</span>
-              <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlydanhmuc.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Danh Mục</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlydanhmuc.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Xem DS Danh Mục</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlychungloai.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Chủng Loại</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlychungloai.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Xem DS Chủng Loại</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlysanpham.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Sản Phẩm</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlysanpham.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Xem DS Sản Phẩm</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlytaikhoan.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Tài Khoản</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlytaikhoan.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Xem DS Tài Khoản</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlydonhang.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Đơn Hàng</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlydonhang.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Quản Lý Đơn Hàng</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlykhuyenmai.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Khuyến Mãi</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlykhuyenmai.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Xem DS Khuyến Mãi</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">
             <a class="nav-link" href="pages/quanlydanhgia.html">
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Quản Lý Đánh Giá</span>
+            </a>
+          </li>
+          <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">
+            <a class="nav-link" href="pages/quanlydanhgia.html">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Xem DS Đánh Giá</span>
             </a>
           </li>
         </ul>

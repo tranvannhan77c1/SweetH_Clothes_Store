@@ -46,29 +46,29 @@
                   <form class="forms-sample">
                     <div class="form-group">
                       <label for="code">Mã Khuyến Mãi</label>
-                      <input type="text" class="form-control" id="code" ng-model="voucher.code" ng-change="checkCode(voucher.code)" placeholder="Mã Khuyến Mãi">
+                      <input type="text" class="form-control" id="code" ng-model="voucher.code" ng-change="checkCode(voucher.code)" ng-disabled="accountInfo.role === 'STAFF'" placeholder="Mã Khuyến Mãi">
                       <div ng-if="codenofi" ng-class="{'success': isCodeSuccess, 'error': !isCodeSuccess}">
                         {{ codenofi }}
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="discountAmount">Số Tiền Khuyến Mãi</label>
-                      <input type="number" class="form-control" id="discountAmount" ng-model="voucher.discountAmount" ng-change="checkDiscountAmount(voucher.discountAmount)" placeholder="Số Tiền Khuyến Mãi">
+                      <input type="number" class="form-control" id="discountAmount" ng-model="voucher.discountAmount" ng-change="checkDiscountAmount(voucher.discountAmount)" ng-disabled="accountInfo.role === 'STAFF'" placeholder="Số Tiền Khuyến Mãi">
                       <div ng-if="discountAmountnofi" class="error">{{ discountAmountnofi }}</div>
                     </div>
                     <div class="form-group">
                       <label for="condition">Điều Kiện</label>
-                      <input type="number" class="form-control" id="condition" ng-model="voucher.condition" ng-change="checkCondition(voucher.condition)" placeholder="Điều Kiện">
+                      <input type="number" class="form-control" id="condition" ng-model="voucher.condition" ng-change="checkCondition(voucher.condition)" ng-disabled="accountInfo.role === 'STAFF'" placeholder="Điều Kiện">
                       <div ng-if="conditionnofi" class="error">{{ conditionnofi }}</div>
                     </div>
                     <div class="form-group">
                       <label for="validFrom">Áp Dụng Từ</label>
-                      <input type="datetime-local" class="form-control" id="validFrom" ng-model="voucher.validFrom" ng-change="checkValidFrom(voucher.validFrom)">
+                      <input type="datetime-local" class="form-control" id="validFrom" ng-model="voucher.validFrom" ng-change="checkValidFrom(voucher.validFrom)" ng-disabled="accountInfo.role === 'STAFF'">
                       <div ng-if="validFromnofi" class="error">{{ validFromnofi }}</div>
                     </div>
                     <div class="form-group" ng-class="{'mb-3': message}">
                       <label for="validTo">Áp Dụng Đến</label>
-                      <input type="datetime-local" class="form-control" id="validTo" ng-model="voucher.validTo" ng-change="checkValidTo(voucher.validTo)">
+                      <input type="datetime-local" class="form-control" id="validTo" ng-model="voucher.validTo" ng-change="checkValidTo(voucher.validTo)" ng-disabled="accountInfo.role === 'STAFF'">
                       <div ng-if="validTonofi" class="error">{{ validTonofi }}</div>
                     </div>
                     <div ng-if="isEditMode" class="form-group" ng-class="{'mb-3': message}">
@@ -76,10 +76,10 @@
                       <input type="datetime-local" class="form-control" id="createDate" ng-model="voucher.createDate" disabled>
                     </div>
                     <div ng-if="message" class="alert mt-0" ng-class="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">{{ message }}</div>
-                    <button type="submit" class="btn btn-inverse-success mr-2" ng-click="createVoucher()" ng-show="!isEditMode">Thêm</button>
-                    <button type="submit" class="btn btn-inverse-warning mr-2" ng-click="updateVoucher()" ng-show="isEditMode">Cập Nhập</button>
-                    <button type="button" class="btn btn-inverse-danger mr-2"  ng-click="deleteVoucher(voucher.id)" ng-show="isEditMode">Xoá</button>
-                    <button type="button" class="btn btn-inverse-info mr-2" ng-click="resetForm()">Làm Mới</button>
+                    <button ng-if="accountInfo.role === 'ADMIN'" type="submit" class="btn btn-inverse-success mr-2" ng-click="createVoucher()" ng-show="!isEditMode">Thêm</button>
+                    <button ng-if="accountInfo.role === 'ADMIN'" type="submit" class="btn btn-inverse-warning mr-2" ng-click="updateVoucher()" ng-show="isEditMode">Cập Nhập</button>
+                    <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-danger mr-2"  ng-click="deleteVoucher(voucher.id)" ng-show="isEditMode">Xoá</button>
+                    <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-info mr-2" ng-click="resetForm()">Làm Mới</button>
                   </form>
                 </div>
               </div>
@@ -104,8 +104,9 @@
                       <tbody>
                       <tr ng-repeat="voucher in vouchers" ng-class="{ 'table-success': voucher.id === highlightedVoucherId }">
                         <td>
-                          <button type="button" class="btn btn-inverse-info btn-sm" ng-click="editVoucher(voucher.id)">Chỉnh Sửa</button>
-                          <button type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteVoucher(voucher.id)">Xoá</button>
+                          <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-info btn-sm" ng-click="editVoucher(voucher.id)">Chỉnh Sửa</button>
+                          <button ng-if="accountInfo.role === 'STAFF'" type="button" class="btn btn-inverse-info btn-sm" ng-click="editVoucher(voucher.id)">Xem Chi Tiết</button>
+                          <button ng-if="accountInfo.role === 'ADMIN'" type="button" class="btn btn-inverse-danger btn-sm" ng-click="deleteVoucher(voucher.id)">Xoá</button>
                         </td>
                         <td>{{ voucher.code }}</td>
                         <td>{{ voucher.discountAmount }}đ</td>

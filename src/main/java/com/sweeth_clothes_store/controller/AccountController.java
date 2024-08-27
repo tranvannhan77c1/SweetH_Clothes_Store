@@ -57,12 +57,6 @@ public class AccountController {
         return ResponseEntity.ok(updatedAccount);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAccount(@PathVariable Integer id) {
-        accountService.deleteAccount(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @GetMapping("/check-username")
     public ResponseEntity<Boolean> checkUsernameExists(@RequestParam("username") String username) {
         boolean exists = accountService.existsByUsername(username);

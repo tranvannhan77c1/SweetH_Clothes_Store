@@ -19,6 +19,12 @@ angular.module('app')
         $scope.isCodeSuccess = false;
         $scope.codeEdit = '';
 
+        $scope.accountInfo = null;
+        var storedAccountInfo = localStorage.getItem('accountDetail');
+        if (storedAccountInfo) {
+            $scope.accountInfo = JSON.parse(storedAccountInfo);
+        }
+
         function getVouchers(page, size) {
             return VoucherService.getAllVouchersPage(page, size)
                 .then(function (data) {

@@ -1,51 +1,84 @@
-<ul class="nav">
+<!--<ul class="nav" ng-controller="loginlogoutController">-->
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link" href="../index.html">-->
+<!--            <i class="typcn typcn-device-desktop menu-icon"></i>-->
+<!--            <span class="menu-title">Bảng Điều Khiển</span>-->
+<!--            &lt;!&ndash; <div class="badge badge-danger">new</div> &ndash;&gt;-->
+<!--        </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">-->
+<!--        <a class="nav-link" href="quanlydanhmuc.html">-->
+<!--            <i class="typcn typcn-document-text menu-icon"></i>-->
+<!--            <span class="menu-title">Quản Lý Danh Mục</span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">-->
+<!--        <a class="nav-link" href="quanlydanhmuc.html">-->
+<!--            <i class="typcn typcn-document-text menu-icon"></i>-->
+<!--            <span class="menu-title">Xem Danh Mục</span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">-->
+<!--        <a class="nav-link" href="quanlychungloai.html">-->
+<!--            <i class="typcn typcn-document-text menu-icon"></i>-->
+<!--            <span class="menu-title">Quản Lý Chủng Loại</span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">-->
+<!--        <a class="nav-link" href="quanlychungloai.html">-->
+<!--            <i class="typcn typcn-document-text menu-icon"></i>-->
+<!--            <span class="menu-title">Xem Chủng Loại</span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" ng-if="accountInfo.role === 'ADMIN'">-->
+<!--        <a class="nav-link" href="quanlysanpham.html">-->
+<!--            <i class="typcn typcn-document-text menu-icon"></i>-->
+<!--            <span class="menu-title">Quản Lý Sản Phẩm</span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" ng-if="accountInfo.role === 'STAFF'">-->
+<!--        <a class="nav-link" href="quanlysanpham.html">-->
+<!--            <i class="typcn typcn-document-text menu-icon"></i>-->
+<!--            <span class="menu-title">Xem Sản Phẩm</span>-->
+<!--        </a>-->
+<!--    </li>-->
+<!--&lt;!&ndash;    <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" href="quanlytaikhoan.html">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="typcn typcn-document-text menu-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="menu-title">Quản Lý Tài Khoản</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--&lt;!&ndash;    <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" href="quanlydonhang.html">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="typcn typcn-document-text menu-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="menu-title">Quản Lý Đơn Hàng</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--&lt;!&ndash;    <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" href="quanlykhuyenmai.html">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="typcn typcn-document-text menu-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="menu-title">Quản Lý Khuyến Mãi</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--&lt;!&ndash;    <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" href="quanlydanhgia.html">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="typcn typcn-document-text menu-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="menu-title">Quản Lý Đánh Giá</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--</ul>-->
+
+<ul class="nav" ng-controller="loginlogoutController">
     <li class="nav-item">
         <a class="nav-link" href="../index.html">
             <i class="typcn typcn-device-desktop menu-icon"></i>
             <span class="menu-title">Bảng Điều Khiển</span>
-            <!-- <div class="badge badge-danger">new</div> -->
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlydanhmuc.html">
+    <li class="nav-item" ng-repeat="item in menuItems">
+        <a class="nav-link" href="{{ item.link }}">
             <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Danh Mục</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlychungloai.html">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Chủng Loại</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlysanpham.html">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Sản Phẩm</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlytaikhoan.html">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Tài Khoản</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlydonhang.html">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Đơn Hàng</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlykhuyenmai.html">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Khuyến Mãi</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="quanlydanhgia.html">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Quản Lý Đánh Giá</span>
+            <span class="menu-title">{{ item.label[accountInfo.role] }}</span>
         </a>
     </li>
 </ul>

@@ -55,7 +55,7 @@
                                     </th>
                                     <th>Đánh Giá Sản Phẩm</th>
                                     <th>Người Tạo Đánh Giá</th>
-                                    <th>Hành Động</th>
+                                    <th ng-if="accountInfo.role === 'ADMIN'">Hành Động</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +69,7 @@
                                         }}</label></td>
                                     <td>{{ feedback.productName }}</td>
                                     <td>{{ feedback.accountName }}</td>
-                                    <td>
+                                    <td ng-if="accountInfo.role === 'ADMIN'">
                                         <button type="button" class="btn btn-sm"
                                                 ng-class="{'btn-inverse-success': !feedback.status, 'btn-inverse-danger': feedback.status}"
                                                 ng-click="toggleStatus(feedback)">

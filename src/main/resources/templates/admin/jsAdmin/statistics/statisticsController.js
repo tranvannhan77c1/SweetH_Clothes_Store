@@ -13,7 +13,11 @@ angular.module('app')
         $scope.totalOrders = 0;
         $scope.totalRevenue = 0;
 
-        $scope.userInfo = null;
+        $scope.accountInfo = null;
+        var storedAccountInfo = localStorage.getItem('accountDetail');
+        if (storedAccountInfo) {
+            $scope.accountInfo = JSON.parse(storedAccountInfo);
+        }
 
         function formatDateToISO(date) {
             var d = new Date(date);
@@ -113,12 +117,5 @@ angular.module('app')
             // redirect to login page or reload the page
             window.location.href = 'pages/login.html';
         };
-
-        var storedUserInfo = localStorage.getItem('accountDetail');
-        if (storedUserInfo) {
-            $scope.userInfo = JSON.parse(storedUserInfo);
-        }
-        console.log($scope.userInfo);
-
     }]);
 
