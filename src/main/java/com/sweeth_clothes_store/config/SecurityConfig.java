@@ -53,7 +53,7 @@ public class SecurityConfig {
 			authorizeHttpRequests.requestMatchers("/api/v1/auth/login").permitAll();
 			authorizeHttpRequests.requestMatchers("/api/v1/auth/signup").permitAll();
 			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("CUSTOMER", "ADMIN");
-			authorizeHttpRequests.requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "CUSTOMER");
+			authorizeHttpRequests.requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "CUSTOMER", "STAFF");
 			authorizeHttpRequests.requestMatchers("/api/v1/payment/**").hasAnyRole("ADMIN", "CUSTOMER");
 			authorizeHttpRequests.requestMatchers("/api/accounts/update/**").hasAnyRole("ADMIN", "CUSTOMER");
 			//LỰC
@@ -87,6 +87,11 @@ public class SecurityConfig {
 			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/accounts/**").hasAnyRole("ADMIN", "STAFF");
 			// Chỉ ADMIN mới có thể thực hiện POST từ /api/accounts/**
 			authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/api/accounts/**").hasRole("ADMIN");
+
+//			// ADMIN STAFF mới có thể GET từ /api/orders/**
+//			authorizeHttpRequests.requestMatchers(HttpMethod.GET,"/api/orders/**").hasAnyRole("ADMIN", "STAFF");
+//			// ADMIN STAFF mới có thể PUT từ /api/orders/**
+//			authorizeHttpRequests.requestMatchers(HttpMethod.PUT,"/api/orders/**").hasAnyRole("ADMIN", "STAFF");
 
 			// Chỉ STAFF mới có thể GET từ /api/vouchers/**
 			authorizeHttpRequests.requestMatchers(HttpMethod.GET, "/api/vouchers/**").hasAnyRole("ADMIN", "STAFF");

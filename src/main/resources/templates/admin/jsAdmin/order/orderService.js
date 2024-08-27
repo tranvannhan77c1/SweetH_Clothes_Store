@@ -37,4 +37,15 @@ angular.module('app')
                     throw error;
                 });
         };
+
+        this.updateOrderStatus = function(orderId, status) {
+            return $http.put(baseUrl + '/' + orderId + '/status', status, config)
+                .then(function(response) {
+                    return response.data;
+                })
+                .catch(function(error) {
+                    console.error('Error updating order status', error);
+                    throw error;
+                });
+        };
     }]);

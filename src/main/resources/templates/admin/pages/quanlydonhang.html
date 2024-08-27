@@ -103,7 +103,20 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close-box"></i></button>
                           </button>
                         </div>
+
                         <div class="modal-body">
+                          <div class="mt-1 form-group d-flex align-items-center">
+                            <button type="button" class="btn btn-inverse-primary" ng-click="getOrderDetails(orderId)">Cập Nhập Trạng Thái</button>
+                            <select class="form-control w-25 mx-2" ng-model="selectedStatus" ng-disabled="disableAllOptions">
+                              <option value="">Chọn Trạng Thái</option>
+                              <option value="Processing" ng-disabled="disableAllOptions">Đang Xử Lý</option>
+                              <option value="Shipped" ng-disabled="disableAllOptions">Đang Vận Chuyển</option>
+                              <option value="Delivered" ng-disabled="disableAllOptions">Đã Giao Hàng</option>
+                              <option value="Cancelled" ng-disabled="disableAllOptions || disableCancelledOption">Đã Huỷ</option>
+                            </select>
+                            <button type="button" class="btn btn-inverse-success" ng-click="updateOrderStatus(orderId, selectedStatus)" ng-disabled="disableAllOptions">Cập Nhật</button>
+                            <div ng-if="message" class="text-success text-center h3 font-weight-bold flex-grow-1 d-flex justify-content-center align-items-center">{{message}}</div>
+                          </div>
                           <div class="table-responsive">
                             <table class="table table-bordered">
                               <thead>

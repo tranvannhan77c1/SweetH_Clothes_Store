@@ -7,6 +7,7 @@ import com.sweeth_clothes_store.mapper.OrderMapper;
 import com.sweeth_clothes_store.model.*;
 import com.sweeth_clothes_store.repository.*;
 import com.sweeth_clothes_store.service.OrderService;
+import com.sweeth_clothes_store.util.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,5 +117,14 @@ public class OrderService {
 
     public void deleteOrder(Integer id) {
         orderRepository.deleteById(id);
+    }
+
+    public OrderDTO updateOrderStatus(Integer id, String status) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found with id: " + id));
+
+        order.setStatus(status);
+        order = orderRepository.save(order);
+        return OrderMapper.toOrderDTO(order);
     }
 }
