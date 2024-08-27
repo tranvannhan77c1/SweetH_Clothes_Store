@@ -54,8 +54,8 @@ public class SecurityConfig {
 			authorizeHttpRequests.requestMatchers("/api/v1/auth/signup").permitAll();
 			authorizeHttpRequests.requestMatchers("/api/v1/customer/**").hasAnyRole("CUSTOMER", "ADMIN");
 			authorizeHttpRequests.requestMatchers("/api/orders/**").hasAnyRole("ADMIN", "CUSTOMER", "STAFF");
-			authorizeHttpRequests.requestMatchers("/api/v1/payment/**").hasAnyRole("ADMIN", "CUSTOMER");
-			authorizeHttpRequests.requestMatchers("/api/accounts/update/**").hasAnyRole("ADMIN", "CUSTOMER");
+			authorizeHttpRequests.requestMatchers("/api/v1/payment/**").hasAnyRole( "CUSTOMER");
+			authorizeHttpRequests.requestMatchers(HttpMethod.PUT,"/api/accounts/**").hasAnyRole( "CUSTOMER");
 			//LỰC
 
 			//NHÂN
