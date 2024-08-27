@@ -25,11 +25,8 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand logo_h" href="../index.html"><img height="52px;" width="252px"
-                            src="../img/logo.png" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand logo_h" href="../index.html"><img height="52px;" width="252px" src="../img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -43,8 +40,7 @@
                         <ul class="nav-shop">
                             <!-- User Dropdown -->
                             <li class="nav-item dropdown" ng-if="!isLogin">
-                                <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="ti-user"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
@@ -53,8 +49,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown" ng-if="isLogin">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="../img/anhdaidien.png" alt="User Profile" class="img-profile">
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
@@ -88,13 +83,11 @@
                 <div class="col-lg-6 d-flex">
                     <div class="thumbnail-container d-flex flex-column align-items-center">
                         <i class="fas fa-angle-up icon-up"></i>
-                        <img class="thumbnail1" ng-src="{{ product.productImages[0] }}"
-                            alt="{{ product.name }} thumbnail 1" ng-click="setMainImage(product.productImages[0])">
-                        <img class="thumbnail1" ng-src="{{ product.productImages[1] }}"
-                            alt="{{ product.name }} thumbnail 2" ng-click="setMainImage(product.productImages[1])">
-                        <img class="thumbnail1" ng-src="{{ product.productImages[2] }}"
-                            alt="{{ product.name }} thumbnail 3" ng-click="setMainImage(product.productImages[2])">
-                        <i class="fas fa-angle-down icon-down"></i><!-- Thêm nhiều ảnh phụ nếu cần -->
+                        <img class="thumbnail1" ng-src="{{ product.productImages[0] }}" alt="{{ product.name }} thumbnail 1" ng-click="setMainImage(product.productImages[0])">
+                        <img class="thumbnail1" ng-src="{{ product.productImages[1] }}" alt="{{ product.name }} thumbnail 2" ng-click="setMainImage(product.productImages[1])">
+                        <img class="thumbnail1" ng-src="{{ product.productImages[2] }}" alt="{{ product.name }} thumbnail 3" ng-click="setMainImage(product.productImages[2])">
+                        <i class="fas fa-angle-down icon-down"></i>
+                        <!-- Thêm nhiều ảnh phụ nếu cần -->
                     </div>
                     <div class="owl-carousel owl-theme s_Product_carousel ml-3">
                         <div class="product-container">
@@ -123,41 +116,40 @@
                         <div class="row product_size">
                             <p>Kích Thước: </p>
                             <div class="size-buttons mt-4">
-                                <button type="button" class="size-button" ng-click="selectedSize = 'M'"
-                                    ng-class="{ 'selected': selectedSize === 'M' }">M</button>
-                                <button type="button" class="size-button" ng-click="selectedSize = 'L'"
-                                    ng-class="{ 'selected': selectedSize === 'L' }">L</button>
-                                <button type="button" class="size-button" ng-click="selectedSize = 'XL'"
-                                    ng-class="{ 'selected': selectedSize === 'XL' }">XL</button>
+                                <button type="button" class="size-button" ng-click="selectedSize = 'M'" ng-class="{ 'selected': selectedSize === 'M' }">M</button>
+                                <button type="button" class="size-button" ng-click="selectedSize = 'L'" ng-class="{ 'selected': selectedSize === 'L' }">L</button>
+                                <button type="button" class="size-button" ng-click="selectedSize = 'XL'" ng-class="{ 'selected': selectedSize === 'XL' }">XL</button>
                             </div>
                         </div>
 
                         <div class="product_count">
                             <label for="qty">Số Lượng:</label>
-                            <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button">
+                            <button ng-click="increaseQuantity(product)" class="increase items-count" type="button">
                                 <i class="fas fa-angle-up"></i>
                             </button>
-                            <input type="number" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:"
-                                class="input-text qty">
-                            <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button">
+                            <input type="number" name="qty" id="sst" ng-model="quantity" size="2" maxlength="12" title="Quantity:" class="input-text qty">
+                            <button ng-click="decreaseQuantity(product)" class="reduced items-count" type="button">
                                 <i class="fas fa-angle-down"></i>
                             </button>
                         </div>
 
+
                         <button class="button primary-btn" ng-click="addToCart(product)">Thêm Giỏ Hàng</button>
                         <div class="card_area d-flex align-items-center">
                             <!-- <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a> -->
-                            <a class="icon_btn" style="background-color: #8B1A1A; border-radius: 50%"
-                             href=""><i class=" lnr lnr lnr-heart"></i></a>
+                            <a class="icon_btn" style="background-color: #8B1A1A; border-radius: 50%" href=""><i class=" lnr lnr lnr-heart"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Toast Container -->
+        <div class="toast-container" style="margin-left: 50%; margin-top: 100px; " ng-show="showSuccessMessage">
+            <div class="toast-message">
+                Sản phẩm đã được thêm vào giỏ hàng thành công!
+            </div>
+        </div>
+
     </div>
 
     <!--================End Single Product Area =================-->
@@ -167,22 +159,18 @@
         <div class="container">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" id="description-tab" data-toggle="tab" href="#description" role="tab"
-                        aria-controls="description" aria-selected="true">Miêu Tả</a>
+                    <a class="nav-link" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Miêu Tả</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab"
-                        aria-controls="detail" aria-selected="false">Chi tiết</a>
+                    <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="false">Chi tiết</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="feedbacks-tab" data-toggle="tab" href="#feedbacks" role="tab"
-                        aria-controls="feedbacks" aria-selected="false">Đánh Giá</a>
+                    <a class="nav-link" id="feedbacks-tab" data-toggle="tab" href="#feedbacks" role="tab" aria-controls="feedbacks" aria-selected="false">Đánh Giá</a>
                 </li>
 
             </ul>
             <div class="tab-content border-radius" id="myTabContent">
-                <div class="tab-pane fade text-center " id="description" role="tabpanel"
-                    aria-labelledby="description-tab">
+                <div class="tab-pane fade text-center " id="description" role="tabpanel" aria-labelledby="description-tab">
                     <p>{{ product.description }}</p>
                 </div>
                 <div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
@@ -245,13 +233,11 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div ng-if="(product.feedbacks | filter:{status: true}).length > 0">
-                                <div class="comment_list"
-                                    ng-repeat="feedback in product.feedbacks | filter:{status: true}">
+                                <div class="comment_list" ng-repeat="feedback in product.feedbacks | filter:{status: true}">
                                     <div class="review_item border p-3">
                                         <div class="media">
                                             <div class="d-flex">
-                                                <img src="../img/anhdaidien.png" alt=""
-                                                    style="width: 60px; border-radius: 50%;">
+                                                <img src="../img/anhdaidien.png" alt="" style="width: 60px; border-radius: 50%;">
                                             </div>
                                             <div class="media-body">
                                                 <h4 class="font-weight-medium">{{feedback.accountName}}</h4>
@@ -259,9 +245,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-2">
-                                            <i class="ti-star mr-1"
-                                                style="color: rgb(139, 26, 26); font-weight: bold; font-size: 1.3em;"
-                                                ng-repeat="n in [].constructor(feedback.rate) track by $index"></i>
+                                            <i class="ti-star mr-1" style="color: rgb(139, 26, 26); font-weight: bold; font-size: 1.3em;" ng-repeat="n in [].constructor(feedback.rate) track by $index"></i>
                                         </div>
                                         <p class="font-weight-medium">{{feedback.content}}</p>
                                     </div>
@@ -279,8 +263,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-group">
-                                            <input type="number" class="form-control" id="name" name="name"
-                                                placeholder="Số Sao">
+                                            <input type="number" class="form-control" id="name" name="name" placeholder="Số Sao">
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -289,8 +272,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                placeholder="Nội Dung Đánh Giá">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Nội Dung Đánh Giá">
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -316,13 +298,10 @@
                         <div class="single-footer-widget tp_widgets">
                             <h4 class="footer_title large_title">Nhiệm vụ</h4>
                             <p>
-                                Hãy gieo hạt giống màu xanh mà gia súc có cánh ở đó. Tập hợp những thứ được tạo ra, bay
-                                mà không bị chia cắt, di chuyển chúng tôi vào đất liền, tập hợp những thứ sống động của
-                                chúng tôi vào đất liền qua nhiều năm
+                                Hãy gieo hạt giống màu xanh mà gia súc có cánh ở đó. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển chúng tôi vào đất liền, tập hợp những thứ sống động của chúng tôi vào đất liền qua nhiều năm
                             </p>
                             <p>
-                                Gieo hạt giống xanh nơi gia súc có cánh ở. Tập hợp những thứ được tạo ra, bay mà không
-                                bị chia cắt, di chuyển sâu.
+                                Gieo hạt giống xanh nơi gia súc có cánh ở. Tập hợp những thứ được tạo ra, bay mà không bị chia cắt, di chuyển sâu.
                             </p>
                         </div>
                     </div>
